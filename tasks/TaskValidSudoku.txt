@@ -42,4 +42,4 @@ Output: false
 Ограничения:
 board.length == 9
 board[i].length == 9
-board[i][j] это цифра 1-9 or '.'.
+board[i][j] это цифра 1-9 или '.'.
