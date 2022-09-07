@@ -69,7 +69,8 @@ public class Main {
                 result = cosEpsilon(x);
                 break;
 
-            default: break;
+            default:
+                break;
 
         }
 
@@ -84,10 +85,10 @@ public class Main {
         System.out.print("Enter count of elements: ");
         Scanner in = new Scanner(System.in);
         n = in.nextInt();
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
 
             res += tmp;
-            tmp *= -(tmp*x*x)/((2*step+2)*(2*step+1));
+            tmp *= -(tmp * x * x) / ((2 * step + 2) * (2 * step + 1));
             step++;
         }
         return res;
@@ -104,7 +105,7 @@ public class Main {
         while (Math.abs(tmp) > eps) {
 
             res += tmp;
-            tmp *= -(tmp*x*x)/((2*n+2)*(2*n+1));
+            tmp *= -(tmp * x * x) / ((2 * n + 2) * (2 * n + 1));
             n++;
 
         }
@@ -118,10 +119,10 @@ public class Main {
         System.out.print("Enter count of elements: ");
         Scanner in = new Scanner(System.in);
         n = in.nextInt();
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
 
             res += tmp;
-            tmp *= (-1)*x*x/(2*step)/(2*step+1);
+            tmp *= (-1) * x * x / (2 * step) / (2 * step + 1);
             step++;
 
         }
@@ -139,7 +140,7 @@ public class Main {
             int n = 1;
             res += tmp;
             n++;
-            tmp *= (-1)*x*x/(2*n)/(2*n+1);
+            tmp *= (-1) * x * x / (2 * n) / (2 * n + 1);
         }
         return res;
     }
