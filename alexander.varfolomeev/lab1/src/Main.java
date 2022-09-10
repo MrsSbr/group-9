@@ -6,32 +6,35 @@ public class Main {
     }
 
     public static int coinChangeDynamicProg(int[] coins, int amount){
-        if(amount == 0)
+        if (amount == 0) {
             return 0;
+        }
 
         int[] dp = new int[amount + 1];
-        for (int i = 0; i <= amount; i++){
+        for (int i = 0; i <= amount; i++) {
             dp[i] = Integer.MAX_VALUE;
         }
         dp[0] = 0;
 
         for (int i = 0; i < coins.length; i++){
-            if(coins[i] <= amount)
+            if (coins[i] <= amount) {
                 dp[coins[i]] = 1;
+            }
         }
 
         for (int i = 1; i <= amount; i++){
-            if(dp[i] != Integer.MAX_VALUE)
-            {
-                for (int j  = 0; j < coins.length; j++){
-                    if (coins[j] <= amount && i + coins[j] <= amount)
+            if (dp[i] != Integer.MAX_VALUE) {
+                for (int j  = 0; j < coins.length; j++) {
+                    if (coins[j] <= amount && i + coins[j] <= amount) {
                         dp[i + coins[j]] = Math.min(dp[i + coins[j]], dp[i] + 1);
+                    }
                 }
             }
         }
 
-        if(dp[amount] == Integer.MAX_VALUE)
+        if (dp[amount] == Integer.MAX_VALUE) {
             return -1;
+        }
 
         return dp[amount];
     }
@@ -48,14 +51,16 @@ public class Main {
             int amount = getIntInDiapason(0, 104); // Тут кажется опечатка в условии, иначе зачем нам монеты > 104?
 
             int result = coinChangeDynamicProg(coins, amount);
-            if(result == -1)
+            if (result == -1) {
                 System.out.println("Данную сумму невозможно собрать монетами с таким номиналом.");
-            else
+            } else {
                 System.out.println("Минимально возможное количество монет для данной суммы: " + result);
+            }
 
             System.out.println("Выйти из программы? (1)");
-            if(in.nextInt() == 1)
+            if(in.nextInt() == 1) {
                 break;
+            }
         }
     }
 
@@ -74,12 +79,13 @@ public class Main {
     }
     public static int getIntInDiapason(int start, int end){
         int result;
-        while (true){
+        while (true) {
             result = getInt();
-            if(!inDiapason(result, start, end))
-                System.out.println("Число должно находится в диапазоне от " + start +  " до " + end);
-            else
+            if(!inDiapason(result, start, end)) {
+                System.out.println("Число должно находится в диапазоне от " + start + " до " + end);
+            } else {
                 break;
+            }
         }
         return result;
     }
@@ -87,13 +93,13 @@ public class Main {
         System.out.println("Введите монеты: ");
         int[] result = new int[length];
         for (int i = 0; i < length; i++){
-            while(true){
+            while(true) {
                 result[i] = getInt();
                 if(!inDiapason(result[i], 1, 230)){
                     System.out.println("Номинал монеты должен находится в диапазоне от 1 до 230");
-                }
-                else
+                } else {
                     break;
+                }
             }
         }
         return result;
