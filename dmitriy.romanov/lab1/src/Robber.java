@@ -2,10 +2,10 @@ import java.util.Scanner;
 
 public class Robber {
     public static int robber(int[] nums) {
-        int size = nums.length;
-        if (size == 1) return nums[0];
-        return Math.max(robberRange(nums, 0, size - 2),
-                robberRange(nums, 1, size - 1));
+        int n = nums.length;
+        if (n == 1) return nums[0];
+        return Math.max(robberRange(nums, 0, n - 2),
+                robberRange(nums, 1,  n - 1));
     }
 
     static int robberRange(int[] nums, int start, int end) {
