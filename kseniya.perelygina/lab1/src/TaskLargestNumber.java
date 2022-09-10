@@ -36,9 +36,9 @@ public class TaskLargestNumber {
             return elem;
         }
         if (elem / 10 != 0 ) {
-            return (elem*10 + 9);
+            return (elem*10 + elem % 10);
         }
-        return (elem*100 + 99);
+        return (elem*100 + elem*10 + elem);
     }
 
     public static String task(int [] nums, int size) {
@@ -48,8 +48,8 @@ public class TaskLargestNumber {
         for (int curIndexForReplacement = 0; curIndexForReplacement < size-1; curIndexForReplacement++) {
             int indexOfMaxValue = curIndexForReplacement;
             for (int i = curIndexForReplacement+1; i< size; i++) {
-                // Подгоняем каждое число до трехзначного, забивая 9-ками недостающие разряды
-                // (9 -> 999, 12 -> 129, 100 -> 100) и сравниваем
+                // Подгоняем каждое число до трехзначного
+                // (9 -> 999, 12 -> 122, 100 -> 100) и сравниваем
                 if (getNumToTheThirdRank(nums[indexOfMaxValue]) < getNumToTheThirdRank(nums[i])) {
                     indexOfMaxValue = i;
                 }
