@@ -12,7 +12,7 @@ public class CheckValues {
         Scanner in = new Scanner(System.in);
         int num = 0;
         do {
-            System.out.print("Enter values in range of [-109;109]: ");
+            System.out.print("Enter values in range of [" + MIN_ARR_VALUE_SIZE + ";" + MAX_ARR_VALUE_SIZE + "]: ");
             try {
 
                 num = Integer.parseInt(in.next());
@@ -34,7 +34,7 @@ public class CheckValues {
         Scanner in = new Scanner(System.in);
         int size = 0;
         do {
-            System.out.print("Enter the size of array in range of [1;105]: ");
+            System.out.print("Enter the size of array in range of [" + MIN_ARR_SIZE + ";" + MAX_ARR_SIZE + "]: ");
             try {
 
                 size = Integer.parseInt(in.next());
