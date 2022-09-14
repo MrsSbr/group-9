@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class cheсkingTheNumVariable {
+public class CheсkingTheNumVariable {
     public static final int MIN_VALUE = 1;
     public static final int MAX_VALUE = (int) Math.pow(2, 31) - 1;
 
@@ -11,8 +11,9 @@ public class cheсkingTheNumVariable {
             System.out.print(" Введите число в диапозоне [1;2^31-1]: ");
             try {
                 num = Integer.parseInt(sc.next());
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException value) {
                 System.out.println("Ошибка!");
+                value.printStackTrace();
             }
         } while (num < MIN_VALUE || num > MAX_VALUE);
 
