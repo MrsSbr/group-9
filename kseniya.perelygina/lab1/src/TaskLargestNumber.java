@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  *   Ограничения:
  *   1 <= nums.length <= 100
- *   0 <= nums[i] <= 109
+ *   0 <= nums[i] <= 10^9
  */
 
 public class TaskLargestNumber {
@@ -27,40 +27,47 @@ public class TaskLargestNumber {
         return result;
     }
 
-    public static int getItself(int itself, int dummy) {
-        return itself;
-    } // a = getItself(b, b = a);
+    public static String taskWithStringsComparison(int[] nums) {
+        StringBuffer result = new StringBuffer();
 
-    public static int getNumToTheThirdRank(int elem) {
-        if (elem / 100 != 0) {
-            return elem;
-        }
-        if (elem / 10 != 0 ) {
-            return (elem*10 + elem % 10);
-        }
-        return (elem*100 + elem*10 + elem);
-    }
-
-    public static String task(int [] nums, int size) {
-        String result = "";
-        // Массив по сути сортируется
-        // В начало идут элементы наиболее подходящие для того, чтобы стоять в старших разрядах итогового числа
-        for (int curIndexForReplacement = 0; curIndexForReplacement < size-1; curIndexForReplacement++) {
+        for (int curIndexForReplacement = 0; curIndexForReplacement < nums.length - 1; curIndexForReplacement++) {
             int indexOfMaxValue = curIndexForReplacement;
-            for (int i = curIndexForReplacement+1; i< size; i++) {
-                // Подгоняем каждое число до трехзначного
-                // (9 -> 999, 12 -> 122, 100 -> 100) и сравниваем
-                if (getNumToTheThirdRank(nums[indexOfMaxValue]) < getNumToTheThirdRank(nums[i])) {
+            for (int i = curIndexForReplacement + 1; i < nums.length; i++) {
+
+                // Ставит на 1 место текущее наиболее подходящее число
+                // и на 2 место текущее
+                // [2, 10] -> "210"
+                String maxToCurElem = String.valueOf(nums[indexOfMaxValue]);
+                maxToCurElem = maxToCurElem.concat(String.valueOf(nums[i]));
+
+                // Наоборот
+                // [2, 10] -> "102"
+                String curToMaxElem = String.valueOf(nums[i]);
+                curToMaxElem = curToMaxElem.concat(String.valueOf(nums[indexOfMaxValue]));
+
+                // Если в curToMaxElem получилось число больше, то текущее число более подходящее, чтобы быть впереди
+                if (Long.valueOf(curToMaxElem) > Long.valueOf(maxToCurElem)) {
                     indexOfMaxValue = i;
                 }
+
             }
+
             // Свап значений текущего переднего индекса и максимально подходящего
-            nums[curIndexForReplacement] = getItself(nums[indexOfMaxValue], nums[indexOfMaxValue] = nums[curIndexForReplacement]);
-            // Запись в строку найденного наибольшего значения
-            result = result.concat(String.valueOf(nums[curIndexForReplacement]));
+            int tmp = nums[curIndexForReplacement];
+            nums[curIndexForReplacement] = nums[indexOfMaxValue];
+            nums[indexOfMaxValue] = tmp;
+
+            // Запись в строку найденного на переднее место значения
+            result.append(nums[curIndexForReplacement]);
         }
-        result = result.concat(String.valueOf(nums[size-1]));
-        return result;
+
+        result.append(nums[nums.length - 1]);
+
+        // Если все значения в массиве были 0, то корректное результирующее число будет просто 0 а не набор из 0
+        if ((result.toString()).indexOf("0") == 0) {
+            return "0";
+        }
+        return result.toString();
     }
 
     public static void main(String[] args) {
@@ -69,9 +76,9 @@ public class TaskLargestNumber {
         int [] nums = new int [size];
         System.out.println("Input " + size + " numbers below:");
         for (int i = 0; i < size; i++) {
-            nums[i] = getInt(0, 109);
+            nums[i] = getInt(0, 999999999);
         }
-        String result = task(nums, size);
+        String result = taskWithStringsComparison(nums);
         System.out.println("Largest number would be: " + result);
     }
 }
