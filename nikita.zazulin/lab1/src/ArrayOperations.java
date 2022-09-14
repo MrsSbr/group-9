@@ -15,7 +15,7 @@ public class ArrayOperations {
 
     }
 
-    public void createArray() {
+    public void readArrayFromConsole() {
 
         int size;
         size = CheckValues.checkArraySize();
@@ -33,13 +33,21 @@ public class ArrayOperations {
 
     public boolean repeatedNumbers() {
 
-        if (arr.length == 1) return false;
+        if (arr.length == 1) {
+
+            return false;
+
+        }
 
         for (int i = 0; i < arr.length; i++) {
 
             for (int j = i + 1; j < arr.length; j++) {
 
-                if (arr[i] == arr[j]) return true;
+                if (arr[i] == arr[j]) {
+
+                    return true;
+
+                }
 
             }
 

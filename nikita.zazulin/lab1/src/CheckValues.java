@@ -20,10 +20,11 @@ public class CheckValues {
             } catch (NumberFormatException e) {
 
                 System.out.println("Input ERROR!");
+                e.printStackTrace();
 
             }
 
-        } while ((num < MIN_ARR_VALUE_SIZE || num > MAX_ARR_VALUE_SIZE));
+        } while (num < MIN_ARR_VALUE_SIZE || num > MAX_ARR_VALUE_SIZE);
 
         return num;
 
@@ -42,10 +43,11 @@ public class CheckValues {
             } catch (NumberFormatException e) {
 
                 System.out.println("Input ERROR!");
+                e.printStackTrace();
 
             }
 
-        } while ((size < MIN_ARR_SIZE || size > MAX_ARR_SIZE));
+        } while (size < MIN_ARR_SIZE || size > MAX_ARR_SIZE);
 
         return size;
 
