@@ -21,6 +21,7 @@ public class Main {
         boolean[] bulbs = new boolean[amountOfBulbs]; // все лампочки по умолчанию выключены
         // Вы сначала включаете все лампочки
         // затем выключаете каждую вторую лампочку.
+
         for (int round = 1; round <= amountOfBulbs; round++) { // цикл в i-м раунде вы переключаете каждую i-ю лампочку
 
             for (int s = round-1; s < amountOfBulbs; s += round) {
