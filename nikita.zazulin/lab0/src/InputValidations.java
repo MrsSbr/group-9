@@ -41,10 +41,10 @@ public class InputValidations {
 
                 x = Double.parseDouble(in.next());
 
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException ex) {
 
                 System.out.println("Input ERROR!");
-                e.printStackTrace();
+                ex.printStackTrace();
 
             }
 
@@ -67,10 +67,10 @@ public class InputValidations {
 
                 n = Integer.parseInt(in.next());
 
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException ex) {
 
                 System.out.println("Input ERROR!");
-                e.printStackTrace();
+                ex.printStackTrace();
 
             }
 
