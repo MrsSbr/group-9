@@ -2,10 +2,34 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        menu();
+        Scanner in = new Scanner(System.in);
+        boolean exitFlag = false;
+
+        while(!exitFlag) {
+            System.out.println("Введите количество номиналов монет: ");
+            int coinsCount = getIntInDiapason(1, 12);
+
+            int[] coins = getCoins(coinsCount);
+
+            System.out.println("Введите необходимую сумму: ");
+            int amount = getIntInDiapason(0, 104); // Тут кажется опечатка в условии, иначе зачем нам монеты > 104?
+
+            int result = coinChangeDynamicProg(coins, amount);
+
+            if (result == -1) {
+                System.out.println("Данную сумму невозможно собрать монетами с таким номиналом.");
+            } else {
+                System.out.println("Минимально возможное количество монет для данной суммы: " + result);
+            }
+
+            System.out.println("Выйти из программы? (1)");
+            if (in.nextInt() == 1) {
+                exitFlag = true;
+            }
+        }
     }
 
-    public static int coinChangeDynamicProg(int[] coins, int amount){
+    public static int coinChangeDynamicProg(int[] coins, int amount) {
         if (amount == 0) {
             return 0;
         }
@@ -16,13 +40,13 @@ public class Main {
         }
         dp[0] = 0;
 
-        for (int i = 0; i < coins.length; i++){
+        for (int i = 0; i < coins.length; i++) {
             if (coins[i] <= amount) {
                 dp[coins[i]] = 1;
             }
         }
 
-        for (int i = 1; i <= amount; i++){
+        for (int i = 1; i <= amount; i++) {
             if (dp[i] != Integer.MAX_VALUE) {
                 for (int j  = 0; j < coins.length; j++) {
                     if (coins[j] <= amount && i + coins[j] <= amount) {
@@ -39,72 +63,57 @@ public class Main {
         return dp[amount];
     }
 
-    public static void menu(){
-        Scanner in = new Scanner(System.in);
-        while(true){
-            System.out.println("Введите количество номиналов монет: ");
-            int coinsCount = getIntInDiapason(1, 12);
-
-            int[] coins = getCoins(coinsCount);
-
-            System.out.println("Введите необходимую сумму: ");
-            int amount = getIntInDiapason(0, 104); // Тут кажется опечатка в условии, иначе зачем нам монеты > 104?
-
-            int result = coinChangeDynamicProg(coins, amount);
-            if (result == -1) {
-                System.out.println("Данную сумму невозможно собрать монетами с таким номиналом.");
-            } else {
-                System.out.println("Минимально возможное количество монет для данной суммы: " + result);
-            }
-
-            System.out.println("Выйти из программы? (1)");
-            if(in.nextInt() == 1) {
-                break;
-            }
-        }
-    }
-
-    public static int getInt(){
+    public static int getInt() {
         Scanner in = new Scanner(System.in);
         int result;
-        while(true)
-        {
+
+        while(true) {
             try {
                 result = Integer.parseInt(in.next());
+
                 return result;
-            } catch (Exception e){
-                System.out.println("Некорректный ввод. Повторите.");
+            } catch (Exception e) {
+                throw new Exception("Некорректный ввод. Повторите.");
             }
         }
     }
-    public static int getIntInDiapason(int start, int end){
+    public static int getIntInDiapason(int start, int end) {
         int result;
-        while (true) {
+        boolean exitFlag = false;
+
+        while (!exitFlag) {
             result = getInt();
-            if(!inDiapason(result, start, end)) {
+
+            if(!(result >= start && result <= end)) {
                 System.out.println("Число должно находится в диапазоне от " + start + " до " + end);
             } else {
-                break;
+                exitFlag = true;
             }
         }
+
         return result;
     }
-    public static int[] getCoins(int length){
-        System.out.println("Введите монеты: ");
+    public static int[] getCoins(int length) {
         int[] result = new int[length];
-        for (int i = 0; i < length; i++){
-            while(true) {
+
+        System.out.println("Введите монеты: ");
+
+        for (int i = 0; i < length; i++) {
+
+            boolean exitFlag = false;
+
+            while(!exitFlag) {
                 result[i] = getInt();
-                if(!inDiapason(result[i], 1, 230)){
+
+                if(!(result[i] >= 1 && result[i] <= 230)) {
                     System.out.println("Номинал монеты должен находится в диапазоне от 1 до 230");
                 } else {
-                    break;
+                    exitFlag = true;
                 }
+
             }
         }
         return result;
     }
-    public static boolean inDiapason(int num, int start, int end){
-        return num >= start && num <= end;
-    }
+
 }
