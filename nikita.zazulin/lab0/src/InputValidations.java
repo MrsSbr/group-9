@@ -15,9 +15,10 @@ public class InputValidations {
 
                 choice = Integer.parseInt(in.next());
 
-            } catch (NumberFormatException var3) {
+            } catch (NumberFormatException e) {
 
                 System.out.println("Input ERROR!");
+                e.printStackTrace();
 
             }
 
@@ -40,9 +41,10 @@ public class InputValidations {
 
                 x = Double.parseDouble(in.next());
 
-            } catch (NumberFormatException var5) {
+            } catch (NumberFormatException e) {
 
                 System.out.println("Input ERROR!");
+                e.printStackTrace();
 
             }
 
@@ -65,9 +67,10 @@ public class InputValidations {
 
                 n = Integer.parseInt(in.next());
 
-            } catch (NumberFormatException var3) {
+            } catch (NumberFormatException e) {
 
                 System.out.println("Input ERROR!");
+                e.printStackTrace();
 
             }
 
