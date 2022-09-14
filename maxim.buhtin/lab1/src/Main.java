@@ -1,38 +1,72 @@
-import java.util.*;
-
+import java.util.Scanner;
 public class Main {
-    static  int findMax(int first,int second){
-        if(first>second)
-            return  first;
-        return second;
+
+    static public int checkArrayValue() {
+
+        Scanner in = new Scanner(System.in);
+        int num = 0;
+        do {
+            System.out.print("Enter values in range of [0;104]: ");
+            try {
+                num = Integer.parseInt(in.next());
+
+            } catch (NumberFormatException e) {
+
+                System.out.println("Input ERROR!");
+
+            }
+
+        } while (num < 0 || num > 104);
+
+        return num;
+
     }
-    static int maxProfit(int[] prices) {
-        int n = prices.length;
-        int[][] dp=new int[n][2];
-        for(int[] row:dp) Arrays.fill(row,-1);
-        return findMaximumProfit(0,1,prices,dp);
+
+    static public int checkArraySize() {
+
+        Scanner in = new Scanner(System.in);
+        int size = 0;
+        do {
+            System.out.print("Enter the size of array in range of [1;3*104]: ");
+            try {
+
+                size = Integer.parseInt(in.next());
+
+            } catch (NumberFormatException e) {
+
+                System.out.println("Input ERROR!");
+
+            }
+
+        } while (size < 1 || size > 3*104);
+
+        return size;
+
     }
-    static int findMaximumProfit( int i, int k,
-                                  int[] prices, int[][] dp)
-    {
-        if(i == prices.length) return 0;
-        if(dp[i][k] != -1) return dp[i][k];
-        int profit = 0;
-        if(k == 1){
-            int buy = findMaximumProfit(i+1,0,prices,dp)-prices[i];
-            int notBuy = findMaximumProfit(i+1,1,prices,dp);
-            profit = findMax(buy,notBuy);
-        } else if(k == 0) {
-            int sell = prices[i] + findMaximumProfit(i+1,1,prices,dp);
-            int notSell = findMaximumProfit(i+1,0,prices,dp);
-            profit = findMax(sell, notSell);
+    static public int []inputData(){
+        int size=checkArraySize();
+        int []prices=new int[size];
+        for(int i=0;i<size;i++){
+
+            prices[i]=checkArrayValue();
         }
-        return dp[i][k] = profit;
+        return prices;
+    }
+    public static int findMaximumPrice(int[]prices){
+        int result=0;
+        for(int i=0;i<prices.length-1;i++){
+
+            if(prices[i]<prices[i+1]){
+
+                result+=prices[i+1]-prices[i];
+            }
+        }
+        return result;
     }
     public static void main(String[] args)
     {
-        int[] prices = {7,1,5,3,6,4};
-        int ans = maxProfit(prices);
+        int[]prices=inputData();
+        int ans = findMaximumPrice(prices);
         System.out.println(ans);
     }
 }
