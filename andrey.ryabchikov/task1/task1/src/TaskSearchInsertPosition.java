@@ -10,14 +10,14 @@ public class TaskSearchInsertPosition {
         System.out.print("nums = ");
         String str = in.nextLine();
         String[] strArr = str.split(" ");
-        int numArr[] = new int[strArr.length];
+        int[] numArr = new int[strArr.length];
 
         for (int i = 0; i < strArr.length; i++) {
             numArr[i] = 0;
             try {
                 numArr[i] = Integer.parseInt(strArr[i]);
             } catch (final NumberFormatException e) {
-                System.out.printf("error on the element, its value is equal to 0 %s\n",strArr[i]);
+                System.out.printf("error on the element, its value is equal to 0 %s\n", strArr[i]);
                 e.printStackTrace();
             }
         }
@@ -28,11 +28,11 @@ public class TaskSearchInsertPosition {
             i++;
         }
 
-        if(i == numArr.length) {
+        if (i == numArr.length) {
             return numArr;
         }
 
-        System.out.printf("Error! Array is not sorted\n");
+        System.out.print("Error! Array is not sorted\n");
         return readSortedArr();
 
     }
@@ -47,7 +47,7 @@ public class TaskSearchInsertPosition {
             num = in.nextInt();
         } catch (final InputMismatchException e) {
             e.printStackTrace();
-            System.out.printf("error on the element\n");
+            System.out.print("error on the element\n");
             num = readTarget();
         }
 
