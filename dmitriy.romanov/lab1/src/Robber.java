@@ -18,24 +18,25 @@ public class Robber {
             house2 = house1;
             house1 = houseSum;
         }
-        return d;
+        return houseSum;
     }
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int validNum;
-        System.out.println("Enter array size: ");
-        if ((validNum = input.nextInt()) < 101 && validNum > 0) {
-            int[] arr = new int[size];
-        } else {
-            System.out.println("Input error");
+        int size = 0;
+        while (size > 100 || size < 1) {
+            System.out.println("Enter array size: ");
+            size = input.nextInt(); // TODO: нужно исправить InputMismatchException
+            if (size > 100 || size < 1) {
+                System.out.println("Input error");
+            }
         }
-
+        int[] arr = new int[size];
 
         System.out.println("Enter array elements:");
         for (int i = 0; i < size; i++) {
-            if ((validNum = input.nextInt()) < 101 && validNum > 0) {
-                arr[i] = input.nextInt();
+            if ((size = input.nextInt()) < 101 && size > 0) {
+                arr[i] = input.nextInt();// TODO: нужно исправить InputMismatchException
             } else {
                 System.out.println("Input error");
             }
