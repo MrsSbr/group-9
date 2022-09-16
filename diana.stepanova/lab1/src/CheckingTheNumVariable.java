@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-public class CheсkingTheNumVariable {
+public class CheckingTheNumVariable {
     public static final int MIN_VALUE = 1;
     public static final int MAX_VALUE = (int) Math.pow(2, 31) - 1;
 
-    static public int cheсkingTheVariable() {
+    static public int checkingTheVariable() {
         Scanner sc = new Scanner(System.in);
         int num = 0;
         do {

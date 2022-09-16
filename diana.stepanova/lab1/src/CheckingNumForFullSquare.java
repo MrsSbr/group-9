@@ -1,4 +1,4 @@
-public class CheсkingNumForFullSquare {
+public class CheckingNumForFullSquare {
     private int num;
 
     public void setValue(int num) {
@@ -6,7 +6,7 @@ public class CheсkingNumForFullSquare {
     }
 
     public void createValue() {
-        setValue(CheсkingTheNumVariable.cheсkingTheVariable());
+        setValue(CheckingTheNumVariable.checkingTheVariable());
     }
 
     public boolean returnsFullSquare() {
