@@ -30,9 +30,9 @@ public class Candies {
     public static void main(String[] args) {
         byte validNum;
         byte size = 0;
-        Scanner in = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         System.out.println("Введите размер массива");
-        if ((validNum = in.nextByte()) <= 104 && validNum >= 2 && validNum % 2 == 0) {
+        if ((validNum = input.nextByte()) <= 104 && validNum >= 2 && validNum % 2 == 0) {
             size = validNum;
         } else {
             System.out.println("Input error");
@@ -40,7 +40,7 @@ public class Candies {
         byte[] candyType = new byte[size];
         System.out.println("Вводите эл-ты");
         for (int i = 0; i < size; i++) {
-            if ((validNum = in.nextByte()) <= 105 && validNum >= -105) {
+            if ((validNum = input.nextByte()) <= 105 && validNum >= -105) {
                 candyType[i] = validNum;
             } else {
                 i--;
