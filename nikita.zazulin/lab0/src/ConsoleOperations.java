@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 import MathsOperations.CosOperations;
 import MathsOperations.SinOperations;
 
