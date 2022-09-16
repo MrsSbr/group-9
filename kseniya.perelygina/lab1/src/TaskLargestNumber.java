@@ -19,7 +19,7 @@ public class TaskLargestNumber {
         Scanner in = new Scanner(System.in);
         int result;
         do {
-            result = in.nextInt();
+            result = in.nextInt(); //TODO InputMismatchException при вводе не числового значения
             if (result < leftBorder || result > rightBorder) {
                 System.out.println("Incorrect value, try again: ");
             }
@@ -46,7 +46,7 @@ public class TaskLargestNumber {
                 curToMaxElem = curToMaxElem.concat(String.valueOf(nums[indexOfMaxValue]));
 
                 // Если в curToMaxElem получилось число больше, то текущее число более подходящее, чтобы быть впереди
-                if (Long.valueOf(curToMaxElem) > Long.valueOf(maxToCurElem)) {
+                if (Long.parseLong(curToMaxElem) > Long.parseLong(maxToCurElem)) {
                     indexOfMaxValue = i;
                 }
 
@@ -73,7 +73,7 @@ public class TaskLargestNumber {
     public static void main(String[] args) {
         System.out.print("Input size: ");
         int size = getInt(1, 100);
-        int [] nums = new int [size];
+        int[] nums = new int[size];
         System.out.println("Input " + size + " numbers below:");
         for (int i = 0; i < size; i++) {
             nums[i] = getInt(0, 999999999);
