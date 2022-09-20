@@ -24,7 +24,6 @@ public class Main {
         }
         task(myArr, number);
 
-
     }
 
     public static void task(int[] myArr, int number) {
