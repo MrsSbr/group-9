@@ -67,6 +67,7 @@ public class Main {
                 }
                 case 0 -> {
 
+                    System.out.println("Bye!");
                     yield 0;
 
                 }

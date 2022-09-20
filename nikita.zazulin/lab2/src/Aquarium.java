@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Scanner;
 
-public class Aquarium {
+
+public class Aquarium{
 
     private int size;
     private String filling;
 
-    ArrayList<Fish> fish;
+    private ArrayList<Fish> fish;
 
     public Aquarium(int size, String filling) {
 
@@ -135,7 +135,7 @@ public class Aquarium {
 
             for (Fish fish : fish) {
 
-                System.out.println(i + ". " + fish.toString());
+                System.out.println("\n" + i + ". " + fish.toString());
                 ++i;
 
             }
@@ -146,68 +146,36 @@ public class Aquarium {
 
     public void addGuppi() {
 
-        Scanner in = new Scanner(System.in);
-        System.out.print("Enter size of fish: ");
-        byte size = InputValidations.checkByteValue();
-        System.out.print("Enter description of fish: ");
-        String description = in.nextLine();
-        System.out.print("Enter weight of fish: ");
-        byte weight = InputValidations.checkByteValue();
-        System.out.print("Is your fish hungry? ");
-        boolean hungry = InputValidations.checkHungryValue();
-        System.out.print("Enter color of fish: ");
-        String color = in.nextLine();
-        System.out.print("Enter speed of fish: ");
-        byte speed = InputValidations.checkByteValue();
-        fish.add(new Guppi(size, description, weight, hungry, color, speed));
+        Guppi guppi = new Guppi();
+        guppi.createFishFromConsole();
+        fish.add(guppi);
 
     }
 
     public void addBarbabus() {
 
-        Scanner in = new Scanner(System.in);
-        System.out.print("Enter size of fish: ");
-        byte size = InputValidations.checkByteValue();
-        System.out.print("Enter description of fish: ");
-        String description = in.nextLine();
-        System.out.print("Enter weight of fish: ");
-        byte weight = InputValidations.checkByteValue();
-        System.out.print("Is your fish hungry? ");
-        boolean hungry = InputValidations.checkHungryValue();
-        System.out.print("Enter color of fish: ");
-        String color = in.nextLine();
-        System.out.print("Enter speed of fish: ");
-        byte speed = InputValidations.checkByteValue();
-        fish.add(new Barbus(size, description, weight, hungry, color, speed));
+        Barbus barbus = new Barbus();
+        barbus.createFishFromConsole();
+        fish.add(barbus);
 
     }
 
     public void addCarneuginalla() {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Enter size of fish: ");
-        byte size = InputValidations.checkByteValue();
-        System.out.print("Enter description of fish: ");
-        String description = in.nextLine();
-        System.out.print("Enter weight of fish: ");
-        byte weight = InputValidations.checkByteValue();
-        System.out.print("Is your fish hungry? ");
-        boolean hungry = InputValidations.checkHungryValue();
-        System.out.print("Enter color of fish: ");
-        String color = in.nextLine();
-        System.out.print("Enter speed of fish: ");
-        byte speed = InputValidations.checkByteValue();
-        fish.add(new Carneuginella(size, description, weight, hungry, color, speed));
+
+        Carneuginella carneuginalla = new Carneuginella();
+        carneuginalla.createFishFromConsole();
+        fish.add(carneuginalla);
+
     }
 
 
     @Override
     public String toString() {
 
-        return "Aquarium{" +
-                "size=" + size +
-                ", filling='" + filling + '\'' +
-                ", fish=" + fish +
-                '}';
+        return "Aquarium: " + '\n' +
+                "Size = " + size + '\n' +
+                "Filling = " + filling + '\n' +
+                "Fish = " + fish;
 
     }
 
@@ -237,6 +205,5 @@ public class Aquarium {
         return Objects.hash(size, filling, fish);
 
     }
-
 
 }

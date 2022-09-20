@@ -1,15 +1,29 @@
 import java.util.Objects;
+import java.util.Scanner;
 
-public class Guppi extends Fish {
+public class Guppi extends Fish implements Eatable {
 
     private String color;
-    private byte speed;
+
+    private boolean tiered;
 
     public Guppi(byte size, String description, byte weight, boolean hungry, String color, byte speed) {
 
-        super(size, description, weight, hungry);
+        super(size, description, weight, hungry, speed);
         this.color = color;
-        this.speed = speed;
+        this.tiered = true;
+
+    }
+
+    public Guppi(byte size, String description, byte weight, boolean hungry, byte speed) {
+
+        super(size, description, weight, hungry, speed);
+
+    }
+
+    public Guppi() {
+
+        super();
 
     }
 
@@ -25,32 +39,42 @@ public class Guppi extends Fish {
 
     }
 
-    public byte getSpeed() {
+    public boolean isTiered() {
 
-        return speed;
+        return tiered;
 
     }
 
-    public void setSpeed(byte speed) {
+    public void setTiered(boolean tiered) {
 
-        this.speed = speed;
+        this.tiered = tiered;
 
     }
 
     @Override
-    public void swim() {
+    public void eat() {
 
-        System.out.println("I'M SWIMMING WITH " + speed + " PER HOUR!");
+        if (!hungry) {
 
+            weight++;
+            hungry = true;
+            System.out.println("Thank you!");
+
+        } else {
+
+            System.out.println("I am not hungry yet!");
+
+        }
     }
+
 
     @Override
     public String toString() {
 
-        return "Guppi{" +
-                "color='" + color + '\'' +
-                ", speed=" + speed +
-                '}';
+        return super.toString() + '\n' +
+                "My class is Guppi: " + '\n' +
+                "My tieredness is " + tiered + '\n' +
+                "I am " + color;
 
     }
 
@@ -62,26 +86,68 @@ public class Guppi extends Fish {
             return true;
 
         }
+
         if (o == null || getClass() != o.getClass()) {
 
             return false;
 
         }
-        if (!super.equals(o)) {
 
+        if (!super.equals(o)) {
             return false;
 
         }
 
         Guppi guppi = (Guppi) o;
-        return speed == guppi.speed && color.equals(guppi.color);
+        return tiered == guppi.tiered && color.equals(guppi.color);
 
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(super.hashCode(), color, speed);
+        return Objects.hash(super.hashCode(), color, tiered);
+
+    }
+
+    @Override
+    public void swim() {
+
+        if(tiered) {
+
+            System.out.println("I DO NOT WANT TO SWIM! I AM TIERED!");
+
+        } else {
+
+            System.out.println("I'M SWIMMING " + getSpeed() + " mile per hour!");
+
+        }
+
+    }
+
+    @Override
+    public Fish createFishFromConsole() {
+
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter size of fish: ");
+        byte size = InputValidations.checkByteValue();
+        setSize(size);
+        System.out.print("Enter description of fish: ");
+        String description = in.nextLine();
+        setDescription(description);
+        System.out.print("Enter weight of fish: ");
+        byte weight = InputValidations.checkByteValue();
+        setWeight(weight);
+        System.out.print("Is your fish hungry? ");
+        boolean hungry = InputValidations.checkHungryValue();
+        setHungry(hungry);
+        System.out.print("Enter speed of fish: ");
+        byte speed = InputValidations.checkByteValue();
+        setSpeed(speed);
+        System.out.print("Enter color of fish: ");
+        String color = in.nextLine();
+        setColor(color);
+        return this;
 
     }
 
