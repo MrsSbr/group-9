@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class Candies {
 
     static byte countOfDifferent(byte[] candyType) {
@@ -27,10 +28,12 @@ public class Candies {
     }
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+        byte validNum;
+        byte size = 0;
+        Scanner input = new Scanner(System.in);
         System.out.println("Введите размер массива");
-        if ((validNum = input.nextByte()) <= 104 && validNum >= 2 && size % 2 == 0) {
-            byte size = validNum;
+        if ((validNum = input.nextByte()) <= 104 && validNum >= 2 && validNum % 2 == 0) {
+            size = validNum;
         } else {
             System.out.println("Input error");
         }
