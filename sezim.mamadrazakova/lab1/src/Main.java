@@ -23,7 +23,6 @@ public class Main {
                 myArr[i] = x;
             }
         }
-
         task(myArr, number);
 
 
