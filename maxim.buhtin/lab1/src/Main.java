@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class Main {
 
     static public int checkArrayValue() {
@@ -13,8 +14,14 @@ public class Main {
             } catch (NumberFormatException e) {
 
                 System.out.println("Input ERROR!");
-
+                System.out.println("Input array element is not a number");
+                continue;
             }
+            if (num < 0 || num > 104) {
+                System.out.println("Input ERROR!");
+                System.out.println("Array element is out of range");
+            }
+
 
         } while (num < 0 || num > 104);
 
@@ -35,38 +42,45 @@ public class Main {
             } catch (NumberFormatException e) {
 
                 System.out.println("Input ERROR!");
-
+                System.out.println("Input size element is not a number");
+                continue;
+            }
+            if (size < 1 || size > 3 * 104) {
+                System.out.println("Input ERROR!");
+                System.out.println("Array size is out of range");
             }
 
-        } while (size < 1 || size > 3*104);
+        } while (size < 1 || size > 3 * 104);
 
         return size;
 
     }
-    static public int []inputData(){
-        int size=checkArraySize();
-        int []prices=new int[size];
-        for(int i=0;i<size;i++){
 
-            prices[i]=checkArrayValue();
+    static public int[] inputData() {
+        int size = checkArraySize();
+        int[] prices = new int[size];
+        for (int i = 0; i < size; i++) {
+
+            prices[i] = checkArrayValue();
         }
         return prices;
     }
-    public static int findMaximumPrice(int[]prices){
-        int result=0;
-        for(int i=0;i<prices.length-1;i++){
 
-            if(prices[i]<prices[i+1]){
+    public static int findMaximumProfit(int[] prices) {
+        int result = 0;
+        for (int i = 0; i < prices.length - 1; i++) {
 
-                result+=prices[i+1]-prices[i];
+            if (prices[i] < prices[i + 1]) {
+
+                result += prices[i + 1] - prices[i];
             }
         }
         return result;
     }
-    public static void main(String[] args)
-    {
-        int[]prices=inputData();
-        int ans = findMaximumPrice(prices);
+
+    public static void main(String[] args) {
+        int[] prices = inputData();
+        int ans = findMaximumProfit(prices);
         System.out.println(ans);
     }
 }
