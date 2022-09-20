@@ -15,7 +15,6 @@ public class Main {
         if ((x = in.nextInt()) >= 1 && x <= 30) {
             number = x;
         }
-
         int[] myArr = new int[countOfArr];
         System.out.println("enter elements of array: ");
         for (int i = 0; i < countOfArr; i++) {
