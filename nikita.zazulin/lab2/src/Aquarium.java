@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 
-public class Aquarium{
+public class Aquarium {
 
     private int size;
     private String filling;

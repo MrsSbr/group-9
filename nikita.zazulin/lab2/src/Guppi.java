@@ -113,7 +113,7 @@ public class Guppi extends Fish implements Eatable {
     @Override
     public void swim() {
 
-        if(tiered) {
+        if (tiered) {
 
             System.out.println("I DO NOT WANT TO SWIM! I AM TIERED!");
 
