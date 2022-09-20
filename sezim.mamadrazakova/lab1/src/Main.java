@@ -24,31 +24,31 @@ public class Main {
             }
         }
 
-        task(myArr,number);
+        task(myArr, number);
 
 
     }
-    public static void task(int[] myArr, int number){
+
+    public static void task(int[] myArr, int number) {
         ArrayList<Integer> arrayList = new ArrayList<>();
-        helper(myArr, 0, number, 0,arrayList);
+        helper(myArr, 0, number, 0, arrayList);
 
     }
-    public static void helper(int[] myArr, int start, int number, int sum, ArrayList<Integer> arrayList){
+
+    public static void helper(int[] myArr, int start, int number, int sum, ArrayList<Integer> arrayList) {
         if (sum > number) {
             return;
         }
-        if(sum==number){
+        if (sum == number) {
             System.out.println(arrayList);
         }
-        for (int i = start; i < myArr.length; i++){
+        for (int i = start; i < myArr.length; i++) {
             arrayList.add(myArr[i]);
-            helper(myArr, i+1, number, sum + myArr[i],arrayList);
-            arrayList.remove(arrayList.size()-1);
+            helper(myArr, i + 1, number, sum + myArr[i], arrayList);
+            arrayList.remove(arrayList.size() - 1);
         }
 
     }
-
-
 
 
 }
