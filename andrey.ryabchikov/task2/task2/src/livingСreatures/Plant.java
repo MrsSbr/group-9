@@ -1,3 +1,5 @@
+package livingСreatures;
+
 import java.util.Objects;
 
 public abstract class Plant implements Livingble {
@@ -56,12 +58,12 @@ public abstract class Plant implements Livingble {
     @java.lang.Override
     public java.lang.String toString() {
 
-        return "Plant{" +
+        return "Plant [" +
                 "pot number=" + potNumber +
                 ", weight=" + weight +
                 ", age=" + age +
                 ", is alive=" + isAlive +
-                '}';
+                ']';
 
     }
 

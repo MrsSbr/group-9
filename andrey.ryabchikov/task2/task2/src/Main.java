@@ -1,3 +1,6 @@
+import service.BackApartmentWithFlowers;
+import service.FrontApartmentWithFlowers;
+
 import java.util.Scanner;
 
 public class Main {
@@ -7,7 +10,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         int choise = -1;
         String input = "";
-        ApartmentWithFlowers apartment = new ApartmentWithFlowers();
+        BackApartmentWithFlowers apartment = new BackApartmentWithFlowers();
 
         while (!"0".equals(input)) {
             System.out.println("1. Вывести все цветы");
@@ -16,6 +19,7 @@ public class Main {
             System.out.println("4. Закончить жизнь цветка");
             System.out.println("5. Рост цветка");
             System.out.println("6. Удалить цветок");
+            System.out.println("7. Произвести цветение");
             System.out.println("0. Для выхода из приложения\n");
             input = scan.next();
 
@@ -27,31 +31,13 @@ public class Main {
             }
 
             switch (choise) {
-
-                case 1:
-                    apartment.print();
-                    break;
-
-                case 2:
-                    apartment.addRose();
-                    break;
-
-                case 3:
-                    apartment.addPhenix();
-                    break;
-
-                case 4:
-                    apartment.killPlant();
-                    break;
-
-                case 5:
-                    apartment.growPlant();
-                    break;
-
-                case 6:
-                    apartment.deletePlant();
-                    break;
-
+                case 1 -> FrontApartmentWithFlowers.print(apartment);
+                case 2 -> apartment.addRose();
+                case 3 -> apartment.addPhenix();
+                case 4 -> apartment.killPlant();
+                case 5 -> apartment.growPlant();
+                case 6 -> apartment.deletePlant();
+                case 7 -> FrontApartmentWithFlowers.bloomRose(apartment);
             }
         }
 
