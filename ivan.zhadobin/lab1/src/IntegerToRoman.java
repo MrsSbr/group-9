@@ -1,3 +1,4 @@
+package src;
 import java.util.Scanner;
 
 class IntegerToRoman {
@@ -6,14 +7,15 @@ class IntegerToRoman {
 
     public static String integer_to_roman(String str_integer) {
         int int_integer = Integer.parseInt(str_integer);
-        String res = "";
+        StringBuilder res = new StringBuilder("");
         for (int i = 0; i < ch.length; i++) {
             while (ch[i] <= int_integer) {
-                res += roman[i];
+                res.append(roman[i]);
                 int_integer -= ch[i];
             }
         }
-        return res;
+
+        return res.toString();
     }
 
     public static String input() {
