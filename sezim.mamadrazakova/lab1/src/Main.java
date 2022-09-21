@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -27,12 +28,12 @@ public class Main {
     }
 
     public static void task(int[] myArr, int number) {
-        ArrayList<Integer> arrayList = new ArrayList<>();
+        List<Integer> arrayList = new ArrayList<>();
         helper(myArr, 0, number, 0, arrayList);
 
     }
 
-    public static void helper(int[] myArr, int start, int number, int sum, ArrayList<Integer> arrayList) {
+    public static void helper(int[] myArr, int start, int number, int sum, List<Integer> arrayList) {
         if (sum > number) {
             return;
         }
