@@ -1,13 +1,13 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-
 
 public class Aquarium {
 
     private int size;
     private String filling;
 
-    private ArrayList<Fish> fish;
+    private final List<Fish> fish;
 
     public Aquarium(int size, String filling) {
 
@@ -41,21 +41,16 @@ public class Aquarium {
 
     }
 
-    public ArrayList<Fish> getFish() {
+    public List<Fish> getFish() {
 
         return fish;
 
     }
 
-    public void setFish(ArrayList<Fish> fish) {
-
-        this.fish = fish;
-
-    }
 
     boolean isEmpty() {
 
-        return fish.size() == 0;
+        return fish.isEmpty();
 
     }
 
@@ -99,7 +94,17 @@ public class Aquarium {
         } else {
 
             int id = readIdFromConsole();
-            fish.get(id).eat();
+
+            if (fish instanceof Guppi) {
+
+                System.out.println("You cannot feed this fish");
+
+            }
+            else {
+
+                fish.get(id).eat();
+
+            }
 
         }
 

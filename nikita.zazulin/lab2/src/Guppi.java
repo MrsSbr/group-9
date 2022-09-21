@@ -52,23 +52,6 @@ public class Guppi extends Fish implements Eatable {
     }
 
     @Override
-    public void eat() {
-
-        if (!hungry) {
-
-            weight++;
-            hungry = true;
-            System.out.println("Thank you!");
-
-        } else {
-
-            System.out.println("I am not hungry yet!");
-
-        }
-    }
-
-
-    @Override
     public String toString() {
 
         return super.toString() + '\n' +

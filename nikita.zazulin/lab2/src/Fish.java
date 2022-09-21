@@ -99,7 +99,8 @@ public abstract class Fish {
         }
 
         Fish fish = (Fish) o;
-        return size == fish.size && weight == fish.weight && hungry == fish.hungry && speed == fish.speed && description.equals(fish.description);
+        return size == fish.size && weight == fish.weight
+                && hungry == fish.hungry && speed == fish.speed && description.equals(fish.description);
 
     }
 
