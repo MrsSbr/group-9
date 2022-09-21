@@ -1,5 +1,5 @@
 package Interfaces;
 
 public interface AquaticAnimal {
-    public int getHabitatDepth(); // Глубина обитания
+    int getHabitatDepth(); // Глубина обитания
 }

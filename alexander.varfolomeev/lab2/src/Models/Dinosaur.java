@@ -3,8 +3,8 @@ package Models;
 import Interfaces.Animal;
 
 public abstract class Dinosaur implements Animal {
-    private double weight;
-    private String name;
+    protected final double weight;
+    protected final String name;
 
     public Dinosaur(String name, double weight) {
         this.name = name;
@@ -29,6 +29,6 @@ public abstract class Dinosaur implements Animal {
 
     @Override
     public int hashCode() {
-        return (int)weight * name.hashCode();
+        return (int) weight * name.hashCode();
     }
 }

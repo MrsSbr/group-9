@@ -3,12 +3,10 @@ package Models;
 import Interfaces.FlyAnimal;
 
 /**
- *  Птерозавры - отряд летающих динозавров.
+ * Птерозавры - отряд летающих динозавров.
  */
 public class Pterosauria extends Dinosaur implements FlyAnimal {
-    private double weight;
-    private double wingspan;
-    private String name;
+    private final double wingspan;
 
     public Pterosauria(String name, double weight, double wingspan) {
         super(name, weight);
@@ -16,7 +14,7 @@ public class Pterosauria extends Dinosaur implements FlyAnimal {
     }
 
     @Override
-    public String makeSound(){
+    public String makeSound() {
         return "Wshi-wshi";
     }
 
@@ -26,19 +24,13 @@ public class Pterosauria extends Dinosaur implements FlyAnimal {
     }
 
     @Override
-    public String toString() {
-        return super.toString() +
-                "\nРазмех крыльев: " + wingspan;
-    }
-
-    @Override
     public boolean equals(Object obj) {
         try {
 
             Pterosauria dino = (Pterosauria) obj;
             return weight == dino.weight
                     && wingspan == dino.wingspan
-                    && name == dino.name;
+                    && name.equals(dino.name);
 
         } catch (Exception e) {
             throw new ClassCastException(e.getMessage());
@@ -47,6 +39,6 @@ public class Pterosauria extends Dinosaur implements FlyAnimal {
 
     @Override
     public int hashCode() {
-        return super.hashCode() + (int)wingspan;
+        return super.hashCode() + (int) wingspan;
     }
 }

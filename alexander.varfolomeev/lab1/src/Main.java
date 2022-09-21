@@ -78,7 +78,7 @@ public class Main {
         }
     }
     public static int getIntInDiapason(int start, int end) {
-        int result;
+        int result = 0;
         boolean exitFlag = false;
 
         while (!exitFlag) {
