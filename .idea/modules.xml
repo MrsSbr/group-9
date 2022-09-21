@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/alexander.varfolomeev/alexander.varfolomeev.iml" filepath="$PROJECT_DIR$/alexander.varfolomeev/alexander.varfolomeev.iml" />
+      <module fileurl="file://$PROJECT_DIR$/diana.stepanova/diana.stepanova.iml" filepath="$PROJECT_DIR$/diana.stepanova/diana.stepanova.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/group-9.iml" filepath="$PROJECT_DIR$/.idea/group-9.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sezim.mamadrazakova/lab0/lab0.iml" filepath="$PROJECT_DIR$/sezim.mamadrazakova/lab0/lab0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sezim.mamadrazakova/lab1/lab1.iml" filepath="$PROJECT_DIR$/sezim.mamadrazakova/lab1/lab1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lisa.kolesnikova/lisa.kolesnikova.iml" filepath="$PROJECT_DIR$/lisa.kolesnikova/lisa.kolesnikova.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sezim.mamadrazakova/sezim.mamadrazakova.iml" filepath="$PROJECT_DIR$/sezim.mamadrazakova/sezim.mamadrazakova.iml" />
+    </modules>
+  </component>
+</project>
