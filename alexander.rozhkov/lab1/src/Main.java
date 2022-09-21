@@ -1,12 +1,12 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Введите ДНК последовательность:");
         String dnaSequence = getDnaSequenceBetweenLength(10, 105);
-        ArrayList<String> result = findRepeatedDnaSequence(dnaSequence);
+        Set<String> result = findRepeatedDnaSequence(dnaSequence);
         System.out.println("Повторяющиеся ДНК подпоследовательности:");
         System.out.println(result);
     }
@@ -50,17 +50,17 @@ public class Main {
         return true;
     }
 
-    public static ArrayList<String> findRepeatedDnaSequence(String dnaSequence) {
-        ArrayList<String> result = new ArrayList<>();
-        HashMap<String, Integer> hashTable = new HashMap<>();
+    public static Set<String> findRepeatedDnaSequence(String dnaSequence) {
+        Set<String> result = new HashSet<>();
+        Set<String> hashTable = new HashSet<>();
 
         for (int i = 0; i < dnaSequence.length() - 9; i++) {
             String currentDnaSubsequence = dnaSequence.substring(i, i + 10);
-            if (hashTable.containsKey(currentDnaSubsequence)
+            if (hashTable.contains(currentDnaSubsequence)
                     && !result.contains(currentDnaSubsequence)) {
                 result.add(currentDnaSubsequence);
             } else {
-                hashTable.put(currentDnaSubsequence, 1);
+                hashTable.add(currentDnaSubsequence);
             }
         }
         return result;
