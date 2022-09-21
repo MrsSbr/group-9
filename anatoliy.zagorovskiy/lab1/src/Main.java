@@ -3,12 +3,12 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        String str = in.nextLine();
         System.out.println("Введите от 1 до 15 римских цифр");
+        String str = in.nextLine();
         if (str.length() < 1 || str.length() > 15) {
             System.out.println("Неправильный ввод");
         } else {
-            System.out.println(romanToInt(str));
+            System.out.println("Результат " + romanToInt(str));
         }
     }
 
