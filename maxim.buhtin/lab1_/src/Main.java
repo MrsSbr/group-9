@@ -7,7 +7,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         int num = 0;
         do {
-            System.out.print("Enter values in range of [0;104]: ");
+            System.out.print("Enter values in range of [0;10000]: ");
             try {
                 num = Integer.parseInt(in.next());
 
@@ -23,7 +23,7 @@ public class Main {
             }
 
 
-        } while (num < 0 || num > 104);
+        } while (num < 0 || num > 10000);
 
         return num;
 
@@ -45,12 +45,12 @@ public class Main {
                 System.out.println("Input size element is not a number");
                 continue;
             }
-            if (size < 1 || size > 3 * 104) {
+            if (size < 1 || size > 3 * 10000) {
                 System.out.println("Input ERROR!");
                 System.out.println("Array size is out of range");
             }
 
-        } while (size < 1 || size > 3 * 104);
+        } while (size < 1 || size > 3 * 10000);
 
         return size;
 
