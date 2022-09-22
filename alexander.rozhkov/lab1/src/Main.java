@@ -52,15 +52,15 @@ public class Main {
 
     public static Set<String> findRepeatedDnaSequence(String dnaSequence) {
         Set<String> result = new HashSet<>();
-        Set<String> hashTable = new HashSet<>();
+        Set<String> foundStrSet = new HashSet<>();
 
         for (int i = 0; i < dnaSequence.length() - 9; i++) {
             String currentDnaSubsequence = dnaSequence.substring(i, i + 10);
-            if (hashTable.contains(currentDnaSubsequence)
+            if (foundStrSet.contains(currentDnaSubsequence)
                     && !result.contains(currentDnaSubsequence)) {
                 result.add(currentDnaSubsequence);
             } else {
-                hashTable.add(currentDnaSubsequence);
+                foundStrSet.add(currentDnaSubsequence);
             }
         }
         return result;
