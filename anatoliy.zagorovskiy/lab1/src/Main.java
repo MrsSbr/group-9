@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class Main {
+    static final String ROMAN_SYMBOLS = "IVXLCDM";
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.println("Введите от 1 до 15 римских цифр");
@@ -13,11 +15,17 @@ public class Main {
     }
 
     public static boolean checkStr(String str) {
-        if (str.length() == 1) {
+        int len = str.length();
+        for (int i = len - 1; i >= 0; i--) {
+            if (ROMAN_SYMBOLS.indexOf(str.charAt(i)) == -1) {
+                return false;
+            }
+        }
+        if (len == 1) {
             return true;
         }
         int cntRimNumbers = 0;
-        for (int i = str.length() - 1; i > 0; i--) {
+        for (int i = len - 1; i > 0; i--) {
             if ((str.charAt(i) == 'V' || str.charAt(i) == 'X') && str.charAt(i - 1) == 'I') {
                 cntRimNumbers++;
                 i--;
