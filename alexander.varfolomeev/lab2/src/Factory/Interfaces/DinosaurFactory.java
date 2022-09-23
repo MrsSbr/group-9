@@ -1,6 +1,6 @@
 package Factory.Interfaces;
 
-import Factory.Enum.DinosaurType;
+import Enum.DinosaurType;
 import Factory.Models.IchthyosauriaFactory;
 import Factory.Models.PterosauriaFactory;
 import Factory.Models.SaurischiaFactory;

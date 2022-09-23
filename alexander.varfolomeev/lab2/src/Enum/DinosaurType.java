@@ -1,4 +1,4 @@
-package Factory.Enum;
+package Enum;
 
 public enum DinosaurType {
     ICHTHYOSAURIA,

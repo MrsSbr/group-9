@@ -1,4 +1,4 @@
-import Factory.Enum.DinosaurType;
+import Enum.DinosaurType;
 import Factory.Interfaces.DinosaurFactory;
 import Models.Dinosaur;
 import Models.Ichthyosauria;
