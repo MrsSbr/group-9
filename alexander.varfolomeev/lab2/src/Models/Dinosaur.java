@@ -19,8 +19,6 @@ public abstract class Dinosaur implements Animal {
         return name;
     }
 
-    public abstract String makeSound();
-
     @Override
     public String toString() {
         return "Имя: " + name +

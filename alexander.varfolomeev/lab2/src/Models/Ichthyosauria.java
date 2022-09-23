@@ -28,9 +28,7 @@ public class Ichthyosauria extends Dinosaur implements AquaticAnimal {
         try {
 
             Ichthyosauria dino = (Ichthyosauria) obj;
-            return weight == dino.weight
-                    && habitatDepth == dino.habitatDepth
-                    && name.equals(dino.name);
+            return weight == dino.weight && habitatDepth == dino.habitatDepth && name.equals(dino.name);
 
         } catch (Exception e) {
             throw new ClassCastException(e.getMessage());

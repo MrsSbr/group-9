@@ -1,9 +1,9 @@
 package Interfaces;
 
 public interface Animal {
-    public double getWeight();
+    double getWeight();
 
-    public String getName();
+    String getName();
 
-    public String makeSound();
+    String makeSound();
 }

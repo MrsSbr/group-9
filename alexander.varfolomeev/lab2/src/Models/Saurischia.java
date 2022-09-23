@@ -28,9 +28,7 @@ public class Saurischia extends Dinosaur implements LandAnimal {
         try {
 
             Saurischia dino = (Saurischia) obj;
-            return weight == dino.weight
-                    && countOfLegs == dino.countOfLegs
-                    && name.equals(dino.name);
+            return weight == dino.weight && countOfLegs == dino.countOfLegs && name.equals(dino.name);
 
         } catch (Exception e) {
             throw new ClassCastException(e.getMessage());

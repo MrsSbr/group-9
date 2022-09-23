@@ -28,9 +28,7 @@ public class Pterosauria extends Dinosaur implements FlyAnimal {
         try {
 
             Pterosauria dino = (Pterosauria) obj;
-            return weight == dino.weight
-                    && wingspan == dino.wingspan
-                    && name.equals(dino.name);
+            return weight == dino.weight && wingspan == dino.wingspan && name.equals(dino.name);
 
         } catch (Exception e) {
             throw new ClassCastException(e.getMessage());
