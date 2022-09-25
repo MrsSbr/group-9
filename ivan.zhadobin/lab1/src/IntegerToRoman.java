@@ -6,38 +6,37 @@ class IntegerToRoman {
     static int[] ch = new int[]{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
     static String[] roman = new String[]{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
 
-    public static String integerToRoman(String strInteger) {
-        int intInteger = Integer.parseInt(strInteger);
+    public static String integerToRoman(int value) {
         StringBuilder res = new StringBuilder("");
         for (int i = 0; i < ch.length; i++) {
-            while (ch[i] <= intInteger) {
+            while (ch[i] <= value) {
                 res.append(roman[i]);
-                intInteger -= ch[i];
+                value -= ch[i];
             }
         }
         return res.toString();
     }
 
-    public static String input() {
+    public static int input() {
         Scanner in = new Scanner(System.in);
         System.out.print("Введите число: \n");
         String integer = in.nextLine();
-
-        while (!checkStr(integer) || Integer.parseInt(integer) < 1 || Integer.parseInt(integer) > 3999) {
+        int value = checkAndParse(integer);
+        while (value < 1 || value > 3999) {
             System.out.print("Введите число в диапазоне [1;3999]: \n");
             integer = in.nextLine();
+            value = checkAndParse(integer);
         }
-        return integer;
+        return value;
     }
 
-    public static boolean checkStr(String str) {
+    public static int checkAndParse(String str) {
         try {
             int value = Integer.parseInt(str);
-            return true;
+            return value;
         } catch (NumberFormatException e) {
-            e.printStackTrace();
-            System.out.println("Вы ввели строку! Введите число в диапазоне [1;3999]: \n");
-            return false;
+            System.out.println("Вы ввели строку!\n");
+            return -1;
         }
     }
 
@@ -46,9 +45,8 @@ class IntegerToRoman {
         boolean exitFlag = false;
 
         while (!exitFlag) {
-            String str = input();
-            str = integerToRoman(str);
-            System.out.print("Римские цифры: " + str);
+            int str = input();
+            System.out.print("Римские цифры: " + integerToRoman(str));
 
             System.out.println("\nВыйти из программы? 0 - Выйти/1 - Ввести новое число");
             if (in.nextInt() == 0) {
