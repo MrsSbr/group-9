@@ -52,9 +52,8 @@ public class FrontApartmentWithFlowers {
             System.out.println("Введите номер розы");
             int numberRose = readNumberFromConsole();
             if (numberRose >= 0 && numberRose < apart.getPlants().size() &&
-                    apart.getPlants().get(numberRose).getClass() == Rose.class) {
+                    apart.getPlants().get(numberRose) instanceof Rose rose) {
 
-                Rose rose = (Rose) apart.getPlants().get(numberRose);
                 System.out.println("Роза цветет " + rose.bloom() + " цветом");
                 return;
             }
