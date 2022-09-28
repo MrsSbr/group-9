@@ -11,7 +11,7 @@ public class InputCorrectInformation {
             try {
                 value = scanner.nextInt();
                 isCorrectInput = true;
-            } catch (Exception exp) {
+            } catch (Exception exp) {// TODO: конкретизируйте ошибку
                 System.out.println("Data entry error! A non-int type is used! Please repeat!");
                 scanner.nextLine();
                 exp.printStackTrace();
@@ -40,8 +40,7 @@ public class InputCorrectInformation {
     }
 
     public static int[] inputArrayOfNumbers() {
-        int sizeOfArrayOfNumbers = inputIntInRange(1, 3 * 104,
-                "Input the size of the array");
+        int sizeOfArrayOfNumbers = inputIntInRange(1, 3 * 1000, "Input the size of the array");
         int[] arrayOfNumbers = new int[sizeOfArrayOfNumbers];
 
         for (int i = 0; i < sizeOfArrayOfNumbers; i++) {

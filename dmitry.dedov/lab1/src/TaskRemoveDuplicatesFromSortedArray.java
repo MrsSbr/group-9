@@ -11,7 +11,8 @@ public class TaskRemoveDuplicatesFromSortedArray {
 
         for (int i = 0; i < sizeOfArray - 1; i++) {
             if (array[i] != array[i + 1]) {
-                array[numberOfSlots++] = array[i];
+                array[numberOfSlots] = array[i];
+                numberOfSlots++;
             }
         }
 
