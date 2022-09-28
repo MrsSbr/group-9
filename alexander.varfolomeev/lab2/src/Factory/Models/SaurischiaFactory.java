@@ -10,20 +10,17 @@ import java.util.Scanner;
 public class SaurischiaFactory implements DinosaurFactory {
     @Override
     public Dinosaur createDinosaur() {
-        String name;
-        double weight;
-        int countOfLegs;
 
         Scanner in = new Scanner(System.in);
 
         System.out.println("Введите имя динозавра: ");
-        name = in.nextLine();
+        String name = in.nextLine();
 
         System.out.println("Введите вес динозавра: ");
-        weight = Helper.getPositiveDouble();
+        double weight = Helper.getPositiveDouble();
 
         System.out.println("Введите количество ног: ");
-        countOfLegs = Helper.getIntInDiapason(0, Integer.MAX_VALUE);
+        int countOfLegs = Helper.getIntInDiapason(0, Integer.MAX_VALUE);
 
         return new Saurischia(name, weight, countOfLegs);
     }
