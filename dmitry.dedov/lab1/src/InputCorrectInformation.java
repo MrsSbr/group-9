@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class InputCorrectInformation {
 
@@ -11,10 +12,10 @@ public class InputCorrectInformation {
             try {
                 value = scanner.nextInt();
                 isCorrectInput = true;
-            } catch (Exception exp) {// TODO: конкретизируйте ошибку
-                System.out.println("Data entry error! A non-int type is used! Please repeat!");
+            } catch (InputMismatchException e) {
+                System.out.println("InputMismatchException! A non-int type is used!\nRepeat input of value!");
+                e.printStackTrace();
                 scanner.nextLine();
-                exp.printStackTrace();
             }
         }
 
@@ -32,7 +33,7 @@ public class InputCorrectInformation {
             isCorrectInput = value >= leftEdge && value <= rightEdge;
 
             if (!isCorrectInput) {
-                System.out.println("The number is not in the specified range! Please repeat!");
+                System.out.println("The number is not in the specified range!\nPlease repeat!");
             }
         }
 
@@ -58,7 +59,7 @@ public class InputCorrectInformation {
             return arrayOfNumbers;
         }
 
-        System.out.println("Error! The array is not sorted! Please repeat!");
+        System.out.println("Error! The array is not sorted!\nPlease repeat!");
         return inputArrayOfNumbers();
     }
 }
