@@ -23,8 +23,8 @@ public class Main {
                 System.out.println("Введите строку!");
                 bufString = scanner.nextLine();
             }
-            for (int q = 0, j = 0; q < 17; q += 2, j++) {
-                board[i][j] = bufString.charAt(q);
+            for (int q = 0; q < 17; q += 2) {
+                board[i][q/2] = bufString.charAt(q);
             }
         }
         return board;
@@ -35,8 +35,8 @@ public class Main {
             return false;
         }
         for (int i = 0; i < 17; i += 2) {
-            if (line.charAt(i) != '.' & line.charAt(i) != '1' & line.charAt(i) != '2' & line.charAt(i) != '3' & line.charAt(i) != '4'
-                    & line.charAt(i) != '5' & line.charAt(i) != '6' & line.charAt(i) != '7' & line.charAt(i) != '8' & line.charAt(i) != '9') {
+            if (line.charAt(i) != '.' && line.charAt(i) != '1' && line.charAt(i) != '2' && line.charAt(i) != '3' && line.charAt(i) != '4'
+                    && line.charAt(i) != '5' && line.charAt(i) != '6' && line.charAt(i) != '7' && line.charAt(i) != '8' && line.charAt(i) != '9') {
                 return false;
             }
         }
