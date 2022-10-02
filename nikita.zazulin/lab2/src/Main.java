@@ -1,5 +1,5 @@
-import Helper.InputValidations;
-import Models.Aquarium;
+import helper.InputValidations;
+import models.Aquarium;
 
 import java.util.Scanner;
 

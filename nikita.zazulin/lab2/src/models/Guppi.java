@@ -1,12 +1,12 @@
-package Models;
+package models;
 
-import Interfaces.Eatable;
-import Helper.InputValidations;
+import interfaces.Eatable;
+import helper.InputValidations;
 
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Guppi extends Fish implements Eatable {
+public class Guppi extends Fish {
 
     private String color;
 

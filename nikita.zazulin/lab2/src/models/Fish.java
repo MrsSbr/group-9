@@ -1,11 +1,12 @@
-package Models;
+package models;
 
-import Helper.InputValidations;
+import helper.InputValidations;
+import interfaces.Eatable;
 
 import java.util.Objects;
 import java.util.Scanner;
 
-public abstract class Fish {
+public abstract class Fish implements Eatable {
 
     protected byte size;
     protected String description;

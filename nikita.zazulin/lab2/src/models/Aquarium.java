@@ -1,6 +1,6 @@
-package Models;
+package models;
 
-import Helper.InputValidations;
+import helper.InputValidations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -145,19 +145,16 @@ public class Aquarium {
 
                 System.out.println("\n" + i + ". " + fish.toString());
 
-                if (fish instanceof Barbus) {
+                if (fish instanceof Barbus barbus) {
 
-                    Barbus barbus = (Barbus) fish;
                     System.out.print("This fish has " + barbus.getEyes() + " eyes");
 
-                } else if (fish instanceof Guppi) {
+                } else if (fish instanceof Guppi guppi) {
 
-                    Guppi guppi = (Guppi) fish;
                     System.out.print("This fish has " + guppi.getColor() + " color");
 
-                } else if (fish instanceof Carneuginella) {
+                } else if (fish instanceof Carneuginella carneuginella) {
 
-                    Carneuginella carneuginella = (Carneuginella) fish;
                     System.out.print("This fish has " + carneuginella.getFin() + " fin");
 
                 }
