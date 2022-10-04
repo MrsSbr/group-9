@@ -1,21 +1,20 @@
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public abstract class Helper {
     public Helper() {
     }
 
-    public static Calendar getCalendar() {
+    public static LocalDate getDate() {
         System.out.println("Введите дату в формате yyyy-mm-dd");
         Scanner in = new Scanner(System.in);
 
-        while(true) {
+        while (true) {
             try {
                 String result = in.next();
                 String[] arr = result.split("-");
 
-                if(arr[0].length() != 4 || arr[1].length() != 2 || arr[2].length() != 2) {
+                if (arr[0].length() != 4 || arr[1].length() != 2 || arr[2].length() != 2) {
                     throw new Exception("Введены неверные данные");
                 }
 
@@ -23,12 +22,11 @@ public abstract class Helper {
                 int month = Integer.parseInt(arr[1]);
                 int day = Integer.parseInt(arr[2]);
 
-                if(year > 2023 || year < 0 || month > 12 || month < 0 || day > 31 || day < 0) {
+                if (year > 2023 || year < 0 || month > 12 || month < 0 || day > 31 || day < 0) {
                     throw new Exception("Введены неверные данные");
                 }
 
-                Calendar calendar = new GregorianCalendar(year, month, day);
-                return calendar;
+                return LocalDate.of(year, month, day);
             } catch (Exception var3) {
                 var3.printStackTrace();
                 System.out.println("Некорректный ввод. Повторите!");
@@ -39,7 +37,7 @@ public abstract class Helper {
     public static int getInt() {
         Scanner in = new Scanner(System.in);
 
-        while(true) {
+        while (true) {
             try {
                 int result = Integer.parseInt(in.next());
                 return result;
@@ -54,8 +52,8 @@ public abstract class Helper {
         int result = 0;
         boolean exitFlag = false;
 
-        while(true) {
-            while(!exitFlag) {
+        while (true) {
+            while (!exitFlag) {
                 result = getInt();
                 if (result >= start && result <= end) {
                     exitFlag = true;
@@ -71,7 +69,7 @@ public abstract class Helper {
     public static double getPositiveDouble() {
         Scanner in = new Scanner(System.in);
 
-        while(true) {
+        while (true) {
             try {
                 double result = Double.parseDouble(in.next());
                 if (result < 0.0) {

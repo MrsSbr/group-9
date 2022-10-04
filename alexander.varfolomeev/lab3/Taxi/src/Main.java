@@ -1,125 +1,144 @@
 import Models.Car;
 import Models.TaxiDriver;
 
-import java.sql.SQLOutput;
-import java.util.*;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
 
-    private static Car[] cars =  {
-            new Car("toyota", 2, 4),
-            new Car("ferarri", 5, 10),
-            new Car("BMW", 3, 6),
-            new Car("volga", 2, 5),
-            new Car("mersedes", 4, 8)
-    };
-
     private static final int TAXI_DRIVER_COUNT = 20;
-    private static final int CAR_COUNT = cars.length;
-    public static int daysBetween(Date d1, Date d2){
-        return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
-    }
-
+    private static final List<Car> cars = new ArrayList<Car>() {{
+        add(new Car("toyota", 2, 4));
+        add(new Car("ferarri", 5, 10));
+        add(new Car("BMW", 3, 6));
+        add(new Car("volga", 2, 5));
+        add(new Car("mersedes", 4, 8));
+    }};
 
     public static void main(String[] args) {
-        System.out.println("Меню:");
-        System.out.println("[1] Ввести дату самому.");
-        System.out.println("[2] Рандомная дата.");
-        System.out.println("[0] Выход.");
+        boolean isEnd = false;
 
-        Calendar date1 = null;
-        Calendar date2 = null;
+        while (!isEnd) {
 
-        int choice = Helper.getIntInDiapason(0, 2);
-        switch(choice) {
-            case 1:
+            System.out.println("Меню:");
+            System.out.println("[1] Ввести дату самому.");
+            System.out.println("[2] Рандомная дата.");
+            System.out.println("[0] Выход.");
 
-                Boolean isExit = false;
-                while(!isExit) {
-                    date1 = Helper.getCalendar();
-                    date2 = Helper.getCalendar();
+            LocalDate date1 = null;
+            LocalDate date2 = null;
 
-                    if (date2.before(date1)) {
-                        System.out.println("Первая дата должна быть раньше!");
+            int choice = Helper.getIntInDiapason(0, 2);
+            switch (choice) {
+                case 1:
+
+                    Boolean isExit = false;
+                    while (!isExit) {
+                        date1 = Helper.getDate();
+                        date2 = Helper.getDate();
+
+                        if (date2.isBefore(date1)) {
+                            System.out.println("Первая дата должна быть раньше!");
+                        } else {
+                            isExit = true;
+                        }
                     }
-                    else {
-                        isExit = true;
+                    break;
+
+                case 2:
+
+                    long minDay = LocalDate.of(1980, 1, 1).toEpochDay();
+                    long maxDay = LocalDate.of(2022, 12, 31).toEpochDay();
+
+                    date1 = LocalDate.ofEpochDay(ThreadLocalRandom.current().nextLong(minDay, maxDay));
+                    date2 = LocalDate.ofEpochDay(ThreadLocalRandom.current().nextLong(minDay, maxDay));
+
+                    if (date1.isAfter(date2)) {
+                        LocalDate date3 = date1;
+                        date1 = date2;
+                        date2 = date3;
                     }
+                    break;
+                case 0:
+                    isEnd = true;
+                    break;
+                default:
+                    System.out.println("Неверный ввод. Повторите");
+            }
+
+            if (!isEnd) {
+                System.out.println("Запустить программу в режиме:");
+                System.out.println("[1] Сравнение производительности.");
+                System.out.println("[2] Отображение расхода топлива.");
+                choice = Helper.getIntInDiapason(1, 2);
+
+                switch (choice) {
+                    case 1:
+
+                        System.out.println("Связный список:");
+                        task(new LinkedList<>(), date1, date2, false);
+                        System.out.println("Массив:");
+                        task(new ArrayList<>(), date1, date2, false);
+                        break;
+                    case 2:
+                        task(new ArrayList<>(), date1, date2, true);
+                        break;
+                    default:
+                        System.out.println("Неверный ввод. Повторите");
                 }
-                break;
-
-            case 2:
-
-                Random rnd = new Random();
-                date1 = new GregorianCalendar(rnd.nextInt(1981, 2022), rnd.nextInt(1, 12), rnd.nextInt(1, 31));
-                date2 = new GregorianCalendar(rnd.nextInt(1981, 2022), rnd.nextInt(1, 12), rnd.nextInt(1, 31));
-                if(date1.after(date2)) {
-                    Calendar date3 = date1;
-                    date1 = date2;
-                    date2 = date3;
-                }
-                break;
-
-            default:
-        }
-
-        System.out.println("Запустить программу в режиме:");
-        System.out.println("[1] Сравнение производительности.");
-        System.out.println("[2] Отображение расхода топлива.");
-        choice = Helper.getIntInDiapason(1, 2);
-        switch(choice) {
-            case 1:
-                Calendar dateCopy1 = new GregorianCalendar(date1.get(Calendar.YEAR), date1.get(Calendar.MONTH), date1.get(Calendar.DAY_OF_MONTH));
-                Calendar dateCopy2 = new GregorianCalendar(date2.get(Calendar.YEAR), date2.get(Calendar.MONTH), date2.get(Calendar.DAY_OF_MONTH));
-                System.out.println("Связный список:");
-                task(new LinkedList<>(), date1, date2, false);
-                System.out.println("Массив:");
-                task(new ArrayList<>(), dateCopy1, dateCopy2, false);
-                break;
-            case 2:
-                task(new ArrayList<>(), date1, date2, true);
-                break;
+            }
         }
     }
 
-    public static void task(List<List<Double>> arr, Calendar date1, Calendar date2, Boolean showСonsumption)
-    {
-        TaxiDriver[] drivers = new TaxiDriver[TAXI_DRIVER_COUNT];
+    public static void task(List<List<Double>> arr, LocalDate date1, LocalDate date2, Boolean showСonsumption) {
+
+        List<TaxiDriver> drivers = new ArrayList<>();
         for (int i = 0; i < TAXI_DRIVER_COUNT; i++) {
-            drivers[i] = new TaxiDriver("Водительно номер " + (i + 1), cars[(int)(Math.random() * CAR_COUNT - 1)]);
+            drivers.add(
+                    new TaxiDriver(
+                            "Водительно номер " + (i + 1),
+                            cars.get((int) (Math.random() * cars.size() - 1)))
+            );
         }
 
-        int days = daysBetween(date1.getTime(), date2.getTime());
+
+        int days = (int) Duration.between(date1.atStartOfDay(), date2.atStartOfDay()).toDays();
 
         long time = System.currentTimeMillis();
 
-        Date date = date1.getTime();
+        LocalDate showDate = date1;
         for (int i = 0; i < days; i++) {
 
             arr.add(new ArrayList<>());
             double thisDay = 0;
 
             for (int j = 0; j < TAXI_DRIVER_COUNT; j++) {
-                arr.get(i).add(drivers[j].getFuelConsumption());
+                arr.get(i).add(drivers.get(j).getFuelConsumption());
                 thisDay += arr.get(i).get(j);
             }
 
-            if(showСonsumption) {
-                System.out.println(date + " : " + thisDay);
+            if (showСonsumption) {
+                System.out.println(showDate + " : " + thisDay);
             }
 
-            date1.add(Calendar.DATE, 1);
-            date = date1.getTime();
+            showDate = showDate.plusDays(1);
         }
 
 
-       for (int i = 0; i < TAXI_DRIVER_COUNT; i++) {
-            double thisDriver = 0;
+        for (int i = 0; i < TAXI_DRIVER_COUNT; i++) {
+
+            double thisDriverСonsumption = 0;
+
             for (int j = 0; j < days; j++) {
-                thisDriver += arr.get(j).get(i);
+                thisDriverСonsumption += arr.get(j).get(i);
             }
-            if(showСonsumption) {
-                System.out.println(drivers[i].name + " всего потратитл топлива: " + thisDriver);
+
+            if (showСonsumption) {
+                System.out.println(drivers.get(i).name + " всего потратитл топлива: " + thisDriverСonsumption);
             }
         }
 
