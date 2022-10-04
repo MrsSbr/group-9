@@ -8,10 +8,9 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws Exception {
         boolean isExit = false;
-        CargoCreation creation = new CargoCreation();
         List<Port> ports = new ArrayList<>();
         while (!isExit) {
-            System.out.println("Какой класс добавить?\n" +
+            System.out.println("-Выберите пункт меню-\n" +
                     "[1] Грузовой порт\n" +
                     "[2] Военный порт\n" +
                     "[3] Инфо об объектах\n" +
