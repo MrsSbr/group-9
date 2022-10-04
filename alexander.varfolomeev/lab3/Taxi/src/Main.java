@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Main {
 
     private static final int TAXI_DRIVER_COUNT = 20;
-    private static final List<Car> cars = new ArrayList<Car>() {{
+    private static final List<Car> CARS = new ArrayList<Car>() {{
         add(new Car("toyota", 2, 4));
         add(new Car("ferarri", 5, 10));
         add(new Car("BMW", 3, 6));
@@ -101,7 +101,7 @@ public class Main {
             drivers.add(
                     new TaxiDriver(
                             "Водительно номер " + (i + 1),
-                            cars.get((int) (Math.random() * cars.size() - 1)))
+                            CARS.get((int) (Math.random() * CARS.size() - 1)))
             );
         }
 
