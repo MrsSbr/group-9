@@ -8,17 +8,21 @@ public abstract class Satellite implements Satellitable {
     protected String planet;
 
     protected String name;
-    public  Satellite(int speed,String planet,int life,String name){
-        this.speed=speed;
-        this.planet=planet;
-        this.life=life;
-        this.name=name;
+
+    public Satellite(int speed, String planet, int life, String name) {
+        this.speed = speed;
+        this.planet = planet;
+        this.life = life;
+        this.name = name;
     }
+
     public abstract void show();
-    public String getPlanet(){
+
+    public String getPlanet() {
         return planet;
     }
-    public int getSpeed(){
+
+    public int getSpeed() {
         return speed;
     }
 }
