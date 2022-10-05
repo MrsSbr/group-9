@@ -1,6 +1,5 @@
 package Classes;
 
-import Interface.Satellitable;
 
 import java.util.Objects;
 
@@ -8,10 +7,9 @@ public class MaritimeSatellite extends Satellite {
     protected int immersionDepth;
 
 
-
     public MaritimeSatellite(int speed, String planet, int life, String name, String appointment,
                              int immersionDepth) {
-        super(speed, planet, life, name,appointment);
+        super(speed, planet, life, name, appointment);
         this.immersionDepth = immersionDepth;
     }
 
@@ -22,7 +20,7 @@ public class MaritimeSatellite extends Satellite {
 
     @Override
     public String toString() {
-        return super.toString() + "\nГлубина погружения в метрах: " + immersionDepth ;
+        return super.toString() + "\nГлубина погружения в метрах: " + immersionDepth;
     }
 
     @Override
@@ -31,8 +29,8 @@ public class MaritimeSatellite extends Satellite {
             return false;
 
         return this.name.equalsIgnoreCase(((MaritimeSatellite) obj).name)
-                && this.planet == ((MaritimeSatellite) obj).planet
-                && this.appointment == ((MaritimeSatellite) obj).appointment
+                && this.planet.equalsIgnoreCase(((MaritimeSatellite) obj).planet)
+                && this.appointment.equalsIgnoreCase(((MaritimeSatellite) obj).appointment)
                 && this.life == ((MaritimeSatellite) obj).life
                 && this.immersionDepth == ((MaritimeSatellite) obj).immersionDepth;
     }
@@ -42,8 +40,9 @@ public class MaritimeSatellite extends Satellite {
         return Objects.hash(name, planet, appointment, life, immersionDepth);
 
     }
+
     public void editAction(int Depth) {
-        this.immersionDepth+=Depth;
+        this.immersionDepth += Depth;
         System.out.println("Глубина погружения морского спутника изменена!");
     }
 
