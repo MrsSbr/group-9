@@ -4,18 +4,15 @@ import Interface.Satellitable;
 
 import java.util.Objects;
 
-public class MaritimeSatellite extends Satellite implements Satellitable {
-    protected final String appointment;
-    protected final int immersionDepth;
+public class MaritimeSatellite extends Satellite {
+    protected int immersionDepth;
 
-    protected final int countOfTask;
+
 
     public MaritimeSatellite(int speed, String planet, int life, String name, String appointment,
-                             int immersionDepth, int countOfTask) {
-        super(speed, planet, life, name);
-        this.appointment = appointment;
+                             int immersionDepth) {
+        super(speed, planet, life, name,appointment);
         this.immersionDepth = immersionDepth;
-        this.countOfTask = countOfTask;
     }
 
     @Override
@@ -25,10 +22,7 @@ public class MaritimeSatellite extends Satellite implements Satellitable {
 
     @Override
     public String toString() {
-        return super.toString() + "Имя спутника: " + this.name + "\nСтандартная скорость: " + this.speed +
-                "\nКоличество жизней: " + this.life + "\nПривязанность к планете: " + this.planet +
-                "\nНазначение спутника: " + appointment + "\n: " + "\nГлубина погружения в метрах: " + immersionDepth +
-                "\nКоличество выполненных задач: " + countOfTask;
+        return super.toString() + "\nГлубина погружения в метрах: " + immersionDepth ;
     }
 
     @Override
@@ -40,13 +34,17 @@ public class MaritimeSatellite extends Satellite implements Satellitable {
                 && this.planet == ((MaritimeSatellite) obj).planet
                 && this.appointment == ((MaritimeSatellite) obj).appointment
                 && this.life == ((MaritimeSatellite) obj).life
-                && this.immersionDepth == ((MaritimeSatellite) obj).immersionDepth
-                && this.countOfTask == ((MaritimeSatellite) obj).countOfTask;
+                && this.immersionDepth == ((MaritimeSatellite) obj).immersionDepth;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, planet, appointment, life, immersionDepth, countOfTask);
+        return Objects.hash(name, planet, appointment, life, immersionDepth);
 
     }
+    public void editAction(int Depth) {
+        this.immersionDepth+=Depth;
+        System.out.println("Глубина погружения морского спутника изменена!");
+    }
+
 }
