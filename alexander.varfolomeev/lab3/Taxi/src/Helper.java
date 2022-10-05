@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public abstract class Helper {
@@ -12,22 +13,10 @@ public abstract class Helper {
         while (true) {
             try {
                 String result = in.next();
-                String[] arr = result.split("-");
-
-                if (arr[0].length() != 4 || arr[1].length() != 2 || arr[2].length() != 2) {
-                    throw new Exception("Введены неверные данные");
+                if (result.matches("\\d\\d\\d\\d-\\d\\d-\\d\\d")) {
+                    return LocalDate.parse(result);
                 }
-
-                int year = Integer.parseInt(arr[0]);
-                int month = Integer.parseInt(arr[1]);
-                int day = Integer.parseInt(arr[2]);
-
-                if (year > 2023 || year < 0 || month > 12 || month < 0 || day > 31 || day < 0) {
-                    throw new Exception("Введены неверные данные");
-                }
-
-                return LocalDate.of(year, month, day);
-            } catch (Exception var3) {
+            } catch (DateTimeParseException var3) {
                 var3.printStackTrace();
                 System.out.println("Некорректный ввод. Повторите!");
             }
@@ -39,8 +28,7 @@ public abstract class Helper {
 
         while (true) {
             try {
-                int result = Integer.parseInt(in.next());
-                return result;
+                return Integer.parseInt(in.next());
             } catch (Exception var3) {
                 var3.printStackTrace();
                 System.out.println("Некорректный ввод. Повторите!");
@@ -61,7 +49,6 @@ public abstract class Helper {
                     System.out.println("Число должно находится в диапазоне от " + start + " до " + end);
                 }
             }
-
             return result;
         }
     }
