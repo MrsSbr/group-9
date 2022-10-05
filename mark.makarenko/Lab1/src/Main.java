@@ -8,5 +8,5 @@ public class Main {
         seats = new int[N];
         func.Fill(seats, N);
         func.Output(seats, N, func.Task(seats, N));
-    }
+     }
 }

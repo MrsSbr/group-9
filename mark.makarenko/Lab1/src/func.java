@@ -15,7 +15,7 @@ public class func {
                     else System.out.println("плохое число");
                 }
             }
-        }
+         }
     }
 
     public static void Output(int[] seats, int N, int index) {
