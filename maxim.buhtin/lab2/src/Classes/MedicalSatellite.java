@@ -3,7 +3,7 @@ package Classes;
 
 import java.util.Objects;
 
-public class MedicalSatellite extends Satellite  {
+public class MedicalSatellite extends Satellite {
 
     protected int countOfLiveSaved;
 
@@ -11,12 +11,9 @@ public class MedicalSatellite extends Satellite  {
 
     public MedicalSatellite(int speed, String planet, int life, String name, String appointment,
                             int countOfLiveSaved, int countOfLiveKill) {
-        super(speed, planet, life, name,appointment);
+        super(speed, planet, life, name, appointment);
         this.countOfLiveSaved = countOfLiveSaved;
         this.countOfLiveKill = countOfLiveKill;
-    }
-    public int getCountOfLiveSaved(){
-        return countOfLiveSaved;
     }
 
 
@@ -27,7 +24,7 @@ public class MedicalSatellite extends Satellite  {
 
     @Override
     public String toString() {
-        return super.toString()  + "\nКоличество убитых пациентов: " + countOfLiveKill +
+        return super.toString() + "\nКоличество убитых пациентов: " + countOfLiveKill +
                 "\nКоличество спасенных пациентов: " + countOfLiveSaved;
     }
 
@@ -49,8 +46,9 @@ public class MedicalSatellite extends Satellite  {
         return Objects.hash(name, planet, appointment, life, countOfLiveKill, countOfLiveSaved);
 
     }
-    public void editLive(int Live){
-        countOfLiveSaved+=Live;
+
+    public void editLive(int Live) {
+        countOfLiveSaved += Live;
         System.out.println("Вы изменили количество спасенных жизней!");
     }
 }

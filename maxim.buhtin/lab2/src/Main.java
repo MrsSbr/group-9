@@ -13,7 +13,7 @@ public class Main {
         Satellite medical2 = new MedicalSatellite(80, "Марс", 1, "Атлас+",
                 "Вылечить того кто лечит планету", 0, 1);
         Satellite mart1 = new MaritimeSatellite(200, "planet1", 100, "Сокол1",
-                "Убить всех на свете в воде",  2);
+                "Убить всех на свете в воде", 2);
         Satellite mart2 = new MaritimeSatellite(300, "planet2", 120, "Сокол2+",
                 "Убить того кто хочет убить всех на свете в воде", 1);
         Satellite military1 = new MilitarySatellite(400, "Марс", 100, "Имя1",
@@ -32,14 +32,14 @@ public class Main {
             s.show();
             System.out.println();
         }
-        for(Satellite s:satellites) {
-            if(s instanceof MedicalSatellite){
+        for (Satellite s : satellites) {
+            if (s instanceof MedicalSatellite) {
                 ((MedicalSatellite) s).editLive(100);
             }
-            if(s instanceof MaritimeSatellite){
+            if (s instanceof MaritimeSatellite) {
                 ((MaritimeSatellite) s).editAction(100);
             }
-            if(s instanceof MilitarySatellite){
+            if (s instanceof MilitarySatellite) {
                 ((MilitarySatellite) s).editCountOfTask(3);
             }
         }

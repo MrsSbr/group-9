@@ -11,14 +11,14 @@ public abstract class Satellite implements Satellitable {
 
     protected String name;
 
-    protected  String appointment;
+    protected String appointment;
 
-    public Satellite(int speed, String planet, int life, String name,String appointment) {
+    public Satellite(int speed, String planet, int life, String name, String appointment) {
         this.speed = speed;
         this.planet = planet;
         this.life = life;
         this.name = name;
-        this.appointment=appointment;
+        this.appointment = appointment;
     }
 
     public abstract void show();
@@ -46,12 +46,12 @@ public abstract class Satellite implements Satellitable {
         return this.name.equalsIgnoreCase(((MilitarySatellite) obj).name)
                 && this.planet.equalsIgnoreCase(((MilitarySatellite) obj).planet)
                 && this.appointment.equalsIgnoreCase(((MilitarySatellite) obj).appointment)
-                && this.life== ((MilitarySatellite) obj).life;
+                && this.life == ((MilitarySatellite) obj).life;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, planet, appointment, life,speed);
+        return Objects.hash(name, planet, appointment, life, speed);
 
     }
 }
