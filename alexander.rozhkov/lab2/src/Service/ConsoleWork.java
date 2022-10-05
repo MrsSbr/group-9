@@ -18,7 +18,7 @@ public class ConsoleWork {
                 }
             }
         } catch (InputMismatchException exception) {
-            System.out.println("Введите число!");
+            System.out.println("Введите число! ");
             result = inputIntBetween(leftBound, rightBound);
         }
         return result;

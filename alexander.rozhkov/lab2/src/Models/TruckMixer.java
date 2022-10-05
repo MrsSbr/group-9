@@ -16,7 +16,7 @@ public class TruckMixer extends ConstructionVehicle {
 
     @Override
     public void someAction() {
-        System.out.println("Бетономешалка работает...");
+        System.out.println("Бетономешалка работает... ");
     }
 
     @Override

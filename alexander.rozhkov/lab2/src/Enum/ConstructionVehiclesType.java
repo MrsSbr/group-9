@@ -1,6 +1,6 @@
 package Enum;
 
-public enum ConstructionVehiclesType{
+public enum ConstructionVehiclesType {
     EXCAVATOR,
     ASPHALT_PAVER,
     TRUCK_MIXER

@@ -60,7 +60,7 @@ public class Main {
         for (int i = 0; i < listOfVehicle.size(); i++) {
             System.out.println("Номер записи - " + (i + 1));
             listOfVehicle.get(i).someAction();
-            System.out.println();
+            System.out.println(" ");
         }
     }
 

@@ -15,7 +15,7 @@ public class AsphaltPaver extends ConstructionVehicle {
     }
 
     public void someAction(){
-        System.out.println("Асфальтоукладчик работает...");
+        System.out.println("Асфальтоукладчик работает... ");
     }
 
     @Override

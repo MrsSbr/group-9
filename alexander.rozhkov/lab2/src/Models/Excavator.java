@@ -18,7 +18,7 @@ public class Excavator extends ConstructionVehicle {
 
     @Override
     public void someAction() {
-        System.out.println("Экскаватор работает...");
+        System.out.println("Экскаватор работает... ");
     }
 
     @Override
