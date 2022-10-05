@@ -1,17 +1,15 @@
 package Classes;
 
-import Interface.Satellitable;
 
 import java.util.Objects;
 
-public class MilitarySatellite extends Satellite implements Satellitable {
+public class MilitarySatellite extends Satellite  {
 
-    protected final String appointment;
-    protected final int countOfTasks;
+
+    protected int countOfTasks;
 
     public MilitarySatellite(int speed, String planet, int life, String name, String appointment, int numberOfTasks) {
-        super(speed, planet, life, name);
-        this.appointment = appointment;
+        super(speed, planet, life, name,appointment);
         this.countOfTasks = numberOfTasks;
     }
 
@@ -22,9 +20,7 @@ public class MilitarySatellite extends Satellite implements Satellitable {
 
     @Override
     public String toString() {
-        return super.toString() + "Имя спутника: " + this.name + "\nСтандартная скорость: " + this.speed +
-                "\nКоличество жизней: " + this.life + "\nПривязанность к планете: " + this.planet +
-                "\nНазначение спутника: " + appointment + "\nКоличество выполненных задач: " + countOfTasks;
+        return super.toString() + "\nКоличество выполненных задач: " + countOfTasks;
     }
 
     @Override
@@ -33,14 +29,20 @@ public class MilitarySatellite extends Satellite implements Satellitable {
             return false;
 
         return this.name.equalsIgnoreCase(((MilitarySatellite) obj).name)
-                && this.planet == ((MilitarySatellite) obj).planet
-                && this.appointment == ((MilitarySatellite) obj).appointment
-                && this.life == ((MilitarySatellite) obj).life;
+                && this.planet.equalsIgnoreCase(((MilitarySatellite) obj).planet)
+                && this.appointment.equalsIgnoreCase(((MilitarySatellite) obj).appointment)
+                && this.life == ((MilitarySatellite) obj).life
+                &&this.countOfTasks==((MilitarySatellite) obj).countOfTasks;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, planet, appointment, life);
+        return Objects.hash(name, planet, appointment, life,countOfTasks);
 
+    }
+
+    public void editCountOfTask(int CountTask){
+        countOfTasks+=CountTask;
+        System.out.println("Вы изменили количество выполненных задач у космического спутника!");
     }
 }
