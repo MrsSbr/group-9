@@ -8,10 +8,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Main {
+public class MainTaxi {
 
     private static final int TAXI_DRIVER_COUNT = 20;
-    private static final List<Car> CARS = new ArrayList<Car>() {{
+    private static final List<Car> CARS = new ArrayList<>() {{
         add(new Car("toyota", 2, 4));
         add(new Car("ferarri", 5, 10));
         add(new Car("BMW", 3, 6));
@@ -36,7 +36,7 @@ public class Main {
             switch (choice) {
                 case 1:
 
-                    Boolean isExit = false;
+                    boolean isExit = false;
                     while (!isExit) {
                         date1 = Helper.getDate();
                         date2 = Helper.getDate();
@@ -94,7 +94,7 @@ public class Main {
         }
     }
 
-    public static void task(List<List<Double>> arr, LocalDate date1, LocalDate date2, Boolean showСonsumption) {
+    public static void task(List<List<Double>> arr, LocalDate date1, LocalDate date2, Boolean showСonsumption) {// TODO: 05.10.2022 fix namins
 
         List<TaxiDriver> drivers = new ArrayList<>();
         for (int i = 0; i < TAXI_DRIVER_COUNT; i++) {
@@ -113,7 +113,7 @@ public class Main {
         LocalDate showDate = date1;
         for (int i = 0; i < days; i++) {
 
-            arr.add(new ArrayList<>());
+            arr.add(new ArrayList<>());// TODO: 05.10.2022
             double thisDay = 0;
 
             for (int j = 0; j < TAXI_DRIVER_COUNT; j++) {
