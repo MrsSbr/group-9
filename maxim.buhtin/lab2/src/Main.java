@@ -19,7 +19,7 @@ public class Main {
         Satellite military1 = new MilitarySatellite(400, "Марс", 100, "Имя1",
                 "Убить всех своих", 1);
         Satellite military2 = new MilitarySatellite(500, "Юпитер", 150, "Имя2",
-                "Убить того кто хочет убить всех своих", 1);
+                "Убить того кто хочет убить всех своих", 5);
 
         List<Satellite> satellites = new ArrayList<>();
         satellites.add(medical1);
@@ -35,12 +35,15 @@ public class Main {
         for (Satellite s : satellites) {
             if (s instanceof MedicalSatellite) {
                 ((MedicalSatellite) s).editLive(100);
+                ((MedicalSatellite) s).printLive();
             }
             if (s instanceof MaritimeSatellite) {
-                ((MaritimeSatellite) s).editAction(100);
+                ((MaritimeSatellite) s).editImmersionDepth(100);
+                ((MaritimeSatellite) s).printImmersionDepth();
             }
             if (s instanceof MilitarySatellite) {
                 ((MilitarySatellite) s).editCountOfTask(3);
+                ((MilitarySatellite) s).printCountOfTask();
             }
         }
     }
