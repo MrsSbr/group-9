@@ -11,17 +11,17 @@ import java.util.concurrent.ThreadLocalRandom;
 public class MainTaxi {
 
     private static final int TAXI_DRIVER_COUNT = 20;
-    private static final List<Car> CARS = new ArrayList<>() {{
-        add(new Car("toyota", 2, 4));
-        add(new Car("ferarri", 5, 10));
-        add(new Car("BMW", 3, 6));
-        add(new Car("volga", 2, 5));
-        add(new Car("mersedes", 4, 8));
-    }};
+    private static final List<Car> CARS = List.of(
+            new Car("toyota", 2, 4),
+            new Car("ferarri", 5, 10),
+            new Car("BMW", 3, 6),
+            new Car("volga", 2, 5),
+            new Car("mersedes", 4, 8)
+    );
+
 
     public static void main(String[] args) {
         boolean isEnd = false;
-
         while (!isEnd) {
 
             System.out.println("Меню:");
@@ -94,56 +94,74 @@ public class MainTaxi {
         }
     }
 
-    public static void task(List<List<Double>> arr, LocalDate date1, LocalDate date2, Boolean showСonsumption) {// TODO: 05.10.2022 fix namins
+    public static void task(List<List<Double>> dailyConsumptionForEachDriver, LocalDate date1, LocalDate date2, Boolean showСonsumption) {
 
-        List<TaxiDriver> drivers = new ArrayList<>();
-        for (int i = 0; i < TAXI_DRIVER_COUNT; i++) {
-            drivers.add(
-                    new TaxiDriver(
-                            "Водительно номер " + (i + 1),
-                            CARS.get((int) (Math.random() * CARS.size() - 1)))
-            );
+        int repeatCount = showСonsumption ? 1 : 10;
+        List<Long> everyTestTime = new ArrayList<>();
+
+        for (int testNum = 0; testNum < repeatCount; testNum++) {
+
+            List<TaxiDriver> drivers = new ArrayList<>();
+            for (int i = 0; i < TAXI_DRIVER_COUNT; i++) {
+                drivers.add(
+                        new TaxiDriver(
+                                "Водительно номер " + (i + 1),
+                                CARS.get((int) (Math.random() * CARS.size() - 1)))
+                );
+            }
+
+
+            int days = (int) Duration.between(date1.atStartOfDay(), date2.atStartOfDay()).toDays();
+
+            long runtime = System.currentTimeMillis();
+
+            LocalDate showDate = date1;
+            for (int i = 0; i < days; i++) {
+
+                if (dailyConsumptionForEachDriver instanceof ArrayList<List<Double>>) {
+                    dailyConsumptionForEachDriver.add(new ArrayList<>());
+                } else {
+                    dailyConsumptionForEachDriver.add(new LinkedList<>());
+                }
+
+                double thisDay = 0;
+
+                for (int j = 0; j < TAXI_DRIVER_COUNT; j++) {
+                    dailyConsumptionForEachDriver.get(i).add(drivers.get(j).getFuelConsumption());
+                    thisDay += dailyConsumptionForEachDriver.get(i).get(j);
+                }
+
+                if (showСonsumption) {
+                    System.out.println(showDate + " : " + thisDay);
+                }
+
+                showDate = showDate.plusDays(1);
+            }
+
+
+            for (int i = 0; i < TAXI_DRIVER_COUNT; i++) {
+
+                double thisDriverСonsumption = 0;
+
+                for (int j = 0; j < days; j++) {
+                    thisDriverСonsumption += dailyConsumptionForEachDriver.get(j).get(i);
+                }
+
+                if (showСonsumption) {
+                    System.out.println(drivers.get(i).name + " всего потратитл топлива: " + thisDriverСonsumption);
+                }
+            }
+            dailyConsumptionForEachDriver.clear();
+            long a = System.currentTimeMillis() - runtime;
+            everyTestTime.add(a);
         }
 
-
-        int days = (int) Duration.between(date1.atStartOfDay(), date2.atStartOfDay()).toDays();
-
-        long time = System.currentTimeMillis();
-
-        LocalDate showDate = date1;
-        for (int i = 0; i < days; i++) {
-
-            arr.add(new ArrayList<>());// TODO: 05.10.2022
-            double thisDay = 0;
-
-            for (int j = 0; j < TAXI_DRIVER_COUNT; j++) {
-                arr.get(i).add(drivers.get(j).getFuelConsumption());
-                thisDay += arr.get(i).get(j);
+        if (!showСonsumption) {
+            long sumTime = 0;
+            for (int i = 0; i < everyTestTime.size(); i++) {
+                sumTime += everyTestTime.get(i);
             }
-
-            if (showСonsumption) {
-                System.out.println(showDate + " : " + thisDay);
-            }
-
-            showDate = showDate.plusDays(1);
+            System.out.println("Среднее время выполнения:" + (sumTime / everyTestTime.size()));
         }
-
-
-        for (int i = 0; i < TAXI_DRIVER_COUNT; i++) {
-
-            double thisDriverСonsumption = 0;
-
-            for (int j = 0; j < days; j++) {
-                thisDriverСonsumption += arr.get(j).get(i);
-            }
-
-            if (showСonsumption) {
-                System.out.println(drivers.get(i).name + " всего потратитл топлива: " + thisDriverСonsumption);
-            }
-        }
-
-        System.out.println(System.currentTimeMillis() - time + " милисекунд выполнялся данный код");
     }
-
-
 }
