@@ -45,7 +45,8 @@ public class MilitarySatellite extends Satellite {
         countOfTasks += CountTask;
         System.out.println("Вы изменили количество выполненных задач у космического спутника!");
     }
-    public void printCountOfTask(){
-        System.out.println("Измененное значение выполненных задач у космического спутника= "+countOfTasks);
+
+    public void printCountOfTask() {
+        System.out.println("Измененное значение выполненных задач у космического спутника= " + countOfTasks);
     }
 }
