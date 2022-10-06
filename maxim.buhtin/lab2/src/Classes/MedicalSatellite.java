@@ -51,7 +51,8 @@ public class MedicalSatellite extends Satellite {
         countOfLiveSaved += Live;
         System.out.println("Вы изменили количество спасенных жизней!");
     }
-    public void printLive(){
-        System.out.println("Количество спасенных жизней!= "+countOfLiveSaved);
+
+    public void printLive() {
+        System.out.println("Количество спасенных жизней!= " + countOfLiveSaved);
     }
 }

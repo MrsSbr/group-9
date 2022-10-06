@@ -45,8 +45,9 @@ public class MaritimeSatellite extends Satellite {
         this.immersionDepth += Depth;
         System.out.println("Глубина погружения морского спутника изменена!");
     }
-    public void printImmersionDepth(){
-        System.out.println("Глубина погружения морского спутника!= "+immersionDepth);
+
+    public void printImmersionDepth() {
+        System.out.println("Глубина погружения морского спутника!= " + immersionDepth);
     }
 
 }
