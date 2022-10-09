@@ -7,14 +7,13 @@ import Models.DeliveryByCourierCompany;
 import Models.PostalService;
 import Models.ServiceOfAirTransportations;
 
-
 public class ListOfCompanies {
     private final List<DeliveryByCourierCompany> companies;
     private int size;
 
     public ListOfCompanies() {
 
-        companies = new ArrayList<DeliveryByCourierCompany>();
+        companies = new ArrayList<>();
 
     }
 
@@ -58,6 +57,17 @@ public class ListOfCompanies {
 
                 System.out.println("\n" + i + " company:\n" + company.toString());
 
+                if (company instanceof PostalService) {
+
+                    System.out.println(company.getNameOfCompany() + " is a public service");
+
+                }
+                else if (company instanceof ServiceOfAirTransportations) {
+
+                    System.out.println(company.getNameOfCompany() + " is a private service");
+
+                }
+
                 i++;
 
             }
@@ -90,8 +100,10 @@ public class ListOfCompanies {
         } else {
 
             int id = getNumberOfCompany();
-            companies.get(id).toString();
+            System.out.println(companies.get(id).toString());
+
         }
+
     }
 
     public void removeOneCompany() {
@@ -122,6 +134,7 @@ public class ListOfCompanies {
             companies.get(id).deliverGoods();
 
         }
+
     }
 
     public void getDescriptionOfCompany() {
@@ -136,6 +149,7 @@ public class ListOfCompanies {
             companies.get(id).getShortDescriptionOfCourierCompany();
 
         }
+
     }
 
 }

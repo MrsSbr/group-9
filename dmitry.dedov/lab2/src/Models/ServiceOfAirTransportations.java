@@ -15,11 +15,29 @@ public class ServiceOfAirTransportations extends DeliveryByCourierCompany {
 
     }
 
+    public void setTypeOfAircraft(String typeOfAircraft) {
+
+        this.typeOfAircraft = typeOfAircraft;
+
+    }
+
     @Override
     public void getShortDescriptionOfCourierCompany() {
 
         System.out.println("\nOur company, " + nameOfCompany +
                 ", will deliver any goods to any place by air in a matter of seconds!\n");
+
+    }
+
+    public void inputAirServiceFromConsole() {
+
+        Scanner in = new Scanner(System.in);
+
+        super.inputCourierCompanyFromConsole();
+
+        System.out.print("Input type of aircraft: ");
+        String type = in.nextLine();
+        setTypeOfAircraft(type);
 
     }
 
@@ -62,24 +80,6 @@ public class ServiceOfAirTransportations extends DeliveryByCourierCompany {
     public int hashCode() {
 
         return Objects.hash(super.hashCode(), typeOfAircraft);
-
-    }
-
-    public void setTypeOfAircraft(String typeOfAircraft) {
-
-        this.typeOfAircraft = typeOfAircraft;
-
-    }
-
-    public void inputAirServiceFromConsole() {
-
-        Scanner in = new Scanner(System.in);
-
-        super.inputCourierCompanyFromConsole();
-
-        System.out.print("Input type of aircraft: ");
-        String type = in.nextLine();
-        setTypeOfAircraft(type);
 
     }
 

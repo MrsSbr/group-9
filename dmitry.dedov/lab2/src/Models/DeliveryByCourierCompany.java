@@ -20,11 +20,53 @@ public abstract class DeliveryByCourierCompany implements DeliveryOfGoods {
 
     }
 
+    public String getNameOfCompany() {
+
+        return nameOfCompany;
+
+    }
+
+    public void setNameOfCompany(String nameOfCompany) {
+
+        this.nameOfCompany = nameOfCompany;
+
+    }
+
+    public void setCostOfDelivery(double costOfDelivery) {
+
+        this.costOfDelivery = costOfDelivery;
+
+    }
+
+    public void setDateOfDelivery(String dateOfDelivery) {
+
+        this.dateOfDelivery = dateOfDelivery;
+
+    }
+
     public abstract void getShortDescriptionOfCourierCompany();
 
     public void deliverGoods() {
 
         System.out.println("The goods are on the way! The goods will be delivered:  " + dateOfDelivery);
+
+    }
+
+    public void inputCourierCompanyFromConsole() {
+
+        Scanner in = new Scanner(System.in);
+
+        System.out.print("Input cost of delivery (in dollars): ");
+        double cost = InputCorrectInformation.inputDouble();
+        setCostOfDelivery(cost);
+
+        System.out.print("Input name of company: ");
+        String name = in.nextLine();
+        setNameOfCompany(name);
+
+        System.out.print("Input date of delivery (in any format): ");
+        String date = in.nextLine();
+        setDateOfDelivery(date);
 
     }
 
@@ -63,42 +105,6 @@ public abstract class DeliveryByCourierCompany implements DeliveryOfGoods {
     public int hashCode() {
 
         return Objects.hash(nameOfCompany, costOfDelivery, dateOfDelivery);
-
-    }
-
-    public void setNameOfCompany(String nameOfCompany) {
-
-        this.nameOfCompany = nameOfCompany;
-
-    }
-
-    public void setCostOfDelivery(double costOfDelivery) {
-
-        this.costOfDelivery = costOfDelivery;
-
-    }
-
-    public void setDateOfDelivery(String dateOfDelivery) {
-
-        this.dateOfDelivery = dateOfDelivery;
-
-    }
-
-    public void inputCourierCompanyFromConsole() {
-
-        Scanner in = new Scanner(System.in);
-
-        System.out.print("Input cost of delivery (in dollars): ");
-        double cost = InputCorrectInformation.inputDouble();
-        setCostOfDelivery(cost);
-
-        System.out.print("Input name of company: ");
-        String name = in.nextLine();
-        setNameOfCompany(name);
-
-        System.out.print("Input date of delivery (in any format): ");
-        String date = in.nextLine();
-        setDateOfDelivery(date);
 
     }
 

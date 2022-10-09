@@ -15,6 +15,12 @@ public class PostalService extends DeliveryByCourierCompany {
 
     }
 
+    public void inputPostalServiceFromConsole() {
+
+        super.inputCourierCompanyFromConsole();
+
+    }
+
     @Override
     public String toString() {
 
@@ -33,12 +39,6 @@ public class PostalService extends DeliveryByCourierCompany {
     public int hashCode() {
 
         return super.hashCode();
-
-    }
-
-    public void inputPostalServiceFromConsole() {
-
-        super.inputCourierCompanyFromConsole();
 
     }
 
