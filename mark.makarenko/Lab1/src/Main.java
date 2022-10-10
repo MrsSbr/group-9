@@ -1,12 +1,11 @@
-
 import java.util.Scanner;
 public class Main {
     public static void main(String[] arg) {
-
-        int[] seats;
-        int N = 5;
-        seats = new int[N];
-        func.Fill(seats, N);
-        func.Output(seats, N, func.Task(seats, N));
+        System.out.println("введите кол-во: ");
+        Scanner in = new Scanner(System.in);
+        int N = in.nextInt();
+        int[] seats = new int[N];
+        Func.fill(seats, N);
+        Func.output(seats, N, Func.task(seats, N));
      }
 }
