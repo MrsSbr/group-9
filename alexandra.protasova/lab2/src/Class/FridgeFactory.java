@@ -15,7 +15,7 @@ public class FridgeFactory implements Factory {
         System.out.println("Введите статус (1-вкл, 0-выкл) холодильника:");
         boolean status=Factory.intToBool(input.nextInt());
         System.out.println("Введите цвет холодильника:");
-        String color=input.nextLine();
+        String color=input.next();
         System.out.println("Введите температуру холодильника:");
         int temperature=input.nextInt();
 

@@ -36,8 +36,8 @@ public class Fridge extends KitchenApliance implements Apliances {
                 "температура = " + temperature +
                 ", мощность = " + energy +
                 ", бренд = " + brand +
-                ", status = " + status +
-                ", color = " + color;
+                ", статус = " + status +
+                ", цвет = " + color;
     }
 
     @Override

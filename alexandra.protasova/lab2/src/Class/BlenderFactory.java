@@ -17,7 +17,7 @@ public class BlenderFactory implements Factory {
         System.out.println("Введите статус (1-вкл, 0-выкл) блендера:");
         boolean status = Factory.intToBool(input.nextInt());
         System.out.println("Введите цвет блендера:");
-        String color = input.nextLine();
+        String color = input.next();
         System.out.println("Введите скорость блендера:");
         int speed = input.nextInt();
 

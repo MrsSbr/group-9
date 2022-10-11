@@ -37,8 +37,8 @@ public class Blender extends KitchenApliance implements Apliances {
                 "скорость = " + speedOfBlender +
                 ", мощность = " + energy +
                 ", бренд = " + brand +
-                ", status = " + status +
-                ", color = " + color;
+                ", статус = " + status +
+                ", цвет = " + color;
     }
 
     @Override
