@@ -9,13 +9,13 @@ import Service.ConsoleWork;
 
 public class ConstructionVehiclesFactory {
     public ConstructionVehicle createConstructionVehicle(ConstructionVehiclesType type){
-        ConstructionVehicle constructionVehicle = null;
+        ConstructionVehicle factory = null;
         switch (type) {
-            case TRUCK_MIXER -> constructionVehicle = createTruckMixer();
-            case EXCAVATOR -> constructionVehicle = createExcavator();
-            case ASPHALT_PAVER -> constructionVehicle = createAsphaltPaver();
-        }
-        return constructionVehicle;
+            case TRUCK_MIXER -> factory = createTruckMixer();
+            case EXCAVATOR -> factory = createExcavator();
+            case ASPHALT_PAVER -> factory = createAsphaltPaver();
+        };
+        return factory;
     }
 
     private ConstructionVehicle createAsphaltPaver() {
