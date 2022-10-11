@@ -1,6 +1,9 @@
 import Factory.ConstructionVehiclesFactory;
+import Models.AsphaltPaver;
 import Models.ConstructionVehicle;
 import Enum.ConstructionVehiclesType;
+import Models.Excavator;
+import Models.TruckMixer;
 import Service.ConsoleWork;
 
 import java.util.ArrayList;
@@ -65,24 +68,37 @@ public class Main {
     }
 
     private static void executeSpecialActionWithOneRecord(List<ConstructionVehicle> listOfVehicle) {
-        System.out.println("Введите номер записи с которой надо провести работу:");
-        int number = ConsoleWork.inputIntBetween(0, listOfVehicle.size() - 1);
-        System.out.println("Номер записи - " + (number + 1));
+        int number = getNumberOfListVehicle(listOfVehicle);
         listOfVehicle.get(number).someAction();
         System.out.println();
     }
 
     private static void printOneRecordOfVehicle(List<ConstructionVehicle> listOfVehicle) {
-        System.out.println("Введите номер записи с которой надо провести работу:");
-        int number = ConsoleWork.inputIntBetween(0, listOfVehicle.size() - 1);
-        System.out.println("Номер записи - " + (number + 1));
-        System.out.println(listOfVehicle.get(number).toString() + "\n");
+        int number = getNumberOfListVehicle(listOfVehicle);
+        printChildClass(listOfVehicle, number);
     }
 
     private static void printAllRecordsOfVehicle(List<ConstructionVehicle> listOfVehicle) {
         for (int i = 0; i < listOfVehicle.size(); i++) {
             System.out.println("Номер записи - " + (i + 1));
-            System.out.println(listOfVehicle.get(i).toString() + "\n");
+            printChildClass(listOfVehicle, i);
+        }
+    }
+
+    public static int getNumberOfListVehicle(List<ConstructionVehicle> listOfVehicle) {
+        System.out.println("Введите номер записи с которой надо провести работу:");
+        int number = ConsoleWork.inputIntBetween(0, listOfVehicle.size() - 1);
+        System.out.println("Номер записи - " + (number + 1));
+        return number;
+    }
+
+    public static void printChildClass(List<ConstructionVehicle> listOfVehicle, int number) {
+        if (listOfVehicle.get(number) instanceof AsphaltPaver vehicle) {
+            System.out.println("Асфальтоукладчик\n" + vehicle.toString() + "\n");
+        } else if (listOfVehicle.get(number) instanceof Excavator vehicle) {
+            System.out.println("Экскаватор\n" + vehicle.toString() + "\n");
+        } else if (listOfVehicle.get(number) instanceof TruckMixer vehicle) {
+            System.out.println("Бетономешалка\n" + vehicle.toString() + "\n");
         }
     }
 }

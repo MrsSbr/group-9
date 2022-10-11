@@ -1,7 +1,5 @@
 package Models;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.Objects;
 
 public class Excavator extends ConstructionVehicle {
@@ -18,7 +16,7 @@ public class Excavator extends ConstructionVehicle {
 
     @Override
     public void someAction() {
-        System.out.println("Экскаватор работает... ");
+        System.out.println("Экскаватор работает...");
     }
 
     @Override

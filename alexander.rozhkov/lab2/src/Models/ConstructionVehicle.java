@@ -18,7 +18,7 @@ public abstract class ConstructionVehicle implements Vehicle {
     @Override
     public String toString() {
         return "Модель - " + model +
-                "\nМощность двигателя - " + motorPower + "л.с. ";
+                "\nМощность двигателя - " + motorPower + "л.с.";
     }
 
     @Override

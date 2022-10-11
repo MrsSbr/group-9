@@ -14,12 +14,12 @@ public class ConstructionVehiclesFactory {
             case TRUCK_MIXER -> factory = createTruckMixer();
             case EXCAVATOR -> factory = createExcavator();
             case ASPHALT_PAVER -> factory = createAsphaltPaver();
-        };
+        }
         return factory;
     }
 
     private ConstructionVehicle createAsphaltPaver() {
-        System.out.println("Введите мощность мотора асфальтоукладчика: ");
+        System.out.println("Введите мощность мотора асфальтоукладчика:");
         int motorPower = ConsoleWork.inputIntBetween(0,10000);
         System.out.println("Введите ширину укладки асфальта:");
         int layingWidth = ConsoleWork.inputIntBetween(0,100);
