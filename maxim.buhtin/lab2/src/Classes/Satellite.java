@@ -8,9 +8,7 @@ public abstract class Satellite implements Satellitable {
     protected int speed;
     protected int life;
     protected String planet;
-
     protected String name;
-
     protected String appointment;
 
     public Satellite(int speed, String planet, int life, String name, String appointment) {

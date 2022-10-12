@@ -28,22 +28,23 @@ public class Main {
         satellites.add(mart2);
         satellites.add(military1);
         satellites.add(military2);
+
         for (Satellite s : satellites) {
             s.show();
             System.out.println();
         }
         for (Satellite s : satellites) {
-            if (s instanceof MedicalSatellite) {
-                ((MedicalSatellite) s).editLive(100);
-                ((MedicalSatellite) s).printLive();
+            if (s instanceof MedicalSatellite medicalSatellite) {
+                medicalSatellite.editLive(100);
+                medicalSatellite.printLive();
             }
-            if (s instanceof MaritimeSatellite) {
-                ((MaritimeSatellite) s).editImmersionDepth(100);
-                ((MaritimeSatellite) s).printImmersionDepth();
+            if (s instanceof MaritimeSatellite maritimeSatellite) {
+                maritimeSatellite.editImmersionDepth(100);
+                maritimeSatellite.printImmersionDepth();
             }
-            if (s instanceof MilitarySatellite) {
-                ((MilitarySatellite) s).editCountOfTask(3);
-                ((MilitarySatellite) s).printCountOfTask();
+            if (s instanceof MilitarySatellite militarySatellite) {
+                militarySatellite.editCountOfTask(3);
+                militarySatellite.printCountOfTask();
             }
         }
     }

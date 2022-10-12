@@ -18,6 +18,15 @@ public class MaritimeSatellite extends Satellite {
         System.out.println("Вы запустили морской спутник!");
     }
 
+    public void editImmersionDepth(int Depth) {
+        this.immersionDepth += Depth;
+        System.out.println("Глубина погружения морского спутника изменена!");
+    }
+
+    public void printImmersionDepth() {
+        System.out.println("Глубина погружения морского спутника!= " + immersionDepth);
+    }
+
     @Override
     public String toString() {
         return super.toString() + "\nГлубина погружения в метрах: " + immersionDepth;
@@ -39,15 +48,6 @@ public class MaritimeSatellite extends Satellite {
     public int hashCode() {
         return Objects.hash(name, planet, appointment, life, immersionDepth);
 
-    }
-
-    public void editImmersionDepth(int Depth) {
-        this.immersionDepth += Depth;
-        System.out.println("Глубина погружения морского спутника изменена!");
-    }
-
-    public void printImmersionDepth() {
-        System.out.println("Глубина погружения морского спутника!= " + immersionDepth);
     }
 
 }
