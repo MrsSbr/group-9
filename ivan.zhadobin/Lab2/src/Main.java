@@ -74,33 +74,33 @@ public class Main {
         }
     }
 
-    private static void executeSpecialActionWithAllRecords(List<Airport> listOfVehicle) {
-        for (int i = 0; i < listOfVehicle.size(); i++) {
+    private static void executeSpecialActionWithAllRecords(List<Airport> listOfAerodrome) {
+        for (int i = 0; i < listOfAerodrome.size(); i++) {
             System.out.println("Номер записи - " + (i + 1));
-            listOfVehicle.get(i).action();
+            listOfAerodrome.get(i).action();
             System.out.println(" ");
         }
     }
 
-    private static void executeSpecialActionWithOneRecord(List<Airport> listOfVehicle) {
+    private static void executeSpecialActionWithOneRecord(List<Airport> listOfAerodrome) {
         System.out.println("Введите номер записи с которой надо провести работу:");
-        int number = ConsoleWork.inputIntBetween(0, listOfVehicle.size() - 1);
+        int number = ConsoleWork.inputIntBetween(0, listOfAerodrome.size() - 1);
         System.out.println("Номер записи - " + (number + 1));
-        listOfVehicle.get(number).action();
+        listOfAerodrome.get(number).action();
         System.out.println();
     }
 
-    private static void printOneRecordOfAerodrome(List<Airport> listOfVehicle) {
+    private static void printOneRecordOfAerodrome(List<Airport> listOfAerodrome) {
         System.out.println("Введите номер записи с которой надо провести работу:");
-        int number = ConsoleWork.inputIntBetween(0, listOfVehicle.size() - 1);
+        int number = ConsoleWork.inputIntBetween(0, listOfAerodrome.size() - 1);
         System.out.println("Номер записи - " + (number + 1));
-        System.out.println(listOfVehicle.get(number).toString() + "\n");
+        System.out.println(listOfAerodrome.get(number).toString() + "\n");
     }
 
-    private static void printAllRecordsOfAerodrome(List<Airport> listOfVehicle) {
-        for (int i = 0; i < listOfVehicle.size(); i++) {
+    private static void printAllRecordsOfAerodrome(List<Airport> listOfAerodrome) {
+        for (int i = 0; i < listOfAerodrome.size(); i++) {
             System.out.println("Номер записи - " + (i + 1));
-            System.out.println(listOfVehicle.get(i).toString() + "\n");
+            System.out.println(listOfAerodrome.get(i).toString() + "\n");
         }
     }
 }

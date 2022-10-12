@@ -9,11 +9,12 @@ public class CivilAerodrome extends Airport implements CivilPlane {
     int fuel;
     int flights;
     String name;
-    public CivilAerodrome(int countGarage,int lengthStrip, int fuel, int flights, String name) {
+
+    public CivilAerodrome(int countGarage, int lengthStrip, int fuel, int flights, String name) {
         super(countGarage, lengthStrip);
-        this.fuel=fuel;
-        this.flights=flights;
-        this.name=name;
+        this.fuel = fuel;
+        this.flights = flights;
+        this.name = name;
     }
 
     @Override
@@ -23,7 +24,7 @@ public class CivilAerodrome extends Airport implements CivilPlane {
 
     @Override
     public String toString() {
-        return super.toString()+ "\nГражданский аэродром" + "\nСамолет - "+ name + "\nКол-во полетов - " + flights +
+        return super.toString() + "\nГражданский аэродром" + "\nСамолет - " + name + "\nКол-во полетов - " + flights +
                 "\nКол-во топлива - " + fuel + "л.";
     }
 
@@ -46,7 +47,7 @@ public class CivilAerodrome extends Airport implements CivilPlane {
         return Objects.hash(flights, fuel);
     }
 
-    public int getNumberOfFlights(){
+    public int getNumberOfFlights() {
         return flights;
     }
 

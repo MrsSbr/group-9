@@ -7,7 +7,7 @@ public class FieldAerodrome extends Airport {
     int countPilot;
     double waterForIrrigation; //вода для полива
 
-    public FieldAerodrome(int countGarage,int lengthStrip, int countPilot, int waterForIrrigation) {
+    public FieldAerodrome(int countGarage, int lengthStrip, int countPilot, int waterForIrrigation) {
         super(countGarage, lengthStrip);
         this.countPilot = countPilot;
         this.waterForIrrigation = waterForIrrigation;
@@ -20,7 +20,7 @@ public class FieldAerodrome extends Airport {
 
     @Override
     public String toString() {
-        return super.toString()+ "\nПолевой аэродром:" +"\nКол-во воды для полива = " + waterForIrrigation + "л." +
+        return super.toString() + "\nПолевой аэродром:" + "\nКол-во воды для полива = " + waterForIrrigation + "л." +
                 "\nКол-во пилотов = " + countPilot;
     }
 

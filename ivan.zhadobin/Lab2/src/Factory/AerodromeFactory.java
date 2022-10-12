@@ -9,20 +9,20 @@ import Service.ConsoleWork;
 
 public class AerodromeFactory {
     public Airport createAirport(AerodromeTypes type){
-        Airport factory = null;
+        Airport airport = null;
         switch (type) {
-            case CIVIL_AERODROME -> factory = createCivilAerodrome();
-            case FIELD_AERODROME -> factory = createFieldAerodrome();
-            case MILITARY_AERODROME -> factory = createMilitaryAerodrome();
+            case CIVIL_AERODROME -> airport = createCivilAerodrome();
+            case FIELD_AERODROME -> airport = createFieldAerodrome();
+            case MILITARY_AERODROME -> airport = createMilitaryAerodrome();
         };
-        return factory;
+        return airport;
     }
 
     private Airport createCivilAerodrome() {
         System.out.println("Введите количество ангаров: ");
         int countGarage= ConsoleWork.inputIntBetween(0,100);
         System.out.println("Введите длину ВПП: ");
-        int lengthStrip= ConsoleWork.inputIntBetween(0,30);
+        int lengthStrip= ConsoleWork.inputIntBetween(0,100);
         System.out.println("Введите количество топлива: ");
         int countFuel = ConsoleWork.inputIntBetween(0,3000);
         System.out.println("Введите количество полетов:");
@@ -36,7 +36,7 @@ public class AerodromeFactory {
         System.out.println("Введите количество ангаров: ");
         int countGarage= ConsoleWork.inputIntBetween(0,100);
         System.out.println("Введите длину ВПП: ");
-        int lengthStrip= ConsoleWork.inputIntBetween(0,30);
+        int lengthStrip= ConsoleWork.inputIntBetween(0,100);
         System.out.println("Введите количество пилотов:");
         int countPilot = ConsoleWork.inputIntBetween(0,10000);
         System.out.println("Введите объем бака для воды:");
@@ -46,9 +46,9 @@ public class AerodromeFactory {
 
     private Airport createMilitaryAerodrome(){
         System.out.println("Введите количество ангаров: ");
-        int countGarage= ConsoleWork.inputIntBetween(0,30);
+        int countGarage= ConsoleWork.inputIntBetween(0,100);
         System.out.println("Введите длину ВПП: ");
-        int lengthStrip= ConsoleWork.inputIntBetween(0,30);
+        int lengthStrip= ConsoleWork.inputIntBetween(0,100);
         System.out.println("Введите количество бомб:");
         int countBomb = ConsoleWork.inputIntBetween(0,1000);
         System.out.println("Введите кол-во истребителей:");

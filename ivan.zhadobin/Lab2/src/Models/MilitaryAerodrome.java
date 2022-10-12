@@ -8,7 +8,7 @@ public class MilitaryAerodrome extends Airport implements MilitaryPlane {
     int countBomb;
     int countfFighterJet;
 
-    public MilitaryAerodrome(int countGarage,int lengthStrip, int countBomb, int countfFighterJet) {
+    public MilitaryAerodrome(int countGarage, int lengthStrip, int countBomb, int countfFighterJet) {
         super(countGarage, lengthStrip);
         this.countBomb = countBomb;
         this.countfFighterJet = countfFighterJet;
@@ -43,9 +43,8 @@ public class MilitaryAerodrome extends Airport implements MilitaryPlane {
 
     @Override
     public String toString() {
-        return super.toString()+ "\nВоенный аэродром:" + "\nКол-во бомб = " + countBomb + "шт." + "\nКол-во истребителей = " + countfFighterJet;
+        return super.toString() + "\nВоенный аэродром:" + "\nКол-во бомб = " + countBomb + "шт." + "\nКол-во истребителей = " + countfFighterJet;
     }
-
 
 
     @Override
