@@ -113,7 +113,7 @@ public class MainTaxi {
 
             int days = (int) Duration.between(date1.atStartOfDay(), date2.atStartOfDay()).toDays();
 
-            long runtime = System.currentTimeMillis();
+            long startTime = System.currentTimeMillis();
 
             LocalDate showDate = date1;
             for (int i = 0; i < days; i++) {
@@ -152,14 +152,13 @@ public class MainTaxi {
                 }
             }
             dailyConsumptionForEachDriver.clear();
-            long a = System.currentTimeMillis() - runtime;
-            everyTestTime.add(a);
+            everyTestTime.add(System.currentTimeMillis() - startTime);
         }
 
         if (!showСonsumption) {
             long sumTime = 0;
-            for (int i = 0; i < everyTestTime.size(); i++) {
-                sumTime += everyTestTime.get(i);
+            for (Long aLong : everyTestTime) {
+                sumTime += aLong;
             }
             System.out.println("Среднее время выполнения:" + (sumTime / everyTestTime.size()));
         }
