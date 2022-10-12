@@ -6,7 +6,6 @@ import java.util.Objects;
 public class MedicalSatellite extends Satellite {
 
     protected int countOfLiveSaved;
-
     protected int countOfLiveKill;
 
     public MedicalSatellite(int speed, String planet, int life, String name, String appointment,
@@ -20,6 +19,15 @@ public class MedicalSatellite extends Satellite {
     @Override
     public void show() {
         System.out.println("Вы запустили медицинский спутник!");
+    }
+
+    public void editLive(int Live) {
+        countOfLiveSaved += Live;
+        System.out.println("Вы изменили количество спасенных жизней!");
+    }
+
+    public void printLive() {
+        System.out.println("Количество спасенных жизней!= " + countOfLiveSaved);
     }
 
     @Override
@@ -45,14 +53,5 @@ public class MedicalSatellite extends Satellite {
     public int hashCode() {
         return Objects.hash(name, planet, appointment, life, countOfLiveKill, countOfLiveSaved);
 
-    }
-
-    public void editLive(int Live) {
-        countOfLiveSaved += Live;
-        System.out.println("Вы изменили количество спасенных жизней!");
-    }
-
-    public void printLive() {
-        System.out.println("Количество спасенных жизней!= " + countOfLiveSaved);
     }
 }

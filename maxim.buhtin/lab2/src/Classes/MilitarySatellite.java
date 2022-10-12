@@ -5,7 +5,6 @@ import java.util.Objects;
 
 public class MilitarySatellite extends Satellite {
 
-
     protected int countOfTasks;
 
     public MilitarySatellite(int speed, String planet, int life, String name, String appointment, int numberOfTasks) {
@@ -16,6 +15,16 @@ public class MilitarySatellite extends Satellite {
     @Override
     public void show() {
         System.out.println("Вы запустили космический спутник!");
+    }
+
+
+    public void editCountOfTask(int CountTask) {
+        countOfTasks += CountTask;
+        System.out.println("Вы изменили количество выполненных задач у космического спутника!");
+    }
+
+    public void printCountOfTask() {
+        System.out.println("Измененное значение выполненных задач у космического спутника= " + countOfTasks);
     }
 
     @Override
@@ -39,14 +48,5 @@ public class MilitarySatellite extends Satellite {
     public int hashCode() {
         return Objects.hash(name, planet, appointment, life, countOfTasks);
 
-    }
-
-    public void editCountOfTask(int CountTask) {
-        countOfTasks += CountTask;
-        System.out.println("Вы изменили количество выполненных задач у космического спутника!");
-    }
-
-    public void printCountOfTask() {
-        System.out.println("Измененное значение выполненных задач у космического спутника= " + countOfTasks);
     }
 }
