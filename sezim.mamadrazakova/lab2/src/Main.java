@@ -30,7 +30,6 @@ public class Main {
                 case 0:
                     isExit=true;
             }
-
         }
     }
     public static PlaneFigure createFigure(int choice){
