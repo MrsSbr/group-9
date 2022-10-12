@@ -2,16 +2,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import Class.*;
+import сlass.*;
 
-import Class.KitchenApliance;
+import сlass.KitchenApliance;
 import Interfaces.Factory;
 
 public class Main {
     public static void main(String[] args) throws Exception {
         boolean check = false;
         Scanner in = new Scanner(System.in);
-        List<KitchenApliance> apliances = new ArrayList<KitchenApliance>();
+        List<KitchenApliance> apliances = new ArrayList<>();
         while (!check) {
             System.out.println("Выберете номер\n" +
                     "1-добавить блендер\n" +
@@ -23,7 +23,7 @@ public class Main {
             if (choice < 0 || choice > 3) {
                 throw new IllegalArgumentException("Неверное число");
             }
-
+// TODO: 12.10.2022 сделать свитчи однообразными
             switch (choice) {
                 case 0:
                     check = true;
@@ -76,6 +76,7 @@ public class Main {
     }
 
     public static KitchenApliance factoryApliance(int n) throws Exception {
+        // TODO: 12.10.2022 перенести в фабрику
         Factory factory = switch (n) {
             case 1 -> new BlenderFactory();
             case 2 -> new FridgeFactory();

@@ -1,15 +1,17 @@
-package Class;
+package сlass;
 
 import Interfaces.Apliances;
 
 import java.util.Objects;
 
 public abstract class KitchenApliance implements Apliances {
+    // TODO: 12.10.2022 сделать поля приватными (инкапсуляция)
     public int energy;
     public String brand;
     public boolean status;
     public String color;
 
+    // TODO: 12.10.2022 добавить все геттеры
     public abstract String getColor();
     public String getBrand(){
         return brand;

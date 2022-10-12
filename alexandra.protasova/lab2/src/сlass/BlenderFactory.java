@@ -1,12 +1,10 @@
-package Class;
-
-import Class.KitchenApliance;
+package сlass;
 
 import Interfaces.Factory;
 
 import java.util.Scanner;
 
-public class BlenderFactory implements Factory {
+public class BlenderFactory implements Factory {// TODO: 12.10.2022 делаем одну общую фабрику, которая по типу возвращает объект
     @Override
     public KitchenApliance createApliance() {
         Scanner input = new Scanner(System.in);

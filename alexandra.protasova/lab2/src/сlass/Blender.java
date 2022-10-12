@@ -1,4 +1,4 @@
-package Class;
+package сlass;
 
 import Interfaces.Apliances;
 
@@ -32,7 +32,7 @@ public class Blender extends KitchenApliance implements Apliances {
     }
 
     @Override
-    public String toString() {
+    public String toString() {// TODO: 12.10.2022 испульзуем super.toString()
         return "Блендер\n" +
                 "скорость = " + speedOfBlender +
                 ", мощность = " + energy +
