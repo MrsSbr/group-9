@@ -11,7 +11,7 @@ public class Flight {
 
     public Flight(int numberFlight) {
 
-        family = new ArrayList<Family>();
+        family = new ArrayList<>();
         this.numberFlight = numberFlight;
 
     }
@@ -19,11 +19,12 @@ public class Flight {
     @Override
     public String toString() {
 
-        String CountFamily = "";
+        StringBuilder CountFamily = new StringBuilder("");
 
         for (Family value : family) {
 
-            CountFamily += value.getCountFamilyMembers() + " ";
+            CountFamily.append(value.getCountFamilyMembers());
+            CountFamily.append(" ");
 
         }
 
@@ -51,8 +52,9 @@ public class Flight {
     public void addFamily(int countFamilyMembers) {
 
         if (countFamilyMembers > 0) {
+
             family.add(new Family(numberFlight, countFamilyMembers));
-            return;
+
         }
 
     }

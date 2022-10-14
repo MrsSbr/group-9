@@ -41,7 +41,7 @@ public class AirportFront {
         System.out.println("Введите номер рейса");
         int flightNumber = readNatural();
 
-        while (airport.conteinFlightNumber(flightNumber)) {
+        while (airport.numberFlights.contains(flightNumber)) {
 
             System.out.println("Данный номер рейса уже используется");
             System.out.println("Введите номер рейса");
@@ -61,6 +61,7 @@ public class AirportFront {
         } while (countPassengers > 0);
 
         airport.flights.add(flight);
+        airport.numberFlights.add(flightNumber);
 
     }
 
@@ -72,15 +73,16 @@ public class AirportFront {
 
     public static void readRandomFlight(AirportBack airport) {
 
-        int flightNumber = (int) getRandomIntegerBetweenRange(1, 1000);
+        int flightNumber = (int) getRandomIntegerBetweenRange(1, 100000);
 
-        while (airport.conteinFlightNumber(flightNumber)) {
+        while (airport.numberFlights.contains(flightNumber)) {
 
-            flightNumber = (int) getRandomIntegerBetweenRange(1, 1000);
+            flightNumber = (int) getRandomIntegerBetweenRange(1, 100000);
 
         }
 
         Flight flight = new Flight(flightNumber);
+
 
         for (int i = 0; i < getRandomIntegerBetweenRange(10, 50); i++) {
 
@@ -88,7 +90,17 @@ public class AirportFront {
         }
 
         airport.flights.add(flight);
-        printFlight(flight);
+        airport.numberFlights.add(flightNumber);
+
+    }
+
+    public static void print(AirportBack airport) {
+
+        for (int i = 0; i < airport.flights.size(); i++) {
+
+            printFlight(airport.flights.get(i));
+
+        }
 
     }
 
@@ -111,6 +123,43 @@ public class AirportFront {
     public static void printSumPassengers(AirportBack airport) {
 
         System.out.println(airport.toString());
+
+    }
+
+    public static void performanceComparison(int range, int step) {
+
+
+        long startTime;
+
+        for (int i = 10; i < range; i += step) {
+
+            AirportBack arrayListAiroport = new AirportBack(true);
+            AirportBack linkedListAiroport = new AirportBack(false);
+
+            System.out.println("\nКоличество значений :" + i);
+
+            startTime = System.currentTimeMillis();
+            readRandomFlight(arrayListAiroport, i);
+            arrayListAiroport.getSumPassangers();
+            System.out.println("время выполнения для ArrayList: " + (System.currentTimeMillis() - startTime));
+
+            startTime = System.currentTimeMillis();
+            readRandomFlight(linkedListAiroport, i);
+            linkedListAiroport.getSumPassangers();
+            System.out.println("время выполнения для LinkedList: " + (System.currentTimeMillis() - startTime));
+
+        }
+
+
+    }
+
+    public static void performanceComparison() {
+
+        System.out.println("введите правую границу количества рейсов");
+        int range = readNatural();
+        System.out.println("введите шаг увеличения количества рейсов");
+        int step = readNatural();
+        performanceComparison(range, step);
 
     }
 

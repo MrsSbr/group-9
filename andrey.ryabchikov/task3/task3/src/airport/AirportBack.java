@@ -1,46 +1,54 @@
 package airport;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class AirportBack {
 
     final List<Flight> flights;
+    final List<Integer> numberFlights;
 
-    public AirportBack() {
+    public AirportBack(boolean isArray) {
 
-        flights = new ArrayList<Flight>();
+        if (isArray) {
+
+            numberFlights = new ArrayList<>();
+
+        } else {
+
+            numberFlights = new LinkedList<>();
+
+        }
+        flights = new ArrayList<>();
 
     }
 
-    public boolean conteinFlightNumber(int numberFlight) {
+    public int getSumPassangers() {
 
-        boolean haveNumber = false;
-        int i = 0;
+        int sum = 0;
 
-        while (i < flights.size() && !haveNumber) {
+        for (int i = 0; i < flights.size(); i++) {
 
-            if (flights.get(i).numberFlight == numberFlight) {
-                haveNumber = true;
-            }
-            i++;
+            sum += flights.get(i).getSumPeople();
 
         }
 
-        return haveNumber;
+        return sum;
 
     }
-
 
     @Override
     public String toString() {
 
-        String stringflights = "";
+        StringBuilder stringflights = new StringBuilder("");
 
         for (int i = 0; i < flights.size(); i++) {
 
-            stringflights += "\nНомер рейса " + flights.get(i).numberFlight + " Количество пассажиров " +
-                    flights.get(i).getSumPeople();
+            stringflights.append("\nНомер рейса ");
+            stringflights.append(flights.get(i).numberFlight);
+            stringflights.append(" Количество пассажиров ");
+            stringflights.append(flights.get(i).getSumPeople());
 
         }
 
