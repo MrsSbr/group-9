@@ -42,7 +42,7 @@ public class ConstructionVehiclesFactory {
     private ConstructionVehicle createTruckMixer() {
         System.out.println("Введите мощность мотора:");
         int motorPower = ConsoleWork.inputIntBetween(0,10000);
-        System.out.println("Введите объем емкости бетономешалки:");
+        System.out.println("Введите объем емкости бетономешалки: ");
         int containerCapacity = ConsoleWork.inputIntBetween(0,20000);
         System.out.println("Введите название модели бетономешалки:");
         String model = ConsoleWork.inputString();
