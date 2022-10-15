@@ -9,13 +9,14 @@ import Service.ConsoleWork;
 
 public class ConstructionVehiclesFactory {
     public ConstructionVehicle createConstructionVehicle(ConstructionVehiclesType type){
-        ConstructionVehicle factory = null;
-        switch (type) {
-            case TRUCK_MIXER -> factory = createTruckMixer();
-            case EXCAVATOR -> factory = createExcavator();
-            case ASPHALT_PAVER -> factory = createAsphaltPaver();
-        }
-        return factory;
+        return switch(type) {
+            case TRUCK_MIXER:
+                yield createTruckMixer();
+            case ASPHALT_PAVER:
+                yield createAsphaltPaver();
+            case EXCAVATOR:
+                yield createExcavator();
+        };
     }
 
     private ConstructionVehicle createAsphaltPaver() {

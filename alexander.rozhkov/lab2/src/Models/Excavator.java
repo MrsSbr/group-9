@@ -3,7 +3,7 @@ package Models;
 import java.util.Objects;
 
 public class Excavator extends ConstructionVehicle {
-    int sizeOfBucket;
+    private final int sizeOfBucket;
 
     public Excavator(String model, int motorPower, int sizeOfBucket) {
         super(model, motorPower);

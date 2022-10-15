@@ -5,8 +5,8 @@ import Interfaces.Vehicle;
 import java.util.Objects;
 
 public abstract class ConstructionVehicle implements Vehicle {
-    String model;
-    int motorPower;
+    protected final String model;
+    protected final int motorPower;
 
     public ConstructionVehicle(String model, int motorPower) {
         this.model = model;

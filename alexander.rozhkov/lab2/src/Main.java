@@ -11,14 +11,15 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<ConstructionVehicle> listOfVehicle = new ArrayList<>();
         ConstructionVehiclesFactory factory = new ConstructionVehiclesFactory();
-        addRecordsOfVehicle(factory, listOfVehicle);
+        List<ConstructionVehicle> listOfVehicle = addRecordsOfVehicle(factory);
         workWithListOfVehicle(listOfVehicle);
     }
 
-    public static void addRecordsOfVehicle(ConstructionVehiclesFactory factory, List<ConstructionVehicle> listOfVehicle) {
-        while (true) {
+    public static List<ConstructionVehicle> addRecordsOfVehicle(ConstructionVehiclesFactory factory) {
+        List<ConstructionVehicle> listOfVehicle = new ArrayList<>();
+        boolean isStop = false;
+        while (!isStop) {
             System.out.println("\nВыберите класс, который хотите добавить");
             System.out.println("[1] Экскаватор");
             System.out.println("[2] Асфальтоукладчик");
@@ -30,11 +31,10 @@ public class Main {
                 case 1 -> listOfVehicle.add(factory.createConstructionVehicle(ConstructionVehiclesType.EXCAVATOR));
                 case 2 -> listOfVehicle.add(factory.createConstructionVehicle(ConstructionVehiclesType.ASPHALT_PAVER));
                 case 3 -> listOfVehicle.add(factory.createConstructionVehicle(ConstructionVehiclesType.TRUCK_MIXER));
-                case 0 -> {
-                    return;
-                }
+                case 0 -> isStop = true;
             }
         }
+        return listOfVehicle;
     }
 
     public static void workWithListOfVehicle(List<ConstructionVehicle> listOfVehicle) {

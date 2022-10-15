@@ -3,7 +3,7 @@ package Models;
 import java.util.Objects;
 
 public class AsphaltPaver extends ConstructionVehicle {
-    int layingWidth;
+    private final int layingWidth;
 
     public AsphaltPaver(String model, int motorPower, int layingWidth) {
         super(model, motorPower);

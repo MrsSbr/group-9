@@ -3,7 +3,7 @@ package Models;
 import java.util.Objects;
 
 public class TruckMixer extends ConstructionVehicle {
-    int containerCapacity;
+    private final int containerCapacity;
 
     public TruckMixer(String model, int motorPower, int containerCapacity) {
         super(model, motorPower);
