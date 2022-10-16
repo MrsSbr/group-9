@@ -12,13 +12,12 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<Airport> listOfAerodrome = new ArrayList<>();
-        AerodromeFactory factory = new AerodromeFactory();
-        addRecordsOfAerodrome(factory, listOfAerodrome);
-        workWithListOfAerodrome(listOfAerodrome);
+        List<Airport> airports = addRecordsOfAerodrome();
+        workWithListOfAerodrome(airports);
     }
 
-    public static void addRecordsOfAerodrome(AerodromeFactory factory, List<Airport> listOfAerodrome) {
+    public static List<Airport> addRecordsOfAerodrome() {
+        ArrayList<Airport> airports = new ArrayList<>();
         while (true) {
             System.out.println("\nВыберите класс, который хотите добавить");
             System.out.println("[1] Военный аэродром");
@@ -28,11 +27,11 @@ public class Main {
 
             int choose = ConsoleWork.inputIntBetween(0, 3);
             switch (choose) {
-                case 1 -> listOfAerodrome.add(factory.createAirport(AerodromeTypes.MILITARY_AERODROME));
-                case 2 -> listOfAerodrome.add(factory.createAirport(AerodromeTypes.CIVIL_AERODROME));
-                case 3 -> listOfAerodrome.add(factory.createAirport(AerodromeTypes.FIELD_AERODROME));
+                case 1 -> airports.add(AerodromeFactory.createAirport(AerodromeTypes.MILITARY_AERODROME));
+                case 2 -> airports.add(AerodromeFactory.createAirport(AerodromeTypes.CIVIL_AERODROME));
+                case 3 -> airports.add(AerodromeFactory.createAirport(AerodromeTypes.FIELD_AERODROME));
                 case 0 -> {
-                    return;
+                    return airports;
                 }
             }
         }
@@ -63,12 +62,12 @@ public class Main {
     }
 
     private static void printChildrenClass(List<Airport> listOfAerodrome) {
-        for (int i = 0; i < listOfAerodrome.size(); i++) {
-            if (listOfAerodrome.get(i) instanceof CivilAerodrome) {
+        for (Airport airport : listOfAerodrome) {
+            if (airport instanceof CivilAerodrome) {
                 System.out.println("Является Гражданским аэропортом");
-            } else if (listOfAerodrome.get(i) instanceof FieldAerodrome) {
+            } else if (airport instanceof FieldAerodrome) {
                 System.out.println("Является Полевым аэропортом");
-            } else if (listOfAerodrome.get(i) instanceof MilitaryAerodrome) {
+            } else if (airport instanceof MilitaryAerodrome) {
                 System.out.println("Является Военным аэропортом");
             }
         }
