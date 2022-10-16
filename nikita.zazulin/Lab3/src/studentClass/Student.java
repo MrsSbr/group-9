@@ -1,7 +1,7 @@
 package studentClass;
 
 import checkValidatons.InputValidations;
-import checkValidatons.Months;
+import classHelper.Months;
 
 import java.util.Objects;
 import java.util.Random;

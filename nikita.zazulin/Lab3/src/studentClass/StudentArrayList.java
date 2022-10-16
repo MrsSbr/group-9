@@ -1,6 +1,6 @@
 package studentClass;
 
-import checkValidatons.Months;
+import classHelper.Months;
 
 import java.util.*;
 

@@ -1,6 +1,6 @@
-package checkValidatons;
+package classHelper;
 
-public enum Months {// TODO: 16.10.2022 неправильно логическое разделение по пакетам
+public enum Months {
 
     January, February, March,
     April, May, June,

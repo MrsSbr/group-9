@@ -1,5 +1,7 @@
 package checkValidatons;
 
+import classHelper.Months;
+
 import java.util.*;
 
 
@@ -17,7 +19,8 @@ public class InputValidations {
             try {
 
                 monthStr = in.next();
-                Months month = Months.valueOf(monthStr);// TODO: 16.10.2022 неиспользуемая переменная
+                Months month = Months.valueOf(monthStr);
+                monthStr = month.toStr();
                 flag = true;
 
             } catch (Exception e) {
