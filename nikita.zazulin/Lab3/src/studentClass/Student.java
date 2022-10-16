@@ -34,6 +34,22 @@ public class Student {
 
     }
 
+    public static Student readStudentFromConsole() {
+        Student student = new Student();
+        student.sex = InputValidations.checkSexValues();
+        student.month = InputValidations.checkMonthValues();
+        return student;
+    }
+
+    public static Student createRandomStudent() {
+        Student student = new Student();
+        Random random = new Random();
+        Months value = Months.getMonth(random.nextInt(12));
+        student.sex = random.nextBoolean();
+        student.month = value.toStr();
+        return student;
+    }
+
     @Override
     public boolean equals(Object o) {
 
@@ -58,22 +74,6 @@ public class Student {
     public int hashCode() {
 
         return Objects.hash(sex, month);
-
-    }
-
-    public void inputStudentValuesFromConsole() {
-
-        this.sex = InputValidations.checkSexValues();
-        this.month = InputValidations.checkMonthValues();
-
-    }
-
-    public void inputStudentRandom() {
-
-        Random random = new Random();
-        Months value = Months.getMonth(random.nextInt(12));
-        this.sex = random.nextBoolean();
-        this.month = value.toStr();
 
     }
 

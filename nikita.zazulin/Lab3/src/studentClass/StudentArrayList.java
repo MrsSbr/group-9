@@ -22,9 +22,7 @@ public class StudentArrayList {
 
         for (int i = 0; i < SIZE; i++) {
 
-            Student student = new Student();
-            student.inputStudentRandom();
-            students.add(student);
+            students.add(Student.createRandomStudent());
 
         }
 
@@ -39,9 +37,7 @@ public class StudentArrayList {
 
         for (int i = 0; i < SIZE; i++) {
 
-            Student student = new Student();
-            student.inputStudentValuesFromConsole();
-            students.add(student);
+            students.add(Student.readStudentFromConsole());
 
         }
 

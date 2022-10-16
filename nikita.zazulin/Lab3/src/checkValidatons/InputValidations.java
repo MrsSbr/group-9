@@ -17,7 +17,7 @@ public class InputValidations {
             try {
 
                 monthStr = in.next();
-                Months month = Months.valueOf(monthStr);
+                Months month = Months.valueOf(monthStr);// TODO: 16.10.2022 неиспользуемая переменная
                 flag = true;
 
             } catch (Exception e) {
