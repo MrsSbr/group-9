@@ -1,7 +1,7 @@
 import java.util.Scanner;
 ;
 
-public class Func {
+public class TaskMaximizeDistanceToClosestPerson { //так пойдет?
     public static void fill(int[] seats, int N) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("введите последовательность из 0 и 1");

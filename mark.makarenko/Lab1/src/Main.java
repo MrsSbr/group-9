@@ -5,7 +5,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         int N = in.nextInt();
         int[] seats = new int[N];
-        Func.fill(seats, N);
-        Func.output(seats, N, Func.task(seats, N));
+        TaskMaximizeDistanceToClosestPerson.fill(seats, N);
+        TaskMaximizeDistanceToClosestPerson.output(seats, N, TaskMaximizeDistanceToClosestPerson.task(seats, N));
      }
 }
