@@ -1,10 +1,10 @@
-package Model;
+package models;
 
-import Interface.ICreation;
+import interfaces.PortFactory;
 
 import java.util.Scanner;
 
-public class CargoCreation implements ICreation {
+public class CargoFactory implements PortFactory {
     @Override
     public Port createPort() {
         Scanner input = new Scanner(System.in);
@@ -16,7 +16,7 @@ public class CargoCreation implements ICreation {
         double S = input.nextDouble();
         //vesselCpct
         System.out.println("Введите вместимость судов: ");
-        int vesselCapacity = input.nextInt();
+        int vesselCapacity = Input.userInput(0, Integer.MAX_VALUE);
 
         return new CargoPort(name, S, vesselCapacity);
     }

@@ -1,6 +1,6 @@
-import Interface.ICreation;
-import Model.*;
-import Enum.PortTypes;
+import interfaces.PortFactory;
+import models.*;
+import enums.PortTypes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,12 +102,12 @@ public class Main {
     }
 
     public static Port createPort(int type) throws Exception{
-        ICreation creation = switch (type) {
-            case 1 -> new CargoCreation();
-            case 2 -> new MilitaryCreation();
+        PortFactory portFactory = switch (type) {
+            case 1 -> PortFactory.createPortFactoryType(PortTypes.CARGO);
+            case 2 -> PortFactory.createPortFactoryType(PortTypes.MILITARY);
             default -> throw new ClassNotFoundException();
         };
-        return creation.createPort();
+        return portFactory.createPort();
     }
 }
 

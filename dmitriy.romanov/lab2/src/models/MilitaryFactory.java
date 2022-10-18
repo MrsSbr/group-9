@@ -1,10 +1,10 @@
-package Model;
+package models;
 
-import Interface.ICreation;
+import interfaces.PortFactory;
 
 import java.util.Scanner;
 
-public class MilitaryCreation implements ICreation {
+public class MilitaryFactory implements PortFactory {
     @Override
     public Port createPort() {
         Scanner input = new Scanner(System.in);
@@ -16,8 +16,8 @@ public class MilitaryCreation implements ICreation {
         double S = input.nextDouble();
         //personnel
         System.out.println("Введите количество военных: ");
-        int numberOfMilitaryPersonnel = input.nextInt();
+        int numberOfMilitaryPersonnel = Input.userInput(0,Integer.MAX_VALUE);
 
-        return new CargoPort(name, S, numberOfMilitaryPersonnel);
+        return new MilitaryPort(name, S, numberOfMilitaryPersonnel);
     }
 }

@@ -1,6 +1,6 @@
-package Model;
+package models;
 
-import Interface.IArtificialMarine;
+import interfaces.IArtificialMarine;
 
 import java.util.Objects;
 
@@ -23,11 +23,8 @@ public class CargoPort extends Port implements IArtificialMarine {
 
     @Override
     public String toString() {
-        return "CargoPort{" +
-                "vesselCapacity=" + vesselCapacity +
-                ", S=" + S +
-                ", name='" + name + '\'' +
-                '}';
+        return super.toString() +
+                "' vesselCapacity=" + vesselCapacity;
     }
 
     @Override
@@ -36,8 +33,8 @@ public class CargoPort extends Port implements IArtificialMarine {
         if (o == null || getClass() != o.getClass()) return false;
        // if (!super.equals(o)) return false;
         CargoPort cargoPort = (CargoPort) o;
-        return vesselCapacity == cargoPort.vesselCapacity && Double.compare(cargoPort.S, S) == 0 &&
-                name.equals(cargoPort.name);
+        return vesselCapacity == cargoPort.vesselCapacity && Double.compare(cargoPort.getS(), getS()) == 0 &&
+                getName().equals(cargoPort.getName());
     }
 
     @Override

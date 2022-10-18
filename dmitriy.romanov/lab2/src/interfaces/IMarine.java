@@ -1,4 +1,4 @@
-package Interface;
+package interfaces;
 
 public interface IMarine {
      String getName();

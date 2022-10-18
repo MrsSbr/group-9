@@ -1,6 +1,6 @@
-package Model;
+package models;
 
-import Interface.IArtificialMarine;
+import interfaces.IArtificialMarine;
 
 import java.util.Objects;
 
@@ -23,11 +23,8 @@ public class MilitaryPort extends Port implements IArtificialMarine {
 
     @Override
     public String toString() {
-        return "MilitaryPort{" +
-                "numberOfMilitaryPersonnel=" + numberOfMilitaryPersonnel +
-                ", S=" + S +
-                ", name='" + name + '\'' +
-                '}';
+        return super.toString() +
+                "' numberOfMilitaryPersonnel=" + numberOfMilitaryPersonnel;
     }
     @Override
     public boolean equals(Object o) {
@@ -36,8 +33,8 @@ public class MilitaryPort extends Port implements IArtificialMarine {
        // if (!super.equals(o)) return false;
         MilitaryPort militaryPort = (MilitaryPort) o;
         return Objects.equals(numberOfMilitaryPersonnel, militaryPort.numberOfMilitaryPersonnel) &&
-                Double.compare(militaryPort.S, S) == 0 &&
-                name.equals(militaryPort.name);
+                Double.compare(militaryPort.getS(), getS()) == 0 &&
+                getName().equals(militaryPort.getName());
     }
 
     @Override

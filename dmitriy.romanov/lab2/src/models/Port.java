@@ -1,12 +1,12 @@
-package Model;
+package models;
 
-import Interface.IArtificialMarine;
+import interfaces.IArtificialMarine;
 
 import java.util.Objects;
 
 public abstract class Port implements IArtificialMarine {
-    double S;
-    String name;
+    private double S;
+    private String name;
 
 
     public Port(String name, double S) {
@@ -14,7 +14,7 @@ public abstract class Port implements IArtificialMarine {
         this.S = S;
     }
 
-    public String getName() {
+    public String getName(){
         return name;
     }
 
@@ -26,10 +26,9 @@ public abstract class Port implements IArtificialMarine {
 
     @Override
     public String toString() {
-        return "Port{" +
+        return "Port: " +
                 "S=" + S +
-                ", name='" + name + '\'' +
-                '}';
+                ", name='" + name;
     }
 
     @Override
