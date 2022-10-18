@@ -1,12 +1,16 @@
 package Classes;
+
 import Classes.PlaneFigure;
 import Interfaces.GeometricFigures;
+
 import java.util.Objects;
-public class Circle extends PlaneFigure implements GeometricFigures{
-    double radius;
-    public Circle(String name, double perimeter,double radius){
+
+public class Circle extends PlaneFigure implements GeometricFigures {
+    private double radius;
+
+    public Circle(String name, double perimeter, double radius) {
         super(name, perimeter);
-        this.radius=radius;
+        this.radius = radius;
     }
 
     public double getRadius() {
@@ -20,11 +24,8 @@ public class Circle extends PlaneFigure implements GeometricFigures{
 
     @Override
     public String toString() {
-        return "Circle{" +
-                "radius=" + radius +
-                ", perimeter=" + perimeter +
-                ", name='" + name + '\'' +
-                '}';
+        return super.toString() +
+                ", радиус: " + radius;
     }
 
     @Override

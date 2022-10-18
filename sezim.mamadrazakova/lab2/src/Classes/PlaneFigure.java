@@ -1,21 +1,27 @@
 package Classes;
+
 import Interfaces.GeometricFigures;
 
 import java.util.Objects;
 
 public abstract class PlaneFigure implements GeometricFigures {
-    double perimeter;
-    String name;
-    public PlaneFigure(String name, double perimeter){
-        this.perimeter=perimeter;
-        this.name=name;
+    private double perimeter;
+    private String name;
+
+
+    public PlaneFigure(String name, double perimeter) {
+        this.perimeter = perimeter;
+        this.name = name;
     }
+
     public double getPerimeter() {
         return perimeter;
     }
+
     public String getName() {
         return name;
     }
+
     public abstract int countOfAngles();
 
     @Override

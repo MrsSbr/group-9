@@ -1,19 +1,22 @@
 package Classes;
+
 import Classes.PlaneFigure;
 import Interfaces.GeometricFigures;
 
 import java.util.Objects;
 
 public class Triangle extends PlaneFigure implements GeometricFigures {
-    String type;
-    public Triangle(String name, double perimeter,String type ){
+    private String type;
+
+    public Triangle(String name, double perimeter, String type) {
         super(name, perimeter);
-        this.type=type;
+        this.type = type;
     }
 
     public String getType() {
         return type;
     }
+
 
     @Override
     public int countOfAngles() {
@@ -22,11 +25,8 @@ public class Triangle extends PlaneFigure implements GeometricFigures {
 
     @Override
     public String toString() {
-        return "Triangle{" +
-                "type='" + type + '\'' +
-                ", perimeter=" + perimeter +
-                ", name='" + name + '\'' +
-                '}';
+        return super.toString() +
+                ", Вид: " + type;
     }
 
     @Override
