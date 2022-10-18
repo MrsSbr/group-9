@@ -1,21 +1,21 @@
 package сlass;
 
-import Interfaces.Apliances;
+import interfaces.Apliances;
 
 import java.util.Objects;
 
 public abstract class KitchenApliance implements Apliances {
     // TODO: 12.10.2022 сделать поля приватными (инкапсуляция)
-    public int energy;
-    public String brand;
-    public boolean status;
-    public String color;
+    private int energy;
+    private String brand;
+    private boolean status;
+    private String color;
 
     // TODO: 12.10.2022 добавить все геттеры
-    public abstract String getColor();
-    public String getBrand(){
-        return brand;
-    }
+    public int getEnergy() {return energy; }
+    public String getBrand() {return brand; }
+    public boolean getStatus() {return status; }
+    public String getColor() {return color; };
 
     public KitchenApliance(int energy, String brand, boolean status, String color) {
         this.energy = energy;
@@ -26,12 +26,11 @@ public abstract class KitchenApliance implements Apliances {
 
     @Override
     public String toString() {
-        return "KitchenApliance{" +
-                "energy=" + energy +
-                ", brand='" + brand + '\'' +
-                ", status=" + status +
-                ", color='" + color + '\'' +
-                '}';
+        return "KitchenApliance:" +
+                "Энергия=" + energy +
+                ", Бренд=" + brand +
+                ", Статус=" + status +
+                ", Цвет=" + color;
     }
 
     @Override

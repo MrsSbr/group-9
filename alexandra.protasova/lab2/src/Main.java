@@ -2,10 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import enums.AplianceType;
 import сlass.*;
 
 import сlass.KitchenApliance;
-import Interfaces.Factory;
+import interfaces.Factory;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -25,19 +26,10 @@ public class Main {
             }
 // TODO: 12.10.2022 сделать свитчи однообразными
             switch (choice) {
-                case 0:
-                    check = true;
-                    break;
-                case 1:
-                    apliances.add(factoryApliance(choice));
-                    break;
-                case 2:
-                    apliances.add(factoryApliance(choice));
-                    break;
-                case 3:
-                    showInfo(apliances);
-                    break;
-
+                case 0 -> check = true;
+                case 1 -> apliances.add(factoryApliance(choice));
+                case 2 -> apliances.add(factoryApliance(choice));
+                case 3 -> showInfo(apliances);
             }
         }
     }
@@ -64,22 +56,22 @@ public class Main {
                 selectedApliance = apliances.get(choice - 1);
                 if (selectedApliance instanceof Blender) {
                     Blender blender = (Blender) selectedApliance;
-                    System.out.println("Кухонный прибор блендер\n" + "Марка: " + blender.getBrand() + "\nЦвет: " + blender.getColor() +
-                            "\nТекущее состосяние: " + blender.power() + "\nСкорость работы: " + blender.getSpeedOfBlender() + "\n" + blender);
+                    System.out.println("Кухонный прибор блендер\n" + "Энергия: " + blender.getEnergy() + "\nБренд: " + blender.getBrand() +  "\nТекущее состосяние: " + blender.power() +
+                            "\nЦвет: " + blender.getColor() + "\nСкорость работы: " + blender.getSpeedOfBlender() + "\n" + blender);
                 } else if (selectedApliance instanceof Fridge) {
                     Fridge fridge = (Fridge) selectedApliance;
-                    System.out.println("Кухонный прибор холодильник\n" + "Марка: " + fridge.getBrand() + "\nЦвет: " + fridge.getColor() +
-                            "\nТекущее состосяние: " + fridge.power() + "\nТемпература: " + fridge.getTemperature() + "\n" + fridge);
+                    System.out.println("Кухонный прибор холодильник\n" + "Энергия: " + fridge.getEnergy() + "\nБренд: " + fridge.getBrand() +  "\nТекущее состосяние: " + fridge.power() +
+                            "\nЦвет: " + fridge.getColor() + "\nТемпература: " + fridge.getTemperature() + "\n" + fridge);
                 }
             }
         }
     }
 
-    public static KitchenApliance factoryApliance(int n) throws Exception {
+    public static KitchenApliance factoryApliance (int n) throws Exception {
         // TODO: 12.10.2022 перенести в фабрику
-        Factory factory = switch (n) {
-            case 1 -> new BlenderFactory();
-            case 2 -> new FridgeFactory();
+        Factory factory=switch (n){
+            case 1 -> Factory.createAplianceType(AplianceType.BLENDER);
+            case 2 -> Factory.createAplianceType(AplianceType.FRIDGE);
             default -> throw new ClassNotFoundException();
         };
         return factory.createApliance();

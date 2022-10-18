@@ -1,6 +1,6 @@
 package сlass;
 
-import Interfaces.Apliances;
+import interfaces.Apliances;
 
 import java.util.Objects;
 
@@ -17,13 +17,8 @@ public class Fridge extends KitchenApliance implements Apliances {
     }
 
     @Override
-    public String getColor() {
-        return color;
-    }
-
-    @Override
     public String power() {
-        if (status) {
+        if (getStatus()) {
             return ("Сейчас включен");
         } else {
             return ("Сейчас выключен");
@@ -32,12 +27,8 @@ public class Fridge extends KitchenApliance implements Apliances {
 
     @Override
     public String toString() {
-        return "Холодильник\n" +
-                "температура = " + temperature +
-                ", мощность = " + energy +
-                ", бренд = " + brand +
-                ", статус = " + status +
-                ", цвет = " + color;
+        return super.toString() +
+                ", Температура=" + temperature;
     }
 
     @Override

@@ -1,12 +1,12 @@
 package сlass;
 
-import Interfaces.Apliances;
+import interfaces.Apliances;
 
 import java.util.Objects;
 
 public class Blender extends KitchenApliance implements Apliances {
 
-    public int speedOfBlender;
+    private int speedOfBlender;
 
     public int getSpeedOfBlender() {
         return speedOfBlender;
@@ -18,13 +18,8 @@ public class Blender extends KitchenApliance implements Apliances {
     }
 
     @Override
-    public String getColor() {
-        return color;
-    }
-
-    @Override
     public String power() {
-        if (status) {
+        if (getStatus()) {
             return("Сейчас включен");
         } else {
             return("Сейчас выключен");
@@ -33,12 +28,9 @@ public class Blender extends KitchenApliance implements Apliances {
 
     @Override
     public String toString() {// TODO: 12.10.2022 испульзуем super.toString()
-        return "Блендер\n" +
-                "скорость = " + speedOfBlender +
-                ", мощность = " + energy +
-                ", бренд = " + brand +
-                ", статус = " + status +
-                ", цвет = " + color;
+
+        return super.toString() +
+                ", Скорость=" + speedOfBlender;
     }
 
     @Override
