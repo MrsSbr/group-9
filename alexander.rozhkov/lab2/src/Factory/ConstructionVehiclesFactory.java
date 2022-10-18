@@ -8,7 +8,7 @@ import Models.TruckMixer;
 import Service.ConsoleWork;
 
 public class ConstructionVehiclesFactory {
-    public ConstructionVehicle createConstructionVehicle(ConstructionVehiclesType type){
+    public static ConstructionVehicle createConstructionVehicle(ConstructionVehiclesType type){
         return switch(type) {
             case TRUCK_MIXER:
                 yield createTruckMixer();
@@ -19,7 +19,7 @@ public class ConstructionVehiclesFactory {
         };
     }
 
-    private ConstructionVehicle createAsphaltPaver() {
+    private static ConstructionVehicle createAsphaltPaver() {
         System.out.println("Введите мощность мотора асфальтоукладчика:");
         int motorPower = ConsoleWork.inputIntBetween(0,10000);
         System.out.println("Введите ширину укладки асфальта:");
@@ -29,7 +29,7 @@ public class ConstructionVehiclesFactory {
         return new AsphaltPaver(model,motorPower,layingWidth);
     }
 
-    private ConstructionVehicle createExcavator() {
+    private static ConstructionVehicle createExcavator() {
         System.out.println("Введите мощность двигателя экскаватора:");
         int motorPower = ConsoleWork.inputIntBetween(0,10000);
         System.out.println("Введите объем ковша экскаватора:");
@@ -39,7 +39,7 @@ public class ConstructionVehiclesFactory {
         return new Excavator(model, motorPower, bucketSize);
     }
 
-    private ConstructionVehicle createTruckMixer() {
+    private static ConstructionVehicle createTruckMixer() {
         System.out.println("Введите мощность мотора:");
         int motorPower = ConsoleWork.inputIntBetween(0,10000);
         System.out.println("Введите объем емкости бетономешалки: ");

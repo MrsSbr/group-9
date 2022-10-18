@@ -11,12 +11,11 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        ConstructionVehiclesFactory factory = new ConstructionVehiclesFactory();
-        List<ConstructionVehicle> listOfVehicle = addRecordsOfVehicle(factory);
+        List<ConstructionVehicle> listOfVehicle = addRecordsOfVehicle();
         workWithListOfVehicle(listOfVehicle);
     }
 
-    public static List<ConstructionVehicle> addRecordsOfVehicle(ConstructionVehiclesFactory factory) {
+    public static List<ConstructionVehicle> addRecordsOfVehicle() {
         List<ConstructionVehicle> listOfVehicle = new ArrayList<>();
         boolean isStop = false;
         while (!isStop) {
@@ -28,9 +27,9 @@ public class Main {
 
             int choose = ConsoleWork.inputIntBetween(0, 3);
             switch (choose) {
-                case 1 -> listOfVehicle.add(factory.createConstructionVehicle(ConstructionVehiclesType.EXCAVATOR));
-                case 2 -> listOfVehicle.add(factory.createConstructionVehicle(ConstructionVehiclesType.ASPHALT_PAVER));
-                case 3 -> listOfVehicle.add(factory.createConstructionVehicle(ConstructionVehiclesType.TRUCK_MIXER));
+                case 1 -> listOfVehicle.add(ConstructionVehiclesFactory.createConstructionVehicle(ConstructionVehiclesType.EXCAVATOR));
+                case 2 -> listOfVehicle.add(ConstructionVehiclesFactory.createConstructionVehicle(ConstructionVehiclesType.ASPHALT_PAVER));
+                case 3 -> listOfVehicle.add(ConstructionVehiclesFactory.createConstructionVehicle(ConstructionVehiclesType.TRUCK_MIXER));
                 case 0 -> isStop = true;
             }
         }
@@ -60,45 +59,47 @@ public class Main {
     }
 
     private static void executeSpecialActionWithAllRecords(List<ConstructionVehicle> listOfVehicle) {
-        for (int i = 0; i < listOfVehicle.size(); i++) {
-            System.out.println("Номер записи - " + (i + 1));
-            listOfVehicle.get(i).someAction();
-            System.out.println(" ");
+        int number = 1;
+        for (ConstructionVehicle vehicle : listOfVehicle) {
+            System.out.println("Номер записи - " + (number));
+            vehicle.someAction();
+            number++;
         }
     }
 
     private static void executeSpecialActionWithOneRecord(List<ConstructionVehicle> listOfVehicle) {
-        int number = getNumberOfListVehicle(listOfVehicle);
+        int number = getNumberOfListVehicle(listOfVehicle.size());
         listOfVehicle.get(number).someAction();
         System.out.println();
     }
 
     private static void printOneRecordOfVehicle(List<ConstructionVehicle> listOfVehicle) {
-        int number = getNumberOfListVehicle(listOfVehicle);
-        printChildClass(listOfVehicle, number);
+        int number = getNumberOfListVehicle(listOfVehicle.size());
+        printChildClass(listOfVehicle.get(number));
     }
 
     private static void printAllRecordsOfVehicle(List<ConstructionVehicle> listOfVehicle) {
-        for (int i = 0; i < listOfVehicle.size(); i++) {
-            System.out.println("Номер записи - " + (i + 1));
-            printChildClass(listOfVehicle, i);
+        int number = 1;
+        for (ConstructionVehicle vehicle : listOfVehicle) {
+            System.out.println("Номер записи - " + (number));
+            printChildClass(vehicle);
         }
     }
 
-    public static int getNumberOfListVehicle(List<ConstructionVehicle> listOfVehicle) {
-        System.out.println("Введите номер записи с которой надо провести работу:");
-        int number = ConsoleWork.inputIntBetween(0, listOfVehicle.size() - 1);
+    public static int getNumberOfListVehicle(int sizeOfCollection) {
+        System.out.println("Введите индекс записи с которой надо провести работу:");
+        int number = ConsoleWork.inputIntBetween(0, sizeOfCollection - 1);
         System.out.println("Номер записи - " + (number + 1));
         return number;
     }
 
-    public static void printChildClass(List<ConstructionVehicle> listOfVehicle, int number) {
-        if (listOfVehicle.get(number) instanceof AsphaltPaver vehicle) {
-            System.out.println("Асфальтоукладчик\n" + vehicle.toString() + "\n");
-        } else if (listOfVehicle.get(number) instanceof Excavator vehicle) {
-            System.out.println("Экскаватор\n" + vehicle.toString() + "\n");
-        } else if (listOfVehicle.get(number) instanceof TruckMixer vehicle) {
-            System.out.println("Бетономешалка\n" + vehicle.toString() + "\n");
+    public static void printChildClass(ConstructionVehicle vehicle) {
+        if (vehicle instanceof AsphaltPaver vehiclePaver) {
+            System.out.println("Асфальтоукладчик\n" + vehiclePaver.toString() + "\n");
+        } else if (vehicle instanceof Excavator vehicleExcavator) {
+            System.out.println("Экскаватор\n" + vehicleExcavator.toString() + "\n");
+        } else if (vehicle instanceof TruckMixer vehicleTruckMixer) {
+            System.out.println("Бетономешалка\n" + vehicleTruckMixer.toString() + "\n");
         }
     }
 }
