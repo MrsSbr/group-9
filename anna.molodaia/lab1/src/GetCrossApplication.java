@@ -13,7 +13,8 @@ public class GetCrossApplication {
 
     public static void main(String[] args) {
 
-        System.out.println("Количество элементов небольше " + LENGTH_ARRAY + ".\nЗначение элемента в диапозоне [" + MIN_VAL + "..." + MAX_VAL + "]");
+        System.out.println("Количество элементов небольше " + LENGTH_ARRAY + ".\nЗначение элемента в диапозоне ["
+                + MIN_VAL + "..." + MAX_VAL + "]");
         System.out.println("Элементы не подходящие ограниениям будут опускаться, как и элементы после 1000-го.");
         System.out.print("Введите элементы массива через запятую.\nnums1 = ");
 
@@ -50,9 +51,9 @@ public class GetCrossApplication {
                     result[newSize] = elem;
                     newSize++;
                 } else
-                    System.err.println("Элемент \"%s\" не входит в диапазон [%s...%s]".formatted(elem, MIN_VAL, MAX_VAL));
+                    System.err.printf("Элемент \"%s\" не входит в диапазон [%s...%s]%n", elem, MIN_VAL, MAX_VAL);
             } catch (NumberFormatException e) {
-                System.err.println("Элемент \"%s\" введен не правильно и пропускаем.".formatted(words[i]));
+                System.err.printf("Элемент \"%s\" введен не правильно и пропускаем.%n", words[i]);
             }
         }
         if (newSize != size) {
@@ -63,10 +64,10 @@ public class GetCrossApplication {
 
     public static Set<Integer> getCross(int[] nums1, int[] nums2) {
         Set<Integer> intersect = new HashSet<>();
-        for (int i = 0; i < nums1.length; i++) {
-            for (int j = 0; j < nums2.length; j++) {
-                if (nums1[i] == nums2[j]) {
-                    intersect.add(nums1[i]);
+        for (int j : nums1) {
+            for (int k : nums2) {
+                if (j == k) {
+                    intersect.add(j);
                     break;
                 }
             }
