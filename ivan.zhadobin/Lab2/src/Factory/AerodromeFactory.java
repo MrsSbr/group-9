@@ -10,7 +10,7 @@ import Service.ConsoleWork;
 public class AerodromeFactory {
     public static Airport createAirport(AerodromeTypes type){
         Airport airport = null;
-        switch (type) { //yield
+        switch (type) {
             case CIVIL_AERODROME -> airport = createCivilAerodrome();
             case FIELD_AERODROME -> airport = createFieldAerodrome();
             case MILITARY_AERODROME -> airport = createMilitaryAerodrome();
@@ -18,7 +18,7 @@ public class AerodromeFactory {
         return airport;
     }
 
-    private static Airport createCivilAerodrome() {
+    private static  Airport createCivilAerodrome() {
         System.out.println("Введите количество ангаров: ");
         int countGarage= ConsoleWork.inputIntBetween(0,100);
         System.out.println("Введите длину ВПП: ");
