@@ -5,13 +5,13 @@ import Interfaces.MilitaryPlane;
 import java.util.Objects;
 
 public class MilitaryAerodrome extends Airport implements MilitaryPlane {
-    int countBomb;
-    int countfFighterJet;
+    private final int countBomb;
+    private final int countFighterJet;
 
     public MilitaryAerodrome(int countGarage, int lengthStrip, int countBomb, int countfFighterJet) {
         super(countGarage, lengthStrip);
         this.countBomb = countBomb;
-        this.countfFighterJet = countfFighterJet;
+        this.countFighterJet = countfFighterJet;
     }
 
     @Override
@@ -43,13 +43,13 @@ public class MilitaryAerodrome extends Airport implements MilitaryPlane {
 
     @Override
     public String toString() {
-        return super.toString() + "\nВоенный аэродром:" + "\nКол-во бомб = " + countBomb + "шт." + "\nКол-во истребителей = " + countfFighterJet;
+        return super.toString() + "\nВоенный аэродром:" + "\nКол-во бомб = " + countBomb + "шт." + "\nКол-во истребителей = " + countFighterJet;
     }
 
 
     @Override
     public int getCountFighterJet() {
-        return countfFighterJet;
+        return countFighterJet;
     }
 
     @Override

@@ -3,8 +3,8 @@ package Models;
 import java.util.Objects;
 
 public abstract class Airport {
-    int countGarage;
-    int lengthStrip;
+    protected final int countGarage;
+    protected final int lengthStrip;
 
 
     public Airport(int countGarage, int lengthStrip) {
@@ -19,7 +19,6 @@ public abstract class Airport {
     public double getLengthStrip() {
         return lengthStrip;
     }
-
 
     public abstract void action();
 

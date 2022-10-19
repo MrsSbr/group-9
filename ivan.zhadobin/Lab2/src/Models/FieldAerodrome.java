@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class FieldAerodrome extends Airport {
 
-    int countPilot;
-    double waterForIrrigation; //вода для полива
+    private final int countPilot;
+    private final double waterForIrrigation; //вода для полива
 
     public FieldAerodrome(int countGarage, int lengthStrip, int countPilot, int waterForIrrigation) {
         super(countGarage, lengthStrip);

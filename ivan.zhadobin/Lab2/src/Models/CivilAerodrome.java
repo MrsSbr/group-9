@@ -6,9 +6,9 @@ import java.util.Objects;
 
 public class CivilAerodrome extends Airport implements CivilPlane {
 
-    int fuel;
-    int flights;
-    String name;
+    private final int fuel;
+    private final int flights;
+    private final String name;
 
     public CivilAerodrome(int countGarage, int lengthStrip, int fuel, int flights, String name) {
         super(countGarage, lengthStrip);

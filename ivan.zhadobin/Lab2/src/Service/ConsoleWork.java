@@ -26,7 +26,6 @@ public class ConsoleWork {
 
     public static String inputString() {
         Scanner scanner = new Scanner(System.in);
-        String result = scanner.nextLine();
-        return result;
+        return scanner.nextLine();
     }
 }

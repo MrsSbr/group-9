@@ -8,9 +8,9 @@ import Models.MilitaryAerodrome;
 import Service.ConsoleWork;
 
 public class AerodromeFactory {
-    public Airport createAirport(AerodromeTypes type){
+    public static Airport createAirport(AerodromeTypes type){
         Airport airport = null;
-        switch (type) {
+        switch (type) { //yield
             case CIVIL_AERODROME -> airport = createCivilAerodrome();
             case FIELD_AERODROME -> airport = createFieldAerodrome();
             case MILITARY_AERODROME -> airport = createMilitaryAerodrome();
@@ -18,7 +18,7 @@ public class AerodromeFactory {
         return airport;
     }
 
-    private Airport createCivilAerodrome() {
+    private static Airport createCivilAerodrome() {
         System.out.println("Введите количество ангаров: ");
         int countGarage= ConsoleWork.inputIntBetween(0,100);
         System.out.println("Введите длину ВПП: ");
@@ -32,7 +32,7 @@ public class AerodromeFactory {
         return new CivilAerodrome(countGarage, lengthStrip, countFuel,countFlights,model);
     }
 
-    private Airport createFieldAerodrome(){
+    private static Airport createFieldAerodrome(){
         System.out.println("Введите количество ангаров: ");
         int countGarage= ConsoleWork.inputIntBetween(0,100);
         System.out.println("Введите длину ВПП: ");
@@ -44,7 +44,7 @@ public class AerodromeFactory {
         return new FieldAerodrome(countGarage, lengthStrip,countPilot,water);
     }
 
-    private Airport createMilitaryAerodrome(){
+    private static Airport createMilitaryAerodrome(){
         System.out.println("Введите количество ангаров: ");
         int countGarage= ConsoleWork.inputIntBetween(0,100);
         System.out.println("Введите длину ВПП: ");
