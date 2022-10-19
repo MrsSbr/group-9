@@ -5,8 +5,8 @@ import interfaces.IArtificialMarine;
 import java.util.Objects;
 
 public abstract class Port implements IArtificialMarine {
-    private double S;
-    private String name;
+    protected double S;
+    protected String name;
 
 
     public Port(String name, double S) {
