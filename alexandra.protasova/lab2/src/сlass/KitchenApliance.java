@@ -6,16 +6,29 @@ import java.util.Objects;
 
 public abstract class KitchenApliance implements Apliances {
     // TODO: 12.10.2022 сделать поля приватными (инкапсуляция)
-    private int energy;
-    private String brand;
-    private boolean status;
-    private String color;
+    protected int energy;
+    protected String brand;
+    protected boolean status;
+    protected String color;
 
     // TODO: 12.10.2022 добавить все геттеры
-    public int getEnergy() {return energy; }
-    public String getBrand() {return brand; }
-    public boolean getStatus() {return status; }
-    public String getColor() {return color; };
+    public int getEnergy() {
+        return energy;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    ;
 
     public KitchenApliance(int energy, String brand, boolean status, String color) {
         this.energy = energy;

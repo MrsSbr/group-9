@@ -56,20 +56,20 @@ public class Main {
                 selectedApliance = apliances.get(choice - 1);
                 if (selectedApliance instanceof Blender) {
                     Blender blender = (Blender) selectedApliance;
-                    System.out.println("Кухонный прибор блендер\n" + "Энергия: " + blender.getEnergy() + "\nБренд: " + blender.getBrand() +  "\nТекущее состосяние: " + blender.power() +
+                    System.out.println("Кухонный прибор блендер\n" + "Энергия: " + blender.getEnergy() + "\nБренд: " + blender.getBrand() + "\nТекущее состосяние: " + blender.power() +
                             "\nЦвет: " + blender.getColor() + "\nСкорость работы: " + blender.getSpeedOfBlender() + "\n" + blender);
                 } else if (selectedApliance instanceof Fridge) {
                     Fridge fridge = (Fridge) selectedApliance;
-                    System.out.println("Кухонный прибор холодильник\n" + "Энергия: " + fridge.getEnergy() + "\nБренд: " + fridge.getBrand() +  "\nТекущее состосяние: " + fridge.power() +
+                    System.out.println("Кухонный прибор холодильник\n" + "Энергия: " + fridge.getEnergy() + "\nБренд: " + fridge.getBrand() + "\nТекущее состосяние: " + fridge.power() +
                             "\nЦвет: " + fridge.getColor() + "\nТемпература: " + fridge.getTemperature() + "\n" + fridge);
                 }
             }
         }
     }
 
-    public static KitchenApliance factoryApliance (int n) throws Exception {
+    public static KitchenApliance factoryApliance(int n) throws Exception {
         // TODO: 12.10.2022 перенести в фабрику
-        Factory factory=switch (n){
+        Factory factory = switch (n) {
             case 1 -> Factory.createAplianceType(AplianceType.BLENDER);
             case 2 -> Factory.createAplianceType(AplianceType.FRIDGE);
             default -> throw new ClassNotFoundException();

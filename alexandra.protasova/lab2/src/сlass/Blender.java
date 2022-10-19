@@ -14,15 +14,15 @@ public class Blender extends KitchenApliance implements Apliances {
 
     public Blender(int energy, String brand, boolean status, String color, int speedOfBlender) {
         super(energy, brand, status, color);
-        this.speedOfBlender=speedOfBlender;
+        this.speedOfBlender = speedOfBlender;
     }
 
     @Override
     public String power() {
         if (getStatus()) {
-            return("Сейчас включен");
+            return ("Сейчас включен");
         } else {
-            return("Сейчас выключен");
+            return ("Сейчас выключен");
         }
     }
 
