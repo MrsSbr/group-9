@@ -47,11 +47,11 @@ public class Main {
 
     private static void printAllChildClass(Airport airport) {
         if (airport instanceof CivilAerodrome civilAerodrome) {
-            System.out.println("Гражданский аэродром\n" + civilAerodrome.toString() + '\n');
+             System.out.println("Гражданский аэродром\n" + civilAerodrome.toString() + '\n');
         } else if (airport instanceof FieldAerodrome fieldAerodrome) {
-            System.out.println("Полевой аэродром\n" + fieldAerodrome.toString() + '\n');
+             System.out.println("Полевой аэродром\n" + fieldAerodrome.toString() + '\n');
         } else if (airport instanceof MilitaryAerodrome militaryAerodrome) {
-            System.out.println("Военный аэродром\n" + militaryAerodrome.toString() + '\n');
+             System.out.println("Военный аэродром\n" + militaryAerodrome.toString() + '\n');
         }
     }
 
