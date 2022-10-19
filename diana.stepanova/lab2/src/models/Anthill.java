@@ -30,19 +30,18 @@ public class Anthill {
         } else {
             System.out.println("Все муравьи, которые есть в муравейнике: ");
             int position = 0;
-            for(Ants ants:ants) {
-                System.out.println("\n"+position+": "+ants.toString());
+            for (Ants ants : ants) {
+                System.out.println("\n" + position + ": " + ants.toString());
                 if (ants instanceof GiantAntTurtle giantAnt) {
-                    System.out.println("; Имеет "+giantAnt.getSpikes()+" шипов ");
-                }else if(ants instanceof AntIsABullet antsABullet) {
-                    System.out.println("; Наличие яда->"+antsABullet.getPresenceOfPoison());
+                    System.out.println("; Имеет " + giantAnt.getSpikes() + " шипов ");
+                } else if (ants instanceof AntIsABullet antsABullet) {
+                    System.out.println("; Наличие яда->" + antsABullet.getPresenceOfPoison());
                 }
-                ++ position;
+                ++position;
             }
 
-            }
+        }
     }
-
 
 
     int readPosition() {
@@ -83,7 +82,7 @@ public class Anthill {
         } else {
             int position = readPosition();
 
-            if ( ants instanceof AntIsABullet) {
+            if (ants instanceof AntIsABullet) {
                 System.out.println("Вы не можете отправить этого муравья за едой!");
             } else {
                 ants.get(position).collectFood();

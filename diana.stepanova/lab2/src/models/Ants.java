@@ -24,10 +24,6 @@ public abstract class Ants implements Insects {
     public Ants() {
     }
 
-
-
-
-
     public int getSize() {
         return size;
     }
@@ -52,8 +48,6 @@ public abstract class Ants implements Insects {
         this.typeAnts = typeAnts;
     }
 
-    ;
-
     public String getHabitat() {
         return habitat;
     }
@@ -77,6 +71,7 @@ public abstract class Ants implements Insects {
         if (null == o || getClass() != o.getClass()) return false;
         Ants ants = (Ants) o;
         return  size == ants.size && color == ants.color && typeAnts == ants.typeAnts && habitat == ants.habitat;
+        // TODO: 19.10.2022 строки сравниваем через equals
     }
 
     @Override

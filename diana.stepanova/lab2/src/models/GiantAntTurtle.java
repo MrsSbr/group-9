@@ -33,7 +33,7 @@ public class GiantAntTurtle extends Ants {
     }
 
 
-    @Override
+    @Override // TODO: 19.10.2022 перенести вниз класса
     public boolean equals(Object o) {
 
         if (this == o) {
@@ -72,7 +72,7 @@ public class GiantAntTurtle extends Ants {
 
     @Override
     public void collectFood() {
-        if (typeAnts == "рабочий") {
+        if (typeAnts == "рабочий") {// TODO: 19.10.2022 equals
             System.out.println("Я собрал еду,спасибо!");
         } else {
             System.out.println("Я не могу собрать еду, я не рабочий!");
@@ -80,7 +80,7 @@ public class GiantAntTurtle extends Ants {
     }
 
     @Override
-    public Ants createAnts() {
+    public Ants createAnts() {// TODO: 19.10.2022 статический фабричный метод
         Scanner in = new Scanner((System.in));
         System.out.print("Введите размер муравья: ");
         int size = Helper.readFromConsole();
