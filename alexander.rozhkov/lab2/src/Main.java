@@ -27,9 +27,12 @@ public class Main {
 
             int choose = ConsoleWork.inputIntBetween(0, 3);
             switch (choose) {
-                case 1 -> listOfVehicle.add(ConstructionVehiclesFactory.createConstructionVehicle(ConstructionVehiclesType.EXCAVATOR));
-                case 2 -> listOfVehicle.add(ConstructionVehiclesFactory.createConstructionVehicle(ConstructionVehiclesType.ASPHALT_PAVER));
-                case 3 -> listOfVehicle.add(ConstructionVehiclesFactory.createConstructionVehicle(ConstructionVehiclesType.TRUCK_MIXER));
+                case 1 -> listOfVehicle.add(ConstructionVehiclesFactory
+                        .createConstructionVehicle(ConstructionVehiclesType.EXCAVATOR));
+                case 2 -> listOfVehicle.add(ConstructionVehiclesFactory
+                        .createConstructionVehicle(ConstructionVehiclesType.ASPHALT_PAVER));
+                case 3 -> listOfVehicle.add(ConstructionVehiclesFactory
+                        .createConstructionVehicle(ConstructionVehiclesType.TRUCK_MIXER));
                 case 0 -> isStop = true;
             }
         }
@@ -95,11 +98,11 @@ public class Main {
 
     public static void printChildClass(ConstructionVehicle vehicle) {
         if (vehicle instanceof AsphaltPaver vehiclePaver) {
-            System.out.println("Асфальтоукладчик\n" + vehiclePaver.toString() + "\n");
+            System.out.println("Асфальтоукладчик\n" + vehiclePaver + "\n");
         } else if (vehicle instanceof Excavator vehicleExcavator) {
-            System.out.println("Экскаватор\n" + vehicleExcavator.toString() + "\n");
+            System.out.println("Экскаватор\n" + vehicleExcavator + "\n");
         } else if (vehicle instanceof TruckMixer vehicleTruckMixer) {
-            System.out.println("Бетономешалка\n" + vehicleTruckMixer.toString() + "\n");
+            System.out.println("Бетономешалка\n" + vehicleTruckMixer + "\n");
         }
     }
 }

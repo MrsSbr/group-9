@@ -13,6 +13,16 @@ public abstract class ConstructionVehicle implements Vehicle {
         this.motorPower = motorPower;
     }
 
+    @Override
+    public String getModel() {
+        return model;
+    }
+
+    @Override
+    public int getMotorPower() {
+        return motorPower;
+    }
+
     public abstract void someAction();
 
     @Override

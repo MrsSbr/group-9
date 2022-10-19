@@ -40,18 +40,10 @@ public class TruckMixer extends ConstructionVehicle {
         return Objects.hash(super.hashCode(), containerCapacity);
     }
 
-    @Override
-    public String getModel() {
-        return model;
-    }
 
     @Override
     public String toString() {
         return super.toString() + "\nОбъем ёмкости - " + containerCapacity + "л";
     }
 
-    @Override
-    public int getMotorPower() {
-        return motorPower;
-    }
 }

@@ -44,13 +44,4 @@ public class AsphaltPaver extends ConstructionVehicle {
         return Objects.hash(super.hashCode(), layingWidth);
     }
 
-    @Override
-    public String getModel() {
-        return model;
-    }
-
-    @Override
-    public int getMotorPower() {
-        return motorPower;
-    }
 }
