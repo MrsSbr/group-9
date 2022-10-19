@@ -2,30 +2,30 @@ import java.util.Scanner;
 ;
 
 public class TaskMaximizeDistanceToClosestPerson { //так пойдет?
-    public static void fill(int[] seats, int N) {
+    public static int[] fill(int N) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("введите последовательность из 0 и 1");
+        int[] seats = new int[N];
         for (int i = 0; i < N; i++) {
             String temp = scanner.nextLine();
             boolean check = false;
             if (temp.equals("1") || temp.equals("0")) {
                 seats[i] = Integer.parseInt(temp);
-            }
-            else {
+            } else {
                 System.out.println("плохое число");
                 while (!check) {
                     temp = scanner.nextLine();
                     if (temp.equals("1") || temp.equals("0")) {
                         check = true;
-                    }
-                    else {
+                    } else {
                         System.out.println("плохое число");
                     }
                 }
             }
 
-            }
         }
+        return seats;
+    }
 
     public static boolean test(Object value) {
         if (value instanceof Integer) {
