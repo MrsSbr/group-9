@@ -5,8 +5,8 @@ import Interfaces.GeometricFigures;
 import java.util.Objects;
 
 public abstract class PlaneFigure implements GeometricFigures {
-    private double perimeter;
-    private String name;
+    protected double perimeter;
+    protected String name;
 
 
     public PlaneFigure(String name, double perimeter) {

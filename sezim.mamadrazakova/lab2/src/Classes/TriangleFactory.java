@@ -4,7 +4,7 @@ import Interfaces.Factory;
 
 import java.util.Scanner;
 
-public class  TriangleFactory implements Factory {
+public class TriangleFactory implements Factory {
     @Override
     public PlaneFigure createFigure() {
         Scanner input = new Scanner(System.in);

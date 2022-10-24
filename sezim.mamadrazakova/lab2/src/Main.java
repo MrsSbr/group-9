@@ -24,14 +24,18 @@ public class Main {
             switch (choice) {
                 case 1:
                     figure.add(createFigure(choice));
+                    break;
                 case 2:
                     figure.add(createFigure(choice));
+                    break;
 
                 case 3:
                     printFigure(figure);
+                    break;
 
                 case 0:
                     isExit = true;
+                    break;
 
             }
         }
@@ -41,10 +45,10 @@ public class Main {
         Factory factory;
         switch (choice) {
             case 1:
-                factory=Factory.createFigureType(FigureType.TRIANGLE);
+                factory = Factory.createFigureType(FigureType.TRIANGLE);
                 break;
             case 2:
-                factory=Factory.createFigureType(FigureType.CIRCLE);
+                factory = Factory.createFigureType(FigureType.CIRCLE);
                 break;
             default:
                 throw new ClassNotFoundException();
@@ -69,12 +73,12 @@ public class Main {
             } else {
                 fig = figures.get(choice - 1);
                 if (fig instanceof Triangle) {
-                    Triangle triangle = (Triangle) fig;
-                    System.out.println("Треугольник: " + triangle.getName() + " количество углов: " + triangle.countOfAngles() + " периметр:" + triangle.getPerimeter() + " тип: " + triangle.getType());
+                    Triangle fig1 = (Triangle) fig;
+                    System.out.println("Треугольник: " + fig1.getName() + " количество углов: " + fig1.countOfAngles() + " периметр:" + fig1.getPerimeter() + " тип: " + fig1.getType());
 
                 } else if (fig instanceof Circle) {
-                    Circle circle = (Circle) fig;
-                    System.out.println("Окружность: " + circle.getName() + " Количество углов:" + circle.countOfAngles() + " периметр " + circle.getPerimeter() + " радиус:" + circle.getRadius());
+                    Circle fig2 = (Circle) fig;
+                    System.out.println("Окружность: " + fig2.getName() + " Количество углов:" + fig2.countOfAngles() + " периметр " + fig2.getPerimeter() + " радиус:" + fig2.getRadius());
                 }
             }
         }
