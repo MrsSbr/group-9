@@ -24,10 +24,6 @@ public abstract class Ants implements Insects {
     public Ants() {
     }
 
-
-
-
-
     public int getSize() {
         return size;
     }
@@ -61,34 +57,11 @@ public abstract class Ants implements Insects {
     public void setHabitat(String habitat) {
         this.habitat = habitat;
     }
-
-
-    @Override
-    public String toString() {
-        return  " Размер: " + size +
-                "; Цвет: " + color +
-                "; Тип: " + typeAnts;
-
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (null == o || getClass() != o.getClass()) return false;
-        Ants ants = (Ants) o;
-        return  size == ants.size && color == ants.color && typeAnts == ants.typeAnts && habitat == ants.habitat;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash( size, color, typeAnts, habitat);
-    }
-
     public void live() {
         System.out.println(" Я живу в " + habitat);
     }
 
-    public Ants createAnts() {
+    public static Ants createAnts() {
         Scanner in = new Scanner((System.in));
         System.out.print("Введите размер муравья: ");
         int size = Helper.readFromConsole();
@@ -109,4 +82,27 @@ public abstract class Ants implements Insects {
     public void collectFood() {
 
     }
+
+    @Override
+    public String toString() {
+        return  " Размер: " + size +
+                "; Цвет: " + color +
+                "; Тип: " + typeAnts;
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (null == o || getClass() != o.getClass()) return false;
+        Ants ants = (Ants) o;
+        return  size == ants.size && color.equals(ants.color) && typeAnts.equals(ants.typeAnts) && habitat.equals(ants.habitat);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash( size, color, typeAnts, habitat);
+    }
+
+
 }
