@@ -27,7 +27,7 @@ public class GiantAntTurtle extends Ants {
             System.out.println("Я не могу собрать еду, я не рабочий!");
         }
     }
-    public Ants createAnts() {
+    public static Ants createAnts() {
         Scanner in = new Scanner((System.in));
         System.out.print("Введите размер муравья: ");
         int size = Helper.readFromConsole();

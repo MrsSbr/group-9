@@ -35,7 +35,7 @@ public class AntIsABullet extends Ants {
         }
     }
 
-    public Ants createAnts() {
+    public static Ants createAnts() {
         Scanner in = new Scanner(System.in);
         System.out.print("Введите размер муравья: ");
         int size = Helper.readFromConsole();
