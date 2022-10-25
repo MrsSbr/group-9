@@ -10,7 +10,6 @@ public class AntIsABullet extends Ants {
 
     public AntIsABullet() {
     }
-
     ;
 
     public AntIsABullet( int size, String color, String type, String habitat, boolean presenceOfPoison) {
@@ -29,6 +28,36 @@ public class AntIsABullet extends Ants {
         this.presenceOfPoison = presenceOfPoison;
     }
 
+
+    @Override
+    public void live() {
+        if (presenceOfPoison) {
+            System.out.println("Вы неправильно ввели! Я живу в Центральной и Южной Америке!");
+        } else {
+            System.out.println("Я живу в" + getHabitat());
+        }
+    }
+
+
+    public Ants createAnts() {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Введите размер муравья: ");
+        int size = Helper.readFromConsole();
+        setSize(size);
+        System.out.print("\nВведите цвет муравьев: ");
+        String color = in.nextLine();
+        setColor(color);
+        System.out.print("\nВведите тип муравьев(самка, самец, рабочий): ");
+        String typeAnts = in.nextLine();
+        setTypeAnts(typeAnts);
+        System.out.print("\nВведите место обитание муравьев: ");
+        String habitat = in.nextLine();
+        setHabitat(habitat);
+        System.out.print("\nВведите наличие яда у муравьев(1-да, 0-нет): ");
+        boolean presenceOfPoison = Helper.intToBoolean(in.nextInt());
+        setPresenceOfPoison(presenceOfPoison);
+        return new AntIsABullet();
+    }
     @Override
     public boolean equals(Object o) {
 
@@ -53,48 +82,17 @@ public class AntIsABullet extends Ants {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(super.hashCode(), presenceOfPoison);
 
     }
 
     @Override
     public String toString() {
-
         return super.toString() + '\n' +
                 "; Название->Муравей пуля " ;
 
     }
 
-    @Override
-    public void live() {
-        if (presenceOfPoison) {
-            System.out.println("Вы неправильно ввели! Я живу в Центральной и Южной Америке!");
-        } else {
-            System.out.println("Я живу в" + getHabitat());
-        }
-    }
-
-    @Override
-    public Ants createAnts() {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Введите размер муравья: ");
-        int size = Helper.readFromConsole();
-        setSize(size);
-        System.out.print("\nВведите цвет муравьев: ");
-        String color = in.nextLine();
-        setColor(color);
-        System.out.print("\nВведите тип муравьев(самка, самец, рабочий): ");
-        String typeAnts = in.nextLine();
-        setTypeAnts(typeAnts);
-        System.out.print("\nВведите место обитание муравьев: ");
-        String habitat = in.nextLine();
-        setHabitat(habitat);
-        System.out.print("\nВведите наличие яда у муравьев(1-да, 0-нет): ");
-        boolean presenceOfPoison = Helper.intToBoolean(in.nextInt());
-        setPresenceOfPoison(presenceOfPoison);
-        return this;
-    }
 
 
 }
