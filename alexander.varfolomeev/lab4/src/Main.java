@@ -6,16 +6,27 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
+    private static Logger logger = Logger.getLogger(Main.class.getName());
     private static final String pathToLogFile = "D:\\repos\\_java\\alexander.varfolomeev\\lab4\\resources\\log.txt";
 
     public static void main(String[] args) throws IOException {
-        List<String> lines = Files.readAllLines(Paths.get(pathToLogFile), StandardCharsets.UTF_8);
-        for (String str : lines) {
-            LogStatistic.addLog(str);
+        logger.log(Level.INFO, "Start program");
+        try {
+            logger.log(Level.INFO, "Start read log.");
+            List<String> lines = Files.readAllLines(Paths.get(pathToLogFile), StandardCharsets.UTF_8);
+            for (String str : lines) {
+                LogStatistic.addLog(str);
+            }
+        } catch (IOException e) {
+            logger.log(Level.INFO, "Read log from file exception");
+            throw e;
         }
 
+        logger.log(Level.INFO, "File successfully read");
         boolean isEnd = false;
 
         while (!isEnd) {
@@ -45,6 +56,6 @@ public class Main {
             }
         }
 
-
+        logger.log(Level.INFO, "End of program");
     }
 }
