@@ -1,5 +1,5 @@
 import Factory.AerodromeFactory;
-import Models.Airport;
+import Models.Aerodrome;
 import Models.CivilAerodrome;
 import Models.FieldAerodrome;
 import Models.MilitaryAerodrome;
@@ -12,11 +12,11 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<Airport> airports = addRecordsOfAerodrome();
-        workWithListOfAerodrome(airports);
+        List<Aerodrome> aerodromes = addRecordsOfAerodrome();
+        workWithListOfAerodrome(aerodromes);
     }
 
-    private static void workWithListOfAerodrome(List<Airport> airports) {
+    private static void workWithListOfAerodrome(List<Aerodrome> aerodromes) {
         while (true) {
             System.out.println("\nВыберите пункт меню");
             System.out.println("[1] Распечатать все записи");
@@ -27,10 +27,10 @@ public class Main {
 
             int choose = ConsoleWork.inputIntBetween(0, 4);
             switch (choose) {
-                case 1 -> printAllRecordsOfAerodrome(airports);
-                case 2 -> printOneRecordOfAerodrome(airports);
-                case 3 -> executeSpecialActionWithOneRecord(airports);
-                case 4 -> executeSpecialActionWithAllRecords(airports);
+                case 1 -> printAllRecordsOfAerodrome(aerodromes);
+                case 2 -> printOneRecordOfAerodrome(aerodromes);
+                case 3 -> executeSpecialActionWithOneRecord(aerodromes);
+                case 4 -> executeSpecialActionWithAllRecords(aerodromes);
                 case 0 -> {
                     return;
                 }
@@ -38,50 +38,50 @@ public class Main {
         }
     }
 
-    private static void printOneRecordOfAerodrome(List<Airport> airports) {
+    private static void printOneRecordOfAerodrome(List<Aerodrome> aerodromes) {
         System.out.println("Введите номер записи с которой надо провести работу:");
-        int number = ConsoleWork.inputIntBetween(0, airports.size() - 1);
+        int number = ConsoleWork.inputIntBetween(0, aerodromes.size() - 1);
         System.out.println("Номер записи - " + (number + 1));
-        System.out.println(airports.get(number).toString() + "\n");
+        System.out.println(aerodromes.get(number).toString() + "\n");
     }
 
-    private static void printAllChildClass(Airport airport) {
-        if (airport instanceof CivilAerodrome civilAerodrome) {
+    private static void printAllChildClass(Aerodrome aerodrome) {
+        if (aerodrome instanceof CivilAerodrome civilAerodrome) {
              System.out.println("Гражданский аэродром\n" + civilAerodrome.toString() + '\n');
-        } else if (airport instanceof FieldAerodrome fieldAerodrome) {
+        } else if (aerodrome instanceof FieldAerodrome fieldAerodrome) {
              System.out.println("Полевой аэродром\n" + fieldAerodrome.toString() + '\n');
-        } else if (airport instanceof MilitaryAerodrome militaryAerodrome) {
+        } else if (aerodrome instanceof MilitaryAerodrome militaryAerodrome) {
              System.out.println("Военный аэродром\n" + militaryAerodrome.toString() + '\n');
         }
     }
 
-    private static void executeSpecialActionWithOneRecord(List<Airport> airports) {
+    private static void executeSpecialActionWithOneRecord(List<Aerodrome> aerodromes) {
         System.out.println("Введите номер записи с которой надо провести работу:");
-        int number = ConsoleWork.inputIntBetween(0, airports.size() - 1);
+        int number = ConsoleWork.inputIntBetween(0, aerodromes.size() - 1);
         System.out.println("Номер записи - " + (number + 1));
-        airports.get(number).action();
+        aerodromes.get(number).action();
         System.out.println();
     }
 
-    private static void executeSpecialActionWithAllRecords(List<Airport> airports) {
+    private static void executeSpecialActionWithAllRecords(List<Aerodrome> aerodromes) {
         int num = 1;
-        for (Airport airport : airports) {
+        for (Aerodrome aerodrome : aerodromes) {
             System.out.println("Номер записи - " + (num));
-            airport.action();
+            aerodrome.action();
             num++;
         }
     }
 
-    private static void printAllRecordsOfAerodrome(List<Airport> airport) {
+    private static void printAllRecordsOfAerodrome(List<Aerodrome> aerodrome) {
         int number = 1;
-        for (Airport airports : airport) {
+        for (Aerodrome airports : aerodrome) {
             System.out.println("Номер записи - " + (number));
             printAllChildClass(airports);
         }
     }
 
-    public static List<Airport> addRecordsOfAerodrome() {
-        List<Airport> airports = new ArrayList<>();
+    public static List<Aerodrome> addRecordsOfAerodrome() {
+        List<Aerodrome> aerodromes = new ArrayList<>();
         while (true) {
             System.out.println("\nВыберите класс, который хотите добавить");
             System.out.println("[1] Военный аэродром");
@@ -91,11 +91,11 @@ public class Main {
 
             int choose = ConsoleWork.inputIntBetween(0, 3);
             switch (choose) {
-                case 1 -> airports.add(AerodromeFactory.createAirport(AerodromeTypes.MILITARY_AERODROME));
-                case 2 -> airports.add(AerodromeFactory.createAirport(AerodromeTypes.CIVIL_AERODROME));
-                case 3 -> airports.add(AerodromeFactory.createAirport(AerodromeTypes.FIELD_AERODROME));
+                case 1 -> aerodromes.add(AerodromeFactory.createAirport(AerodromeTypes.MILITARY_AERODROME));
+                case 2 -> aerodromes.add(AerodromeFactory.createAirport(AerodromeTypes.CIVIL_AERODROME));
+                case 3 -> aerodromes.add(AerodromeFactory.createAirport(AerodromeTypes.FIELD_AERODROME));
                 case 0 -> {
-                    return airports;
+                    return aerodromes;
                 }
             }
         }

@@ -4,7 +4,7 @@ import Interfaces.MilitaryPlane;
 
 import java.util.Objects;
 
-public class MilitaryAerodrome extends Airport implements MilitaryPlane {
+public class MilitaryAerodrome extends Aerodrome implements MilitaryPlane {
     private final int countBomb;
     private final int countFighterJet;
 
@@ -15,9 +15,20 @@ public class MilitaryAerodrome extends Airport implements MilitaryPlane {
     }
 
     @Override
+    public int getCountFighterJet() {
+        return countFighterJet;
+    }
+
+    @Override
+    public int getCountBomb() {
+        return countBomb;
+    }
+
+    @Override
     public void action() {
         System.out.println("Военный аэродром работает!");
     }
+
 
     public boolean equals(Object o) {
         if (this == o) {
@@ -43,17 +54,7 @@ public class MilitaryAerodrome extends Airport implements MilitaryPlane {
 
     @Override
     public String toString() {
-        return super.toString() + "\nВоенный аэродром:" + "\nКол-во бомб = " + countBomb + "шт." + "\nКол-во истребителей = " + countFighterJet;
-    }
-
-
-    @Override
-    public int getCountFighterJet() {
-        return countFighterJet;
-    }
-
-    @Override
-    public int getCountBomb() {
-        return countBomb;
+        return super.toString() + "\nВоенный аэродром:" + "\nКол-во бомб = " + countBomb + "шт."
+                + "\nКол-во истребителей = " + countFighterJet;
     }
 }

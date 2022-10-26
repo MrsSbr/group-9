@@ -4,7 +4,7 @@ import Interfaces.CivilPlane;
 
 import java.util.Objects;
 
-public class CivilAerodrome extends Airport implements CivilPlane {
+public class CivilAerodrome extends Aerodrome implements CivilPlane {
 
     private final int fuel;
     private final int flights;
@@ -20,6 +20,15 @@ public class CivilAerodrome extends Airport implements CivilPlane {
     @Override
     public void action() {
         System.out.println("Гражданский аэродром работает!");
+    }
+
+    public int getNumberOfFlights() {
+        return flights;
+    }
+
+    @Override
+    public int getFuel() {
+        return fuel;
     }
 
     @Override
@@ -45,14 +54,5 @@ public class CivilAerodrome extends Airport implements CivilPlane {
     @Override
     public int hashCode() {
         return Objects.hash(flights, fuel);
-    }
-
-    public int getNumberOfFlights() {
-        return flights;
-    }
-
-    @Override
-    public int getFuel() {
-        return fuel;
     }
 }

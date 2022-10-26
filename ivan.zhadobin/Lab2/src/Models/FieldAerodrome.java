@@ -2,7 +2,7 @@ package Models;
 
 import java.util.Objects;
 
-public class FieldAerodrome extends Airport {
+public class FieldAerodrome extends Aerodrome {
 
     private final int countPilot;
     private final double waterForIrrigation; //вода для полива

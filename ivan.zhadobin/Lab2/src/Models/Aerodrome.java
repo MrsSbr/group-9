@@ -2,12 +2,12 @@ package Models;
 
 import java.util.Objects;
 
-public abstract class Airport {
+public abstract class Aerodrome {
     protected final int countGarage;
     protected final int lengthStrip;
 
 
-    public Airport(int countGarage, int lengthStrip) {
+    public Aerodrome(int countGarage, int lengthStrip) {
         this.countGarage = countGarage;
         this.lengthStrip = lengthStrip;
     }
@@ -32,9 +32,9 @@ public abstract class Airport {
             return false;
         }
 
-        Airport airport = (Airport) object;
-        return countGarage == airport.countGarage &&
-                lengthStrip == airport.lengthStrip;
+        Aerodrome aerodrome = (Aerodrome) object;
+        return countGarage == aerodrome.countGarage &&
+                lengthStrip == aerodrome.lengthStrip;
 
     }
 
