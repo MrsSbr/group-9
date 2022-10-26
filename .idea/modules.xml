@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/alexander.rozhkov/alexander.rozhkov.iml" filepath="$PROJECT_DIR$/alexander.rozhkov/alexander.rozhkov.iml" />
+      <module fileurl="file://$PROJECT_DIR$/alexandra.protasova/alexandra.protasova.iml" filepath="$PROJECT_DIR$/alexandra.protasova/alexandra.protasova.iml" />
+      <module fileurl="file://$PROJECT_DIR$/anatoliy.zagorovskiy/anatoliy.zagorovskiy.iml" filepath="$PROJECT_DIR$/anatoliy.zagorovskiy/anatoliy.zagorovskiy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/anna.molodaia/anna.molodaia.iml" filepath="$PROJECT_DIR$/anna.molodaia/anna.molodaia.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dmitrii.kotov/dmitrii.kotov.iml" filepath="$PROJECT_DIR$/dmitrii.kotov/dmitrii.kotov.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dmitry.dedov/dmitry.dedov.iml" filepath="$PROJECT_DIR$/dmitry.dedov/dmitry.dedov.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/git.iml" filepath="$PROJECT_DIR$/.idea/git.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ivan.zhadobin/lab-0/lab-0.iml" filepath="$PROJECT_DIR$/ivan.zhadobin/lab-0/lab-0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kseniya.perelygina/lab0/lab0.iml" filepath="$PROJECT_DIR$/kseniya.perelygina/lab0/lab0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/diana.stepanova/lab0/lab01.iml" filepath="$PROJECT_DIR$/diana.stepanova/lab0/lab01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dmitriy.romanov/lab0/lab02.iml" filepath="$PROJECT_DIR$/dmitriy.romanov/lab0/lab02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/alexander.varfolomeev/lab0/lab03.iml" filepath="$PROJECT_DIR$/alexander.varfolomeev/lab0/lab03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sezim.mamadrazakova/lab0/lab04.iml" filepath="$PROJECT_DIR$/sezim.mamadrazakova/lab0/lab04.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ivan.zhadobin/lab0/lab05.iml" filepath="$PROJECT_DIR$/ivan.zhadobin/lab0/lab05.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nikita.zazulin/lab0/lab06.iml" filepath="$PROJECT_DIR$/nikita.zazulin/lab0/lab06.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lisa.kolesnikova/lab0/lab07.iml" filepath="$PROJECT_DIR$/lisa.kolesnikova/lab0/lab07.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kseniya.perelygina/lab1/lab1.iml" filepath="$PROJECT_DIR$/kseniya.perelygina/lab1/lab1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/diana.stepanova/lab1/lab11.iml" filepath="$PROJECT_DIR$/diana.stepanova/lab1/lab11.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dmitriy.romanov/lab1/lab12.iml" filepath="$PROJECT_DIR$/dmitriy.romanov/lab1/lab12.iml" />
+      <module fileurl="file://$PROJECT_DIR$/alexander.varfolomeev/lab1/lab13.iml" filepath="$PROJECT_DIR$/alexander.varfolomeev/lab1/lab13.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sezim.mamadrazakova/lab1/lab14.iml" filepath="$PROJECT_DIR$/sezim.mamadrazakova/lab1/lab14.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nikita.zazulin/lab1/lab15.iml" filepath="$PROJECT_DIR$/nikita.zazulin/lab1/lab15.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lisa.kolesnikova/lab2/lab2/lab2.iml" filepath="$PROJECT_DIR$/lisa.kolesnikova/lab2/lab2/lab2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lisa.kolesnikova/lab_1/lab_1.iml" filepath="$PROJECT_DIR$/lisa.kolesnikova/lab_1/lab_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maxim.buhtin/maxim.buhtin.iml" filepath="$PROJECT_DIR$/maxim.buhtin/maxim.buhtin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andrey.ryabchikov/task0/task0.iml" filepath="$PROJECT_DIR$/andrey.ryabchikov/task0/task0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andrey.ryabchikov/task1/task1.iml" filepath="$PROJECT_DIR$/andrey.ryabchikov/task1/task1.iml" />
+    </modules>
+  </component>
+</project>
