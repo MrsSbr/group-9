@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Main {
-    private static Logger logger = Logger.getLogger(Main.class.getName());
+    private static final Logger logger = Logger.getLogger(Main.class.getName());
     private static final String pathToLogFile = "D:\\repos\\_java\\alexander.varfolomeev\\lab4\\resources\\log.txt";
 
     public static void main(String[] args) throws IOException {
