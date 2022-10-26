@@ -62,11 +62,11 @@ public class Lightning extends SmartObject {
     public String GetPosition(){ //returns its location
         return String.valueOf(position);
     }
-
-
+    @Override
     public String GetObjectDescription(){
         return objectDescription;
     }
+
     public String GetColor(){
         return color;
     }

@@ -35,6 +35,10 @@ public abstract class SmartObject implements ElectronicDevice {
     public String GetPosition(){ //returns its location
         return String.valueOf(position);
     }
+    @Override
+    public String GetObjectDescription(){
+        return objectDescription;
+    }
 
     @Override
     public String toString() {

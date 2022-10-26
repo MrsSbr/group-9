@@ -56,7 +56,7 @@ public class Heater extends SmartObject {
         return String.valueOf(position);
     }
 
-
+    @Override
     public String GetObjectDescription(){
         return objectDescription;
     }
