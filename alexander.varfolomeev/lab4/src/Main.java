@@ -1,5 +1,6 @@
 import Models.LogStatistic;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -11,19 +12,21 @@ import java.util.logging.Logger;
 
 public class Main {
     private static final Logger logger = Logger.getLogger(Main.class.getName());
-    private static final String pathToLogFile = "D:\\repos\\_java\\alexander.varfolomeev\\lab4\\resources\\log.txt";
+    private static final String pathToDirectory = "alexander.varfolomeev/lab4/src";
+    private static final String pathToLogFile = pathToDirectory + "/resources/log.txt";
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+
         logger.log(Level.INFO, "Start program");
         try {
             logger.log(Level.INFO, "Start read log.");
-            List<String> lines = Files.readAllLines(Paths.get(pathToLogFile), StandardCharsets.UTF_8);
+            File file = new File(pathToLogFile);
+            List<String> lines = Files.readAllLines(Paths.get(file.getAbsolutePath()), StandardCharsets.UTF_8);
             for (String str : lines) {
                 LogStatistic.addLog(str);
             }
         } catch (IOException e) {
-            logger.log(Level.INFO, "Read log from file exception");
-            throw e;
+            logger.log(Level.INFO, e.toString());
         }
 
         logger.log(Level.INFO, "File successfully read");
