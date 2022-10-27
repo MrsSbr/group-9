@@ -1,8 +1,13 @@
 import horse.Races;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
-import java.util.logging.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,8 +31,7 @@ public class Main {
                 choise = Integer.parseInt(input);
             } catch (NumberFormatException e) {
                 System.out.println("Неверный ввод");
-                log.info("Неверный ввод строка 28");
-                e.printStackTrace();
+                log.log(Level.WARNING, "Неверный ввод " + Arrays.toString(e.getStackTrace()));
             }
 
             switch (choise) {
@@ -46,7 +50,7 @@ public class Main {
     public static void StaticHorse(Races races) {
 
         Scanner scan = new Scanner(System.in);
-        String input = "";
+        String input;
         System.out.println("Введите имя лошади");
         input = scan.next();
         System.out.println(races.statisticHorse(input));
@@ -68,12 +72,8 @@ public class Main {
                 line = reader.readLine();
 
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            log.info("Ошибка работы с файлом");
         } catch (IOException e) {
-            e.printStackTrace();
-            log.info("Ошибка работы с файлом");
+            log.log(Level.WARNING, "Ошибка работы с файлом " + Arrays.toString(e.getStackTrace()));
         }
 
     }

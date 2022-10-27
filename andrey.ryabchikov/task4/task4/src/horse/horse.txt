@@ -1,4 +1,4 @@
-2022 2 2;bib;kib;dib
-2021 1 1;sis;vis;kis
-2002 3 3;akv;vas;sgf
-2021 5 5;bib;dib;kib
+2022-02-02;bib;kib;dib
+2021-01-01;sis;vis;kis
+2002-03-03;akv;vas;sgf
+2021-05-05;bib;dib;kib

@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Races {
 
-    final Map<Calendar, Map<String, Integer>> races;
+    final Map<String, List<ParticipationInCompetition>> races;
 
     public Races() {
 
@@ -14,75 +14,52 @@ public class Races {
 
     public String mostSuccessful() {
 
-        Map<String, Integer> horse = new HashMap<>();
+        Map<String, Integer> horses = new HashMap<>();
 
-        for (Map.Entry<Calendar, Map<String, Integer>> entry : races.entrySet()) {
+        for (Map.Entry<String, List<ParticipationInCompetition>> horse : races.entrySet()) {
 
-            for (Map.Entry<String, Integer> race : entry.getValue().entrySet()) {
+            for (ParticipationInCompetition participationInCompetition : horse.getValue()) {
 
-                if (horse.containsKey(race.getKey())) {
+                if (horses.containsKey(horse.getKey())) {
 
-                    switch (race.getValue()) {
-                        case 1 -> horse.put(race.getKey(), horse.get(race.getKey()) + 3);
-                        case 2 -> horse.put(race.getKey(), horse.get(race.getKey()) + 2);
-                        case 3 -> horse.put(race.getKey(), horse.get(race.getKey()) + 1);
-                    }
+                    horses.put(horse.getKey(), horses.get(horse.getKey()) + participationInCompetition.getPoints());
 
                 } else {
 
-
-                    switch (race.getValue()) {
-                        case 1 -> horse.put(race.getKey(), 3);
-                        case 2 -> horse.put(race.getKey(), 2);
-                        case 3 -> horse.put(race.getKey(), 1);
-                    }
+                    horses.put(horse.getKey(), participationInCompetition.getPoints());
 
                 }
-
             }
 
         }
 
-        List<Map.Entry<String, Integer>> valuesList = new ArrayList<>(horse.entrySet());
-        Collections.sort(valuesList, new Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                return o2.getValue().compareTo(o1.getValue());
-            }
-        });
+        List<Map.Entry<String, Integer>> valuesList = new ArrayList<>(horses.entrySet());
+        valuesList.sort((o1, o2) -> o2.getValue().compareTo(o1.getValue()));
         return valuesList.get(0).getKey();
 
     }
 
     public String mostActive() {
 
-        Map<String, Integer> horse = new HashMap<>();
 
-        for (Map.Entry<Calendar, Map<String, Integer>> entry : races.entrySet()) {
+        Map<String, Integer> horses = new HashMap<>();
 
-            for (Map.Entry<String, Integer> race : entry.getValue().entrySet()) {
+        for (Map.Entry<String, List<ParticipationInCompetition>> horse : races.entrySet()) {
 
-                if (horse.containsKey(race.getKey())) {
+            if (horses.containsKey(horse.getKey())) {
 
-                    horse.put(race.getKey(), horse.get(race.getKey()) + 1);
+                horses.put(horse.getKey(), horses.get(horse.getKey()) + horse.getValue().size());
 
-                } else {
+            } else {
 
-                    horse.put(race.getKey(), 1);
-
-                }
+                horses.put(horse.getKey(), horse.getValue().size());
 
             }
 
         }
 
-        List<Map.Entry<String, Integer>> valuesList = new ArrayList(horse.entrySet());
-        Collections.sort(valuesList, new Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                return o2.getValue().compareTo(o1.getValue());
-            }
-        });
+        List<Map.Entry<String, Integer>> valuesList = new ArrayList<>(horses.entrySet());
+        valuesList.sort((o1, o2) -> o2.getValue().compareTo(o1.getValue()));
         return valuesList.get(0).getKey();
 
     }
@@ -90,44 +67,45 @@ public class Races {
     public void add(String line) {
 
         String[] elem = line.split(";");
-        String[] date = elem[0].split(" ");
-        add(Integer.parseInt(date[0].trim()), Integer.parseInt(date[1].trim()),
-                Integer.parseInt(date[2].trim()), elem[1], elem[2], elem[3]);
+        add(elem[0], elem[1], elem[2], elem[3]);
 
     }
 
-    public void add(int year, int month, int day, String firstHorse, String SecondHorse, String ThirdHorse) {
+    public void add(String date, String firstHorse, String secondHorse, String thirdHorse) {
 
-        Calendar calendar = new GregorianCalendar(year, month, day);
-        Map<String, Integer> hashMap = new HashMap<>();
-        hashMap.put(firstHorse, 1);
-        hashMap.put(SecondHorse, 2);
-        hashMap.put(ThirdHorse, 3);
+        add(firstHorse, date, 1);
+        add(secondHorse, date, 2);
+        add(thirdHorse, date, 3);
 
-        races.put(calendar, hashMap);
 
     }
 
-    public List<String> statisticHorse(String horse) {
+    public void add(String horse, String date, int place) {
 
-        List<String> result = new ArrayList<>();
+        if (races.containsKey(horse)) {
 
-        for (Map.Entry<Calendar, Map<String, Integer>> entry : races.entrySet()) {
+            races.get(horse).add(new ParticipationInCompetition(date, place));
 
-            for (Map.Entry<String, Integer> race : entry.getValue().entrySet()) {
+        } else {
 
-                if (race.getKey().equals(horse)) {
-
-                    result.add("\nДата забега " + entry.getKey().get(Calendar.YEAR) + " " + entry.getKey().get(Calendar.MONTH) + " "
-                            + entry.getKey().get(Calendar.DAY_OF_MONTH) + " Занятое место " + race.getValue());
-
-                }
-
-            }
+            races.put(horse, new ArrayList<>(Collections.singletonList(new ParticipationInCompetition(date, place))));
 
         }
 
-        return result;
+    }
+
+    public String statisticHorse(String horseName) {
+
+        StringBuilder result = new StringBuilder();
+
+
+        for (ParticipationInCompetition participationInCompetition : races.get(horseName)) {
+
+            result.append(participationInCompetition.getStatistic());
+
+        }
+
+        return result.toString();
 
     }
 }
