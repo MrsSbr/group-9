@@ -33,6 +33,8 @@ public abstract class LogStatistic {
             resourceStatistic.put(resource, resourceCodeStatistic);
         } catch (PatternSyntaxException e) {
             logger.log(Level.SEVERE, "String is does not match the regular expression", e);
+        } catch (NumberFormatException e) {
+            logger.log(Level.SEVERE, "Error code is not number format");
         }
     }
 
@@ -60,7 +62,6 @@ public abstract class LogStatistic {
             int value = countOfCodes.get(index) + code.getValue();
             countOfCodes.add(index, value);
         }
-
     }
 
     public static String getStatisticByEveryCode() {
@@ -197,7 +198,7 @@ public abstract class LogStatistic {
 
     private static List<Integer> getListWithNulls() {
         List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < LogStatistic.COUNT_OF_CODES; i++) {
+        for (int i = 0; i < COUNT_OF_CODES; i++) {
             list.add(0);
         }
 
