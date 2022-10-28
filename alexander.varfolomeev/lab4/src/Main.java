@@ -26,7 +26,7 @@ public class Main {
                 LogStatistic.addLog(str);
             }
         } catch (IOException e) {
-            logger.log(Level.INFO, e.toString());
+            logger.log(Level.SEVERE, "Read file error" , e);
         }
 
         logger.log(Level.INFO, "File successfully read");
@@ -46,7 +46,7 @@ public class Main {
             int choice = Helper.getIntInDiapason(0, 6);
             switch (choice) {
                 case 0 -> isEnd = true;
-                case 1 -> System.out.println(LogStatistic.getStatisticByCodes());
+                case 1 -> System.out.println(LogStatistic.getStatisticByGeneralCodes());
                 case 2 -> System.out.println(LogStatistic.getStatisticByEveryCode());
                 case 3 -> System.out.println(LogStatistic.getStatisticByAllResources());
                 case 4 -> {
@@ -59,6 +59,6 @@ public class Main {
             }
         }
 
-        logger.log(Level.INFO, "End of program");
+        logger.log(Level.OFF, "End of program");
     }
 }
