@@ -22,8 +22,10 @@ public abstract class LogStatistic {
 
             if (resourceStatistic.containsKey(resource)) {
                 resourceCodeStatistic = resourceStatistic.get(resource);
+
                 resourceCodeStatistic.put(code,
-                        resourceCodeStatistic.containsKey(code) ? resourceCodeStatistic.get(code) + 1
+                        resourceCodeStatistic.containsKey(code)
+                                ? resourceCodeStatistic.get(code) + 1
                                 : 1);
             } else {
                 resourceCodeStatistic = new TreeMap<>();
@@ -42,8 +44,8 @@ public abstract class LogStatistic {
         logger.log(Level.INFO, "getStatisticByCodes start");
         List<Integer> countOfGeneralCodes = getListWithNulls();
 
-        for (Map.Entry<String, SortedMap<Integer, Integer>> log : resourceStatistic.entrySet()) {
-            calculateGeneralCodesInResource(log, countOfGeneralCodes);
+        for (Map.Entry<String, SortedMap<Integer, Integer>> resource : resourceStatistic.entrySet()) {
+            calculateGeneralCodesInResource(resource, countOfGeneralCodes);
         }
 
         logger.log(Level.INFO, "getStatisticByCodes end");
@@ -68,14 +70,14 @@ public abstract class LogStatistic {
         logger.log(Level.INFO, "getStatisticByEveryCode start");
         SortedMap<Integer, Integer> countOfEveryCode = new TreeMap<>();
 
-        for (Map.Entry<String, SortedMap<Integer, Integer>> log : resourceStatistic.entrySet()) {
-            calculateEveryCodeInResource(log, countOfEveryCode);
+        for (Map.Entry<String, SortedMap<Integer, Integer>> resource : resourceStatistic.entrySet()) {
+            calculateEveryCodeInResource(resource, countOfEveryCode);
         }
 
         StringBuilder result = new StringBuilder();
 
-        for (Map.Entry<Integer, Integer> log : countOfEveryCode.entrySet()) {
-            result.append(log.getKey()).append(" : ").append(log.getValue()).append("\n");
+        for (Map.Entry<Integer, Integer> code : countOfEveryCode.entrySet()) {
+            result.append(code.getKey()).append(" : ").append(code.getValue()).append("\n");
         }
 
         logger.log(Level.INFO, "getStatisticByEveryCode end");
@@ -85,9 +87,12 @@ public abstract class LogStatistic {
     private static void calculateEveryCodeInResource(Map.Entry<String, SortedMap<Integer, Integer>> resource, SortedMap<Integer, Integer> codesCount) {
 
         for (Map.Entry<Integer, Integer> code : resource.getValue().entrySet()) {
-            codesCount.put(code.getKey(),
-                    codesCount.containsKey(code.getKey()) ? codesCount.get(code.getKey()) + code.getValue()
-                            : code.getValue());
+            int key = code.getKey();
+            int value = code.getValue();
+
+            codesCount.put(key, codesCount.containsKey(key)
+                            ? codesCount.get(key) +value
+                            : value);
         }
 
     }
@@ -98,14 +103,14 @@ public abstract class LogStatistic {
         StringBuilder result = new StringBuilder();
         getCountOfGeneralCodesInResources();
 
-        for (Map.Entry<String, List<Integer>> log : countOfGeneralCodesInResources.entrySet()) {
+        for (Map.Entry<String, List<Integer>> resource : countOfGeneralCodesInResources.entrySet()) {
             result
-                    .append(log.getKey()).append(":\n")
-                    .append("1xx : ").append(log.getValue().get(0))
-                    .append("\n2xx : ").append(log.getValue().get(1))
-                    .append("\n3xx : ").append(log.getValue().get(2))
-                    .append("\n4xx : ").append(log.getValue().get(3))
-                    .append("\n5xx : ").append(log.getValue().get(4))
+                    .append(resource.getKey()).append(":\n")
+                    .append("1xx : ").append(resource.getValue().get(0))
+                    .append("\n2xx : ").append(resource.getValue().get(1))
+                    .append("\n3xx : ").append(resource.getValue().get(2))
+                    .append("\n4xx : ").append(resource.getValue().get(3))
+                    .append("\n5xx : ").append(resource.getValue().get(4))
                     .append("\n");
         }
 
@@ -141,15 +146,15 @@ public abstract class LogStatistic {
 
         String result = "";
         double maxPercent = 0;
-        for (Map.Entry<String, List<Integer>> log : countOfGeneralCodesInResources.entrySet()) {
-            List<Integer> countOfGeneralCodes = log.getValue();
+        for (Map.Entry<String, List<Integer>> resource : countOfGeneralCodesInResources.entrySet()) {
+            List<Integer> countOfGeneralCodes = resource.getValue();
 
             double sum = sumOfList(countOfGeneralCodes);
 
             double percent = (double) countOfGeneralCodes.get(0) / sum;
             if (percent > maxPercent) {
                 maxPercent = percent;
-                result = log.getKey();
+                result = resource.getKey();
             }
         }
 
@@ -165,15 +170,15 @@ public abstract class LogStatistic {
         String result = "None";
         double maxPercent = 0;
 
-        for (Map.Entry<String, List<Integer>> log : countOfGeneralCodesInResources.entrySet()) {
-            List<Integer> countOfGeneralCodes = log.getValue();
+        for (Map.Entry<String, List<Integer>> resource : countOfGeneralCodesInResources.entrySet()) {
+            List<Integer> countOfGeneralCodes = resource.getValue();
             double sum = sumOfList(countOfGeneralCodes);
 
             double percent = (sum - countOfGeneralCodes.get(4) - countOfGeneralCodes.get(3)) / sum;
 
             if (percent > maxPercent) {
                 maxPercent = percent;
-                result = log.getKey();
+                result = resource.getKey();
             }
         }
 
@@ -185,12 +190,12 @@ public abstract class LogStatistic {
         logger.log(Level.INFO, "getResourceCountCodes start");
         countOfGeneralCodesInResources.clear();
 
-        for (Map.Entry<String, SortedMap<Integer, Integer>> resourceInfoByEveryCode : resourceStatistic.entrySet()) {
+        for (Map.Entry<String, SortedMap<Integer, Integer>> resource : resourceStatistic.entrySet()) {
             List<Integer> countOfGeneralCodes = getListWithNulls();
 
-            calculateGeneralCodesInResource(resourceInfoByEveryCode, countOfGeneralCodes);
+            calculateGeneralCodesInResource(resource, countOfGeneralCodes);
 
-            countOfGeneralCodesInResources.put(resourceInfoByEveryCode.getKey(), countOfGeneralCodes);
+            countOfGeneralCodesInResources.put(resource.getKey(), countOfGeneralCodes);
         }
         logger.log(Level.INFO, "getResourceCountCodes end");
     }

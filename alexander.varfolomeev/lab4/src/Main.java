@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,8 +20,7 @@ public class Main {
         try {
             logger.log(Level.INFO, "Start read log.");
             File file = new File(pathToLogFile);
-            List<String> lines = Files.readAllLines(Paths.get(file.getAbsolutePath()), StandardCharsets.UTF_8);
-            for (String str : lines) {
+            for (String str :  Files.readAllLines(Paths.get(file.getAbsolutePath()), StandardCharsets.UTF_8)) {
                 LogStatistic.addLog(str);
             }
         } catch (IOException e) {
