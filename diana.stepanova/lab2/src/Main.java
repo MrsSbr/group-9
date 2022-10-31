@@ -1,54 +1,60 @@
-import models.Anthill;
-import java.util.Scanner;
+import models.AntIsABullet;
+import models.Ants;
+import models.GiantAntTurtle;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
         System.out.println("Муравьи в муравейнике");
-        Anthill anthill = new Anthill();
-        int choice = -1;
-        while (choice != 0) {
-            System.out.println("Меню:\n" +
-                    "1. Добавить гигантского муравья-черепаху\n" +
-                    "2. Добавить муравья пулю\n" +
-                    "3. Показать всех муравьев\n" +
-                    "4. Показать место обитание муравья\n" +
-                    "5. Собрать еду\n" +
-                    "6. Удалить муравья\n" +
-                    "0. Выход\n");
-            choice = in.nextInt();
-            if (choice < 0 || choice > 6) {
-                throw new IllegalArgumentException("Неверное число");
+        Ants giantAntTurtle = new GiantAntTurtle(3, "желтый", "рабочий", 5, "Америка");
+        Ants giantAntTurtle2 = new GiantAntTurtle(3, "черный", "самка", 7, "Америка");
+        Ants antsABullet = new AntIsABullet(5, "красный", "рабочий", "Америка", false);
+        Ants antsABullet2 = new AntIsABullet(4, "черный", "рабочий", "Россия", true);
+
+        List<Ants> ants = new ArrayList<>();
+        ants.add(giantAntTurtle);
+        ants.add(giantAntTurtle2);
+        ants.add(antsABullet);
+        ants.add(antsABullet2);
+        int position = 1;
+        for (Ants ant : ants) {
+
+            System.out.println(position + ". " + ant.toString());
+            if (ant instanceof GiantAntTurtle) {
+                System.out.println("; Имеет " + ((GiantAntTurtle) ant).getSpikes() + " шипов ");
+            } else if (ant instanceof AntIsABullet) {
+                System.out.println("; Наличие яда->" + ((AntIsABullet) ant).getPresenceOfPoison());
             }
-            switch (choice) {
-                case 1:
-                    anthill.addGiantAnt();
-                    break;
-
-                case 2:
-                    anthill.addAntABullet();
-                    break;
-                case 3:
-                    anthill.printAnts();
-                    break;
-                case 4:
-                    anthill.liveConsole();
-                    break;
-                case 5:
-                    anthill.collectFoodConsole();
-                    break;
-                case 6:
-                    anthill.deleteAnts();
-                    break;
-                case 0:
-                    break;
-
-
-            }
+            System.out.println();
+            ant.live();
+            System.out.println();
+            ant.collectFood();
+            System.out.println();
+            position++;
         }
+        System.out.println();
+        GiantAntTurtle ant = new GiantAntTurtle(3, "черный", "рабочий", 5, "Америка");
+        System.out.println(ant + "; Имеет " + ant.getSpikes() + " шипов ");
+        System.out.println("Сравнение 2 объектов: " + giantAntTurtle.equals(ant));
+        System.out.println("Hash ant: " + ant.hashCode());
+
+
     }
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
