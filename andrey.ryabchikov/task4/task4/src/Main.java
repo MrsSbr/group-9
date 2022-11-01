@@ -10,17 +10,20 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Main {
+
+    private static final Logger logger = Logger.getLogger(Main.class.getName());
+
     public static void main(String[] args) {
 
-        Logger log = Logger.getLogger(Main.class.getName());
-        log.info("Начало работы");
+        logger.log(Level.INFO, "Начало работы");
         Scanner scan = new Scanner(System.in);
         int choise = -1;
         String input = "";
         Races races = new Races();
-        readFile(races,log);
+        readFile(races);
 
         while (!"0".equals(input)) {
+
             System.out.println("1. Узнать статистику лошади");
             System.out.println("2. Найти самую успешную лошадь");
             System.out.println("3. Найти самую активную лошадь");
@@ -31,7 +34,7 @@ public class Main {
                 choise = Integer.parseInt(input);
             } catch (NumberFormatException e) {
                 System.out.println("Неверный ввод");
-                log.log(Level.WARNING, "Неверный ввод " + Arrays.toString(e.getStackTrace()));
+                logger.log(Level.WARNING, "Неверный ввод " + Arrays.toString(e.getStackTrace()));
             }
 
             switch (choise) {
@@ -42,7 +45,8 @@ public class Main {
             }
 
         }
-        log.info("Конец работы");
+
+        logger.log(Level.OFF, "Конец работы");
         System.out.println("Конец работы...");
 
     }
@@ -58,7 +62,7 @@ public class Main {
     }
 
 
-    public static void readFile(Races races,Logger log) {
+    public static void readFile(Races races) {
 
         try {
 
@@ -73,7 +77,7 @@ public class Main {
 
             }
         } catch (IOException e) {
-            log.log(Level.WARNING, "Ошибка работы с файлом " + Arrays.toString(e.getStackTrace()));
+            logger.log(Level.SEVERE, "Ошибка работы с файлом ", e);
         }
 
     }
