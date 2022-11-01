@@ -1,12 +1,11 @@
 import Classes.*;
-import Interfaces.Factory;
+import Factory.Factory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import Enum.FigureType;
-import Classes.*;
 import Classes.PlaneFigure;
 
 public class Main {
@@ -42,19 +41,23 @@ public class Main {
     }
 
     public static PlaneFigure createFigure(int choice) throws Exception {
-        Factory factory;
+        PlaneFigure factory;
         switch (choice) {
             case 1:
                 factory = Factory.createFigureType(FigureType.TRIANGLE);
                 break;
+
             case 2:
                 factory = Factory.createFigureType(FigureType.CIRCLE);
                 break;
+
             default:
                 throw new ClassNotFoundException();
 
         }
-        return factory.createFigure();
+        ;
+        return factory;
+
 
     }
 

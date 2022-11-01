@@ -1,11 +1,9 @@
 package Classes;
 
-import Classes.PlaneFigure;
-import Interfaces.GeometricFigures;
 
 import java.util.Objects;
 
-public class Circle extends PlaneFigure implements GeometricFigures {
+public class Circle extends PlaneFigure {
     private double radius;
 
     public Circle(String name, double perimeter, double radius) {

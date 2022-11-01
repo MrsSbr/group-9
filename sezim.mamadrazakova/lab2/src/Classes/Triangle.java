@@ -1,11 +1,9 @@
 package Classes;
 
-import Classes.PlaneFigure;
-import Interfaces.GeometricFigures;
 
 import java.util.Objects;
 
-public class Triangle extends PlaneFigure implements GeometricFigures {
+public class Triangle extends PlaneFigure {
     private String type;
 
     public Triangle(String name, double perimeter, String type) {

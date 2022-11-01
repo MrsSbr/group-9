@@ -14,10 +14,13 @@ public abstract class PlaneFigure implements GeometricFigures {
         this.name = name;
     }
 
+
+    @Override
     public double getPerimeter() {
         return perimeter;
     }
 
+    @Override
     public String getName() {
         return name;
     }
