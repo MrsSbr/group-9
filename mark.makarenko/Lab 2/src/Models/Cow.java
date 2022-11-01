@@ -7,7 +7,7 @@ public class Cow extends Animal {
     int milkGallons;
 
     public Cow(String name, int age, int milkGallons) {
-        super(age, name);
+        super(age,  name);
         this.milkGallons = milkGallons;
     }
 

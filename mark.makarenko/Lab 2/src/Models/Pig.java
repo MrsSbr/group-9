@@ -6,7 +6,7 @@ public class Pig extends Animal{
     int truffleEatten;
 
     public Pig(String name,  int age, int truffleEatten) {
-        super(age, name);
+        super(age,  name);
         this.truffleEatten = truffleEatten;
     }
 
