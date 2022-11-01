@@ -13,7 +13,7 @@ public class Main {
     public void main(String[] args) {
         List<Animal> Animals = new ArrayList();
         createRecordsOfAnimals(Animals);
-        int size =  Animals.size();
+        int size = Animals.size();
         printRecords(Animals,size);
     }
 

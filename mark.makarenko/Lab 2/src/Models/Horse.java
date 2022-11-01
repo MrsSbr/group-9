@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Horse extends Animal {
     int horsePower;
-    public Horse( String name,  int age,  int horsePower){
+    public Horse( String name,  int age, int horsePower){
         super(age, name);
         this.horsePower = horsePower;
     }
