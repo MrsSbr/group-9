@@ -1,6 +1,6 @@
 package Interface;
 public interface Farmable {
-    String getName();
+    String getName ();
     int getAge ();
     }
 

@@ -17,7 +17,7 @@ public class Solution {
             System.out.println("[3] Pig");
             System.out.println("[0] End");
             Scanner in = new Scanner(System.in);
-            int choice = in.nextInt();
+            int choice =  in.nextInt();
             switch (choice) {
                 case 1 -> {
                     Animals.add(cowAdd());

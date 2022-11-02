@@ -10,7 +10,7 @@ public class Cow extends Animal {
 
     public Cow(String name, int age, int milkGallons) {
         super(age, name);
-        this.milkGallons = milkGallons;
+        this.milkGallons =  milkGallons;
     }
 
     @Override

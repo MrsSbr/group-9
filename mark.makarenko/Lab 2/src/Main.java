@@ -19,7 +19,7 @@ public class Main {
         List<Animal> Animals = new ArrayList();
         Solution solution = new Solution();
         solution.createRecordsOfAnimals(Animals);
-        int size = Animals.size();
+        int size =  Animals.size();
         solution.printRecords(Animals, size);
     }
 }

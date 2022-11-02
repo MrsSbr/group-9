@@ -9,7 +9,7 @@ public class Horse extends Animal {
 
     public Horse(String name, int age, int horsePower) {
         super(age, name);
-        this.horsePower = horsePower;
+        this.horsePower =  horsePower;
     }
 
 
