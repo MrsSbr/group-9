@@ -16,7 +16,7 @@ public class Main {
     static void menu() throws Exception {
 
         System.out.println("Запуск умного дома");
-        int choice;
+        int choiceRoom;
         do {
             System.out.println("\nВыберите комнату-------------------------------------");
             System.out.println("[1] Прихожая");
@@ -25,9 +25,9 @@ public class Main {
             System.out.println("[0] Завершить работу умного дома – выключить все устройства");
             System.out.print("-> ");
 
-            choice = HelpChecks.SpellCheck(0, 3);
+            choiceRoom = HelpChecks.SpellCheck(0, 3);
 
-            switch (choice) {
+            switch (choiceRoom) {
 //                case 1 -> { // Прихожая
 //                    List<SmartObject> smartDevices = new ArrayList<>();
 //                    Rooms room = Rooms.HALL;
@@ -47,8 +47,7 @@ public class Main {
                 case 1 -> { // Прихожая
                     Rooms room = Rooms.HALL;
                     List<SmartObject> smartDevices = new ArrayList<>();
-
-                    int ch1 = -1;
+                    int choiceInsideRoom = -1;
                     do {
                         System.out.println("\nВыберите устройство-------------------------------------");
                         System.out.println("\n[1] Светодиодная лента");
@@ -57,17 +56,17 @@ public class Main {
                         System.out.println("[4] Info");
                         System.out.println("[0] Exit (вернуться к комнатам)");
                         System.out.print("-> ");
-                        if (ch1 == -1) {
+                        if (choiceInsideRoom == -1) {
                             System.out.println("Начало работы. Вам нужно создать устройства");
-                            ch1 = HelpChecks.SpellCheck(0, 4);
-                            switch (ch1) {
+                            choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
+                            switch (choiceInsideRoom) {
                                 case 1, 2 -> smartDevices.add(smartHomeDevices(1, room));
                                 case 3 -> smartDevices.add(smartHomeDevices(2, room));
                                 case 4 -> showInfo(smartDevices);
                             }
                         } else {
-                            ch1 = HelpChecks.SpellCheck(0, 4);
-                            if  (ch1 == 4 ){
+                            choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
+                            if  (choiceInsideRoom == 4 ){
                                 showInfo(smartDevices);
                             } else {
                                 int ch2;
@@ -77,7 +76,7 @@ public class Main {
                                 ch2 = HelpChecks.SpellCheck(1, 2);
                                 switch (ch2) {
                                     case 1 -> {
-                                        switch (ch1) {
+                                        switch (choiceInsideRoom) {
                                             case 1,2 -> smartDevices.add(smartHomeDevices(1, room));
                                             case 3 -> smartDevices.add(smartHomeDevices(2, room));
                                         }
@@ -86,13 +85,13 @@ public class Main {
                                 }
                             }
                         }
-                    } while (ch1 != 0);
+                    } while (choiceInsideRoom != 0);
                 }
                 case 2 -> { // Кухня
                     Rooms room = Rooms.KITCHEN;
                     List<SmartObject> smartDevices = new ArrayList<>();
 
-                    int ch1 = -1;
+                    int choiceInsideRoom = -1;
                     do {
                         System.out.println("\nВыберите устройство-------------------------------------");
                         System.out.println("\n[1] Подсветка над столом");
@@ -101,16 +100,16 @@ public class Main {
                         System.out.println("[4] Info");
                         System.out.println("[0] Exit (вернуться к комнатам)");
                         System.out.print("-> ");
-                        if (ch1 == -1) {
+                        if (choiceInsideRoom == -1) {
                             System.out.println("Начало работы. Вам нужно создать устройства");
-                            ch1 = HelpChecks.SpellCheck(0, 4);
-                            switch (ch1) {
+                            choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
+                            switch (choiceInsideRoom) {
                                 case 1, 2 -> smartDevices.add(smartHomeDevices(1, room));
                                 case 3 -> smartDevices.add(smartHomeDevices(2, room));
                                 case 4 -> showInfo(smartDevices);
                             }
                         } else {
-                            ch1 = HelpChecks.SpellCheck(0, 4);
+                            choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
                             int ch2;
                             System.out.println("\n[1] Создать новое устройство");
                             System.out.println("[2] Переключить");
@@ -118,7 +117,7 @@ public class Main {
                             ch2 = HelpChecks.SpellCheck(1, 2);
                             switch (ch2) {
                                 case 1 -> {
-                                    switch (ch1) {
+                                    switch (choiceInsideRoom) {
                                         case 1,2 -> smartDevices.add(smartHomeDevices(1, room));
                                         case 3 -> smartDevices.add(smartHomeDevices(2, room));
                                         case 4 -> showInfo(smartDevices);
@@ -127,13 +126,13 @@ public class Main {
                                 case 2 -> switcher(smartDevices);
                             }
                         }
-                    } while (ch1 != 0);
+                    } while (choiceInsideRoom != 0);
                 }
                 case 3 -> { // Спальня
-                        Rooms room = Rooms.BEDROOM;
+                    Rooms room = Rooms.BEDROOM;
                     List<SmartObject> smartDevices = new ArrayList<>();
 
-                    int ch1 = -1;
+                    int choiceInsideRoom = -1;
                     do {
                         System.out.println("\nВыберите устройство-------------------------------------");
                         System.out.println("\n[1] Бра");
@@ -142,16 +141,16 @@ public class Main {
                         System.out.println("[4] Info");
                         System.out.println("[0] Exit (вернуться к комнатам)");
                         System.out.print("-> ");
-                        if (ch1 == -1) {
+                        if (choiceInsideRoom == -1) {
                             System.out.println("Начало работы. Вам нужно создать устройства");
-                            ch1 = HelpChecks.SpellCheck(0, 4);
-                            switch (ch1) {
+                            choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
+                            switch (choiceInsideRoom) {
                                 case 1, 2 -> smartDevices.add(smartHomeDevices(1, room));
                                 case 3 -> smartDevices.add(smartHomeDevices(2, room));
                                 case 4 -> showInfo(smartDevices);
                             }
                         } else {
-                            ch1 = HelpChecks.SpellCheck(0, 4);
+                            choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
                             int ch2;
                             System.out.println("\n[1] Создать новое устройство");
                             System.out.println("[2] Переключить");
@@ -159,7 +158,7 @@ public class Main {
                             ch2 = HelpChecks.SpellCheck(1, 2);
                             switch (ch2) {
                                 case 1 -> {
-                                    switch (ch1) {
+                                    switch (choiceInsideRoom) {
                                         case 1,2 -> smartDevices.add(smartHomeDevices(1, room));
                                         case 3 -> smartDevices.add(smartHomeDevices(2, room));
                                         case 4 -> showInfo(smartDevices);
@@ -168,24 +167,24 @@ public class Main {
                                 case 2 -> switcher(smartDevices);
                             }
                         }
-                    } while (ch1 != 0);
+                    } while (choiceInsideRoom != 0);
                     }
-            default -> choice = 0;
+            default -> choiceRoom = 0;
             }
-        }while (choice != 0) ;
+        }while (choiceRoom != 0) ;
     }
-    private static int menuInsideRoom(Rooms room, int ch1, List <SmartObject> smartDevices) throws Exception {
-        if (ch1 == -1) {
+    private static int menuInsideRoom(Rooms room, int choiceInsideRoom, List <SmartObject> smartDevices) throws Exception {
+        if (choiceInsideRoom == -1) {
             System.out.println("Начало работы. Вам нужно создать устройства");
-            ch1 = HelpChecks.SpellCheck(0, 4);
-            switch (ch1) {
+            choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
+            switch (choiceInsideRoom) {
                 case 1, 2 -> smartDevices.add(smartHomeDevices(1, room));
                 case 3 -> smartDevices.add(smartHomeDevices(2, room));
                 case 4 -> showInfo(smartDevices);
             }
         } else {
-            ch1 = HelpChecks.SpellCheck(0, 4);
-            if  (ch1 == 4 ){
+            choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
+            if  (choiceInsideRoom == 4 ){
                 showInfo(smartDevices);
             } else {
                 int ch2;
@@ -195,7 +194,7 @@ public class Main {
                 ch2 = HelpChecks.SpellCheck(1, 2);
                 switch (ch2) {
                     case 1 -> {
-                        switch (ch1) {
+                        switch (choiceInsideRoom) {
                             case 1,2 -> smartDevices.add(smartHomeDevices(1, room));
                             case 3 -> smartDevices.add(smartHomeDevices(2, room));
                         }
@@ -204,9 +203,9 @@ public class Main {
                 }
             }
         }
-        return ch1;
+        return choiceInsideRoom;
     }
-    private static void showInfo (List < SmartObject > smartDevices) {
+    private static void showInfo (List<SmartObject> smartDevices) {
         System.out.println("\nИнформация о включенных устройствах");
         int count = 0;
         for (int i = 0; i < smartDevices.size(); i++) {
