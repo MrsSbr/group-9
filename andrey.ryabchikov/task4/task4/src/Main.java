@@ -64,18 +64,19 @@ public class Main {
 
     public static void readFile(Races races) {
 
-        try {
+        File file = new File("src/horse/horse.txt");
 
-            File file = new File("src/horse/horse.txt");
-            FileReader fr = new FileReader(file);
-            BufferedReader reader = new BufferedReader(fr);
+        try (FileReader fr = new FileReader(file); BufferedReader reader = new BufferedReader(fr)) {
+
             String line = reader.readLine();
+
             while (line != null) {
 
                 races.add(line);
                 line = reader.readLine();
 
             }
+
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Ошибка работы с файлом ", e);
         }
