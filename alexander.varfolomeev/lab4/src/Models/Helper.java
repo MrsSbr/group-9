@@ -1,5 +1,9 @@
+package Models;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -76,5 +80,22 @@ public abstract class Helper {
                 logger.log(Level.SEVERE, "Inputed number < 0", e);
             }
         }
+    }
+
+    public static List<Integer> InitListWithNulls(int size) {
+        List<Integer> list = new ArrayList<>(size);
+        for (int i = 0; i < size; i++) {
+            list.add(0);
+        }
+
+        return list;
+    }
+
+    public static int sumOfList(List<Integer> list) {
+        int sum = 0;
+        for (int i : list) {
+            sum += i;
+        }
+        return sum;
     }
 }

@@ -1,3 +1,4 @@
+import Models.Helper;
 import Models.LogStatistic;
 
 import java.io.File;
@@ -20,13 +21,12 @@ public class Main {
         try {
             logger.log(Level.INFO, "Start read log.");
             File file = new File(pathToLogFile);
-            for (String str :  Files.readAllLines(Paths.get(file.getAbsolutePath()), StandardCharsets.UTF_8)) {
+            for (String str : Files.readAllLines(Paths.get(file.getAbsolutePath()), StandardCharsets.UTF_8)) {
                 LogStatistic.addLog(str);
             }
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Read file error" , e);
+            logger.log(Level.SEVERE, "Read file error", e);
         }
-
         logger.log(Level.INFO, "File successfully read");
         boolean isEnd = false;
 
