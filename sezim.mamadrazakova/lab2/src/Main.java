@@ -75,13 +75,13 @@ public class Main {
                 isExit = true;
             } else {
                 fig = figures.get(choice - 1);
-                if (fig instanceof Triangle) {
-                    Triangle fig1 = (Triangle) fig;
-                    System.out.println("Треугольник: " + fig1.getName() + " количество углов: " + fig1.countOfAngles() + " периметр:" + fig1.getPerimeter() + " тип: " + fig1.getType());
+                if (fig instanceof Triangle fig1) {
+                    System.out.println("Треугольник: " + fig1.getName() + " количество углов: " + fig1.countOfAngles()
+                            + " периметр:" + fig1.getPerimeter() + " тип: " + fig1.getType());
 
-                } else if (fig instanceof Circle) {
-                    Circle fig2 = (Circle) fig;
-                    System.out.println("Окружность: " + fig2.getName() + " Количество углов:" + fig2.countOfAngles() + " периметр " + fig2.getPerimeter() + " радиус:" + fig2.getRadius());
+                } else if (fig instanceof Circle fig2) {
+                    System.out.println("Окружность: " + fig2.getName() + " Количество углов:" + fig2.countOfAngles()
+                            + " периметр " + fig2.getPerimeter() + " радиус:" + fig2.getRadius());
                 }
             }
         }

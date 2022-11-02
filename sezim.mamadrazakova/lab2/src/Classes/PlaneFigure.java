@@ -37,8 +37,12 @@ public abstract class PlaneFigure implements GeometricFigures {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         PlaneFigure that = (PlaneFigure) o;
         return Double.compare(that.perimeter, perimeter) == 0 && Objects.equals(name, that.name);
     }

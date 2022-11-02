@@ -28,9 +28,15 @@ public class Circle extends PlaneFigure {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        if (!super.equals(o)) {
+            return false;
+        }
         Circle circle = (Circle) o;
         return Double.compare(circle.radius, radius) == 0;
     }
