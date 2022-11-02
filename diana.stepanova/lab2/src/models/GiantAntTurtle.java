@@ -66,7 +66,6 @@ public class GiantAntTurtle extends Ants {
 
     }
 
-
 }
 
 
