@@ -1,4 +1,5 @@
 package Model.SmartHome;
+
 import Enum.*;
 import Interface.SmartHome;
 import Model.SmartObject.Lightning;
@@ -19,11 +20,11 @@ public class SmartHomeLightning implements SmartHome {
         // System.out.print("Введите местоположение умного устройства:");
         input.nextLine();
         System.out.print("Введите краткое описание устройства:    ");
-        String  objectDescription = input.nextLine();
+        String objectDescription = input.nextLine();
         System.out.print("Введите цвет освещения:   ");
-        String  color = input.nextLine();
+        String color = input.nextLine();
         System.out.print("Введите яркость освещения (от 1 до 10):    ");
-        int  dim = HelpChecks.SpellCheck(1, 10);
+        int dim = HelpChecks.SpellCheck(1, 10);
         return new Lightning(idSmartObject, isActive, pos, objectDescription, color, dim);
     }
 }

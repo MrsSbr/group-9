@@ -1,11 +1,15 @@
 import Model.SmartObject.Heater;
 import Model.SmartObject.Lightning;
 import Model.SmartObject.SmartObject;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import Enum.*;
 import Model.*;
+
 import java.util.Scanner;
+
 import static Interface.SmartHome.smartHomeDevices;
 
 public class Main {
@@ -13,6 +17,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         menu();
     }
+
     static void menu() throws Exception {
 
         System.out.println("Запуск умного дома");
@@ -66,7 +71,7 @@ public class Main {
                             }
                         } else {
                             choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
-                            if  (choiceInsideRoom == 4 ){
+                            if (choiceInsideRoom == 4) {
                                 showInfo(smartDevices);
                             } else {
                                 int ch2;
@@ -77,7 +82,7 @@ public class Main {
                                 switch (ch2) {
                                     case 1 -> {
                                         switch (choiceInsideRoom) {
-                                            case 1,2 -> smartDevices.add(smartHomeDevices(1, room));
+                                            case 1, 2 -> smartDevices.add(smartHomeDevices(1, room));
                                             case 3 -> smartDevices.add(smartHomeDevices(2, room));
                                         }
                                     }
@@ -118,7 +123,7 @@ public class Main {
                             switch (ch2) {
                                 case 1 -> {
                                     switch (choiceInsideRoom) {
-                                        case 1,2 -> smartDevices.add(smartHomeDevices(1, room));
+                                        case 1, 2 -> smartDevices.add(smartHomeDevices(1, room));
                                         case 3 -> smartDevices.add(smartHomeDevices(2, room));
                                         case 4 -> showInfo(smartDevices);
                                     }
@@ -159,7 +164,7 @@ public class Main {
                             switch (ch2) {
                                 case 1 -> {
                                     switch (choiceInsideRoom) {
-                                        case 1,2 -> smartDevices.add(smartHomeDevices(1, room));
+                                        case 1, 2 -> smartDevices.add(smartHomeDevices(1, room));
                                         case 3 -> smartDevices.add(smartHomeDevices(2, room));
                                         case 4 -> showInfo(smartDevices);
                                     }
@@ -168,12 +173,13 @@ public class Main {
                             }
                         }
                     } while (choiceInsideRoom != 0);
-                    }
-            default -> choiceRoom = 0;
+                }
+                default -> choiceRoom = 0;
             }
-        }while (choiceRoom != 0) ;
+        } while (choiceRoom != 0);
     }
-    private static int menuInsideRoom(Rooms room, int choiceInsideRoom, List <SmartObject> smartDevices) throws Exception {
+
+    private static int menuInsideRoom(Rooms room, int choiceInsideRoom, List<SmartObject> smartDevices) throws Exception {
         if (choiceInsideRoom == -1) {
             System.out.println("Начало работы. Вам нужно создать устройства");
             choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
@@ -184,7 +190,7 @@ public class Main {
             }
         } else {
             choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
-            if  (choiceInsideRoom == 4 ){
+            if (choiceInsideRoom == 4) {
                 showInfo(smartDevices);
             } else {
                 int ch2;
@@ -195,7 +201,7 @@ public class Main {
                 switch (ch2) {
                     case 1 -> {
                         switch (choiceInsideRoom) {
-                            case 1,2 -> smartDevices.add(smartHomeDevices(1, room));
+                            case 1, 2 -> smartDevices.add(smartHomeDevices(1, room));
                             case 3 -> smartDevices.add(smartHomeDevices(2, room));
                         }
                     }
@@ -205,7 +211,8 @@ public class Main {
         }
         return choiceInsideRoom;
     }
-    private static void showInfo (List<SmartObject> smartDevices) {
+
+    private static void showInfo(List<SmartObject> smartDevices) {
         System.out.println("\nИнформация о включенных устройствах");
         int count = 0;
         for (int i = 0; i < smartDevices.size(); i++) {
@@ -224,7 +231,8 @@ public class Main {
             }
         }
     }
-    private static void switcher (List < SmartObject > smartDevices) {
+
+    private static void switcher(List<SmartObject> smartDevices) {
         Scanner in = new Scanner(System.in);
         int choice;
         do {
@@ -234,7 +242,7 @@ public class Main {
                 System.out.println((i + 1) + "  -  " + smartDevices.get(i).GetID() + ' ' + smartDevices.get(i).GetObjectDescription());
             }
             choice = in.nextInt();
-            if (choice > 0){
+            if (choice > 0) {
                 SmartObject selectedDevice = smartDevices.get(choice - 1);
                 if (selectedDevice instanceof Lightning light) {
                     light.Switch();

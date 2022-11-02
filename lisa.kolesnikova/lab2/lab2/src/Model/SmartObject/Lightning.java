@@ -1,5 +1,7 @@
 package Model.SmartObject;
+
 import Enum.*;
+
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -7,70 +9,77 @@ public class Lightning extends SmartObject {
     protected String color;
     protected int brightness;
 
-    void setColor(String col){
+    void setColor(String col) {
         color = col;
     }
-    void setBrightness(int b){
+
+    void setBrightness(int b) {
         brightness = b;
     }
+
     public Lightning(int idSmartObject, boolean isActive, Rooms position, String objectDescription, String color, int dim) {
         super(idSmartObject, isActive, position, objectDescription);
         this.color = color;
         this.brightness = dim;
     }
+
     @Override
-    public void StartWorking(){
+    public void StartWorking() {
         Scanner input = new Scanner(System.in);
         isActive = true;
         System.out.println("Введите цвет освещения:");
-        String  col = input.nextLine();
+        String col = input.nextLine();
         setColor(col);
         System.out.println("Введите яркость освещения: от 1 до 10");
-        int  dim = input.nextInt();
+        int dim = input.nextInt();
         setBrightness(dim);
     }
+
     @Override
-    public void EndWorking(){
+    public void EndWorking() {
         isActive = false;
     }
 
     @Override
-    public void Switch(){
+    public void Switch() {
         isActive = !isActive;
     }
 
     // добавить все геттеры
     @Override
-    public String GetStatus(){
+    public String GetStatus() {
         if (isActive) {
             return ("Сейчас включен");
-        }
-        else {
+        } else {
             return ("Сейчас выключен");
         }
     }
+
     @Override
-    public boolean GetIsActive(){
+    public boolean GetIsActive() {
         return isActive;
     }
+
     @Override
-    public int GetID(){ //provides the object’s identifier
+    public int GetID() { //provides the object’s identifier
         return idSmartObject;
     }
 
     @Override
-    public String GetPosition(){ //returns its location
+    public String GetPosition() { //returns its location
         return String.valueOf(position);
     }
+
     @Override
-    public String GetObjectDescription(){
+    public String GetObjectDescription() {
         return objectDescription;
     }
 
-    public String GetColor(){
+    public String GetColor() {
         return color;
     }
-    public int GetDim(){
+
+    public int GetDim() {
         return brightness;
     }
 

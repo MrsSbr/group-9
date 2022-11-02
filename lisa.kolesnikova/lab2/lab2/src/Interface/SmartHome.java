@@ -11,13 +11,14 @@ public interface SmartHome {
 
     static SmartHome createSmartObjectType(Type type) throws Exception {
         return switch (type) {
-            case LIGHT-> new SmartHomeLightning();
+            case LIGHT -> new SmartHomeLightning();
             case HEAT -> new SmartHomeHeater();
             // ...
             default -> throw new ClassNotFoundException("Класс переданного типа не существует.");
         };
     }
-//    public static SmartObject smartHomeDevices(int n, Rooms room) throws Exception {
+
+    //    public static SmartObject smartHomeDevices(int n, Rooms room) throws Exception {
 //        SmartHome smartHome = switch (n) {
 //            case 1 -> SmartHome.createSmartObjectType(Type.LIGHT);
 //            case 2 -> SmartHome.createSmartObjectType(Type.HEAT);
@@ -25,7 +26,7 @@ public interface SmartHome {
 //        };
 //        return smartHome.createSmartObject(room);
 //    }
-        public static SmartObject smartHomeDevices(int n, Rooms room) throws Exception {
+    public static SmartObject smartHomeDevices(int n, Rooms room) throws Exception {
         SmartHome smartHome = switch (n) {
             case 1 -> SmartHome.createSmartObjectType(Type.LIGHT);
             case 2 -> SmartHome.createSmartObjectType(Type.HEAT);

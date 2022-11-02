@@ -1,6 +1,9 @@
 package Model.SmartObject;
+
 import Interface.ElectronicDevice;
+
 import java.util.Objects;
+
 import Enum.*;
 
 public abstract class SmartObject implements ElectronicDevice {
@@ -17,26 +20,30 @@ public abstract class SmartObject implements ElectronicDevice {
     }
 
     @Override
-    public void StartWorking(){
+    public void StartWorking() {
         isActive = true;
     }
+
     @Override
-    public void EndWorking(){
+    public void EndWorking() {
         isActive = false;
     }
 
-    public int GetID(){ //provides the object’s identifier
+    public int GetID() { //provides the object’s identifier
         return idSmartObject;
     }
-    public boolean GetIsActive(){
+
+    public boolean GetIsActive() {
         return isActive;
     }
+
     @Override
-    public String GetPosition(){ //returns its location
+    public String GetPosition() { //returns its location
         return String.valueOf(position);
     }
+
     @Override
-    public String GetObjectDescription(){
+    public String GetObjectDescription() {
         return objectDescription;
     }
 

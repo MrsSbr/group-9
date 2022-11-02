@@ -1,6 +1,8 @@
 package Model.SmartObject;
+
 import java.util.Objects;
 import java.util.Scanner;
+
 import Enum.*;
 
 public class Heater extends SmartObject {
@@ -11,56 +13,61 @@ public class Heater extends SmartObject {
         super(idSmartObject, isActive, position, objectDescription);
         this.temperature = temperature;
     }
-    public void setTemperature(double temp){
+
+    public void setTemperature(double temp) {
         temperature = temp;
     }
+
     @Override
-    public void StartWorking(){
+    public void StartWorking() {
         Scanner input = new Scanner(System.in);
         isActive = true;
         System.out.println("Введите температуру для нагрева помещения:");
         double temp = input.nextDouble();
         setTemperature(temp);
     }
+
     @Override
-    public void EndWorking(){
+    public void EndWorking() {
         isActive = false;
     }
 
     @Override
-    public void Switch(){
+    public void Switch() {
         isActive = !isActive;
     }
 
     // добавить все геттеры
     @Override
-    public String GetStatus(){
+    public String GetStatus() {
         if (isActive) {
             return ("Сейчас включен");
-        }
-        else {
+        } else {
             return ("Сейчас выключен");
         }
     }
+
     @Override
-    public boolean GetIsActive(){
+    public boolean GetIsActive() {
         return isActive;
     }
 
     @Override
-    public int GetID(){ //provides the object’s identifier
+    public int GetID() { //provides the object’s identifier
         return idSmartObject;
     }
+
     @Override
-    public String GetPosition(){ //returns its location
+    public String GetPosition() { //returns its location
         return String.valueOf(position);
     }
 
     @Override
-    public String GetObjectDescription(){
+    public String GetObjectDescription() {
         return objectDescription;
     }
-    public double GetTemperature(){
+
+    public double GetTemperature() {
         return temperature;
     }
 

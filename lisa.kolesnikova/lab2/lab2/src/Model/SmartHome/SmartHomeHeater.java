@@ -1,4 +1,5 @@
 package Model.SmartHome;
+
 import Enum.*;
 import Interface.SmartHome;
 import Model.SmartObject.Heater;
@@ -18,9 +19,9 @@ public class SmartHomeHeater implements SmartHome {
 //        System.out.println("Введите местоположение умного устройства:");
         input.nextLine();
         System.out.println("Введите краткое описание устройства:    ");
-        String  objectDescription = input.nextLine();
+        String objectDescription = input.nextLine();
         System.out.println("Введите температуру для нагрева помещения:  ");
-        double  temperature = input.nextDouble();
+        double temperature = input.nextDouble();
         return new Heater(idSmartObject, isActive, pos, objectDescription, temperature);
     }
 }
