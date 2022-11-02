@@ -1,5 +1,7 @@
 package Models;
+
 import AnimalConstruction.Animal;
+
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -11,7 +13,20 @@ public class Cow extends Animal {
         this.milkGallons = milkGallons;
     }
 
+    @Override
+    public String getName() {
+        return name;
+    }
 
+    @Override
+    public int getAge() {
+        return age;
+    }
+
+    @Override
+    public void voice() {
+        System.out.println("cow makes moise");
+    }
 
 
     @Override
@@ -40,13 +55,5 @@ public class Cow extends Animal {
         return Objects.hash(super.hashCode(), milkGallons);
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
 
-    @Override
-    public int getAge() {
-        return age;
-    }
 }

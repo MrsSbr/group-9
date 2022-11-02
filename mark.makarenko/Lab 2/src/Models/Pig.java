@@ -1,21 +1,28 @@
 package Models;
+
 import AnimalConstruction.Animal;
+
 import java.util.Objects;
 
-public class Pig extends Animal{
+public class Pig extends Animal {
     int truffleEatten;
 
-    public Pig(String name,  int age, int truffleEatten) {
+    public Pig(String name, int age, int truffleEatten) {
         super(age, name);
         this.truffleEatten = truffleEatten;
     }
 
+    @Override
+    public void voice() {
+        System.out.println("pig makes moise");
+    }
 
 
     @Override
     public String toString() {
         return super.toString() + "\npig's strength - " + truffleEatten + "tf";
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
