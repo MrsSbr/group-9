@@ -1,4 +1,4 @@
-package Model.SmartObject;
+package Models.SmartObject;
 
 import Enum.*;
 
@@ -24,7 +24,7 @@ public class Lightning extends SmartObject {
     }
 
     @Override
-    public void StartWorking() {
+    public void startWorking() {
         Scanner input = new Scanner(System.in);
         isActive = true;
         System.out.println("Введите цвет освещения:");
@@ -36,18 +36,18 @@ public class Lightning extends SmartObject {
     }
 
     @Override
-    public void EndWorking() {
+    public void endWorking() {
         isActive = false;
     }
 
     @Override
-    public void Switch() {
+    public void switcher() {
         isActive = !isActive;
     }
 
     // добавить все геттеры
     @Override
-    public String GetStatus() {
+    public String getStatus() {
         if (isActive) {
             return ("Сейчас включен");
         } else {
@@ -56,30 +56,30 @@ public class Lightning extends SmartObject {
     }
 
     @Override
-    public boolean GetIsActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 
     @Override
-    public int GetID() { //provides the object’s identifier
+    public int getID() { //provides the object’s identifier
         return idSmartObject;
     }
 
     @Override
-    public String GetPosition() { //returns its location
+    public String getPosition() { //returns its location
         return String.valueOf(position);
     }
 
     @Override
-    public String GetObjectDescription() {
+    public String getObjectDescription() {
         return objectDescription;
     }
 
-    public String GetColor() {
+    public String getColor() {
         return color;
     }
 
-    public int GetDim() {
+    public int getDim() {
         return brightness;
     }
 

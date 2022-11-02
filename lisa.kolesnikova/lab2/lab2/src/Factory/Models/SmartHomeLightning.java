@@ -1,10 +1,10 @@
-package Model.SmartHome;
+package Factory.Models;
 
 import Enum.*;
-import Interface.SmartHome;
-import Model.SmartObject.Lightning;
-import Model.SmartObject.SmartObject;
-import Model.HelpChecks;
+import Factory.Interfaces.SmartHome;
+import Models.SmartObject.Lightning;
+import Models.SmartObject.SmartObject;
+import Models.HelpChecks;
 
 import java.util.Scanner;
 
@@ -24,7 +24,7 @@ public class SmartHomeLightning implements SmartHome {
         System.out.print("Введите цвет освещения:   ");
         String color = input.nextLine();
         System.out.print("Введите яркость освещения (от 1 до 10):    ");
-        int dim = HelpChecks.SpellCheck(1, 10);
+        int dim = HelpChecks.spellCheck(1, 10);
         return new Lightning(idSmartObject, isActive, pos, objectDescription, color, dim);
     }
 }

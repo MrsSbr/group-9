@@ -1,6 +1,6 @@
-package Model.SmartObject;
+package Models.SmartObject;
 
-import Interface.ElectronicDevice;
+import Interfaces.ElectronicDevice;
 
 import java.util.Objects;
 
@@ -20,30 +20,30 @@ public abstract class SmartObject implements ElectronicDevice {
     }
 
     @Override
-    public void StartWorking() {
+    public void startWorking() {
         isActive = true;
     }
 
     @Override
-    public void EndWorking() {
+    public void endWorking() {
         isActive = false;
     }
 
-    public int GetID() { //provides the object’s identifier
+    public int getID() { //provides the object’s identifier
         return idSmartObject;
     }
 
-    public boolean GetIsActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 
     @Override
-    public String GetPosition() { //returns its location
+    public String getPosition() { //returns its location
         return String.valueOf(position);
     }
 
     @Override
-    public String GetObjectDescription() {
+    public String getObjectDescription() {
         return objectDescription;
     }
 

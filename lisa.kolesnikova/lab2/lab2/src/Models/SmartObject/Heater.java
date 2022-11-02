@@ -1,4 +1,4 @@
-package Model.SmartObject;
+package Models.SmartObject;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -19,7 +19,7 @@ public class Heater extends SmartObject {
     }
 
     @Override
-    public void StartWorking() {
+    public void startWorking() {
         Scanner input = new Scanner(System.in);
         isActive = true;
         System.out.println("Введите температуру для нагрева помещения:");
@@ -28,18 +28,18 @@ public class Heater extends SmartObject {
     }
 
     @Override
-    public void EndWorking() {
+    public void endWorking() {
         isActive = false;
     }
 
     @Override
-    public void Switch() {
+    public void switcher() {
         isActive = !isActive;
     }
 
     // добавить все геттеры
     @Override
-    public String GetStatus() {
+    public String getStatus() {
         if (isActive) {
             return ("Сейчас включен");
         } else {
@@ -48,26 +48,26 @@ public class Heater extends SmartObject {
     }
 
     @Override
-    public boolean GetIsActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 
     @Override
-    public int GetID() { //provides the object’s identifier
+    public int getID() { //provides the object’s identifier
         return idSmartObject;
     }
 
     @Override
-    public String GetPosition() { //returns its location
+    public String getPosition() { //returns its location
         return String.valueOf(position);
     }
 
     @Override
-    public String GetObjectDescription() {
+    public String getObjectDescription() {
         return objectDescription;
     }
 
-    public double GetTemperature() {
+    public double getTemperature() {
         return temperature;
     }
 

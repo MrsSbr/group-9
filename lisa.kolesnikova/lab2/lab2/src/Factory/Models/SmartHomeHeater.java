@@ -1,9 +1,9 @@
-package Model.SmartHome;
+package Factory.Models;
 
 import Enum.*;
-import Interface.SmartHome;
-import Model.SmartObject.Heater;
-import Model.SmartObject.SmartObject;
+import Factory.Interfaces.SmartHome;
+import Models.SmartObject.Heater;
+import Models.SmartObject.SmartObject;
 
 import java.util.Scanner;
 

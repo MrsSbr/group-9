@@ -1,16 +1,16 @@
-import Model.SmartObject.Heater;
-import Model.SmartObject.Lightning;
-import Model.SmartObject.SmartObject;
+import Models.SmartObject.Heater;
+import Models.SmartObject.Lightning;
+import Models.SmartObject.SmartObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import Enum.*;
-import Model.*;
+import Models.*;
 
 import java.util.Scanner;
 
-import static Interface.SmartHome.smartHomeDevices;
+import static Factory.Interfaces.SmartHome.smartHomeDevices;
 
 public class Main {
 
@@ -27,10 +27,10 @@ public class Main {
             System.out.println("[1] Прихожая");
             System.out.println("[2] Кухня");
             System.out.println("[3] Спальня");
-            System.out.println("[0] Завершить работу умного дома – выключить все устройства");
+            System.out.println("[0] Завершить работу умного дома");
             System.out.print("-> ");
 
-            choiceRoom = HelpChecks.SpellCheck(0, 3);
+            choiceRoom = HelpChecks.spellCheck(0, 3);
 
             switch (choiceRoom) {
 //                case 1 -> { // Прихожая
@@ -63,14 +63,14 @@ public class Main {
                         System.out.print("-> ");
                         if (choiceInsideRoom == -1) {
                             System.out.println("Начало работы. Вам нужно создать устройства");
-                            choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
+                            choiceInsideRoom = HelpChecks.spellCheck(0, 4);
                             switch (choiceInsideRoom) {
                                 case 1, 2 -> smartDevices.add(smartHomeDevices(1, room));
                                 case 3 -> smartDevices.add(smartHomeDevices(2, room));
                                 case 4 -> showInfo(smartDevices);
                             }
                         } else {
-                            choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
+                            choiceInsideRoom = HelpChecks.spellCheck(0, 4);
                             if (choiceInsideRoom == 4) {
                                 showInfo(smartDevices);
                             } else {
@@ -78,7 +78,7 @@ public class Main {
                                 System.out.println("\n[1] Создать новое устройство");
                                 System.out.println("[2] Переключить");
                                 System.out.print("-> ");
-                                ch2 = HelpChecks.SpellCheck(1, 2);
+                                ch2 = HelpChecks.spellCheck(1, 2);
                                 switch (ch2) {
                                     case 1 -> {
                                         switch (choiceInsideRoom) {
@@ -107,19 +107,19 @@ public class Main {
                         System.out.print("-> ");
                         if (choiceInsideRoom == -1) {
                             System.out.println("Начало работы. Вам нужно создать устройства");
-                            choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
+                            choiceInsideRoom = HelpChecks.spellCheck(0, 4);
                             switch (choiceInsideRoom) {
                                 case 1, 2 -> smartDevices.add(smartHomeDevices(1, room));
                                 case 3 -> smartDevices.add(smartHomeDevices(2, room));
                                 case 4 -> showInfo(smartDevices);
                             }
                         } else {
-                            choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
+                            choiceInsideRoom = HelpChecks.spellCheck(0, 4);
                             int ch2;
                             System.out.println("\n[1] Создать новое устройство");
                             System.out.println("[2] Переключить");
                             System.out.print("-> ");
-                            ch2 = HelpChecks.SpellCheck(1, 2);
+                            ch2 = HelpChecks.spellCheck(1, 2);
                             switch (ch2) {
                                 case 1 -> {
                                     switch (choiceInsideRoom) {
@@ -148,19 +148,19 @@ public class Main {
                         System.out.print("-> ");
                         if (choiceInsideRoom == -1) {
                             System.out.println("Начало работы. Вам нужно создать устройства");
-                            choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
+                            choiceInsideRoom = HelpChecks.spellCheck(0, 4);
                             switch (choiceInsideRoom) {
                                 case 1, 2 -> smartDevices.add(smartHomeDevices(1, room));
                                 case 3 -> smartDevices.add(smartHomeDevices(2, room));
                                 case 4 -> showInfo(smartDevices);
                             }
                         } else {
-                            choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
+                            choiceInsideRoom = HelpChecks.spellCheck(0, 4);
                             int ch2;
                             System.out.println("\n[1] Создать новое устройство");
                             System.out.println("[2] Переключить");
                             System.out.print("-> ");
-                            ch2 = HelpChecks.SpellCheck(1, 2);
+                            ch2 = HelpChecks.spellCheck(1, 2);
                             switch (ch2) {
                                 case 1 -> {
                                     switch (choiceInsideRoom) {
@@ -182,14 +182,14 @@ public class Main {
     private static int menuInsideRoom(Rooms room, int choiceInsideRoom, List<SmartObject> smartDevices) throws Exception {
         if (choiceInsideRoom == -1) {
             System.out.println("Начало работы. Вам нужно создать устройства");
-            choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
+            choiceInsideRoom = HelpChecks.spellCheck(0, 4);
             switch (choiceInsideRoom) {
                 case 1, 2 -> smartDevices.add(smartHomeDevices(1, room));
                 case 3 -> smartDevices.add(smartHomeDevices(2, room));
                 case 4 -> showInfo(smartDevices);
             }
         } else {
-            choiceInsideRoom = HelpChecks.SpellCheck(0, 4);
+            choiceInsideRoom = HelpChecks.spellCheck(0, 4);
             if (choiceInsideRoom == 4) {
                 showInfo(smartDevices);
             } else {
@@ -197,7 +197,7 @@ public class Main {
                 System.out.println("\n[1] Создать новое устройство");
                 System.out.println("[2] Переключить");
                 System.out.print("-> ");
-                ch2 = HelpChecks.SpellCheck(1, 2);
+                ch2 = HelpChecks.spellCheck(1, 2);
                 switch (ch2) {
                     case 1 -> {
                         switch (choiceInsideRoom) {
@@ -216,7 +216,7 @@ public class Main {
         System.out.println("\nИнформация о включенных устройствах");
         int count = 0;
         for (int i = 0; i < smartDevices.size(); i++) {
-            if (smartDevices.get(i).GetIsActive()) {
+            if (smartDevices.get(i).getIsActive()) {
                 System.out.println(i + 1 + ".   " + smartDevices.get(i).toString());
                 count++;
             }
@@ -225,7 +225,7 @@ public class Main {
             System.out.println("Нет включенных устройств");
             System.out.println("Выключенные устройства: ");
             for (int i = 0; i < smartDevices.size(); i++) {
-                if (!smartDevices.get(i).GetIsActive()) {
+                if (!smartDevices.get(i).getIsActive()) {
                     System.out.println(i + 1 + ".   " + smartDevices.get(i).toString());
                 }
             }
@@ -239,15 +239,15 @@ public class Main {
             System.out.println("Выберите объект:\n" +
                     "[0] Exit");
             for (int i = 0; i < smartDevices.size(); i++) {
-                System.out.println((i + 1) + "  -  " + smartDevices.get(i).GetID() + ' ' + smartDevices.get(i).GetObjectDescription());
+                System.out.println((i + 1) + "  -  " + smartDevices.get(i).getID() + ' ' + smartDevices.get(i).getObjectDescription());
             }
             choice = in.nextInt();
             if (choice > 0) {
                 SmartObject selectedDevice = smartDevices.get(choice - 1);
                 if (selectedDevice instanceof Lightning light) {
-                    light.Switch();
+                    light.switcher();
                 } else if (selectedDevice instanceof Heater heat) {
-                    heat.Switch();
+                    heat.switcher();
                 }
             }
         } while (choice != 0 && smartDevices.size() > 1);

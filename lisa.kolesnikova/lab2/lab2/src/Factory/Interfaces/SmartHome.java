@@ -1,8 +1,8 @@
-package Interface;
+package Factory.Interfaces;
 
-import Model.SmartHome.SmartHomeHeater;
-import Model.SmartHome.SmartHomeLightning;
-import Model.SmartObject.SmartObject;
+import Factory.Models.SmartHomeHeater;
+import Factory.Models.SmartHomeLightning;
+import Models.SmartObject.SmartObject;
 import Enum.*;
 
 
@@ -17,16 +17,7 @@ public interface SmartHome {
             default -> throw new ClassNotFoundException("Класс переданного типа не существует.");
         };
     }
-
-    //    public static SmartObject smartHomeDevices(int n, Rooms room) throws Exception {
-//        SmartHome smartHome = switch (n) {
-//            case 1 -> SmartHome.createSmartObjectType(Type.LIGHT);
-//            case 2 -> SmartHome.createSmartObjectType(Type.HEAT);
-//            default -> throw new ClassNotFoundException();
-//        };
-//        return smartHome.createSmartObject(room);
-//    }
-    public static SmartObject smartHomeDevices(int n, Rooms room) throws Exception {
+    static SmartObject smartHomeDevices(int n, Rooms room) throws Exception {
         SmartHome smartHome = switch (n) {
             case 1 -> SmartHome.createSmartObjectType(Type.LIGHT);
             case 2 -> SmartHome.createSmartObjectType(Type.HEAT);

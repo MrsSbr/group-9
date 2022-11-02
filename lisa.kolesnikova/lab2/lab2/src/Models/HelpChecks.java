@@ -1,9 +1,9 @@
-package Model;
+package Models;
 
 import java.util.Scanner;
 
 public class HelpChecks {
-    public static int SpellCheck(int left, int right) {
+    public static int spellCheck(int left, int right) {
         Scanner in = new Scanner(System.in);
         int res = in.nextInt();
         while (!(res >= left && res <= right)) {
