@@ -1,9 +1,9 @@
 import Enum.VehicleType;
-import Factory.Interface.VehicleFactory;
+import Factory.VehicleFactory;
 import Models.Bus;
 import Models.PassengerCar;
 import Models.SportCar;
-import Models.Vehicle;
+import Models.TransportVehicle;
 import Service.HelpFunctions;
 
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws Exception {
         boolean isExit = false;
-        List<Vehicle> vehicles = new ArrayList<>();
+        List<TransportVehicle> vehicles = new ArrayList<>();
 
         while (!isExit) {
             System.out.println("Which class do you want to add?\n" +
@@ -24,22 +24,18 @@ public class Main {
 
             int choice = HelpFunctions.getIntInRange(0, 4);
 
-            if (choice == 0) {
-                isExit = true;
-            } else if (choice == 4) {
-                if (vehicles.size() != 0) {
-                    workWithVehicleList(vehicles);
-                } else {
-                    System.out.println("The list of objects is empty! First you need to add objects");
-                }
-            } else {
-                vehicles.add(createVehicle(choice));
+            switch (choice) {
+                case 0 -> isExit = true;
+                case 1 -> vehicles.add(VehicleFactory.createVehicleFactoryByType(VehicleType.BUS));
+                case 2 -> vehicles.add(VehicleFactory.createVehicleFactoryByType(VehicleType.PASSENGERCAR));
+                case 3 -> vehicles.add(VehicleFactory.createVehicleFactoryByType(VehicleType.SPORTCAR));
+                case 4 -> workWithVehicleList(vehicles);
             }
         }
     }
 
 
-    public static void workWithVehicleList(List<Vehicle> vehicles) {
+    public static void workWithVehicleList(List<TransportVehicle> vehicles) {
         boolean isExit = false;
         while (!isExit) {
             System.out.println("Choose object:\n[0] Exit.");
@@ -49,7 +45,7 @@ public class Main {
             }
 
             int choice = HelpFunctions.getIntInRange(0, vehicles.size());
-            Vehicle selectedVehicle;
+            TransportVehicle selectedVehicle;
 
             if (choice == 0) {
                 isExit = true;
@@ -65,15 +61,4 @@ public class Main {
             }
         }
     }
-
-    public static Vehicle createVehicle(int type) throws Exception {
-        VehicleFactory factory = switch (type) {
-            case 1 -> VehicleFactory.createVehicleFactoryByType(VehicleType.BUS);
-            case 2 -> VehicleFactory.createVehicleFactoryByType(VehicleType.PASSENGERCAR);
-            case 3 -> VehicleFactory.createVehicleFactoryByType(VehicleType.SPORTCAR);
-            default -> throw new ClassNotFoundException();
-        };
-        return factory.createVehicle();
-    }
-
 }

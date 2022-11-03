@@ -9,8 +9,8 @@ public abstract class HelpFunctions {
         while (true) {
             try {
                 return Integer.parseInt(input.next());
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (NumberFormatException exception) {
+                exception.printStackTrace();
                 System.out.println("Некорректный ввод. Повторите!");
             }
         }

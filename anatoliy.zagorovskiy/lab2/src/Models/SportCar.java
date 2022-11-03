@@ -2,7 +2,7 @@ package Models;
 
 import java.util.Objects;
 
-public class SportCar extends Vehicle implements Interfaces.SportCar {
+public class SportCar extends TransportVehicle implements Interfaces.SportCar {
     private final int maxSpeed;
 
     public SportCar(String model, int power, int maxSpeed) {
@@ -32,9 +32,15 @@ public class SportCar extends Vehicle implements Interfaces.SportCar {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        if (!super.equals(o)) {
+            return false;
+        }
         SportCar sportCar = (SportCar) o;
         return maxSpeed == sportCar.maxSpeed;
     }

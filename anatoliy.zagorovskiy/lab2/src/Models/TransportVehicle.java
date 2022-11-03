@@ -2,11 +2,11 @@ package Models;
 
 import java.util.Objects;
 
-public abstract class Vehicle implements Interfaces.Vehicle {
+public abstract class TransportVehicle implements Interfaces.Vehicle {
     private final String model;
     private final int power;
 
-    public Vehicle(String model, int power) {
+    public TransportVehicle(String model, int power) {
         this.model = model;
         this.power = power;
     }
@@ -26,9 +26,13 @@ public abstract class Vehicle implements Interfaces.Vehicle {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Vehicle vehicle = (Vehicle) o;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        TransportVehicle vehicle = (TransportVehicle) o;
         return power == vehicle.power && Objects.equals(model, vehicle.model);
     }
 

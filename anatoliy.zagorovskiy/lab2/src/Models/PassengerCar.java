@@ -4,7 +4,7 @@ import Interfaces.PassengerСar;
 
 import java.util.Objects;
 
-public class PassengerCar extends Vehicle implements PassengerСar {
+public class PassengerCar extends TransportVehicle implements PassengerСar {
 
     private int countOfPassengers;
 
@@ -26,9 +26,15 @@ public class PassengerCar extends Vehicle implements PassengerСar {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        if (!super.equals(o)) {
+            return false;
+        }
         PassengerCar that = (PassengerCar) o;
         return countOfPassengers == that.countOfPassengers;
     }
