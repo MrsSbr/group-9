@@ -9,8 +9,8 @@ import Service.HelpFunctions;
 
 import java.util.Scanner;
 
-public interface VehicleFactory {
-    static TransportVehicle createVehicleFactoryByType(VehicleType type) throws Exception {
+public class VehicleFactory {
+    public static TransportVehicle createVehicleFactoryByType(VehicleType type) throws Exception {
         return switch (type) {
             case BUS -> createBus();
             case SPORTCAR -> createSportCar();
@@ -60,5 +60,4 @@ public interface VehicleFactory {
         return new SportCar(model, power, maxSpeed);
     }
 
-    TransportVehicle createVehicle();
 }
