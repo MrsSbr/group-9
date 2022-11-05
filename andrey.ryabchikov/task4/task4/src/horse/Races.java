@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Races {
 
-    final Map<String, List<ParticipationInCompetition>> races;
+    private final Map<String, List<ParticipationInCompetition>> races;
 
     public Races() {
 

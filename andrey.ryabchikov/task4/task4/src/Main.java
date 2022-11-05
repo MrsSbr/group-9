@@ -38,7 +38,7 @@ public class Main {
             }
 
             switch (choise) {
-                case 1 -> StaticHorse(races);
+                case 1 -> staticHorse(races);
                 case 2 -> System.out.println("Самая успешная лошадь " + races.mostSuccessful() + " при учете правила " +
                         "1 балл за 3 место, 2 балла за 2, 3 балла за первое");
                 case 3 -> System.out.println("Самая активная лошадь " + races.mostActive());
@@ -51,7 +51,7 @@ public class Main {
 
     }
 
-    public static void StaticHorse(Races races) {
+    public static void staticHorse(Races races) {
 
         Scanner scan = new Scanner(System.in);
         String input;
