@@ -5,6 +5,7 @@ import java.util.Random;
 public class Fluorogram {
     protected String name;
     protected boolean hasPathology;
+
     protected LocalDate date;
     public Fluorogram( String name,  boolean hasPathology, LocalDate date){
         this.name = name;
