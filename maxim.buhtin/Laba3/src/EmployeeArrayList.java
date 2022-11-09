@@ -25,7 +25,7 @@ public class EmployeeArrayList {
         long finish = System.nanoTime();
         long elapsed = finish - start;
 
-        System.out.println("Time ms generate list: " + elapsed);
+        System.out.println("Time ms generate  array list: " + elapsed);
 
     }
 

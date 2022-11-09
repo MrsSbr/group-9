@@ -25,7 +25,7 @@ public class EmployeeLinkedList {
         long finish = System.nanoTime();
         long elapsed = finish - start;
 
-        System.out.println("Time  generate list: " + elapsed);
+        System.out.println("Time  generate linked list: " + elapsed);
 
     }
 
@@ -73,7 +73,6 @@ public class EmployeeLinkedList {
     public void findPopularMarkWithAge(int minAge, int maxAge) {
 
         long start = System.nanoTime();
-        MarkAuto markAuto = MarkAuto.Audi;
         for (int i = 0; i < MarkAuto.values().length; i++) {
             for (Employee employee : employees) {
                 if (employee.getAge() > minAge && employee.getAge() > maxAge) {
