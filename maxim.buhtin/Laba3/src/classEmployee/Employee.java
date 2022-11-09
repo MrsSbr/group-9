@@ -1,3 +1,8 @@
+package classEmployee;
+
+import markAuto.MarkAuto;
+import validationData.checkInputData;
+
 import java.util.Objects;
 import java.util.Random;
 
@@ -5,7 +10,7 @@ public class Employee {
     private int age;
     private String mark;
 
-    public Employee(int age, MarkAuto markAuto) {
+    public Employee(MarkAuto markAuto) {
         this.age = checkInputData.checkAgeValues(18, 65);
         this.mark = markAuto.toStr();
     }

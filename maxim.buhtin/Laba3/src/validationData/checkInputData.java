@@ -1,4 +1,7 @@
+package validationData;
+
 import java.util.Scanner;
+import markAuto.MarkAuto;
 
 public class checkInputData {
 

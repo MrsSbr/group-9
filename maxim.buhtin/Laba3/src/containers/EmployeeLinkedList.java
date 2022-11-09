@@ -1,14 +1,19 @@
-import java.util.ArrayList;
+package containers;
+
+import classEmployee.Employee;
+import markAuto.MarkAuto;
+
+import java.util.LinkedList;
 import java.util.List;
 
-public class EmployeeArrayList {
+public class EmployeeLinkedList {
     private static final int SIZE = 1500;
 
     private final List<Employee> employees;
 
-    public EmployeeArrayList() {
+    public EmployeeLinkedList() {
 
-        this.employees = new ArrayList<>();
+        this.employees = new LinkedList<>();
 
     }
 
@@ -25,7 +30,7 @@ public class EmployeeArrayList {
         long finish = System.nanoTime();
         long elapsed = finish - start;
 
-        System.out.println("Time ms generate  array list: " + elapsed);
+        System.out.println("Time  generate linked list: " + elapsed);
 
     }
 
@@ -66,14 +71,13 @@ public class EmployeeArrayList {
         long finish = System.nanoTime();
         long elapsed = finish - start;
 
-        System.out.println("Time ms the most popular mark: " + elapsed);
+        System.out.println("Time the most popular mark: " + elapsed);
         System.out.println("Is the most popular mark: " + MarkAuto.getMark(indexMax));
     }
 
     public void findPopularMarkWithAge(int minAge, int maxAge) {
 
         long start = System.nanoTime();
-        MarkAuto markAuto = MarkAuto.Audi;
         for (int i = 0; i < MarkAuto.values().length; i++) {
             for (Employee employee : employees) {
                 if (employee.getAge() > minAge && employee.getAge() > maxAge) {
@@ -95,7 +99,7 @@ public class EmployeeArrayList {
         long finish = System.nanoTime();
         long elapsed = finish - start;
 
-        System.out.println("Time the most popular mark with age: " + elapsed);
+        System.out.println("Time ms find count: " + elapsed);
         System.out.println("Is the most popular mark with age: " + MarkAuto.getMark(indexMax));
     }
 

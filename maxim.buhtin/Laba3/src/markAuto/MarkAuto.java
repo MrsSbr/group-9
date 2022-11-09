@@ -1,3 +1,5 @@
+package markAuto;
+
 public enum MarkAuto {
     Audi, Bmw, Marcedes, Bentley, Lexus;
     public static final MarkAuto[] VALUES = values();

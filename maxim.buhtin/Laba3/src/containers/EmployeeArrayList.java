@@ -1,14 +1,19 @@
-import java.util.LinkedList;
+package containers;
+
+import classEmployee.Employee;
+import markAuto.MarkAuto;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeLinkedList {
+public class EmployeeArrayList {
     private static final int SIZE = 1500;
 
     private final List<Employee> employees;
 
-    public EmployeeLinkedList() {
+    public EmployeeArrayList() {
 
-        this.employees = new LinkedList<>();
+        this.employees = new ArrayList<>();
 
     }
 
@@ -25,7 +30,7 @@ public class EmployeeLinkedList {
         long finish = System.nanoTime();
         long elapsed = finish - start;
 
-        System.out.println("Time  generate linked list: " + elapsed);
+        System.out.println("Time ms generate  array list: " + elapsed);
 
     }
 
@@ -66,27 +71,28 @@ public class EmployeeLinkedList {
         long finish = System.nanoTime();
         long elapsed = finish - start;
 
-        System.out.println("Time the most popular mark: " + elapsed);
+        System.out.println("Time ms the most popular mark: " + elapsed);
         System.out.println("Is the most popular mark: " + MarkAuto.getMark(indexMax));
     }
 
     public void findPopularMarkWithAge(int minAge, int maxAge) {
 
         long start = System.nanoTime();
+        MarkAuto markAuto = MarkAuto.Audi;
         for (int i = 0; i < MarkAuto.values().length; i++) {
             for (Employee employee : employees) {
                 if (employee.getAge() > minAge && employee.getAge() > maxAge) {
-                    if (MarkAuto.getMark(i).toStr() == employee.getMark()) {
-                        MarkAuto.getMark(i).count++;
+                    if (markAuto.getMark(i).toStr() == employee.getMark()) {
+                        markAuto.getMark(i).count++;
                     }
                 }
             }
         }
-        int max = MarkAuto.getMark(0).count;
+        int max = markAuto.getMark(0).count;
         int indexMax = 0;
-        for (int i = 1; i < MarkAuto.values().length; i++) {
-            if (max < MarkAuto.getMark(i).count) {
-                max = MarkAuto.getMark(i).count;
+        for (int i = 1; i < markAuto.values().length; i++) {
+            if (max < markAuto.getMark(i).count) {
+                max = markAuto.getMark(i).count;
                 indexMax = i;
             }
         }
@@ -94,8 +100,8 @@ public class EmployeeLinkedList {
         long finish = System.nanoTime();
         long elapsed = finish - start;
 
-        System.out.println("Time ms find count: " + elapsed);
-        System.out.println("Is the most popular mark with age: " + MarkAuto.getMark(indexMax));
+        System.out.println("Time the most popular mark with age: " + elapsed);
+        System.out.println("Is the most popular mark with age: " + markAuto.getMark(indexMax));
     }
 
     public void getListUniqueMark() {
