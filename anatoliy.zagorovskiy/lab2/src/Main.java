@@ -1,10 +1,10 @@
-import Enum.VehicleType;
-import Factory.VehicleFactory;
-import Models.Bus;
-import Models.PassengerCar;
-import Models.SportCar;
-import Models.TransportVehicle;
-import Service.HelpFunctions;
+import enums.VehicleType;
+import factory.VehicleFactory;
+import models.Bus;
+import models.PassengerCar;
+import models.SportCar;
+import models.TransportVehicle;
+import service.HelpFunctions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +26,9 @@ public class Main {
 
             switch (choice) {
                 case 0 -> isExit = true;
-                case 1 -> vehicles.add(VehicleFactory.createVehicleFactoryByType(VehicleType.BUS));
-                case 2 -> vehicles.add(VehicleFactory.createVehicleFactoryByType(VehicleType.PASSENGERCAR));
-                case 3 -> vehicles.add(VehicleFactory.createVehicleFactoryByType(VehicleType.SPORTCAR));
+                case 1 -> vehicles.add(VehicleFactory.createVehicleByType(VehicleType.BUS));
+                case 2 -> vehicles.add(VehicleFactory.createVehicleByType(VehicleType.PASSENGERCAR));
+                case 3 -> vehicles.add(VehicleFactory.createVehicleByType(VehicleType.SPORTCAR));
                 case 4 -> workWithVehicleList(vehicles);
             }
         }

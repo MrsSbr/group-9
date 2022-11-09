@@ -1,8 +1,8 @@
-package Models;
+package models;
 
 import java.util.Objects;
 
-public class Bus extends TransportVehicle implements Interfaces.Bus {
+public class Bus extends TransportVehicle implements interfaces.Bus {
     private int countOfTrips;
 
     public Bus(String model, int power, int countOfTrips) {
@@ -18,6 +18,11 @@ public class Bus extends TransportVehicle implements Interfaces.Bus {
     public void makeTrip() {
         System.out.println("Trip is completed");
         countOfTrips++;
+    }
+
+    @Override
+    public void driveTo(String place) {
+        System.out.println("Bus is driving to " + place);
     }
 
     @Override
@@ -40,9 +45,6 @@ public class Bus extends TransportVehicle implements Interfaces.Bus {
         return Objects.hash(super.hashCode(), countOfTrips);
     }
 
-    @Override
-    public void driveTo(String place) {
-        System.out.println("Bus is driving to " + place);
-    }
+
 
 }

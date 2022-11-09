@@ -1,8 +1,8 @@
-package Factory.Models;
+package factory.Models;
 
-import Factory.Interfaces.DinosaurFactory;
-import Models.Dinosaur;
-import Models.Ichthyosauria;
+import factory.Interfaces.DinosaurFactory;
+import models.Dinosaur;
+import models.Ichthyosauria;
 import src.Helper;
 
 import java.util.Scanner;

@@ -1,9 +1,9 @@
-import Enum.DinosaurType;
-import Factory.Interfaces.DinosaurFactory;
-import Models.Dinosaur;
-import Models.Ichthyosauria;
-import Models.Pterosauria;
-import Models.Saurischia;
+import enums.DinosaurType;
+import factory.Interfaces.DinosaurFactory;
+import models.Dinosaur;
+import models.Ichthyosauria;
+import models.Pterosauria;
+import models.Saurischia;
 import src.Helper;
 
 import java.util.ArrayList;

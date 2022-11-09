@@ -1,8 +1,8 @@
-package Models;
+package models;
 
 import java.util.Objects;
 
-public abstract class TransportVehicle implements Interfaces.Vehicle {
+public abstract class TransportVehicle implements interfaces.Vehicle {
     private final String model;
     private final int power;
 

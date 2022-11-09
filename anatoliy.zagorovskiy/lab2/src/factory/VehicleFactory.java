@@ -1,16 +1,16 @@
-package Factory;
+package factory;
 
-import Enum.VehicleType;
-import Models.Bus;
-import Models.PassengerCar;
-import Models.SportCar;
-import Models.TransportVehicle;
-import Service.HelpFunctions;
+import enums.VehicleType;
+import models.Bus;
+import models.PassengerCar;
+import models.SportCar;
+import models.TransportVehicle;
+import service.HelpFunctions;
 
 import java.util.Scanner;
 
 public class VehicleFactory {
-    public static TransportVehicle createVehicleFactoryByType(VehicleType type) throws Exception {
+    public static TransportVehicle createVehicleByType(VehicleType type) throws Exception {
         return switch (type) {
             case BUS -> createBus();
             case SPORTCAR -> createSportCar();
@@ -32,6 +32,7 @@ public class VehicleFactory {
 
         return new Bus(model, power, countOfTrips);
     }
+
     public static TransportVehicle createPassangerCar() {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter the model of passenger car: ");

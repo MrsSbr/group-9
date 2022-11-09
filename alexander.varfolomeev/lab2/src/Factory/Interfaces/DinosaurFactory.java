@@ -1,10 +1,10 @@
-package Factory.Interfaces;
+package factory.Interfaces;
 
-import Enum.DinosaurType;
-import Factory.Models.IchthyosauriaFactory;
-import Factory.Models.PterosauriaFactory;
-import Factory.Models.SaurischiaFactory;
-import Models.Dinosaur;
+import enums.DinosaurType;
+import factory.Models.IchthyosauriaFactory;
+import factory.Models.PterosauriaFactory;
+import factory.Models.SaurischiaFactory;
+import models.Dinosaur;
 
 public interface DinosaurFactory {
     static DinosaurFactory createDinosaurFactoryByType(DinosaurType type) throws Exception {

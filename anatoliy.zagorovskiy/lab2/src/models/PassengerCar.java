@@ -1,12 +1,12 @@
-package Models;
+package models;
 
-import Interfaces.PassengerСar;
+import interfaces.PassengerСar;
 
 import java.util.Objects;
 
 public class PassengerCar extends TransportVehicle implements PassengerСar {
 
-    private int countOfPassengers;
+    private final int countOfPassengers;
 
     public PassengerCar(String model, int power, int countOfPassengers) {
         super(model, power);

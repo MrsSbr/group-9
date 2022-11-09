@@ -1,8 +1,8 @@
-package Models;
+package models;
 
 import java.util.Objects;
 
-public class SportCar extends TransportVehicle implements Interfaces.SportCar {
+public class SportCar extends TransportVehicle implements interfaces.SportCar {
     private final int maxSpeed;
 
     public SportCar(String model, int power, int maxSpeed) {
