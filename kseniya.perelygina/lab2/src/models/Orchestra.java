@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Orchestra {
 
-    List<MusicalInstrument> instruments;
+    final List<MusicalInstrument> instruments;
 
     public Orchestra() {
 

@@ -28,7 +28,6 @@ public class Main {
     public static void main(String[] args) {
 
         Orchestra orc = new Orchestra();
-        Scanner in = new Scanner(System.in);
         int choice = -1;
 
         do {
