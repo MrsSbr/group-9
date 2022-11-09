@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class CityTransport {
-    private int count;
     private final List<Transport> transportList;
 
     public CityTransport() {
@@ -25,7 +24,6 @@ public class CityTransport {
         Bus bus = new Bus("", 0.0, 0);
         bus.readBusFromConsole();
         transportList.add(bus);
-        count++;
 
     }
 
@@ -33,7 +31,6 @@ public class CityTransport {
         Train train = new Train("", 0.0, 0, 0);
         train.readTrainFromConsole();
         transportList.add(train);
-        count++;
     }
 
     public void printCityTransport() {
@@ -61,9 +58,9 @@ public class CityTransport {
     private int readNumberOfTransport() {
         int id;
         do {
-            System.out.println("\nВведите номер в границах от 0 до " + (count - 1));
+            System.out.println("\nВведите номер в границах от 0 до " + (transportList.size() - 1));
             id = CorrectInput.inputInt();
-        } while (id >= count);
+        } while (id >= transportList.size());
         return id;
     }
 
@@ -82,7 +79,6 @@ public class CityTransport {
         } else {
             int id = readNumberOfTransport();
             transportList.remove(id);
-            count--;
 
         }
     }

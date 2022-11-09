@@ -1,7 +1,5 @@
 package models;
 
-import java.util.Scanner;
-
 public class Bus extends Transport {
 
     public Bus(String registrationPlate, double weight, int numberSeats) {
