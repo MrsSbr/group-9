@@ -2,17 +2,20 @@ package classes;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 
 public class Statistics {
     private static final int COUNT_OF_HIVES = 35;
+
     public int randHoneyVolume() {
-        return ThreadLocalRandom.current().nextInt(0, 101);
+        Random rnd = new Random();
+        return rnd.nextInt(101);
     }
 
     public void statsForEveryYear(List<Hive> list, int year1, int year2, boolean withTime) {
         List<Integer> res = new ArrayList<>(year2 - year1 + 1);
-        int sum, n = 0;
+        int sum;
+        int n = 0;
         for (int i = 0; i < year2 - year1 + 1; i++) {
             sum = 0;
             for (int j = 0; j < COUNT_OF_HIVES; j++) {
@@ -32,7 +35,7 @@ public class Statistics {
 
     public void statsForEveryHive(List<Hive> list, int year1, int year2, boolean withTime) {
         List<Integer> res = new ArrayList<>(COUNT_OF_HIVES);
-        int sum = 0, n = 0, x;
+        int sum;
         for (int i = 0; i < COUNT_OF_HIVES; i++) {
             sum = 0;
             for (int j = 0; j < year2 - year1 + 1; j++) {
@@ -48,7 +51,6 @@ public class Statistics {
     }
 
     public void countVolume(List<Hive> volumes, boolean withTime) {
-        Hive hive;
         int n = 0;
         System.out.println("Введите период годов");
         System.out.println("Год 1:");
@@ -64,9 +66,9 @@ public class Statistics {
         }
         //print all
         for (int i = year1; i <= year2; i++) {
-           for (int j = 0; j < COUNT_OF_HIVES; j++) {
+            for (int j = 0; j < COUNT_OF_HIVES; j++) {
                 System.out.println(volumes.get(n).toString());
-               n++;
+                n++;
             }
         }
         if (withTime) {
