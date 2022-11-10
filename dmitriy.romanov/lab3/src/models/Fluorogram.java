@@ -3,10 +3,9 @@ import java.time.LocalDate;
 import java.util.Random;
 
 public class Fluorogram {
-    protected String name;
-    protected boolean hasPathology;
-
-    protected LocalDate date;
+    private String name;
+    private boolean hasPathology;
+    private LocalDate date;
     public Fluorogram( String name,  boolean hasPathology, LocalDate date){
         this.name = name;
         this.hasPathology = hasPathology;
