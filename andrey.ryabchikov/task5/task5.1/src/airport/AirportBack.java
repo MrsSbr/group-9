@@ -28,7 +28,9 @@ public class AirportBack {
     @Override
     public String toString() {
 
-        String stringflights = flights.stream().map(flight -> "\nНомер рейса " + flight.numberFlight + " Количество пассажиров " + flight.getSumPeople()).collect(Collectors.joining("", "", ""));
+        String stringflights = flights.stream()
+                .map(flight -> "\nНомер рейса " + flight.numberFlight + " Количество пассажиров " + flight.getSumPeople())
+                .collect(Collectors.joining("", "", ""));
 
         return "Все рейсы{"
                 + stringflights +

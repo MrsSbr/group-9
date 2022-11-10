@@ -86,7 +86,8 @@ public class AirportFront {
 
 
         IntStream.iterate(0, i -> i < getRandomIntegerBetweenRange(10, 50), i -> i + 1)
-                .map(i -> (int) getRandomIntegerBetweenRange(1, 10)).forEachOrdered(flight::addFamily);
+                .map(i -> (int) getRandomIntegerBetweenRange(1, 10))
+                .forEachOrdered(flight::addFamily);
 
         airport.flights.add(flight);
         airport.numberFlights.add(flightNumber);
@@ -101,7 +102,9 @@ public class AirportFront {
 
     public static void readRandomFlight(AirportBack airport, int count) {
 
-        IntStream.range(0, count).mapToObj(i -> airport).forEach(AirportFront::readRandomFlight);
+        IntStream.range(0, count)
+                .mapToObj(i -> airport)
+                .forEach(AirportFront::readRandomFlight);
 
     }
 
@@ -131,12 +134,15 @@ public class AirportFront {
 
             startTime = System.currentTimeMillis();
             readRandomFlight(arrayListAiroport, i);
-            arrayListAiroport.flights.stream().mapToInt(Flight::getSumPeople).sum();
+            arrayListAiroport.flights.stream()
+                    .mapToInt(Flight::getSumPeople).sum();
             System.out.println("время выполнения для ArrayList: " + (System.currentTimeMillis() - startTime));
 
             startTime = System.currentTimeMillis();
             readRandomFlight(linkedListAiroport, i);
-            linkedListAiroport.flights.stream().mapToInt(Flight::getSumPeople).sum();
+            linkedListAiroport.flights.stream()
+                    .mapToInt(Flight::getSumPeople)
+                    .sum();
             System.out.println("время выполнения для LinkedList: " + (System.currentTimeMillis() - startTime));
 
         }

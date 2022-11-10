@@ -1,13 +1,15 @@
 import horse.Races;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -64,22 +66,17 @@ public class Main {
 
     public static void readFile(Races races) {
 
-        File file = new File("src/horse/horse.txt");
+        Path path = Paths.get("src/horse/horse.txt");
 
-        try (FileReader fr = new FileReader(file); BufferedReader reader = new BufferedReader(fr)) {
+        try (Stream<String> lineStream = Files.newBufferedReader(path).lines()) {
 
-            String line = reader.readLine();
-
-            while (line != null) {
-
-                races.add(line);
-                line = reader.readLine();
-
-            }
+            List<String> lines = lineStream.toList();
+            lines.forEach(races::add);
 
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Ошибка работы с файлом ", e);
         }
+
 
     }
 }

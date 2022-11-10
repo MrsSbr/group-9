@@ -20,7 +20,8 @@ public class Flight {
     @Override
     public String toString() {
 
-        String CountFamily = family.stream().map(value -> value.getCountFamilyMembers() + " ")
+        String CountFamily = family.stream()
+                .map(value -> value.getCountFamilyMembers() + " ")
                 .collect(Collectors.joining("", "", ""));
 
         return "Рейс{" +
@@ -32,7 +33,8 @@ public class Flight {
 
     public int getSumPeople() {
 
-        return family.stream().mapToInt(Family::getCountFamilyMembers).sum();
+        return family.stream()
+                .mapToInt(Family::getCountFamilyMembers).sum();
 
     }
 

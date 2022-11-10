@@ -29,9 +29,15 @@ public class Races {
             }
         }));
 
-        List<Map.Entry<String, Integer>> valuesList = new ArrayList<>(horses.entrySet());
-        valuesList.sort((o1, o2) -> o2.getValue().compareTo(o1.getValue()));
-        return valuesList.get(0).getKey();
+        return horses.entrySet()
+                .stream()
+                .sorted(Collections
+                        .reverseOrder(Map.Entry.comparingByValue()))
+                .limit(1)
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new)
+                .getKey();
+
 
     }
 
@@ -54,9 +60,14 @@ public class Races {
 
         });
 
-        List<Map.Entry<String, Integer>> valuesList = new ArrayList<>(horses.entrySet());
-        valuesList.sort((o1, o2) -> o2.getValue().compareTo(o1.getValue()));
-        return valuesList.get(0).getKey();
+        return horses.entrySet()
+                .stream()
+                .sorted(Collections
+                        .reverseOrder(Map.Entry.comparingByValue()))
+                .limit(1)
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new)
+                .getKey();
 
     }
 
@@ -92,7 +103,9 @@ public class Races {
 
     public String statisticHorse(String horseName) {
 
-        return races.get(horseName).stream().map(ParticipationInCompetition::getStatistic).collect(Collectors.joining());
+        return races.get(horseName).stream()
+                .map(ParticipationInCompetition::getStatistic)
+                .collect(Collectors.joining());
 
     }
 }
