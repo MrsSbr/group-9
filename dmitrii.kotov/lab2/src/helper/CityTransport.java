@@ -1,6 +1,5 @@
 package helper;
 
-
 import models.Bus;
 import models.Train;
 import models.Transport;
@@ -20,15 +19,13 @@ public class CityTransport {
     }
 
     public void addBus() {
-
-        Bus bus = new Bus("", 0.0, 0);
+        Bus bus = new Bus();
         bus.readBusFromConsole();
         transportList.add(bus);
-
     }
 
     public void addTrain() {
-        Train train = new Train("", 0.0, 0, 0);
+        Train train = new Train();
         train.readTrainFromConsole();
         transportList.add(train);
     }
@@ -43,11 +40,11 @@ public class CityTransport {
 
                 System.out.println("\n" + i + "\n" + transport.toString());
 
-                if (transport instanceof Bus) {
-                    System.out.println("Перемещается по дорогам");
+                if (transport instanceof Bus bus) {
+                    System.out.println("номером маршрута " + bus.getRouteNumber()  + ". Перемещается по дороге");
                 }
-                else if (transport instanceof Train) {
-                    System.out.println("Перемещается по рельсам");
+                else if (transport instanceof Train train) {
+                    System.out.println("количеством вагонов " + train.getCountWagons() + ". Перемещается по рельсам");
                 }
 
                 i++;

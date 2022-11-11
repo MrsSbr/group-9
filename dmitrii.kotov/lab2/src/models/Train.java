@@ -8,6 +8,9 @@ public class Train extends Transport {
 
     private int countWagons;
 
+    public Train() {
+        
+    }
     public Train(String registrationPlate, double weight, int numberSeats, int countWagons) {
         super(registrationPlate, weight, numberSeats);
         this.countWagons = countWagons;
@@ -37,8 +40,7 @@ public class Train extends Transport {
 
     @Override
     public String toString() {
-        return "(ЖД) " + super.toString() +
-                ", количеством вагонов " + countWagons;
+        return "(ЖД) " + super.toString();
     }
 
     @Override

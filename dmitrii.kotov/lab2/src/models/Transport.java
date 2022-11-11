@@ -11,6 +11,9 @@ public abstract class Transport implements Movable {
     protected double weight;
     protected int numberSeats; // кол-во мест
 
+    public Transport() {
+
+    }
     public Transport(String registrationPlate, double weight, int numberSeats) {
         this.registrationPlate = registrationPlate;
         this.weight = weight;
