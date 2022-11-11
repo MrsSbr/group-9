@@ -1,18 +1,16 @@
-import Enum.BreedType;
+import Models.BreedStatistic;
 import Models.Cat;
 import Service.CatService;
 import Service.Helper;
 import Service.Pair;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
-import static Service.CatService.COUNT_WINNER_CATS;
 import static java.lang.System.currentTimeMillis;
 
 public class Main {
-    private static final int COUNT_COMPARE_ITERATION = 10000;
+    private static final int COUNT_COMPARE_ITERATION = 100000;
 
     public static void main(String[] args) {
         printMainMenu();
@@ -24,13 +22,18 @@ public class Main {
     }
 
     private static void testMode() {
-        List<Cat> listOfCatsWinners = createListRandomCatsOnArray();
-        printMenuTestMode();
-        int choice = Helper.inputIntBetween(1, 3);
-        switch (choice) {
-            case 1 -> ratioMaleAndFemale(listOfCatsWinners);
-            case 2 -> statisticOnBreeds(listOfCatsWinners);
-            case 3 -> catsWinAtLeastOnce(listOfCatsWinners);
+        List<Cat> listOfCatsWinners = CatService.createListRandomCatsOnArray();
+        while (true) {
+            printMenuTestMode();
+            int choice = Helper.inputIntBetween(0, 3);
+            switch (choice) {
+                case 1 -> ratioMaleAndFemale(listOfCatsWinners);
+                case 2 -> statisticOnBreeds(listOfCatsWinners);
+                case 3 -> catsWinAtLeastOnce(listOfCatsWinners);
+                case 0 -> {
+                    return;
+                }
+            }
         }
     }
 
@@ -43,19 +46,19 @@ public class Main {
     }
 
     private static void statisticOnBreeds(List<Cat> listOfCatsWinners) {
-        List<Pair<BreedType, Double>> statisticOnBreeds = CatService.getAllCatsWinStatistic(listOfCatsWinners);
-        for (Pair<BreedType, Double> breedRatio : statisticOnBreeds) {
-            System.out.println("Процент побед кошек породы " + breedRatio.getFirst() + " "
-                    + String.format("%.2f", breedRatio.getSecond() * 100) + "%");
+        List<BreedStatistic> breedStatistics = CatService.getAllCatsBreedWinStatistic(listOfCatsWinners);
+        for (BreedStatistic breedStatistic : breedStatistics) {
+            System.out.println("Процент побед кошек породы " + breedStatistic.getBreed() + " "
+                    + String.format("%.2f", breedStatistic.getStatistic() * 100) + "%");
         }
     }
 
     private static void catsWinAtLeastOnce(List<Cat> listOfCatsWinners) {
-        List<Cat> listOfCatsWinAtLeastOnce = CatService.getListOfCatsWinAtLeastOnce(listOfCatsWinners);
-        for (Cat cat : listOfCatsWinAtLeastOnce) {
+        Set<Cat> setOfCatsWinAtLeastOnce = CatService.getSetOfCatsWinAtLeastOnce(listOfCatsWinners);
+        for (Cat cat : setOfCatsWinAtLeastOnce) {
             System.out.println(cat);
         }
-        System.out.println(listOfCatsWinAtLeastOnce.size());
+        System.out.println(setOfCatsWinAtLeastOnce.size());
     }
 
     private static void compareMode() {
@@ -67,7 +70,7 @@ public class Main {
         System.out.println("Массив:");
         long start = currentTimeMillis();
 
-        List<Cat> listOfCat = createListRandomCatsOnArray();
+        List<Cat> listOfCat = CatService.createListRandomCatsOnArray();
         executeTasksManyIteration(listOfCat);
 
         long finished = currentTimeMillis();
@@ -78,7 +81,7 @@ public class Main {
         System.out.println("Список:");
         long start = currentTimeMillis();
 
-        List<Cat> listOfCat = createListRandomCatsOnLinkedList();
+        List<Cat> listOfCat = CatService.createListRandomCatsOnLinkedList();
         executeTasksManyIteration(listOfCat);
 
         long finished = currentTimeMillis();
@@ -88,32 +91,17 @@ public class Main {
     private static void executeTasksManyIteration(List<Cat> listOfCat) {
         for (int i = 0; i < COUNT_COMPARE_ITERATION; i++) {
             CatService.ratioMaleAndFemale(listOfCat);
-            CatService.getAllCatsWinStatistic(listOfCat);
-            CatService.getListOfCatsWinAtLeastOnce(listOfCat);
+            CatService.getAllCatsBreedWinStatistic(listOfCat);
+            CatService.getSetOfCatsWinAtLeastOnce(listOfCat);
         }
-    }
-
-    private static List<Cat> createListRandomCatsOnArray() {
-        List<Cat> listOfCatsWinners = new ArrayList<>();
-        for (int i = 0; i < COUNT_WINNER_CATS; i++) {
-            listOfCatsWinners.add(CatService.randomGenerateCat());
-        }
-        return listOfCatsWinners;
-    }
-
-    private static List<Cat> createListRandomCatsOnLinkedList() {
-        List<Cat> listOfCatsWinners = new LinkedList<>();
-        for (int i = 0; i < COUNT_WINNER_CATS; i++) {
-            listOfCatsWinners.add(CatService.randomGenerateCat());
-        }
-        return listOfCatsWinners;
     }
 
     private static void printMenuTestMode() {
-        System.out.println("Информация о победителях выставки кошек: ");
+        System.out.println("\nИнформация о победителях выставки кошек: ");
         System.out.println("[1] Соотношение котов и кошек, победивших в выставке");
         System.out.println("[2] Статистику побед по породам");
         System.out.println("[3] Список кошек, победивших в выставке, хотя бы один раз");
+        System.out.println("[0] Завершить работу");
     }
 
     private static void printMainMenu() {

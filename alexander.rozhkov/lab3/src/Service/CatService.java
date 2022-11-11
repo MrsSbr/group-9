@@ -2,22 +2,23 @@ package Service;
 
 import Enum.BreedType;
 import Enum.GenderType;
+import Models.BreedStatistic;
 import Models.Cat;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class CatService {
     public static final int COUNT_WINNER_CATS = 400;
     private static final List<String> CATS_NAME = List.of(
-            "Барсик", "Мурсик", "Борис", "Вискас", "Грей", "Виктория", "Шарлотта", "Элеонора", "Жасмин"
+            "Барсик", "Мурсик", "Борис", "Вискас", "Грей", "Виктория", "Шарлотта", "Элеонора", "Жасмин",
+            "Муся", "Мявка", "Мяука", "Варай", "Байрон", "Айя", "Аллея", "Мика", "Элли", "Рейнольдс", "Сильвия"
     );
 
     private static final List<BreedType> BREED_TYPES = List.of(BreedType.values());
 
     private static final List<GenderType> GENDER_TYPES = List.of(GenderType.values());
 
-    public static Cat randomGenerateCat() {
+    private static Cat randomGenerateCat() {
         int randomIndexCatName = Helper.randomIntBetween(CATS_NAME.size());
         int randomIndexCatBreed = Helper.randomIntBetween(BREED_TYPES.size());
         int randomIndexCatGender = Helper.randomIntBetween(GENDER_TYPES.size());
@@ -25,6 +26,23 @@ public class CatService {
                 BREED_TYPES.get(randomIndexCatBreed),
                 GENDER_TYPES.get(randomIndexCatGender));
     }
+
+    public static List<Cat> createListRandomCatsOnArray() {
+        List<Cat> listOfCatsWinners = new ArrayList<>();
+        for (int i = 0; i < COUNT_WINNER_CATS; i++) {
+            listOfCatsWinners.add(CatService.randomGenerateCat());
+        }
+        return listOfCatsWinners;
+    }
+
+    public static List<Cat> createListRandomCatsOnLinkedList() {
+        List<Cat> listOfCatsWinners = new LinkedList<>();
+        for (int i = 0; i < COUNT_WINNER_CATS; i++) {
+            listOfCatsWinners.add(CatService.randomGenerateCat());
+        }
+        return listOfCatsWinners;
+    }
+
 
     public static Pair<Double, Double> ratioMaleAndFemale(List<Cat> listOfCatsWinners) {
         int countMale = 0;
@@ -40,7 +58,7 @@ public class CatService {
                 (double) countFemale / COUNT_WINNER_CATS);
     }
 
-    public static List<Pair<BreedType, Double>> getAllCatsWinStatistic(List<Cat> listOfCatsWinners) {
+    public static List<BreedStatistic> getAllCatsBreedWinStatistic(List<Cat> listOfCatsWinners) {
         int countMaineCoonBreedCat = 0;
         int countAbyssinianBreedCat = 0;
         int countPersianBreedCat = 0;
@@ -53,32 +71,26 @@ public class CatService {
                 case SIAMESE -> countSiameseBreed++;
             }
         }
-        return createListOfBreedWin(countMaineCoonBreedCat, countAbyssinianBreedCat,
+        return createListOfBreedStatistic(countMaineCoonBreedCat, countAbyssinianBreedCat,
                 countPersianBreedCat, countSiameseBreed);
     }
 
-    private static List<Pair<BreedType, Double>> createListOfBreedWin(
+    private static List<BreedStatistic> createListOfBreedStatistic(
             int countMaineCoonBreedCat, int countAbyssinianBreedCat, int countPersianBreedCat, int countSiameseBreed) {
-        List<Pair<BreedType, Double>> listOfBreedWin = new ArrayList<>();
+        List<BreedStatistic> listOfBreedStatistic = new ArrayList<>();
 
-        listOfBreedWin.add(new Pair<>(BreedType.MAINE_COON,
+        listOfBreedStatistic.add(new BreedStatistic(BreedType.MAINE_COON,
                 ((double) countMaineCoonBreedCat / COUNT_WINNER_CATS)));
-        listOfBreedWin.add(new Pair<>(BreedType.ABYSSINIAN,
+        listOfBreedStatistic.add(new BreedStatistic(BreedType.ABYSSINIAN,
                 ((double) countAbyssinianBreedCat / COUNT_WINNER_CATS)));
-        listOfBreedWin.add(new Pair<>(BreedType.PERSIAN,
+        listOfBreedStatistic.add(new BreedStatistic(BreedType.PERSIAN,
                 ((double) countPersianBreedCat / COUNT_WINNER_CATS)));
-        listOfBreedWin.add(new Pair<>(BreedType.SIAMESE,
+        listOfBreedStatistic.add(new BreedStatistic(BreedType.SIAMESE,
                 ((double) countSiameseBreed / COUNT_WINNER_CATS)));
-        return listOfBreedWin;
+        return listOfBreedStatistic;
     }
 
-    public static List<Cat> getListOfCatsWinAtLeastOnce(List<Cat> listOfCatsWinners) {
-        List<Cat> listOfCatsWinAtLeastOnce = new ArrayList<>();
-        for (Cat cat : listOfCatsWinners) {
-            if (!listOfCatsWinAtLeastOnce.contains(cat)) {
-                listOfCatsWinAtLeastOnce.add(cat);
-            }
-        }
-        return listOfCatsWinAtLeastOnce;
+    public static Set<Cat> getSetOfCatsWinAtLeastOnce(List<Cat> listOfCatsWinners) {
+        return new HashSet<>(listOfCatsWinners);
     }
 }
