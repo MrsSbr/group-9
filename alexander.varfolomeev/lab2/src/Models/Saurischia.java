@@ -1,6 +1,6 @@
-package Models;
+package models;
 
-import Interfaces.LandAnimal;
+import interfaces.LandAnimal;
 
 /**
  * Ящеротазовые - отряд наземных динозавров.

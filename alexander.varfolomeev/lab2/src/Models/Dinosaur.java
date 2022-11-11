@@ -1,6 +1,6 @@
-package Models;
+package models;
 
-import Interfaces.Animal;
+import interfaces.Animal;
 
 public abstract class Dinosaur implements Animal {
     protected final double weight;

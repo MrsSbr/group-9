@@ -1,6 +1,6 @@
-package Models;
+package models;
 
-import Interfaces.FlyAnimal;
+import interfaces.FlyAnimal;
 
 /**
  * Птерозавры - отряд летающих динозавров.

@@ -1,6 +1,6 @@
-package Models;
+package models;
 
-import Interfaces.AquaticAnimal;
+import interfaces.AquaticAnimal;
 
 /**
  * Ихтиозавры - отряд морских динозавров.
