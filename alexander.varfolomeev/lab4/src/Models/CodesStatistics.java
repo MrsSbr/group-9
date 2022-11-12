@@ -1,16 +1,14 @@
 package Models;
 
-import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
 public class CodesStatistics {
     public final SortedMap<Integer, Integer> countOfCodes;
-    public final List<Integer> countOfGeneralsCode;
+    public final SortedMap<Integer, Integer> countOfGeneralsCode;
 
     public CodesStatistics() {
-        int COUNT_OF_CODES = 5;
-        countOfGeneralsCode = Helper.InitListWithNulls(COUNT_OF_CODES);
+        countOfGeneralsCode = new TreeMap<>();
         countOfCodes = new TreeMap<>();
     }
 
@@ -25,7 +23,12 @@ public class CodesStatistics {
     }
 
     private void increaseGeneralCodeCount(int code) {
-        int index = code / 100 - 1;
-        countOfGeneralsCode.set(index, countOfGeneralsCode.get(index) + 1);
+        int index = code / 100 * 100;
+
+        if (countOfGeneralsCode.containsKey(index)) {
+            countOfGeneralsCode.put(index, countOfGeneralsCode.get(index) + 1);
+        } else {
+            countOfGeneralsCode.put(index, 1);
+        }
     }
 }

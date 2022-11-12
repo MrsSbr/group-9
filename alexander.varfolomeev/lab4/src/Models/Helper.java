@@ -91,6 +91,7 @@ public abstract class Helper {
         return list;
     }
 
+
     public static int sumOfList(List<Integer> list) {
         int sum = 0;
         for (int i : list) {

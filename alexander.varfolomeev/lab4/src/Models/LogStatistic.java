@@ -1,8 +1,8 @@
 package Models;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.SortedMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -10,6 +10,9 @@ public abstract class LogStatistic {
     private static final Map<String, CodesStatistics> resourcesStatisticByCodes = new HashMap<>();
     private static final Logger logger = Logger.getLogger(LogStatistic.class.getName());
     private static final CodesStatistics statisticsByAllResources = new CodesStatistics();
+
+    private static final int SERVER_ERROR_CODE = 500;
+    private static final int CLIENT_ERROR_CODE = 400;
 
     public static void addLog(String log) {
         String[] logSplit = log.split(";");
@@ -27,13 +30,13 @@ public abstract class LogStatistic {
 
     public static String getStatisticByGeneralCodes() {
         logger.log(Level.INFO, "getStatisticByCodes start");
-        List<Integer> countOfGeneralCodes = statisticsByAllResources.countOfGeneralsCode;
+        StringBuilder result = new StringBuilder();
+
+        for (Map.Entry<Integer, Integer> code : statisticsByAllResources.countOfGeneralsCode.entrySet()) {
+            result.append(code.getKey()).append(" : ").append(code.getValue()).append("\n");
+        }
         logger.log(Level.INFO, "getStatisticByCodes end");
-        return "1xx : " + countOfGeneralCodes.get(0) +
-                "\n2xx : " + countOfGeneralCodes.get(1) +
-                "\n3xx : " + countOfGeneralCodes.get(2) +
-                "\n4xx : " + countOfGeneralCodes.get(3) +
-                "\n5xx : " + countOfGeneralCodes.get(4);
+        return result.toString();
     }
 
     public static String getStatisticByEveryCode() {
@@ -52,15 +55,10 @@ public abstract class LogStatistic {
         StringBuilder result = new StringBuilder();
 
         for (Map.Entry<String, CodesStatistics> resource : resourcesStatisticByCodes.entrySet()) {
-            List<Integer> list = resource.getValue().countOfGeneralsCode;
-            result
-                    .append(resource.getKey()).append(":\n")
-                    .append("1xx : ").append(list.get(0))
-                    .append("\n2xx : ").append(list.get(1))
-                    .append("\n3xx : ").append(list.get(2))
-                    .append("\n4xx : ").append(list.get(3))
-                    .append("\n5xx : ").append(list.get(4))
-                    .append("\n");
+            result.append(resource.getKey()).append(":\n");
+            for (Map.Entry<Integer, Integer> code : resource.getValue().countOfGeneralsCode.entrySet()) {
+                result.append(code.getKey()).append(" : ").append(code.getValue()).append("\n");
+            }
         }
 
         logger.log(Level.INFO, "getStatisticByAllResources end");
@@ -93,11 +91,11 @@ public abstract class LogStatistic {
         String result = "";
         double maxPercent = 0;
         for (Map.Entry<String, CodesStatistics> resource : resourcesStatisticByCodes.entrySet()) {
-            List<Integer> countOfGeneralCodes = resource.getValue().countOfGeneralsCode;
+            var countOfGeneralCodes = resource.getValue().countOfGeneralsCode;
 
-            double sum = Helper.sumOfList(countOfGeneralCodes);
+            double sum = GetSumOfMap(countOfGeneralCodes);
 
-            double percent = (double) countOfGeneralCodes.get(0) / sum;
+            double percent = (double) countOfGeneralCodes.get(SERVER_ERROR_CODE) / sum;
             if (percent > maxPercent) {
                 maxPercent = percent;
                 result = resource.getKey();
@@ -114,10 +112,10 @@ public abstract class LogStatistic {
         double maxPercent = 0;
 
         for (Map.Entry<String, CodesStatistics> resource : resourcesStatisticByCodes.entrySet()) {
-            List<Integer> countOfGeneralCodes = resource.getValue().countOfGeneralsCode;
-            double sum = Helper.sumOfList(countOfGeneralCodes);
+            var countOfGeneralCodes = resource.getValue().countOfGeneralsCode;
+            double sum = GetSumOfMap(countOfGeneralCodes);
 
-            double percent = (sum - countOfGeneralCodes.get(4) - countOfGeneralCodes.get(3)) / sum;
+            double percent = (sum - countOfGeneralCodes.get(SERVER_ERROR_CODE) - countOfGeneralCodes.get(CLIENT_ERROR_CODE)) / sum;
 
             if (percent > maxPercent) {
                 maxPercent = percent;
@@ -127,6 +125,14 @@ public abstract class LogStatistic {
 
         logger.log(Level.INFO, "getRatioOfUnsuccessfulToTheGeneral end");
         return result + " - " + String.format("%.2f", maxPercent * 100) + "%";
+    }
+
+    private static int GetSumOfMap(SortedMap<Integer, Integer> map) {
+        int sum = 0;
+        for (Map.Entry<Integer, Integer> pair : map.entrySet()) {
+            sum += pair.getValue();
+        }
+        return sum;
     }
 
 }
