@@ -20,7 +20,7 @@ public class Violin extends MusicalInstrument {
     }
     public Violin() {
 
-        selType("Струнный");
+        setType("Струнный");
 
     }
 

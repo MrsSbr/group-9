@@ -21,7 +21,7 @@ public class Flute extends MusicalInstrument {
 
     public Flute() {
 
-        selType("Духовой");
+        setType("Духовой");
 
     }
 

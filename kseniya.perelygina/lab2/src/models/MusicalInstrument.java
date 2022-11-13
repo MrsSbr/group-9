@@ -21,7 +21,7 @@ public abstract class MusicalInstrument implements Instrument {
 
     }
 
-    protected void selType(String type) {
+    protected void setType(String type) {
 
         this.type = type;
 
