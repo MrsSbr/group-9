@@ -57,8 +57,16 @@ public class Orchestra {
         }
 
         for (MusicalInstrument item : instruments) {
+
             item.makeSound();
+
+            if (item instanceof Flute) {
+                ((Flute) item).makeAdditionalSound();
+            }
+
         }
+
+
     }
 
     public void add(MusicalInstrument instrument) {

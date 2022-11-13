@@ -2,6 +2,6 @@ package interfaces;
 
 public interface Instrument {
 
-    void beUsed();
+    public void beUsed();
 
 }

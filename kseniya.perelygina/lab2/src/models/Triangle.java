@@ -7,7 +7,7 @@ import static supportive.InputCheck.inputIntFromConsole;
 
 public class Triangle extends MusicalInstrument{
 
-    String wandMaterial;
+    private String wandMaterial;
 
     public Triangle(String mark, boolean isElectric, String material, String wandMaterial) {
 
@@ -17,7 +17,7 @@ public class Triangle extends MusicalInstrument{
     }
     public Triangle() {
 
-        type = "Ударный";
+        selType("Ударный");
 
     }
 

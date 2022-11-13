@@ -8,8 +8,8 @@ import static supportive.InputCheck.interpretBinaryChoiceConsole;
 
 public class Flute extends MusicalInstrument {
 
-    int amountOfHoles;
-    String soundTone; // теплый, глуховатый...
+    private int amountOfHoles;
+    private String soundTone; // теплый, глуховатый...
 
     public Flute(String mark, boolean isElectric, String material, int amountOfHoles, String soundTone) {
 
@@ -21,7 +21,7 @@ public class Flute extends MusicalInstrument {
 
     public Flute() {
 
-        type = "Духовой";
+        selType("Духовой");
 
     }
 
@@ -41,6 +41,12 @@ public class Flute extends MusicalInstrument {
     public void makeSound() {
 
         System.out.println("\n\n*Фить*\n\n");
+
+    }
+
+    public void makeAdditionalSound() {
+
+        System.out.println("\n\n*Выдох флейтиста*\n\n");
 
     }
 
