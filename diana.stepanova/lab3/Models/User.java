@@ -1,28 +1,28 @@
 package Models;
 
 public class User {
-    public String FIO;
-    public String Number;
+    protected String fio;
+    protected String number;
 
     User(String fio, String number) {
-        this.Number = number;
-        this.FIO = fio;
+        this.number = number;
+        this.fio = fio;
     }
 
     public String getFIO() {
-        return FIO;
+        return fio;
     }
 
     public String getNumber() {
-        return Number;
+        return number;
     }
 
 
     @Override
     public String toString() {
         return "Models.User{" +
-                "FIO='" + FIO + '\'' +
-                ", Number='" + Number + '\'' +
+                "FIO='" + fio + '\'' +
+                ", Number='" + number + '\'' +
                 '}';
     }
 

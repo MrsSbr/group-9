@@ -3,18 +3,15 @@ package Models;
 import Enum.ATC;
 import Helper.Helper;
 
+import java.util.Collection;
 import java.util.*;
 
 
 public class Task {
     protected static final int NUMBER_OF_ENTRIES = 20000;
 
-    public List<User> sort(List<User> users) {
-        users.sort(((o1, o2) -> o1.getNumber().compareTo(o2.getNumber())));
-        return users;
-    }
 
-    public List<User> addUser(List<User> users) {
+    public void addUser(List<User> users) {
         Scanner in = new Scanner(System.in);
         System.out.println("Введите ФИО пользователя: ");
         String name = in.nextLine();
@@ -27,30 +24,29 @@ public class Task {
         String number = String.valueOf(values.get(choice - 1).getNumVal());
         number += Helper.input2();
         users.add(new User(name, number));
-        sort(users);
-        return users;
+        Collections.sort(users, new UserComparator());
     }
 
     public void rangeForATC(List<User> users) {
-        String rangeTele2 = "Tele2: ";
-        String rangeBeeline = "Beeline: ";
-        String rangeMegafon = "Megafon: ";
-        String rangeMTC = "MTC: ";
+        StringBuilder rangeTele2 = new StringBuilder("Tele2: ");
+        StringBuilder rangeBeeline = new StringBuilder("Beeline: ");
+        StringBuilder rangeMegafon = new StringBuilder("Megafon: ");
+        StringBuilder rangeMTC = new StringBuilder("MTC: ");
         for (int i = 0; i < users.size(); i++) {
             if (i + 1 < users.size()) {
                 int number1 = Integer.parseInt(users.get(i).getNumber());
                 int number2 = Integer.parseInt(users.get(i + 1).getNumber());
                 if (number1 / 100000 == ATC.Tele2.getNumVal()) {
-                    rangeTele2 += ("[" + String.valueOf(number1 + 1) + "-" + String.valueOf(number2 - 1) + "]\n");
+                    rangeTele2.append("[").append(number1 + 1).append("-").append(number2 - 1).append("]\n");
                 }
                 if (number1 / 100000 == ATC.Beeline.getNumVal()) {
-                    rangeBeeline += ("[" + String.valueOf(number1 + 1) + "-" + String.valueOf(number2 - 1) + "]\n");
+                    rangeBeeline.append("[").append(number1 + 1).append("-").append(number2 - 1).append("]\n");
                 }
                 if (number1 / 100000 == ATC.Megafon.getNumVal()) {
-                    rangeMegafon += ("[" + String.valueOf(number1 + 1) + "-" + String.valueOf(number2 - 1) + "]\n");
+                    rangeMegafon.append("[").append(number1 + 1).append("-").append(number2 - 1).append("]\n");
                 }
                 if (number1 / 100000 == ATC.MTC.getNumVal()) {
-                    rangeMTC += ("[" + String.valueOf(number1 + 1) + "-" + String.valueOf(number2 - 1) + "]\n");
+                    rangeMTC.append("[").append(number1 + 1).append("-").append(number2 - 1).append("]\n");
                 }
             }
         }
@@ -86,16 +82,16 @@ public class Task {
     public String randomNumber() {
         List<ATC> values = Arrays.asList(ATC.values());
         Random ran = new Random();
-        String number = String.valueOf(values.get(ran.nextInt(values.size())).getNumVal());
+        StringBuilder number = new StringBuilder(String.valueOf(values.get(ran.nextInt(values.size())).getNumVal()));
         for (int i = 0; i < 5; i++) {
-            number += String.valueOf(ran.nextInt(9));
+            number.append(String.valueOf(ran.nextInt(9)));
         }
-        return number;
+        return number.toString();
     }
 
     public void print(List<User> users) {
-        for (int i = 0; i < users.size(); i++) {
-            System.out.println(users.get(i).toString());
+        for (User user : users) {
+            System.out.println(user.toString());
         }
     }
 
@@ -103,22 +99,22 @@ public class Task {
         for (int i = 1; i <= NUMBER_OF_ENTRIES; i++) {
             users.add(new User("Пользователь " + i, randomNumber()));
         }
-        sort(users);
+        Collections.sort(users, new UserComparator());
         Scanner in = new Scanner(System.in);
         int choice = -1;
         if (!check) {
             while (choice != 0) {
-                System.out.println("\nМеню:\n" +
-                        "1. Добавить нового пользователя\n" +
-                        "2. Вывести свободные диапозоны\n" +
-                        "3. Посчитать количество пользователей для каждой АТС\n" +
-                        "4. Распечатать\n" +
-                        "0. Выход");
+                System.out.println("""
+                        Меню:
+                        1. Добавить нового пользователя
+                        2. Вывести свободные диапозоны
+                        3. Посчитать количество пользователей для каждой АТС
+                        4. Распечатать
+                        0. Выход""");
                 choice = Helper.input(0, 4);
                 switch (choice) {
                     case 1:
                         addUser(users);
-                        sort(users);
                         break;
 
                     case 2:
