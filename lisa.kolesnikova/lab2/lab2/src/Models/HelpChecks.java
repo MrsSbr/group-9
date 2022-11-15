@@ -7,7 +7,7 @@ public class HelpChecks {
         Scanner in = new Scanner(System.in);
         int res = in.nextInt();
         while (!(res >= left && res <= right)) {
-            System.out.println("Недопустимый номер, повторите попытку");
+            System.out.println("Недопустимый ввод, повторите попытку");
             res = in.nextInt();
         }
         return res;
