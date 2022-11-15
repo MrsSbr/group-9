@@ -2,11 +2,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Enum.*;
+import Factory.Interfaces.SmartHome;
+import Factory.Models.SmartHomeHeater;
+import Factory.Models.SmartHomeLightning;
 import Models.*;
 
 import java.util.Scanner;
 
-import Factory.*;
 import Models.SmartObject.Heater;
 import Models.SmartObject.Lightning;
 import Models.SmartObject.SmartObject;
@@ -123,7 +125,7 @@ public class Main {
         //int count = 0;
         for (int i = 0; i < smartDevices.size(); i++) {
             if (smartDevices.get(i).getIsActive()) {
-                System.out.println(i + 1 + ".   " + smartDevices.get(i).toString());
+                System.out.println('[' + (i + 1) + ']' + "   " + smartDevices.get(i).toString());
                 //count++;
             }
         }
@@ -132,7 +134,7 @@ public class Main {
             System.out.println("Выключенные устройства: ");
             for (int i = 0; i < smartDevices.size(); i++) {
                 if (!smartDevices.get(i).getIsActive()) {
-                    System.out.println(i + 1 + ".   " + smartDevices.get(i).toString());
+                    System.out.println('[' + (i + 1) + ']' + "   " + smartDevices.get(i).toString());
                 }
             //}
         }
