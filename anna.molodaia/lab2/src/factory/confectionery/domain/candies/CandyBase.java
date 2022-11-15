@@ -14,7 +14,7 @@ public abstract class CandyBase implements Confection, Filling {
     }
     public  void cook() {
         try {
-            System.out.println("Конфета готовиться");
+            System.out.println("Конфета готовится");
             makeFilling();
             System.out.println("Конфета застывает");
             TimeUnit.MILLISECONDS.sleep(500 * getTimeCooking());

@@ -9,7 +9,10 @@ import factory.confectionery.domain.cookies.ShortBread;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import static java.util.function.Function.identity;
 
 public class ConfectioneryApp {
     public static void main(String[] args) {
@@ -30,7 +33,7 @@ public class ConfectioneryApp {
         }
         System.out.println("Посчитаем количество уникальных кондитерских изделий\n");
         Map<Confection, Integer> countUnique = confections.stream()
-                .collect(Collectors.toMap(e -> e, e -> 1, Integer::sum));
+                .collect(Collectors.toMap(identity(), e -> 1, Integer::sum));
         countUnique.forEach((k, v) -> System.out.println(k.toString() + ": " + v));
     }
     }

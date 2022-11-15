@@ -39,16 +39,16 @@ public class Cake implements Confection, Testo, Filling {
 
     @Override
     public void makeFilling() {
-        System.out.println("Готовиться начинка " + filling);
+        System.out.println("Готовится начинка " + filling.toLowerCase());
         System.out.println(filling + " замешивается");
-        System.out.println(filling + " вариться");
+        System.out.println(filling + " варится");
         System.out.println(filling + " для торта готов");
 
     }
 
     @Override
     public void mixTesto() throws InterruptedException {
-        System.out.println("Замешивается " + testo + " тесто");
+        System.out.println("Замешивается " + testo.toLowerCase() + " тесто");
         System.out.println("Раскатыаваются коржи ");
         System.out.println("Выпекаются коржи");
         System.out.println("Тесто для торта " + name + " готово");

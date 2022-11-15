@@ -18,7 +18,7 @@ public class ShortBread extends CookieBase {
     @Override
     public String toString() {
         return "Песочное печенье под названием " + name + " в форме " +
-                form.toLowerCase() + " с cоставом: "+getTesto().toLowerCase()+" тестом ";
+                form.toLowerCase() + " с составом: "+getTesto().toLowerCase()+" тестом";
     }
 
     @Override
