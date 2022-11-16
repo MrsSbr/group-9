@@ -1,12 +1,27 @@
 import java.util.Arrays;
 public class Candidat {
-    static int count;
-    static int[] candidates;
-    static int minOfCand;
-    static int minSize;
-    static int countOfAnswers = 0;
+    private int count;
+    private int[] candidates;
+    private int minOfCand;
+    private int minSize;
+    private int countOfAnswers = 0;
 
-    public static int minOfMasCand() {
+    Candidat(int[] cand, int cnt, int target) {
+        candidates = Arrays.copyOf(cand, cnt);
+        count = cnt;
+        minOfCand = minOfMasCand();
+        minSize = sizeOfDMas(target);
+    }
+
+    public int getMinSize() {
+        return minSize;
+    }
+
+    public int getCountOfAnswers() {
+        return countOfAnswers;
+    }
+
+    public int minOfMasCand() {
         int min = candidates[0];
         for (int i = 1; i < count; i++) {
             if (min > candidates[i]) {
@@ -16,7 +31,7 @@ public class Candidat {
         return min;
     }
 
-    public static int sizeOfDMas(int target) {
+    public int sizeOfDMas(int target) {
         int count = 0;
         int sum = minOfCand;
         while (sum <= target) {
@@ -24,13 +39,6 @@ public class Candidat {
             count++;
         }
         return count;
-    }
-
-    Candidat(int[] cand, int cnt, int target) {
-        candidates = Arrays.copyOf(cand, cnt);
-        count = cnt;
-        minOfCand = minOfMasCand();
-        minSize = sizeOfDMas(target);
     }
 
     public static int fact(int n) {
@@ -43,7 +51,7 @@ public class Candidat {
         return fact;
     }
 
-    public static int maxSizeOfAnswerMas() {
+    public int maxSizeOfAnswerMas() {
         int sum = 0;
         for (int i = 1; i <= minSize; i++) {
             sum += (fact(count) / fact(count - i) / fact(i));
@@ -51,13 +59,13 @@ public class Candidat {
         return sum;
     }
 
-    public static void swap(int[] a, int i, int j) {
+    public void swap(int[] a, int i, int j) {
         int s = a[i];
         a[i] = a[j];
         a[j] = s;
     }
 
-    public static void sort(int[] mas, int n) {
+    public void sort(int[] mas, int n) {
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
                 if (mas[j] > mas[j + 1]) {
@@ -67,7 +75,7 @@ public class Candidat {
         }
     }
 
-    public static boolean NextSet(int[] a, int n) {
+    public boolean NextSet(int[] a, int n) {
         int j = n - 2;
         while (j != -1 && a[j] >= a[j + 1])
             j--;
@@ -98,7 +106,7 @@ public class Candidat {
         return true;
     }
 
-    public static boolean containsOfMas(int[] tmp, int[][] masOfAnswers, int sizeMas, int minSize) {
+    public boolean containsOfMas(int[] tmp, int[][] masOfAnswers, int sizeMas, int minSize) {
 
         sort(tmp, minSize);
         for (int i = 0; i < sizeMas; i++) {

@@ -37,8 +37,8 @@ public class Main {
         }
         Candidat candidat = new Candidat(candidates,count,7);
         int[][]answer = candidat.answerByTarget(target);
-            for (int i = 0; i < candidat.countOfAnswers; i++) {
-                printMas(answer[i], candidat.minSize);
+            for (int i = 0; i < candidat.getCountOfAnswers(); i++) {
+                printMas(answer[i], candidat.getMinSize());
             }
 
         }
