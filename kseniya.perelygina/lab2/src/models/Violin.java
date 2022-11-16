@@ -8,7 +8,7 @@ import static supportive.InputCheck.interpretBinaryChoiceConsole;
 public class Violin extends MusicalInstrument {
 
     private boolean isTunedUp;
-    private static int amountOfStrings = 4;
+    private static final int amountOfStrings = 4;
     private String size; // 4/4 (взрослые), 1/2 (дети),.. любое другое дробное(сделанная под конкретного человека)
 
     public Violin(String mark, boolean isElectric, String material, boolean isTunedUp, String size) {
@@ -20,7 +20,7 @@ public class Violin extends MusicalInstrument {
     }
     public Violin() {
 
-        setType("Струнный");
+        type = "Струнный";
 
     }
 

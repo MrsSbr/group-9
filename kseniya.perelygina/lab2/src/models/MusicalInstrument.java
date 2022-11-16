@@ -7,10 +7,10 @@ import java.util.Objects;
 import static supportive.InputCheck.interpretBinaryChoiceConsole;
 
 public abstract class MusicalInstrument implements Instrument {
-    private String type;
-    private String mark;
-    private boolean isElectric;
-    private String material;
+    protected String type;
+    protected String mark;
+    protected boolean isElectric;
+    protected String material;
 
     public MusicalInstrument(String type, String mark, boolean isElectric, String material) {
 

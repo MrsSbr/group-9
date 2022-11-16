@@ -30,7 +30,7 @@ public class InputCheck {
     public static boolean interpretBinaryChoiceConsole() {
 
         Scanner in = new Scanner(System.in);
-        String tmp = "";
+        String tmp;
 
         do {
             tmp = in.nextLine();
@@ -39,7 +39,7 @@ public class InputCheck {
             }
         } while (!(tmp.equals("y") || tmp.equals("n")));
 
-        return (tmp.equals("y") ? true : false);
+        return tmp.equals("y");
     }
 
 }

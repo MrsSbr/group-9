@@ -17,7 +17,7 @@ public class Triangle extends MusicalInstrument{
     }
     public Triangle() {
 
-        setType("Ударный");
+        type = "Ударный";
 
     }
 
