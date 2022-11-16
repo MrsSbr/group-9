@@ -6,21 +6,50 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Cow extends Animal {
-    int milkGallons;
+    private int milkGallons;
 
     public Cow(String name, int age, int milkGallons) {
         super(age, name);
         this.milkGallons =  milkGallons;
     }
 
+    public int getMilkGallons(){
+        return milkGallons;
+    }
+    public int setMilkGallons(int milk){
+        this.milkGallons = milk;
+
+        return this.milkGallons;
+    }
+
+    public int cowBuff(){
+        setMilkGallons(getMilkGallons() * 2);
+        return milkGallons;
+}
+
+    public static Cow createCowFromConsole(){
+
+
+        Scanner in = new Scanner(System.in);
+        Scanner console = new Scanner(System.in);
+        System.out.println("enter name");
+        String name = console.nextLine();
+        System.out.println("enter age");
+        int num = in.nextInt();
+        int age = num;
+        System.out.println("enter milkGallons");
+        num = in.nextInt();
+        int milkGallons = num;
+        return new Cow(name, age, milkGallons);
+    }
     @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 
     @Override
     public int getAge() {
-        return age;
+        return this.age;
     }
 
     @Override

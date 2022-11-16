@@ -16,7 +16,7 @@ import Models.Solution;
 public class Main {
 
     public static void main(String[] args) {
-        List<Animal> Animals = new ArrayList();
+        List<Animal>  Animals = new ArrayList();
         Solution solution = new Solution();
         solution.createRecordsOfAnimals(Animals);
         int size =  Animals.size();

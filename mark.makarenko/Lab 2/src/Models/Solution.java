@@ -20,71 +20,19 @@ public class Solution {
             int choice =  in.nextInt();
             switch (choice) {
                 case 1 -> {
-                    Animals.add(cowAdd());
+                    Animals.add(Cow.createCowFromConsole());
                 }
                 case 2 -> {
-                    Animals.add(horseAdd());
+                    Animals.add(Horse.createHorseFromConsole());
                 }
                 case 3 -> {
-                    Animals.add(pigAdd());
+                    Animals.add(Pig.createPigFromConsole());
                 }
                 case 0 -> {
                     return;
                 }
             }
         }
-    }
-
-
-    public Cow cowAdd() {
-        String name;
-        int age;
-        int milkGallons;
-        Scanner in = new Scanner(System.in);
-        Scanner console = new Scanner(System.in);
-        System.out.println("enter name");
-        name = console.nextLine();
-        System.out.println("enter age");
-        int num = in.nextInt();
-        age = num;
-        System.out.println("enter milkGallons");
-        num = in.nextInt();
-        milkGallons = num;
-        return new Cow(name, age, milkGallons);
-    }
-
-    public Horse horseAdd() {
-        String name;
-        int age;
-        int horsePower;
-        Scanner in = new Scanner(System.in);
-        Scanner console = new Scanner(System.in);
-        System.out.println("enter name");
-        name = console.nextLine();
-        System.out.println("enter age");
-        int num = in.nextInt();
-        age = num;
-        System.out.println("enter horsePower");
-        num = in.nextInt();
-        horsePower = num;
-        return new Horse(name, age, horsePower);
-    }
-
-    public Pig pigAdd() {
-        String name;
-        int age;
-        int truffleEatten;
-        Scanner in = new Scanner(System.in);
-        Scanner console = new Scanner(System.in);
-        System.out.println("enter name");
-        name = console.nextLine();
-        System.out.println("enter age");
-        int num = in.nextInt();
-        age = num;
-        System.out.println("enter truffleEaten");
-        num = in.nextInt();
-        truffleEatten = num;
-        return new Pig(name, age, truffleEatten);
     }
 
     public void printChildClass(List<Animal> Animals, int number) {
