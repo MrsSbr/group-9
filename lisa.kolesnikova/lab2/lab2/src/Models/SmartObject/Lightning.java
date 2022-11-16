@@ -1,13 +1,13 @@
 package Models.SmartObject;
 
-import Enum.*;
+import Enum.Rooms;
 
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Lightning extends SmartObject {
-    protected String color;
-    protected int brightness;
+    private String color;
+    private int brightness;
 
     void setColor(String col) {
         color = col;
@@ -24,7 +24,7 @@ public class Lightning extends SmartObject {
     }
 
     @Override
-    public void startWorking() {
+    public void switchOn() {
         Scanner input = new Scanner(System.in);
         isActive = true;
         System.out.println("Введите цвет освещения:");
@@ -36,7 +36,7 @@ public class Lightning extends SmartObject {
     }
 
     @Override
-    public void endWorking() {
+    public void switchOff() {
         isActive = false;
     }
 
@@ -92,11 +92,15 @@ public class Lightning extends SmartObject {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass())
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
             return false;
-        if (!super.equals(o))
+        }
+        if (!super.equals(o)) {
             return false;
+        }
         Lightning that = (Lightning) o;
         return Objects.equals(color, that.color) && brightness == that.brightness;
     }

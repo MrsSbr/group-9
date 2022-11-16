@@ -20,12 +20,12 @@ public abstract class SmartObject implements ElectronicDevice {
     }
 
     @Override
-    public void startWorking() {
+    public void switchOn() {
         isActive = true;
     }
 
     @Override
-    public void endWorking() {
+    public void switchOff() {
         isActive = false;
     }
 

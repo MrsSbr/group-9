@@ -1,17 +1,15 @@
-import java.util.ArrayList;
-import java.util.List;
-
-import Enum.*;
+import Enum.Rooms;
 import Factory.Interfaces.SmartHome;
 import Factory.Models.SmartHomeHeater;
 import Factory.Models.SmartHomeLightning;
-import Models.*;
-
-import java.util.Scanner;
-
+import Models.HelpChecks;
 import Models.SmartObject.Heater;
 import Models.SmartObject.Lightning;
 import Models.SmartObject.SmartObject;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
@@ -37,7 +35,7 @@ public class Main {
             switch (choiceRoom) {
                 case 1 -> { // Прихожая
                     Rooms room = Rooms.HALL;
-                    Integer inRoomChoice = -1;
+                    int inRoomChoice = -1;
                     do {
                         System.out.println("\nВыберите устройство:");
                         System.out.println("\n[1] Светодиодная лента");
@@ -52,7 +50,7 @@ public class Main {
                 }
                 case 2 -> { // Кухня
                     Rooms room = Rooms.KITCHEN;
-                    Integer inRoomChoice = -1;
+                    int inRoomChoice = -1;
                     do {
                         System.out.println("\nВыберите устройство:");
                         System.out.println("\n[1] Подсветка над столом");
@@ -66,7 +64,7 @@ public class Main {
                 }
                 case 3 -> { // Спальня
                     Rooms room = Rooms.BEDROOM;
-                    Integer inRoomChoice = -1;
+                    int inRoomChoice = -1;
                     do {
                         System.out.println("\nВыберите устройство:");
                         System.out.println("\n[1] Бра");
@@ -80,18 +78,18 @@ public class Main {
                 }
                 default -> choiceRoom = 0;
             }
-        } while (choiceRoom != 0);    }
+        } while (choiceRoom != 0);
+    }
 
-    private static Integer menuInsideRoom(Rooms room, Integer choiceInsideRoom, List<SmartObject> smartDevices) throws Exception {
+    private static int menuInsideRoom(Rooms room, int choiceInsideRoom, List<SmartObject> smartDevices) throws Exception {
         boolean firstEnter = smartDevices.size() < 1;
         choiceInsideRoom = HelpChecks.spellCheck(0, 4);
-        if (firstEnter){
+        if (firstEnter) {
             System.out.println("Начало работы. Вам нужно создать устройства");
         }
         if (choiceInsideRoom == 4) {
             showInfo(smartDevices);
-        }
-        else  if (choiceInsideRoom != 0){
+        } else if (choiceInsideRoom != 0) {
             int choiceWithDevice = 1;
             if (!firstEnter) {
                 System.out.println("\n[1] Добавить новое устройство");
@@ -110,7 +108,8 @@ public class Main {
                         }
                         case 3 -> {
                             SmartHome smartObj = new SmartHomeHeater();
-                            smartDevices.add(smartObj.createSmartObject(room));                    }
+                            smartDevices.add(smartObj.createSmartObject(room));
+                        }
                     }
                 }
                 case 2 -> switcher(smartDevices);
@@ -130,12 +129,12 @@ public class Main {
             }
         }
         //if (count < 1) {
-            //System.out.println("Нет включенных устройств");
-            System.out.println("Выключенные устройства: ");
-            for (int i = 0; i < smartDevices.size(); i++) {
-                if (!smartDevices.get(i).getIsActive()) {
-                    System.out.println('[' + (i + 1) + ']' + "   " + smartDevices.get(i).toString());
-                }
+        //System.out.println("Нет включенных устройств");
+        System.out.println("Выключенные устройства: ");
+        for (int i = 0; i < smartDevices.size(); i++) {
+            if (!smartDevices.get(i).getIsActive()) {
+                System.out.println('[' + (i + 1) + ']' + "   " + smartDevices.get(i).toString());
+            }
             //}
         }
     }
@@ -147,7 +146,8 @@ public class Main {
             System.out.println("Выберите объект:\n" +
                     "[0] Exit");
             for (int i = 0; i < smartDevices.size(); i++) {
-                System.out.println('[' + (i + 1) + ']' + "  -  " + smartDevices.get(i).getID() + ' ' + smartDevices.get(i).getObjectDescription() + smartDevices.get(i).getIsActive());
+                System.out.println('[' + (i + 1) + ']' + "  -  " + smartDevices.get(i).getID()
+                        + ' ' + smartDevices.get(i).getObjectDescription() + smartDevices.get(i).getIsActive());
             }
             choice = in.nextInt();
             if (choice > 0) {

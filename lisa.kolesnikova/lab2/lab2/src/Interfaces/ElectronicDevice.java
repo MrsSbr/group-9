@@ -1,9 +1,9 @@
 package Interfaces;
 
 public interface ElectronicDevice {
-    void startWorking();
+    void switchOn();
 
-    void endWorking();
+    void switchOff();
 
     void switcher();
 

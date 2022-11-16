@@ -1,13 +1,13 @@
 package Models.SmartObject;
 
+import Enum.Rooms;
+
 import java.util.Objects;
 import java.util.Scanner;
 
-import Enum.*;
-
 public class Heater extends SmartObject {
 
-    protected double temperature;
+    private double temperature;
 
     public Heater(int idSmartObject, boolean isActive, Rooms position, String objectDescription, double temperature) {
         super(idSmartObject, isActive, position, objectDescription);
@@ -19,7 +19,7 @@ public class Heater extends SmartObject {
     }
 
     @Override
-    public void startWorking() {
+    public void switchOn() {
         Scanner input = new Scanner(System.in);
         isActive = true;
         System.out.println("Введите температуру для нагрева помещения:");
@@ -28,7 +28,7 @@ public class Heater extends SmartObject {
     }
 
     @Override
-    public void endWorking() {
+    public void switchOff() {
         isActive = false;
     }
 
@@ -79,11 +79,15 @@ public class Heater extends SmartObject {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass())
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
             return false;
-        if (!super.equals(o))
+        }
+        if (!super.equals(o)) {
             return false;
+        }
         Heater that = (Heater) o;
         return temperature == that.temperature;
     }
