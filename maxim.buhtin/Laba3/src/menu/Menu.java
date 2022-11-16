@@ -44,8 +44,9 @@ public class Menu {
 
                 }
                 case 4 -> {
-
-                    employeeArrayList.findPopularMarkWithAge(18, 65);
+                    int minAge = checkInputData.checkAgeValues(18, 65);
+                    int maxAge = checkInputData.checkAgeValues(minAge, 65);
+                    employeeArrayList.findPopularMarkWithAge(minAge, maxAge);
                     yield 4;
 
                 }
@@ -115,7 +116,9 @@ public class Menu {
                 }
                 case 4 -> {
 
-                    employeeArrayList.findPopularMarkWithAge(18, 65);
+                    int minAge = checkInputData.checkAgeValues(18, 65);
+                    int maxAge = checkInputData.checkAgeValues(minAge, 65);
+                    employeeArrayList.findPopularMarkWithAge(minAge, maxAge);
                     yield 4;
 
                 }

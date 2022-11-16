@@ -21,7 +21,7 @@ public class Employee {
 
     public static Employee readEmployeeFromConsole() {
         Employee employee = new Employee();
-        employee.age = checkInputData.checkAgeValues(17, 60);
+        employee.age = checkInputData.checkAgeValues(18, 65);
         employee.mark = checkInputData.checkMarkValues();
         return employee;
     }

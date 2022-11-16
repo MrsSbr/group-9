@@ -54,7 +54,7 @@ public class EmployeeLinkedList {
         long start = System.nanoTime();
         for (int i = 0; i < MarkAuto.values().length; i++) {
             for (Employee employee : employees) {
-                if (MarkAuto.getMark(i).toStr() == employee.getMark()) {
+                if (MarkAuto.getMark(i).toStr().equals(employee.getMark())) {
                     MarkAuto.getMark(i).count++;
                 }
             }
@@ -81,7 +81,7 @@ public class EmployeeLinkedList {
         for (int i = 0; i < MarkAuto.values().length; i++) {
             for (Employee employee : employees) {
                 if (employee.getAge() > minAge && employee.getAge() > maxAge) {
-                    if (MarkAuto.getMark(i).toStr() == employee.getMark()) {
+                    if (MarkAuto.getMark(i).toStr().equals(employee.getMark())) {
                         MarkAuto.getMark(i).count++;
                     }
                 }
@@ -100,26 +100,30 @@ public class EmployeeLinkedList {
         long elapsed = finish - start;
 
         System.out.println("Time ms find count: " + elapsed);
-        System.out.println("Is the most popular mark with age: " + MarkAuto.getMark(indexMax));
+        System.out.println("most popular brand aged " + minAge + " to " + maxAge + MarkAuto.getMark(indexMax));
     }
 
     public void getListUniqueMark() {
         long start = System.nanoTime();
         for (int i = 0; i < MarkAuto.values().length; i++) {
             for (Employee employee : employees) {
-                if (MarkAuto.getMark(i).toStr() == employee.getMark()) {
+                if (MarkAuto.getMark(i).toStr().equals(employee.getMark())) {
                     MarkAuto.getMark(i).count++;
                 }
             }
         }
         long finish = System.nanoTime();
         long elapsed = finish - start;
-
+        int countUniqueMark = 0;
         System.out.println("Time Unique mark: " + elapsed);
         for (int i = 0; i < MarkAuto.values().length; i++) {
             if (MarkAuto.getMark(i).count == 1) {
                 System.out.println("Unique mark: " + MarkAuto.getMark(i));
+                countUniqueMark++;
             }
+        }
+        if (countUniqueMark == 0) {
+            System.out.println("Unique mark not exists: ");
         }
     }
 
