@@ -30,6 +30,17 @@ public class Pig extends Animal {
         return new Pig(name, age, truffleEatten);
     }
 
+
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public int getAge() {
+        return this.age;
+    }
+
     @Override
     public void voice() {
         System.out.println("pig makes moise");
@@ -61,17 +72,5 @@ public class Pig extends Animal {
     public int hashCode() {
         return Objects.hash(super.hashCode(), truffleEatten);
     }
-
-    @Override
-    public String getName() {
-        return this.name;
-    }
-
-    @Override
-    public int getAge() {
-        return this.age;
-    }
-
-
 
 }

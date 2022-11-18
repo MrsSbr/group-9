@@ -10,25 +10,24 @@ public class Cow extends Animal {
 
     public Cow(String name, int age, int milkGallons) {
         super(age, name);
-        this.milkGallons =  milkGallons;
+        this.milkGallons = milkGallons;
     }
 
-    public int getMilkGallons(){
+    public int getMilkGallons() {
         return milkGallons;
     }
-    public int setMilkGallons(int milk){
-        this.milkGallons = milk;
 
+    public int setMilkGallons(int milk) {
+        this.milkGallons = milk;
         return this.milkGallons;
     }
 
-    public int cowBuff(){
+    public int cowBuff() {
         setMilkGallons(getMilkGallons() * 2);
         return milkGallons;
-}
+    }
 
-    public static Cow createCowFromConsole(){
-
+    public static Cow createCowFromConsole() {
 
         Scanner in = new Scanner(System.in);
         Scanner console = new Scanner(System.in);
@@ -42,6 +41,7 @@ public class Cow extends Animal {
         int milkGallons = num;
         return new Cow(name, age, milkGallons);
     }
+
     @Override
     public String getName() {
         return this.name;

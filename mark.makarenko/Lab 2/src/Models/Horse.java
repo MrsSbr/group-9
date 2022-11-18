@@ -15,7 +15,6 @@ public class Horse extends Animal {
 
     public static Horse createHorseFromConsole() {
 
-
         Scanner in = new Scanner(System.in);
         Scanner console = new Scanner(System.in);
         System.out.println("enter name");
@@ -27,6 +26,16 @@ public class Horse extends Animal {
         num = in.nextInt();
         int horsePower = num;
         return new Horse(name, age, horsePower);
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getAge() {
+        return age;
     }
 
 
@@ -62,15 +71,6 @@ public class Horse extends Animal {
         return Objects.hash(super.hashCode(), horsePower);
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public int getAge() {
-        return age;
-    }
 
 
 
