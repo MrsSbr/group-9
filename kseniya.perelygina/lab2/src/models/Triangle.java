@@ -3,8 +3,6 @@ package models;
 import java.util.Objects;
 import java.util.Scanner;
 
-import static supportive.InputCheck.inputIntFromConsole;
-
 public class Triangle extends MusicalInstrument{
 
     private String wandMaterial;

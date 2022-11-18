@@ -4,7 +4,6 @@ import java.util.Objects;
 import java.util.Scanner;
 
 import static supportive.InputCheck.inputIntFromConsole;
-import static supportive.InputCheck.interpretBinaryChoiceConsole;
 
 public class Flute extends MusicalInstrument {
 
