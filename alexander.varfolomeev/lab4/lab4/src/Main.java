@@ -52,8 +52,10 @@ public class Main {
                     System.out.println("Введите название ресурса");
                     System.out.println(resourcesStatistic.getStatisticByResource(in.next()));
                 }
-                case 5 -> System.out.println(resourcesStatistic.getResourceWithHighestRatioOfTheHttpCodeGroupToAllCodes(HttpCode.SERVER_ERROR));
-                case 6 -> System.out.println(resourcesStatistic.getResourceWithHighestRatioOfTheHttpCodeGroupToAllCodes(HttpCode.SUCCESS));
+                case 5 ->
+                        System.out.println(resourcesStatistic.getResourceWithHighestRatioOfTheHttpCodeGroupToAllCodes(HttpCode.SERVER_ERROR));
+                case 6 ->
+                        System.out.println(resourcesStatistic.getResourceWithHighestRatioOfTheHttpCodeGroupToAllCodes(HttpCode.SUCCESS));
             }
         }
 

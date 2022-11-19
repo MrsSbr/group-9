@@ -16,7 +16,7 @@ public abstract class Helper {
         boolean exitFlag = false;
         while (!exitFlag) {
             try {
-                result =  Integer.parseInt(in.next());
+                result = Integer.parseInt(in.next());
                 exitFlag = true;
             } catch (NumberFormatException exception) {
                 logger.log(Level.SEVERE, "Parse int exception", exception);
