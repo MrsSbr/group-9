@@ -1,33 +1,34 @@
-import Models.Helper;
-import Models.LogStatistic;
+import common.Helper;
+import models.HttpCode;
+import models.ResourcesStatistic;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Main {
     private static final Logger logger = Logger.getLogger(Main.class.getName());
-    private static final String pathToDirectory = "alexander.varfolomeev/lab4/src";
-    private static final String pathToLogFile = pathToDirectory + "/resources/log.txt";
 
     public static void main(String[] args) {
 
         logger.log(Level.INFO, "Start program");
-        try {
-            logger.log(Level.INFO, "Start read log.");
-            File file = new File(pathToLogFile);
-            for (String str : Files.readAllLines(Paths.get(file.getAbsolutePath()), StandardCharsets.UTF_8)) {
-                LogStatistic.addLog(str);
+        ResourcesStatistic resourcesStatistic = null;
+        Scanner in = new Scanner(System.in);
+
+        boolean tryReadFile = true;
+
+        while (tryReadFile) {
+            try {
+                System.out.println("Введите название лог файла: ");
+                resourcesStatistic = new ResourcesStatistic(in.next());
+                tryReadFile = false;
+            } catch (IOException exception) {
+                logger.log(Level.SEVERE, "Error while creating ResourceStatistic class.");
+                System.out.println("Ошибка при открытии файла, убедитесь что данный файл существует.");
             }
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, "Read file error", e);
         }
-        logger.log(Level.INFO, "File successfully read");
+
         boolean isEnd = false;
 
         while (!isEnd) {
@@ -44,16 +45,15 @@ public class Main {
             int choice = Helper.getIntInDiapason(0, 6);
             switch (choice) {
                 case 0 -> isEnd = true;
-                case 1 -> System.out.println(LogStatistic.getStatisticByGeneralCodes());
-                case 2 -> System.out.println(LogStatistic.getStatisticByEveryCode());
-                case 3 -> System.out.println(LogStatistic.getStatisticByAllResources());
+                case 1 -> System.out.println(resourcesStatistic.getStatisticByGeneralCodes());
+                case 2 -> System.out.println(resourcesStatistic.getStatisticByEveryCode());
+                case 3 -> System.out.println(resourcesStatistic.getStatisticByAllResources());
                 case 4 -> {
-                    Scanner in = new Scanner(System.in);
                     System.out.println("Введите название ресурса");
-                    System.out.println(LogStatistic.getStatisticByResource(in.next()));
+                    System.out.println(resourcesStatistic.getStatisticByResource(in.next()));
                 }
-                case 5 -> System.out.println(LogStatistic.getMostUnstableResource());
-                case 6 -> System.out.println(LogStatistic.getRatioOfUnsuccessfulToTheGeneral());
+                case 5 -> System.out.println(resourcesStatistic.getResourceWithHighestRatioOfTheHttpCodeGroupToAllCodes(HttpCode.SERVER_ERROR));
+                case 6 -> System.out.println(resourcesStatistic.getResourceWithHighestRatioOfTheHttpCodeGroupToAllCodes(HttpCode.SUCCESS));
             }
         }
 
