@@ -60,7 +60,7 @@ public class ResourcesStatistic {
         return getCodeCounterForAllResources(true).toString();
     }
 
-    public String getResourceWithHighestRatioOfTheHttpCodeGroupToAllCodes(HttpCode httpCodeGroup) {
+    public String getResourceWithHighestRatioOfTheHttpCodeGroupToAllCodes(HttpCodeGroup httpCodeGroup) {
         logger.log(Level.INFO, "Start getResourceWithHighestRatioOfTheHttpCodeGroupToAllCodes method");
 
         String result = "";
@@ -86,7 +86,7 @@ public class ResourcesStatistic {
         for (Map.Entry<String, CodeCounter> resourceEntry : countOfCodesByResources.entrySet()) {
             for (Map.Entry<Integer, Integer> counterEntry : resourceEntry.getValue().entrySet()) {
 
-                int code = getByGeneralCodes ? HttpCode.getGeneralCodeBySpecific(counterEntry.getKey()) // 415 -> 400
+                int code = getByGeneralCodes ? HttpCodeGroup.getGeneralCodeBySpecific(counterEntry.getKey()) // 415 -> 400
                         : counterEntry.getKey();
                 codeCounter.increaseCountOfCode(code, counterEntry.getValue());
             }

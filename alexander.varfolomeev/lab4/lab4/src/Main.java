@@ -1,5 +1,5 @@
 import common.Helper;
-import models.HttpCode;
+import models.HttpCodeGroup;
 import models.ResourcesStatistic;
 
 import java.io.IOException;
@@ -53,9 +53,9 @@ public class Main {
                     System.out.println(resourcesStatistic.getStatisticByResource(in.next()));
                 }
                 case 5 ->
-                        System.out.println(resourcesStatistic.getResourceWithHighestRatioOfTheHttpCodeGroupToAllCodes(HttpCode.SERVER_ERROR));
+                        System.out.println(resourcesStatistic.getResourceWithHighestRatioOfTheHttpCodeGroupToAllCodes(HttpCodeGroup.SERVER_ERROR));
                 case 6 ->
-                        System.out.println(resourcesStatistic.getResourceWithHighestRatioOfTheHttpCodeGroupToAllCodes(HttpCode.SUCCESS));
+                        System.out.println(resourcesStatistic.getResourceWithHighestRatioOfTheHttpCodeGroupToAllCodes(HttpCodeGroup.SUCCESS));
             }
         }
 

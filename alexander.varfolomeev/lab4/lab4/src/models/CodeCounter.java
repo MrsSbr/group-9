@@ -49,7 +49,7 @@ public class CodeCounter {
         return countByCode.entrySet();
     }
 
-    public double getRatioOfHttpCodeGroupToAllCodes(HttpCode httpCodeGroup) {
+    public double getRatioOfHttpCodeGroupToAllCodes(HttpCodeGroup httpCodeGroup) {
         logger.log(Level.INFO, "Start getRatioOfHttpCodeGroupToAllCodes method.");
 
         double countOfGroupHttpCodes = 0;
@@ -57,7 +57,7 @@ public class CodeCounter {
 
         for (Map.Entry<Integer, Integer> entry : countByCode.entrySet()) {
             int code = entry.getKey();
-            if (HttpCode.getGeneralCodeBySpecific(code) == httpCodeGroup.getCode()) {
+            if (HttpCodeGroup.getGeneralCodeBySpecific(code) == httpCodeGroup.getCode()) {
                 countOfGroupHttpCodes += code;
             }
 

@@ -1,11 +1,11 @@
 package models;
 
-public enum HttpCode {
+public enum HttpCodeGroup {
     INFO(100), SUCCESS(200), REDIRECT(300), CLIENT_ERROR(400), SERVER_ERROR(500);
 
     private final int code;
 
-    HttpCode(int code) {
+    HttpCodeGroup(int code) {
         this.code = code;
     }
 
