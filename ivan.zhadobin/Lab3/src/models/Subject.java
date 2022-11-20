@@ -1,20 +1,21 @@
 package models;
 
 public enum Subject {
-    MathAn,
-    ALgebra,
-    Inform,
-    ChislMethod,
-    DU,
-    TerVer,
-    FunkAn;
-    public static final Subject[] VALUES = values();
+    MathAn("Математический анализ "),
+    ALgebra("Алгебра "),
+    Inform("Информатика "),
+    ChislMethod("Численные методы "),
+    DU("Дифференциальные уравнения "),
+    TerVer("Теория вероятностей "),
+    FunkAn("Функциональный анализ ");
+    private String str;
 
-    public static Subject getEnum(int i) {
-        return VALUES[i];
+    Subject(String str) {
+        this.str = str;
     }
 
-    public String toStr() {
-        return this.toString();
+    @Override
+    public String toString() {
+        return this.str;
     }
 }

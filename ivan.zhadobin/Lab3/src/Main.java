@@ -1,6 +1,7 @@
+import models.Form;
 import models.Object;
 import models.Subject;
-import service.RandomGenerateObject;
+import service.RandomGenerate;
 
 import java.util.*;
 
@@ -11,21 +12,24 @@ public class Main {
     protected static final int COUNT_SUBJECTS = 7;
 
     public static void main(String[] args) {
-        List<Object> objects = new ArrayList<Object>();
-        task(objects);
         boolean exit = true;
         while (exit) {
-            System.out.println("Выберите пункт меню: ");
+            System.out.println("\nВыберите пункт меню: ");
             System.out.println("1 - Производительность");
             System.out.println("2 - Выполнение задачи");
             System.out.println("0 - Выход");
             int choice = userInput(0, 2);
-            ;
             switch (choice) {
                 case 1:
+                    System.out.println("Связный список: ");
+                    task(new LinkedList<>(), true);
+                    System.out.println("Массив: ");
+                    task(new ArrayList<>(), true);
+                    System.out.println("Stack: ");
+                    task(new Stack<>(), true);
                     break;
                 case 2:
-                    menu_task();
+                    task(new ArrayList<>(), false);
                     break;
                 case 0:
                     exit = false;
@@ -36,67 +40,7 @@ public class Main {
         }
     }
 
-    public static void menu_task() {
-        Scanner sc = new Scanner(System.in);
-        boolean exit = true;
-        while (exit) {
-            System.out.println("Выберите пункт меню: ");
-            System.out.println("1 - По заданному предмету определить сколько студентов назвали его полезным");
-            System.out.println("2 - Предмет(ы) с наибольшей оценкой");
-            System.out.println("3 - Сколько студентов не оценили положительно ни один предмет");
-            System.out.println("0 - Выход");
-            int choice = userInput(0, 3);
-            switch (choice) {
-                case 1:
-
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 0:
-                    exit = false;
-                    break;
-                default:
-                    System.out.println("Введите корректные данный! (0-3)");
-            }
-        }
-    }
-
-    public static int task1(List<Object> objects) {
-        int count = 0;
-        Subject nameSubject = menu_task1();
-
-        for (Object o : objects) {
-            if (nameSubject == o.getObject() && o.getMarks() >= 4)
-                count++;
-        }
-
-        return count;
-    }
-
-    public static Subject task2(List<Object> objects) {
-        Subject subject = null;
-        double averageMax=0;
-        for(Subject s : Subject.values()) {
-            int count=0;
-            double tmp=0;
-            for(Object o : objects){
-                if(o.getObject() == s){
-                    tmp+=o.getMarks();
-                    count++;
-                }
-            }
-            tmp=tmp/count;
-            if(tmp>averageMax){
-                averageMax=tmp;
-                subject =s;
-            }
-        }
-        return subject;
-    }
-
-    public static Subject menu_task1() {
+    public static Subject menuForTheFirstTask() {
         Subject object = null;
         System.out.println("Выберите предмет: ");
         System.out.println("1 - Математический анализ");
@@ -106,7 +50,8 @@ public class Main {
         System.out.println("5 - Дифференциальные уравнения");
         System.out.println("6 - Теория вероятностей");
         System.out.println("7 - Функциональный анализ");
-        int choice = userInput(0, 7);
+
+        int choice = userInput(1, 7);
         switch (choice) {
             case 1:
                 object = Subject.MathAn;
@@ -130,26 +75,88 @@ public class Main {
                 object = Subject.FunkAn;
                 break;
             default:
-                System.out.println("Введите корректные данный! (0-3)");
+                System.out.println("Введите корректные данный! (0-7)");
         }
         return object;
     }
 
+    public static int findCountUsefulSubject(List<Object> objects, Subject nameSubject) { // 1 задача
+        int count = 0;
+        for (Object o : objects) {
+            if (nameSubject == o.getObject() && o.getMarks() >= 4) count++;
+        }
+        return count;
+    }
 
-    public static void task(List<Object> objects) {
-        int marks = 0;
+    public static StringBuilder findMaxMarksSubjects(List<Object> objects) { // 2 задача
+        int count;
+        double tmp;
+        double averageMax = 0;
+        StringBuilder subjects = new StringBuilder();
+        for (Subject s : Subject.values()) {
+            tmp = 0;
+            count = 0;
+            for (Object o : objects) {
+                if (o.getObject() == s) {
+                    tmp += o.getMarks();
+                    count++;
+                }
+            }
+            tmp = (double) Math.round(tmp / count * 10d) / 10d;
+            if (tmp > averageMax) {
+                subjects = new StringBuilder();
+                subjects.append(s);
+                averageMax = tmp;
+            } else if (tmp == averageMax) {
+                subjects.append(s);
+            }
+        }
+        return subjects;
+    }
 
+    public static int countStudentsLowMarksSubjects(List<Form> form) { // 3 задача
+        int count = 0;
+        boolean Flag;
+        for (Form f : form) {
+            Flag = true;
+            for (Object object : f.getListOfObject()) {
+                if (object.getMarks() >= 3) {
+                    Flag = false;
+                    break;
+                }
+            }
+            if (Flag) count++;
+        }
+        return count;
+    }
+
+    public static void task(List<Object> objects, boolean flag) {// admin task
+        List<Form> forms = new ArrayList<>();
+        StringBuilder subjects = new StringBuilder();
         for (int i = 0; i < COUNT_STUDENTS; i++) {
             int pickIndex = 0;
             for (int j = 0; j < COUNT_SUBJECTS; j++) {
-                objects.add(RandomGenerateObject.randomGenerate(pickIndex));
+                objects.add(RandomGenerate.randomGenerateObject(pickIndex));
+                forms.add(RandomGenerate.randomGenerateForm());
                 pickIndex++;
             }
         }
-
-        //int task1 = task1(objects);
-        //System.out.println(task1);
-        //Subject task2 = task2(objects);
-        //System.out.println(task2);
+        long startTime = System.nanoTime();
+        int countUsefulSubject = findCountUsefulSubject(objects, Subject.MathAn);
+        StringBuilder maxMarksSubjects = findMaxMarksSubjects(objects);
+        int studentsLowMarksSubjects = countStudentsLowMarksSubjects(forms);
+        if (flag) {
+            startTime = System.nanoTime() - startTime;
+            System.out.printf("Время: %,9.3f ms\n", startTime / 1_000_000.0);
+        }
+        if (!flag) {
+            Subject nameSubject = menuForTheFirstTask();
+            countUsefulSubject = findCountUsefulSubject(objects, nameSubject);
+            System.out.printf("Сколько студентов назвали полезным предмет " + nameSubject + ": " + countUsefulSubject);
+            subjects.append(findMaxMarksSubjects(objects));
+            System.out.printf("\nПредмет(-ы) с наибольшей оценкой: " + subjects);
+            studentsLowMarksSubjects = countStudentsLowMarksSubjects(forms);
+            System.out.printf("\nКол-во студентов не оценивших положительно ни один предмет: " + studentsLowMarksSubjects);
+        }
     }
 }

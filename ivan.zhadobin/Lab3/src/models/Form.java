@@ -8,7 +8,8 @@ public class Form {
     public Form(List<Object> listofobject) {
         this.listofobject = listofobject;
     }
-    public List<Object>  getListOfObject(){
+
+    public List<Object> getListOfObject() {
         return listofobject;
     }
 }
