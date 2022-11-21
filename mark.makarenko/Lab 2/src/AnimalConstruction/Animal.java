@@ -7,7 +7,7 @@ public abstract class Animal {
     protected String name;
 
 
-    public Animal (int age, String name) {
+    public Animal(int age, String name) {
         this.age = age;
         this.name = name;
     }
@@ -37,7 +37,7 @@ public abstract class Animal {
     @Override
     public int hashCode() {
         return Objects.hash(age, name);
-     }
+    }
 }
 
 

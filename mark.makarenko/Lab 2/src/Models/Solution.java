@@ -1,9 +1,6 @@
 package Models;
 
 import AnimalConstruction.Animal;
-import Models.Cow;
-import Models.Horse;
-import Models.Pig;
 
 import java.util.List;
 import java.util.Scanner;
@@ -18,7 +15,7 @@ public class Solution {
             System.out.println("[3] Pig");
             System.out.println("[0] End");
             Scanner in = new Scanner(System.in);
-            int choice =  in.nextInt();
+            int choice = in.nextInt();
             switch (choice) {
                 case 1 -> {
                     Animals.add(Cow.createCowFromConsole());
