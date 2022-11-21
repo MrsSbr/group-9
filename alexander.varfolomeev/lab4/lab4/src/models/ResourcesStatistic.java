@@ -12,15 +12,17 @@ import java.util.logging.Logger;
 import java.util.regex.PatternSyntaxException;
 
 public class ResourcesStatistic {
-    private static final String pathToProjectDirectory = "alexander.varfolomeev/lab4/lab4/src";
     private final Logger logger = Logger.getLogger(ResourcesStatistic.class.getName());
+
+    private static final String PATH_TO_PROJECT_DIRECTORY = "alexander.varfolomeev/lab4/lab4/src";
+
     private final HashMap<String, CodeCounter> countOfCodesByResources;
 
     public ResourcesStatistic(String pathToLogFile) throws IOException {
         logger.log(Level.INFO, "ResourcesStatistic constructor start.");
 
         countOfCodesByResources = new HashMap<>();
-        readLogFile(pathToProjectDirectory + "/resources/" + pathToLogFile);
+        readLogFile(PATH_TO_PROJECT_DIRECTORY + "/resources/" + pathToLogFile);
 
         logger.log(Level.OFF, "ResourcesStatistic constructor end.");
     }
@@ -41,10 +43,9 @@ public class ResourcesStatistic {
     public String getStatisticByResource(String resource) {
         logger.log(Level.INFO, "Start getStatisticByResource method");
 
-        try {
+        if (countOfCodesByResources.containsKey(resource)) {
             return countOfCodesByResources.get(resource).toString();
-
-        } catch (NullPointerException exception) {
+        } else {
             logger.log(Level.SEVERE, "Error while get resource codeCounter.");
             return "Переданного ресурса не существует";
         }
@@ -97,7 +98,7 @@ public class ResourcesStatistic {
     }
 
     //region read log file
-    public void readLogFile(String pathToLogFile) throws IOException {
+    private void readLogFile(String pathToLogFile) throws IOException {
         logger.log(Level.INFO, "Start readLogFile method");
 
         try {

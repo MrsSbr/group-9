@@ -33,17 +33,6 @@ public class CodeCounter {
         }
     }
 
-    @Override
-    public String toString() {
-        StringBuilder result = new StringBuilder();
-
-        for (Map.Entry<Integer, Integer> entry : countByCode.entrySet()) {
-            result.append(entry.getKey()).append(":").append(entry.getValue()).append("\n");
-        }
-
-        return result.toString();
-    }
-
     public Collection<Map.Entry<Integer, Integer>> entrySet() {
         logger.log(Level.INFO, "Get entrySet method.");
         return countByCode.entrySet();
@@ -66,5 +55,16 @@ public class CodeCounter {
 
         logger.log(Level.OFF, "End getRatioOfHttpCodeGroupToAllCodes method.");
         return countOfGroupHttpCodes / countOfAllCodes;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+
+        for (Map.Entry<Integer, Integer> entry : countByCode.entrySet()) {
+            result.append(entry.getKey()).append(":").append(entry.getValue()).append("\n");
+        }
+
+        return result.toString();
     }
 }
