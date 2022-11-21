@@ -16,10 +16,8 @@ public class Cow extends Animal {
     public int getMilkGallons(){
         return milkGallons;
     }
-    public int setMilkGallons(int milk){
+    public void setMilkGallons(int milk){
         this.milkGallons = milk;
-
-        return this.milkGallons;
     }
 
     public int cowBuff(){

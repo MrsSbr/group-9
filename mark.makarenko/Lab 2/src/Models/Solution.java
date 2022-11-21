@@ -7,6 +7,7 @@ import Models.Pig;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class Solution {
     public void createRecordsOfAnimals(List<Animal> Animals) {
@@ -45,10 +46,10 @@ public class Solution {
         }
     }
 
-    public void printRecords(List<Animal> Animals, int size) {
-        for (int i = 0; i < size; i++) {
+    public void printRecords(List<Animal> animals) {
+        IntStream.range(0, animals.size()).forEach(i -> {
             System.out.println("Номер записи - " + (i + 1));
-            printChildClass(Animals, i);
-        }
+            printChildClass(animals, i);
+        });
     }
 }
