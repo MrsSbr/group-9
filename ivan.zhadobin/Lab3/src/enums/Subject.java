@@ -1,4 +1,4 @@
-package models;
+package enums;
 
 public enum Subject {
     MathAn("Математический анализ "),

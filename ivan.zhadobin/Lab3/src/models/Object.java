@@ -1,6 +1,6 @@
 package models;
 
-import java.util.List;
+import enums.Subject;
 
 public class Object {
     protected Subject object;
