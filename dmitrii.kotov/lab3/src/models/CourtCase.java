@@ -4,11 +4,11 @@ import java.time.LocalDate;
 
 public class CourtCase {
 
-    private String defendantName;
-    private String plaintiffName;
-    private LocalDate date;
-    private String article;
-    private boolean isConvicted;
+    private String defendantName; // ответчик
+    private String plaintiffName; // истец
+    private LocalDate date; // дата
+    private String article; // статья
+    private boolean isConvicted; // итог (true если осужден)
 
     public CourtCase(String defendantName, String plaintiffName, LocalDate date, String article, boolean isConvicted) {
         this.defendantName = defendantName;
@@ -16,18 +16,6 @@ public class CourtCase {
         this.date = date;
         this.article = article;
         this.isConvicted = isConvicted;
-    }
-
-    public boolean getConvicted() {
-        return isConvicted;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public String getArticle() {
-        return article;
     }
 
     public String getDefendantName() {
@@ -38,9 +26,21 @@ public class CourtCase {
         return plaintiffName;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public String getArticle() {
+        return article;
+    }
+    public boolean getConvicted() {
+        return isConvicted;
+    }
+
+
     @Override
     public String toString() {
-        return "Судебное дело:\nИмя ответчика: " + defendantName + "| Имя истца: " + plaintiffName + "| Дата: " + date
-                + "| Статья: " + article + "| Приговор : " + isConvicted;
+        return "Судебное дело:\nИмя ответчика: " + defendantName + "\t|\tИмя истца: " + plaintiffName + "\t|\tДата: " + date
+                + "\t|\tСтатья: " + article + "\t|\tПриговор : " + isConvicted;
     }
 }

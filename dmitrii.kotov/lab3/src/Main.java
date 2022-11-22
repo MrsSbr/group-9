@@ -18,13 +18,13 @@ public class Main {
             switch (choice) {
                 case 1 -> {
                     System.out.println("Связный список: ");
-                    tasks.task(new LinkedList<>(), true);
+                    tasks.makeWorkWithCases(new LinkedList<>(), true);
                     System.out.println("Массив: ");
-                    tasks.task(new ArrayList<>(), true);
+                    tasks.makeWorkWithCases(new ArrayList<>(), true);
                     System.out.println("Стек: ");
-                    tasks.task(new Stack<>(), true);
+                    tasks.makeWorkWithCases(new Stack<>(), true);
                 }
-                case 2 -> tasks.task(new ArrayList<>(), false);
+                case 2 -> tasks.makeWorkWithCases(new ArrayList<>(), false);
                 case 0 -> isEnd = true;
                 default -> System.out.println("Некорректный ввод");
             }

@@ -3,43 +3,41 @@ package models;
 import java.time.LocalDate;
 import java.util.*;
 
-
 public class WorkingWithCases {
     private static final int RECORDS_COUNT  = 5780;
+    private static final int MIN_YEAR = 1900;
+    private static final int MAX_YEAR = 2023;
     private static final List<String> names = new ArrayList<>(Arrays.asList("Дмитрий", "Борис", "Роберт", "Илья",
             "Леонид", "Александр", "Кирилл", "Никита", "Петр", "Егор", "Сергей", "Андрей"));
     private static final List<String> articles = new ArrayList<>(Arrays.asList("Мошенничество", "Убийство", "Грабеж",
             "Разбой", "Вымогательство", "Повреждение имущества", "Контрабанда"));
     private List<CourtCase> courtCases;
 
-    public String randName() {
-        Random rand = new Random();
-        int nameIndex = rand.nextInt(0, names.size());
+    private String randName() {
+        Random random = new Random();
+        int nameIndex = random.nextInt(0, names.size());
         return names.get(nameIndex);
     }
-    public boolean randConvicted() {
+    private boolean randConvicted() {
         Random random = new Random();
         return random.nextBoolean();
     }
-    public LocalDate randDate() {
+    private LocalDate randDate() {
         Random random = new Random();
-        int minDay = (int) LocalDate.of(1900, 1, 1).toEpochDay();
-        int maxDay = (int) LocalDate.of(2023, 1, 1).toEpochDay();
+        int minDay = (int) LocalDate.of(MIN_YEAR, 1, 1).toEpochDay();
+        int maxDay = (int) LocalDate.of(MAX_YEAR, 1, 1).toEpochDay();
         long randomDay = minDay + random.nextInt(maxDay - minDay);
-
-        LocalDate randomDate = LocalDate.ofEpochDay(randomDay);
-
-        return randomDate;
+        return LocalDate.ofEpochDay(randomDay);
     }
 
-    public String randArticle() {
+    private String randArticle() {
         Random rand = new Random();
         int articleIndex = rand.nextInt(0, articles.size());
         return articles.get(articleIndex);
     }
 
-    public int acquittalsPercentage(int year) {
-        int countCases = 0;
+    private double acquittalsPercentage(int year) { // процент оправдательных приговоров за год
+        double countCases = 0;
         int countAcquittals = 0;
         for (CourtCase courtCase : courtCases) {
             if (courtCase.getDate().getYear() == year) {
@@ -49,13 +47,16 @@ public class WorkingWithCases {
                 }
             }
         }
-        return countCases * countAcquittals / 100;
+        if (countCases == 0) {
+            return 0;
+        }
+        return (countAcquittals / countCases * 100);
     }
 
-    public int getYearWithHighestAcquittalsPercentage() {
-        int resultYear = 1900;
-        int maxPercentage = 0;
-        for (int i = 1900; i < 2023; i++) {
+    private int getYearWithHighestAcquittalsPercentage() { // 2. Год с самым высоким процентом оправдательных приговоров
+        int resultYear = MIN_YEAR;
+        double maxPercentage = 0;
+        for (int i = MIN_YEAR; i <= MAX_YEAR; i++) {
             if (acquittalsPercentage(i) > maxPercentage) {
                 maxPercentage = acquittalsPercentage(i);
                 resultYear = i;
@@ -64,27 +65,27 @@ public class WorkingWithCases {
         return resultYear;
     }
 
-    public Set<String> convictedMoreThanOnceLastThreeYears() {
-        Set<String> peoplesResult = new HashSet<>();
-        Set<String> peoplesList = createPeopleSet(courtCases);
+    private Set<String> convictedMoreThanOnceLastThreeYears() { // 1. Люди, осужденные более чем один раз за последние три года
+        Set<String> convictedOnce = new HashSet<>();
+        Set<String> convictedTwiceOrMore = new HashSet<>();
 
-        peoplesList.forEach(people -> {
-            int cnt = 0;
-            for (CourtCase courtCase : courtCases) {
-                if ((courtCase.getConvicted()
-                        && courtCase.getDate().isAfter(LocalDate.now().minusYears(3)))) {
-                    cnt++;
-                    if (cnt > 1) {
-                        peoplesResult.add(courtCase.getPlaintiffName());
-                        break;
+        for (CourtCase courtCase : courtCases) {
+            if (courtCase.getDate().isBefore(LocalDate.now())
+                    && courtCase.getDate().isAfter(LocalDate.now().minusYears(3))
+                    && courtCase.getConvicted()) {
+                if (!convictedTwiceOrMore.contains(courtCase.getDefendantName())) {
+                    if (!convictedOnce.contains(courtCase.getDefendantName())) {
+                        convictedOnce.add(courtCase.getDefendantName());
+                    } else {
+                        convictedTwiceOrMore.add(courtCase.getDefendantName());
                     }
                 }
             }
-        });
-        return peoplesResult;
+        }
+        return convictedTwiceOrMore;
     }
 
-    public Set<String> wasDefendantAndPlaintiff() {
+    private Set<String> wasDefendantAndPlaintiff() { // 3. Люди, участвовавшие в процессах и как истец, и как ответчик
         Set<String> peoplesResult = new HashSet<>();
         Set<String> peoplesList = createPeopleSet(courtCases);
 
@@ -97,17 +98,13 @@ public class WorkingWithCases {
                         wasDefendant = true;
                     }
                 }
-                if (wasDefendant && wasPlaintiff) {
-                    peoplesResult.add(courtCase.getDefendantName());
-                    break;
-                }
                 if (!wasPlaintiff) {
                     if (courtCase.getPlaintiffName().equals(people)) {
                         wasPlaintiff = true;
                     }
                 }
                 if (wasDefendant && wasPlaintiff) {
-                    peoplesResult.add(courtCase.getPlaintiffName());
+                    peoplesResult.add(people);
                     break;
                 }
             }
@@ -124,7 +121,7 @@ public class WorkingWithCases {
         return peoplesList;
     }
 
-    public void task(List<CourtCase> courtCasesList, boolean timeCheck) {
+    public void makeWorkWithCases(List<CourtCase> courtCasesList, boolean timeCheck) {
         courtCases = courtCasesList;
         for (int i = 0; i < RECORDS_COUNT; i++) {
             courtCases.add(new CourtCase(randName(), randName(), randDate(), randArticle(), randConvicted()));
@@ -141,9 +138,9 @@ public class WorkingWithCases {
             for (CourtCase courtCase : courtCases) {
                 System.out.println(courtCase.toString());
             }
-            System.out.println(result1.toString());
+            System.out.println(result1);
             System.out.println(result2);
-            System.out.println(result3.toString());
+            System.out.println(result3);
 
         }
     }

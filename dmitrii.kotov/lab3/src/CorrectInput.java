@@ -4,7 +4,6 @@ import java.util.InputMismatchException;
 public class CorrectInput {
 
     public static int inputInt() {
-
         Scanner scanner = new Scanner(System.in);
         int value = 0;
         boolean isCorrectInput = false;
