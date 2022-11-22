@@ -14,6 +14,7 @@ public class App {
             System.out.println("1 - Производительность");
             System.out.println("2 - Task");
             System.out.println("0 - Выход");
+
             int choice = Input.userInput(0, 2);
             switch (choice) {
                 case 1: {

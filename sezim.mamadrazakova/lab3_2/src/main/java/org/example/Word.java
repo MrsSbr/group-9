@@ -20,7 +20,6 @@ public class Word {
         return "word{ "+word+
                 ",length " + lengthOfWord+
                 '}';
-
     }
 
     @Override

@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.Scanner;
-
 public class InputText {
 
     public static String getText() {
