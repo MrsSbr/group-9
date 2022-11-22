@@ -1,26 +1,29 @@
 package org.example;
+
 import java.util.Objects;
+
 public class Word {
     private final String word;
     private final int lengthOfWord;
 
-    public Word (String word, int lengthOfWord){
-        this.word=word;
-        this.lengthOfWord=lengthOfWord;
+    public Word(String word, int lengthOfWord) {
+        this.word = word;
+        this.lengthOfWord = lengthOfWord;
     }
 
-    public String getWord(){
+    public String getWord() {
         return word;
     }
-    public int getLengthOfWord(){
+
+    public int getLengthOfWord() {
         return lengthOfWord;
     }
-    @Override
-    public String toString(){
-        return "word{ "+word+
-                ",length " + lengthOfWord+
-                '}';
 
+    @Override
+    public String toString() {
+        return "word{ " + word +
+                ",length " + lengthOfWord +
+                '}';
     }
 
     @Override

@@ -9,24 +9,16 @@ public abstract class WorkWithText implements java.util.Comparator<Word> {
 
 
     public static void uniqueWords(List<Word> array) {
-        Set<Word> uniqueWords = new HashSet<Word>();
-        for (int i = 0; i < array.size(); i++) {
-            uniqueWords.add(array.get(i));
-        }
+        Set<Word> uniqueWords = new HashSet<>(array);
         for (Word word : uniqueWords) {
             System.out.println(word.getWord());
         }
-
-
     }
 
     public static void longestWord(List<Word> array) {
 
-        List<Word> longestWords = new ArrayList<>();
-        for (int i = 0; i < array.size(); i++) {
-            longestWords.add(array.get(i));
-            Collections.sort(longestWords, new WordComparator());
-        }
+        List<Word> longestWords = new ArrayList<>(array);
+        Collections.sort(longestWords, new WordComparator());
         int len = longestWords.get(0).getLengthOfWord();
         List<Word> newList = new ArrayList<>();
         int i = 0;
@@ -34,7 +26,7 @@ public abstract class WorkWithText implements java.util.Comparator<Word> {
             newList.add(longestWords.get(i));
             i++;
         }
-        Set<Word> countOfWords = new HashSet<Word>(newList);
+        Set<Word> countOfWords = new HashSet<>(newList);
         for (Word key : countOfWords) {
             System.out.println(key.getWord() + ":" + Collections.frequency(newList, key));
         }
@@ -48,8 +40,8 @@ public abstract class WorkWithText implements java.util.Comparator<Word> {
 
     public static void task(List<Word> listOfWords, String consoleInput) {
         String[] str = consoleInput.split(" ");
-        for (int i = 0; i < str.length; i++) {
-            listOfWords.add(new Word(str[i], str[i].length()));
+        for (String st : str) {
+            listOfWords.add(new Word(st, st.length()));
         }
         long startTime = System.nanoTime();
         System.out.println("Список уникальных слов: ");

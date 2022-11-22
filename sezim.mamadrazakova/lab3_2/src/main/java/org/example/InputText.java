@@ -3,7 +3,6 @@ package org.example;
 import java.util.Scanner;
 
 public class InputText {
-
     public static String getText() {
         System.out.println("Введите текст не менее 1000 символов");
         Scanner in = new Scanner(System.in);
