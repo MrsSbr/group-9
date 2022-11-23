@@ -4,8 +4,7 @@ public class Main {
         System.out.println("введите кол-во: ");
         Scanner in = new Scanner(System.in);
         int N = in.nextInt();
-        int[] seats = new int[N];
-        TaskMaximizeDistanceToClosestPerson.fill(seats, N);
+        int[] seats = TaskMaximizeDistanceToClosestPerson.fill(N);
         TaskMaximizeDistanceToClosestPerson.output(seats, N, TaskMaximizeDistanceToClosestPerson.task(seats, N));
      }
 }
