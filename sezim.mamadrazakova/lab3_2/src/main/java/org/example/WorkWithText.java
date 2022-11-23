@@ -37,7 +37,6 @@ public abstract class WorkWithText implements java.util.Comparator<Word> {
         int count = Collections.frequency(array, choiceWord);
         System.out.println(choiceWord.getWord() + ":" + count);
     }
-
     public static void task(List<Word> listOfWords, String consoleInput) {
         String[] str = consoleInput.split(" ");
         for (String st : str) {
