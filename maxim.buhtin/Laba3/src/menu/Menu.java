@@ -12,7 +12,7 @@ public class Menu {
         int subChoice = -1;
         while (subChoice != 0) {
 
-            System.out.println("\nArrayListEmployee menu\n" +
+            System.out.println("\nListEmployee menu\n" +
                     "1. Fill employee from console\n" +
                     "2. Fill random\n" +
                     "3. Find the most popular car brand\n" +
