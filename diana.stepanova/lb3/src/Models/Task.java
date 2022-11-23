@@ -16,10 +16,7 @@ public class Task {
         StringBuilder rangeBeeline = new StringBuilder("Beeline: ");
         StringBuilder rangeMegafon = new StringBuilder("Megafon: ");
         StringBuilder rangeMTC = new StringBuilder("MTC: ");
-        List<User> arr = new ArrayList<>();
-        for (User user : users) {
-            arr.add(user);
-        }
+        List<User> arr = new ArrayList<>(users);
 
         for (int i = 0; i < arr.size(); i++) {
             if (i + 1 < arr.size()) {

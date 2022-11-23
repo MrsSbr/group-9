@@ -17,7 +17,7 @@ import Models.UserComparator;
 
 import java.util.*;
 
-public abstract class Main implements Comparator<User> {
+public abstract class Main {
 
     public static void main(String[] args) {
         Task task = new Task();

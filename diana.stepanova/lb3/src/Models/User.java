@@ -3,8 +3,8 @@ package Models;
 import java.util.Objects;
 
 public class User {
-    protected String fio;
-    protected String number;
+    private String fio;
+    private String number;
 
     User(String fio, String number) {
         this.number = number;
