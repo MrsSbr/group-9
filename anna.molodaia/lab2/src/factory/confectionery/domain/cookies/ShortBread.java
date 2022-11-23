@@ -5,9 +5,9 @@ public class ShortBread extends CookieBase {
 
     public ShortBread(String name, String form) {
 
-        testo = "Песочное";
-        this.form = form;
-        this.name = name;
+        testo = "песочное";
+        this.form = form.toLowerCase();
+        this.name = name.toLowerCase();
     }
 
     @Override
@@ -22,7 +22,7 @@ public class ShortBread extends CookieBase {
     @Override
     public String toString() {
         return "Песочное печенье под названием " + name + " в форме " +
-                form.toLowerCase() + " с составом: "+getTesto().toLowerCase()+" тестом";
+                form+ " с составом: "+getTesto();
     }
 
     @Override
@@ -32,12 +32,12 @@ public class ShortBread extends CookieBase {
 
         ShortBread cookie = (ShortBread) o;
 
-        return name.equals(cookie.name);
+        return super.equals(cookie) && name.equals(cookie.name);
     }
 
     @Override
     public int hashCode() {
-        return name != null ? name.hashCode() : 0;
+        return super.hashCode() + (name != null ? name.hashCode() : 0);
     }
 
 }

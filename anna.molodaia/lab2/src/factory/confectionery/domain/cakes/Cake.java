@@ -12,9 +12,9 @@ public class Cake implements Confection, Testo, Filling {
     protected String testo;
 
     public Cake(String name, String filling, String testo) {
-        this.name = name;
-        this.filling = filling;
-        this.testo = testo;
+        this.name = name.toLowerCase();
+        this.filling = filling.toLowerCase();
+        this.testo = testo.toLowerCase();
     }
 
     @Override
@@ -31,7 +31,7 @@ public class Cake implements Confection, Testo, Filling {
             TimeUnit.MILLISECONDS.sleep(500 * getTimeCooking());
             System.out.println("Торт " + name + " готов");
 
-        } catch (Exception ex) {
+        } catch (InterruptedException ex) {
             System.err.println(ex.getMessage());
         }
 
@@ -39,7 +39,7 @@ public class Cake implements Confection, Testo, Filling {
 
     @Override
     public void makeFilling() {
-        System.out.println("Готовится начинка " + filling.toLowerCase());
+        System.out.println("Готовится начинка " + filling );
         System.out.println(filling + " замешивается");
         System.out.println(filling + " варится");
         System.out.println(filling + " для торта готов");
@@ -47,8 +47,8 @@ public class Cake implements Confection, Testo, Filling {
     }
 
     @Override
-    public void mixTesto() throws InterruptedException {
-        System.out.println("Замешивается " + testo.toLowerCase() + " тесто");
+    public void mixTesto()  {
+        System.out.println("Замешивается " + testo  + " тесто");
         System.out.println("Раскатыаваются коржи ");
         System.out.println("Выпекаются коржи");
         System.out.println("Тесто для торта " + name + " готово");
@@ -77,8 +77,8 @@ public class Cake implements Confection, Testo, Filling {
 
     @Override
     public String toString() {
-        return "Торт под названием " + name + "\nСостав: начинка " + filling.toLowerCase() +
-                " и " + testo.toLowerCase() + " тесто";
+        return "Торт под названием " + name + "\nСостав: начинка " + filling  +
+                " и " + testo + " тесто";
     }
 
 }

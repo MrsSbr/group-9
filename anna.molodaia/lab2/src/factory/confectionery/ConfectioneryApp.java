@@ -1,6 +1,7 @@
 package factory.confectionery;
 
 import factory.confectionery.domain.cakes.Cake;
+import factory.confectionery.domain.cookies.CookieBase;
 import factory.confectionery.interfaces.Confection;
 import factory.confectionery.domain.cakes.HoneyCake;
 import factory.confectionery.domain.candies.JellyCandy;
@@ -22,14 +23,17 @@ public class ConfectioneryApp {
         confections.add(new ShortBread("Юбилейное", "Квадрат"));
         confections.add(new ShortBread("Юбилейное", "Круг"));
         confections.add(new ShortBread("К чаю", "Квадрат"));
-        confections.add(new ShortBread("Юбилейное", "Квадрат"));
-        confections.add(new Cake("Наполеон", "Заворной кремя", "Бисквитное"));
+        confections.add(new ShortBread("Юбилейное", "квадрат"));
+        confections.add(new Cake("Наполеон", "Заворной крем", "Бисквитное"));
         confections.add(new JellyCandy("Сьюзи"));
         System.out.println("Приготовление кондитерских изделий на фабрике");
         for (var item : confections) {
             item.cook();
             System.out.println(item+ " приготовлен(а)");
+            if(item instanceof CookieBase)
+                System.out.println("Хрум-хрум. Печенье получилось таким хрустящим!");
             System.out.println("------------------");
+
         }
         System.out.println("Посчитаем количество уникальных кондитерских изделий\n");
         Map<Confection, Integer> countUnique = confections.stream()
@@ -37,6 +41,7 @@ public class ConfectioneryApp {
         countUnique.forEach((k, v) -> System.out.println(k.toString() + ": " + v));
     }
     }
+
 
 
 
