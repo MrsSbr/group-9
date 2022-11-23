@@ -4,7 +4,8 @@ public enum Result {
     JUSTIFIED("Оправдан"),
     CONDEMNED("Осуждён");
 
-    private String str;
+    private final String str;
+
     Result(String str) {
         this.str = str;
     }

@@ -3,9 +3,14 @@ package models;
 // Суд цветочного города ведет статистику судебного делопроизводства, записывает имя ответчика, имя истца, дату, статью, итог(оправдан/осужден);
 
 import enums.Result;
+import service.Helper;
 
 import java.time.LocalDate;
+import java.time.Month;
+import java.util.List;
 import java.util.Objects;
+
+import static service.Helper.getRandomIndexInRange;
 
 public class CourtCase {
     private final String respondent; // ответчик
@@ -23,6 +28,14 @@ public class CourtCase {
         this.result = result;
     }
 
+    public CourtCase() {
+        this.respondent = null;
+        this.plaintiff = null;
+        this.date = null;
+        this.article = null;
+        this.result = null;
+    }
+
     public Result getResult() {
         return result;
     }
@@ -35,12 +48,31 @@ public class CourtCase {
         return date;
     }
 
-    public Integer getArticle() {
-        return article;
-    }
-
     public String getPlaintiff() {
         return plaintiff;
+    }
+
+    public CourtCase randomGenerateCase(List<String> peopleNames, List<Integer> articleTitles, List<Result> results) {
+        int respondentIndex = getRandomIndexInRange(0, peopleNames.size());
+        int plaintiffIndex = getRandomIndexInRange(0, peopleNames.size());
+        while (respondentIndex == plaintiffIndex) {
+            plaintiffIndex = getRandomIndexInRange(0, peopleNames.size());
+        }
+
+        LocalDate start = LocalDate.of(1970, Month.JANUARY, 1);
+        LocalDate end = LocalDate.now();
+        LocalDate data = Helper.between(start, end);
+
+        int articleIndex = getRandomIndexInRange(0, articleTitles.size());
+        int resultIndex = getRandomIndexInRange(0, results.size());
+
+        return new CourtCase(
+                peopleNames.get(respondentIndex),
+                peopleNames.get(plaintiffIndex),
+                data,
+                articleTitles.get(articleIndex),
+                results.get(resultIndex)
+        );
     }
 
     @Override
@@ -52,7 +84,7 @@ public class CourtCase {
             return false;
         }
         CourtCase courtCase = (CourtCase) o;
-        return respondent.equals(courtCase.respondent) && plaintiff.equals(courtCase.plaintiff) && date.equals(courtCase.date) && article.equals(courtCase.article) && result == courtCase.result;
+        return Objects.equals(respondent, courtCase.respondent) && Objects.equals(plaintiff, courtCase.plaintiff) && Objects.equals(date, courtCase.date) && Objects.equals(article, courtCase.article) && result == courtCase.result;
     }
 
     @Override

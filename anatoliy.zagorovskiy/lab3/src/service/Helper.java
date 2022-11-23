@@ -18,23 +18,6 @@ public abstract class Helper {
         }
     }
 
-    public static int getPositiveInt() {
-        int result = 0;
-        boolean exitFlag = false;
-
-        while (true) {
-            while (!exitFlag) {
-                result = getInt();
-                if (result > 0) {
-                    exitFlag = true;
-                } else {
-                    System.out.println("Число должно быть больше 0");
-                }
-            }
-            return result;
-        }
-    }
-
     public static int getIntInRange(int left, int right) {
         int result = 0;
         boolean exitFlag = false;
@@ -53,10 +36,9 @@ public abstract class Helper {
     }
 
     public static int getRandomIndexInRange(int left, int right) {
-        int randomNumber = ThreadLocalRandom
+        return ThreadLocalRandom
                 .current()
                 .nextInt(left, right);
-        return randomNumber;
     }
 
     public static LocalDate between(LocalDate startInclusive, LocalDate endExclusive) {
