@@ -7,9 +7,7 @@ import java.util.Objects;
 
 public class Cat {
     private final String name;
-
     private final BreedType breed;
-
     private final GenderType gender;
 
     public Cat(String name, BreedType breed, GenderType gender) {
