@@ -69,7 +69,8 @@ public class EmployeeList {
     public void findPopularMarkWithAge(int minAge, int maxAge) {
         fillDataEmployee(minAge, maxAge);
         int indexMax = getIndexMax();
-        System.out.println("most popular brand aged " + minAge + " to " + maxAge + " " + MarkAuto.getMark(indexMax));
+        System.out.println("most popular brand aged " + minAge + " to " + maxAge + " " +
+                MarkAuto.getMark(indexMax));
     }
 
     private void fillDataEmployee(int minAge, int maxAge) {
