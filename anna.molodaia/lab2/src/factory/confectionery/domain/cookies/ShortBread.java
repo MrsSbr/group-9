@@ -22,13 +22,17 @@ public class ShortBread extends CookieBase {
     @Override
     public String toString() {
         return "Песочное печенье под названием " + name + " в форме " +
-                form+ " с составом: "+getTesto();
+                form + " с составом: " + getTesto();
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         ShortBread cookie = (ShortBread) o;
 
@@ -37,7 +41,7 @@ public class ShortBread extends CookieBase {
 
     @Override
     public int hashCode() {
-        return super.hashCode() + (name != null ? name.hashCode() : 0);
+        return 31 * super.hashCode() + (name != null ? name.hashCode() : 0);
     }
 
 }

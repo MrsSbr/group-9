@@ -22,7 +22,7 @@ public abstract class CookieBase implements Confection, Testo {
     @Override
     public void mixTesto() {
         System.out.println("Готовим тесто для печенья");
-        System.out.println("Замешивается " + getTesto() );
+        System.out.println("Замешивается " + getTesto());
         System.out.println("Тесто для печенья готово");
     }
 
@@ -46,12 +46,18 @@ public abstract class CookieBase implements Confection, Testo {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         CookieBase that = (CookieBase) o;
 
-        if (!form.equals(that.form)) return false;
+        if (!form.equals(that.form)) {
+            return false;
+        }
         return testo.equals(that.testo);
     }
 

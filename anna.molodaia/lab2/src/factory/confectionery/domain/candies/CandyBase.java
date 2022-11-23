@@ -10,10 +10,12 @@ public abstract class CandyBase implements Confection, Filling {
     protected String filling;
 
     public abstract void makeFilling();
+
     public String getFilling() {
         return filling;
     }
-    public  void cook() {
+
+    public void cook() {
         try {
             System.out.println("Конфета готовится");
             makeFilling();
@@ -28,8 +30,12 @@ public abstract class CandyBase implements Confection, Filling {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         CandyBase candyBase = (CandyBase) o;
 

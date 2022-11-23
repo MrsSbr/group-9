@@ -29,8 +29,8 @@ public class ConfectioneryApp {
         System.out.println("Приготовление кондитерских изделий на фабрике");
         for (var item : confections) {
             item.cook();
-            System.out.println(item+ " приготовлен(а)");
-            if(item instanceof CookieBase)
+            System.out.println(item + " приготовлен(а)");
+            if (item instanceof CookieBase)
                 System.out.println("Хрум-хрум. Печенье получилось таким хрустящим!");
             System.out.println("------------------");
 
@@ -40,7 +40,7 @@ public class ConfectioneryApp {
                 .collect(Collectors.toMap(identity(), e -> 1, Integer::sum));
         countUnique.forEach((k, v) -> System.out.println(k.toString() + ": " + v));
     }
-    }
+}
 
 
 

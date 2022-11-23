@@ -15,15 +15,19 @@ public class JellyCandy extends CandyBase {
 
     @Override
     public void makeFilling() {
-        System.out.println("Готовится начинка " + getFilling()  + " для конфеты " + name);
+        System.out.println("Готовится начинка " + getFilling() + " для конфеты " + name);
         System.out.println("Мешаем\nНачинка готова");
     }
 
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         JellyCandy candy = (JellyCandy) o;
 
@@ -32,7 +36,7 @@ public class JellyCandy extends CandyBase {
 
     @Override
     public int hashCode() {
-        return super.hashCode() + (name != null ? name.hashCode() : 0);
+        return 31 * super.hashCode() + (name != null ? name.hashCode() : 0);
     }
 
     @Override

@@ -39,7 +39,7 @@ public class Cake implements Confection, Testo, Filling {
 
     @Override
     public void makeFilling() {
-        System.out.println("Готовится начинка " + filling );
+        System.out.println("Готовится начинка " + filling);
         System.out.println(filling + " замешивается");
         System.out.println(filling + " варится");
         System.out.println(filling + " для торта готов");
@@ -47,8 +47,8 @@ public class Cake implements Confection, Testo, Filling {
     }
 
     @Override
-    public void mixTesto()  {
-        System.out.println("Замешивается " + testo  + " тесто");
+    public void mixTesto() {
+        System.out.println("Замешивается " + testo + " тесто");
         System.out.println("Раскатыаваются коржи ");
         System.out.println("Выпекаются коржи");
         System.out.println("Тесто для торта " + name + " готово");
@@ -57,13 +57,21 @@ public class Cake implements Confection, Testo, Filling {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Cake cake = (Cake) o;
 
-        if (!name.equals(cake.name)) return false;
-        if (!filling.equals(cake.filling)) return false;
+        if (!name.equals(cake.name)) {
+            return false;
+        }
+        if (!filling.equals(cake.filling)) {
+            return false;
+        }
         return testo.equals(cake.testo);
     }
 
@@ -77,7 +85,7 @@ public class Cake implements Confection, Testo, Filling {
 
     @Override
     public String toString() {
-        return "Торт под названием " + name + "\nСостав: начинка " + filling  +
+        return "Торт под названием " + name + "\nСостав: начинка " + filling +
                 " и " + testo + " тесто";
     }
 
