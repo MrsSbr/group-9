@@ -2,8 +2,8 @@ package markAuto;
 
 public enum MarkAuto {
     Audi, Bmw, Marcedes, Bentley, Lexus;
-    public static final MarkAuto[] VALUES = values();
-    public int count;
+    private static final MarkAuto[] VALUES = values();
+    private int count;
 
     public static MarkAuto getMark(int i) {
 
@@ -15,6 +15,14 @@ public enum MarkAuto {
 
         return this.toString();
 
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public int incrementCount() {
+        return ++count;
     }
 
 }
