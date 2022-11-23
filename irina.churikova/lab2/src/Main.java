@@ -42,17 +42,17 @@ public class Main {
             }
 
             int choice = Input.userInput(0, groups.size());
-            Group chosenPort;
+            Group chosenGroup;
 
             if (choice == 0) {
                 isExit = true;
             } else {
-                chosenPort = groups.get(choice - 1);
-                if (chosenPort instanceof Student) {
-                    Student student = (Student) chosenPort;
+                chosenGroup = groups.get(choice - 1);
+                if (chosenGroup instanceof Student) {
+                    Student student = (Student) chosenGroup;
                     System.out.println("Группа " + student.getName() + " тип группы " + student.getTypeOfGroup() + "\nНаправление:" + student.getDirection() + "\nКоличество студентов: " + student.getCapacity() + "\n" + student);
-                } else if (chosenPort instanceof Teacher) {
-                    Teacher teacher = (Teacher) chosenPort;
+                } else if (chosenGroup instanceof Teacher) {
+                    Teacher teacher = (Teacher) chosenGroup;
                     System.out.println("Кафедра " + teacher.getName() + " тип группы " + teacher.getTypeOfGroup() + "\n Нааправлене:" + teacher.getDirection() + "\nКоличество преподавателей: " + teacher.getCount() + "\n" + teacher);
                 }
             }
