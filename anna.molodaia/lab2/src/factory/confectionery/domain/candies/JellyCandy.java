@@ -1,7 +1,7 @@
 package factory.confectionery.domain.candies;
 
 public class JellyCandy extends CandyBase {
-    final private String name;
+    private final String name;
 
     public JellyCandy(String name) {
         this.name = name;

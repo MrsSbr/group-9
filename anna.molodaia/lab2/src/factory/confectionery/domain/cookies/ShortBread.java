@@ -15,6 +15,10 @@ public class ShortBread extends CookieBase {
         return 5;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return "Песочное печенье под названием " + name + " в форме " +
@@ -34,10 +38,6 @@ public class ShortBread extends CookieBase {
     @Override
     public int hashCode() {
         return name != null ? name.hashCode() : 0;
-    }
-
-    public String getName() {
-        return name;
     }
 
 }
