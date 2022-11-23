@@ -30,11 +30,7 @@ public class Races {
         }));
 
         return horses.entrySet()
-                .stream()
-                .sorted(Collections
-                        .reverseOrder(Map.Entry.comparingByValue()))
-                .limit(1)
-                .findFirst()
+                .stream().max(Map.Entry.comparingByValue())
                 .orElseThrow(IllegalArgumentException::new)
                 .getKey();
 
@@ -61,11 +57,7 @@ public class Races {
         });
 
         return horses.entrySet()
-                .stream()
-                .sorted(Collections
-                        .reverseOrder(Map.Entry.comparingByValue()))
-                .limit(1)
-                .findFirst()
+                .stream().max(Map.Entry.comparingByValue())
                 .orElseThrow(IllegalArgumentException::new)
                 .getKey();
 
