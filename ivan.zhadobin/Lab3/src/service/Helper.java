@@ -14,7 +14,7 @@ public class Helper {
                 if (i >= l && i <= r) {
                     run = false;
                 } else {
-                    System.out.println("Число не в диапазоне 0-3");
+                    System.out.println("Число не в диапазоне");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Ошибка: " + e.getLocalizedMessage());

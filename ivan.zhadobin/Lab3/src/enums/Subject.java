@@ -8,7 +8,7 @@ public enum Subject {
     DU("Дифференциальные уравнения "),
     TerVer("Теория вероятностей "),
     FunkAn("Функциональный анализ ");
-    private String str;
+    private final String str;
 
     Subject(String str) {
         this.str = str;

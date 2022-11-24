@@ -2,16 +2,16 @@ package models;
 
 import enums.Subject;
 
-public class Object {
+public class QuestionnaireItem {
     protected Subject object;
     protected int marks;
 
-    public Object(Subject object, int marks) {
+    public QuestionnaireItem(Subject object, int marks) {
         this.object = object;
         this.marks = marks;
     }
 
-    public Object() {
+    public QuestionnaireItem() {
         object = null;
         marks = 0;
     }
