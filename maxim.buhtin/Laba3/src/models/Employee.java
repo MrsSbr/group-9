@@ -1,6 +1,5 @@
-package classEmployee;
+package models;
 
-import markAuto.MarkAuto;
 import validationData.checkInputData;
 
 import java.util.Objects;

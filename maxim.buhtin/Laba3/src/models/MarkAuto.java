@@ -1,4 +1,4 @@
-package markAuto;
+package models;
 
 public enum MarkAuto {
     Audi, Bmw, Marcedes, Bentley, Lexus;
@@ -21,8 +21,8 @@ public enum MarkAuto {
         return count;
     }
 
-    public int incrementCount() {
-        return ++count;
+    public void incrementCount() {
+        ++count;
     }
 
 }

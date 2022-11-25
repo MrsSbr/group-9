@@ -2,7 +2,7 @@ package validationData;
 
 import java.util.Scanner;
 
-import markAuto.MarkAuto;
+import models.MarkAuto;
 
 public class checkInputData {
 

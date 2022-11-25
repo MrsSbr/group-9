@@ -25,14 +25,14 @@ public class Menu {
 
                 case 1 -> {
 
-                    employeeList.Clear();
+                    employeeList.сlear();
                     employeeList.fillFromConsole();
                     yield 1;
 
                 }
                 case 2 -> {
 
-                    employeeList.Clear();
+                    employeeList.сlear();
                     employeeList.fillRandom();
                     yield 2;
 

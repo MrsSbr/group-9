@@ -1,7 +1,7 @@
 package containers;
 
-import classEmployee.Employee;
-import markAuto.MarkAuto;
+import models.Employee;
+import models.MarkAuto;
 //import validationData.checkInputData;
 
 import java.util.ArrayList;
@@ -53,7 +53,7 @@ public class EmployeeList {
 
     }
 
-    public void Clear() {
+    public void сlear() {
 
         this.employees.clear();
 
