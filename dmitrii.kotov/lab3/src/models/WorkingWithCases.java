@@ -7,34 +7,7 @@ public class WorkingWithCases {
     private static final int RECORDS_COUNT  = 5780;
     private static final int MIN_YEAR = 1900;
     private static final int MAX_YEAR = 2023;
-    private static final List<String> names = new ArrayList<>(Arrays.asList("Дмитрий", "Борис", "Роберт", "Илья",
-            "Леонид", "Александр", "Кирилл", "Никита", "Петр", "Егор", "Сергей", "Андрей"));
-    private static final List<String> articles = new ArrayList<>(Arrays.asList("Мошенничество", "Убийство", "Грабеж",
-            "Разбой", "Вымогательство", "Повреждение имущества", "Контрабанда"));
     private List<CourtCase> courtCases;
-
-    private String randName() {
-        Random random = new Random();
-        int nameIndex = random.nextInt(0, names.size());
-        return names.get(nameIndex);
-    }
-    private boolean randConvicted() {
-        Random random = new Random();
-        return random.nextBoolean();
-    }
-    private LocalDate randDate() {
-        Random random = new Random();
-        int minDay = (int) LocalDate.of(MIN_YEAR, 1, 1).toEpochDay();
-        int maxDay = (int) LocalDate.of(MAX_YEAR, 1, 1).toEpochDay();
-        long randomDay = minDay + random.nextInt(maxDay - minDay);
-        return LocalDate.ofEpochDay(randomDay);
-    }
-
-    private String randArticle() {
-        Random rand = new Random();
-        int articleIndex = rand.nextInt(0, articles.size());
-        return articles.get(articleIndex);
-    }
 
     private double acquittalsPercentage(int year) { // процент оправдательных приговоров за год
         double countCases = 0;
@@ -124,7 +97,7 @@ public class WorkingWithCases {
     public void makeWorkWithCases(List<CourtCase> courtCasesList, boolean timeCheck) {
         courtCases = courtCasesList;
         for (int i = 0; i < RECORDS_COUNT; i++) {
-            courtCases.add(new CourtCase(randName(), randName(), randDate(), randArticle(), randConvicted()));
+            courtCases.add(CourtCaseGenerator.randCase());
         }
         long startTime = System.nanoTime();
 
