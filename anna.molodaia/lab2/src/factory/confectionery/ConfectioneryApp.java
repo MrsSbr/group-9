@@ -18,6 +18,7 @@ import static java.util.function.Function.identity;
 public class ConfectioneryApp {
     public static void main(String[] args) {
         List<Confection> confections = new ArrayList<>();
+
         confections.add(new JellyCandy("Пчелка"));
         confections.add(new HoneyCake());
         confections.add(new ShortBread("Юбилейное", "Квадрат"));
@@ -30,8 +31,9 @@ public class ConfectioneryApp {
         for (var item : confections) {
             item.cook();
             System.out.println(item + " приготовлен(а)");
-            if (item instanceof CookieBase)
+            if (item instanceof CookieBase) {
                 System.out.println("Хрум-хрум. Печенье получилось таким хрустящим!");
+            }
             System.out.println("------------------");
 
         }
