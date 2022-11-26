@@ -23,11 +23,9 @@ public class Employee {
     }
 
     private String generateName() {
-        StringBuffer tmp = new StringBuffer();
-        tmp.append(Supportive.NAMES[(int)(Math.random() * (Supportive.NAMES.length))]);
-        tmp.append(' ');
-        tmp.append(Supportive.SURNAMES[(int)(Math.random() * (Supportive.SURNAMES.length))]);
-        return tmp.toString();
+        return (Supportive.NAMES[(int)(Math.random() * (Supportive.NAMES.length))]) +
+                (' ') +
+                (Supportive.SURNAMES[(int)(Math.random() * (Supportive.SURNAMES.length))]);
     }
 
     private String generateDepartment() {
@@ -53,7 +51,7 @@ public class Employee {
 
         Employee emp = (Employee) obj;
 
-        return (name == emp.name && department == emp.department);
+        return (name.equals(emp.name) && department.equals(emp.department));
     }
 
     @Override

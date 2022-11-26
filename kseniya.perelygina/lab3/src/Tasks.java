@@ -1,4 +1,6 @@
 import java.util.HashSet;
+import java.util.Set;
+
 import Supportive.*;
 import Models.*;
 
@@ -6,8 +8,8 @@ public class Tasks {
 
     public static void performTasks(Company c, boolean display) {
 
-        HashSet<String> deps = c.getMostRewardedDepartments();
-        HashSet<Employee> emps = c.getRewardedEmployees();
+        Set<String> deps = c.getMostRewardedDepartments();
+        Set<Employee> emps = c.getRewardedEmployees();
         int cnt = c.countOnceRewardedEmployees();
 
         if (display) {

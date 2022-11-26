@@ -1,9 +1,7 @@
 package Models;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+
 import Supportive.*;
 
 public class Company {
@@ -64,7 +62,7 @@ public class Company {
     }
 
 
-    public HashSet<String> getMostRewardedDepartments() {
+    public Set<String> getMostRewardedDepartments() {
 
         int maxRewards = -1;
         HashSet<String> result = new HashSet<>();
@@ -100,7 +98,7 @@ public class Company {
     }
 
 
-    public HashSet<Employee> getRewardedEmployees() {
+    public Set<Employee> getRewardedEmployees() {
 
         HashSet<Employee> result = new HashSet<>();
 
