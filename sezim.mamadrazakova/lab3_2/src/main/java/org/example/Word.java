@@ -28,8 +28,12 @@ public class Word {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Word)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Word)) {
+            return false;
+        }
         Word word1 = (Word) o;
         return getLengthOfWord() == word1.getLengthOfWord() && getWord().equals(word1.getWord());
     }

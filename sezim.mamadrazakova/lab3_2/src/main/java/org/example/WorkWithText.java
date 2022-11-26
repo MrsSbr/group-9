@@ -18,7 +18,7 @@ public abstract class WorkWithText implements java.util.Comparator<Word> {
     public static void longestWord(List<Word> array) {
 
         List<Word> longestWords = new ArrayList<>(array);
-        Collections.sort(longestWords, new WordComparator());
+        longestWords.sort(new WordComparator());
         int len = longestWords.get(0).getLengthOfWord();
         List<Word> newList = new ArrayList<>();
         int i = 0;
