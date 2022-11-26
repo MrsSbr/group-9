@@ -2,18 +2,43 @@ package Models;
 
 import Supportive.*;
 
+import java.util.Objects;
+
 public class Employee {
 
     private String name;
     private String department;
 
     public Employee() {
+
         name = generateName();
         department = generateDepartment();
+
     }
 
     public String getDepartment() {
+
         return department;
+
+    }
+
+    private String generateName() {
+        StringBuffer tmp = new StringBuffer();
+        tmp.append(Supportive.NAMES[(int)(Math.random() * (Supportive.NAMES.length))]);
+        tmp.append(' ');
+        tmp.append(Supportive.SURNAMES[(int)(Math.random() * (Supportive.SURNAMES.length))]);
+        return tmp.toString();
+    }
+
+    private String generateDepartment() {
+
+        return Supportive.DEPARTMENTS[(int)(Math.random() * (Supportive.DEPARTMENTS.length))];
+
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(department, name);
     }
 
     @Override
@@ -38,15 +63,5 @@ public class Employee {
                 department ;
     }
 
-    private String generateName() {
-        StringBuffer tmp = new StringBuffer();
-        tmp.append(Supportive.names[(int)(Math.random() * (Supportive.names.length))]);
-        tmp.append(' ');
-        tmp.append(Supportive.surnames[(int)(Math.random() * (Supportive.surnames.length))]);
-        return tmp.toString();
-    }
 
-    private String generateDepartment() {
-        return Supportive.departments[(int)(Math.random() * (Supportive.departments.length))];
-    }
 }

@@ -1,13 +1,14 @@
 package Models;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import Supportive.*;
 
 public class Company {
 
-    public static int amountOfEmployees = 300;
+    public static int AMOUNT_OF_EMPLOYEES = 300;
 
     private final List<Premium> premiums;
     private final List<Employee> employees;
@@ -15,12 +16,10 @@ public class Company {
     // По условию задачи всегда должно быть 50,
     // но провести тест при таком малом кол-ве записей и сделать верный вывод затруднительно
     private int yearsSinceFoundation;
-    private boolean isArray;
 
 
     public Company(boolean makeArrayList, int yearsSinceFoundation){
 
-        isArray = makeArrayList;
         this.yearsSinceFoundation = yearsSinceFoundation;
 
         if (makeArrayList) {
@@ -43,7 +42,7 @@ public class Company {
 
     public void generateEmployees() {
 
-        for (int i = 0; i < amountOfEmployees; i++) {
+        for (int i = 0; i < AMOUNT_OF_EMPLOYEES; i++) {
 
             Employee newbie = new Employee();
             employees.add(newbie);
@@ -57,32 +56,23 @@ public class Company {
 
         for (int i = 0; i < yearsSinceFoundation; i++) {
 
-            Premium p = new Premium(Supportive.currentYear - i,
-                    employees.get((int)(Math.random() * amountOfEmployees)));
+            Premium p = new Premium(Supportive.CURRENT_YEAR - i,
+                    employees.get((int)(Math.random() * AMOUNT_OF_EMPLOYEES)));
             premiums.add(p);
 
         }
     }
 
 
-    public List<String> getMostRewardedDepartments() {
+    public HashSet<String> getMostRewardedDepartments() {
 
         int maxRewards = -1;
-        List<String> result;
+        HashSet<String> result = new HashSet<>();
 
-        if (isArray) {
-
-            result = new ArrayList<>();
-
-        } else {
-
-            result = new LinkedList<>();
-        }
-
-        for (int i = 0; i < Supportive.departments.length; i++) {
+        for (int i = 0; i < Supportive.DEPARTMENTS.length; i++) {
 
             int cnt = 0;
-            String curDep = Supportive.departments[i];
+            String curDep = Supportive.DEPARTMENTS[i];
 
             for (Premium p: premiums) {
 
@@ -110,28 +100,16 @@ public class Company {
     }
 
 
-    public List<Employee> getRewardedEmployees() {
+    public HashSet<Employee> getRewardedEmployees() {
 
-        List<Employee> result;
-
-        if (isArray) {
-
-            result = new ArrayList<>();
-
-        } else {
-
-            result = new LinkedList<>();
-        }
+        HashSet<Employee> result = new HashSet<>();
 
         for (Premium p: premiums) {
 
             Employee curEmp = p.getEmployee();
 
-            if (!result.contains(curEmp)) {
+            result.add(curEmp);
 
-                result.add(curEmp);
-
-            }
         }
 
         return result;

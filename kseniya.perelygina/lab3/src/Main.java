@@ -12,16 +12,16 @@ public class Main {
 
         int choice = Supportive.inputIntFromConsole(1, 2);
 
-        System.out.println(Supportive.line);
+        System.out.println(Supportive.LINE);
 
         if (choice == 1) {
 
-            Company c = new Company(true, Supportive.defaultYearsSinceFoundation);
+            Company c = new Company(true, Supportive.DEFAULT_YEARS_SINCE_FOUNDATION);
             Tasks.performTasks(c, true);
 
         } else {
 
-            Company c = new Company(false, Supportive.defaultYearsSinceFoundation);
+            Company c = new Company(false, Supportive.DEFAULT_YEARS_SINCE_FOUNDATION);
             Tasks.performTasks(c, true);
         }
 
@@ -39,7 +39,7 @@ public class Main {
             System.out.println("Ваш выбор: ");
 
             choice = Supportive.inputIntFromConsole(0, 2);
-            System.out.println(Supportive.line);
+            System.out.println(Supportive.LINE);
 
             choice = switch (choice) {
 
@@ -67,7 +67,7 @@ public class Main {
                 default -> throw new IllegalStateException("Unexpected value: " + choice);
             };
 
-            System.out.println(Supportive.line);
+            System.out.println(Supportive.LINE);
 
         } while (choice != 0);
 

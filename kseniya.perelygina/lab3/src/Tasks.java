@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.HashSet;
 import Supportive.*;
 import Models.*;
 
@@ -6,8 +6,8 @@ public class Tasks {
 
     public static void performTasks(Company c, boolean display) {
 
-        List<String> deps = c.getMostRewardedDepartments();
-        List<Employee> emps = c.getRewardedEmployees();
+        HashSet<String> deps = c.getMostRewardedDepartments();
+        HashSet<Employee> emps = c.getRewardedEmployees();
         int cnt = c.countOnceRewardedEmployees();
 
         if (display) {
@@ -51,7 +51,7 @@ public class Tasks {
 
     public static void performComparisonTest() {
 
-        for (int yearsPassed = Supportive.defaultYearsSinceFoundation; yearsPassed <= 5050; yearsPassed += 1000) {
+        for (int yearsPassed = Supportive.DEFAULT_YEARS_SINCE_FOUNDATION; yearsPassed <= 5050; yearsPassed += 1000) {
 
             System.out.println("\nВсего было премий: " + yearsPassed);
             compareLists(yearsPassed);

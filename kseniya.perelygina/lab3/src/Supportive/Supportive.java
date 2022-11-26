@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class Supportive {
 
-    public static int currentYear = 2022;
-    public static int defaultYearsSinceFoundation = 50;
-    public static String line = "---------------------------------------";
-    public static String[] departments = {"Отдел управления", "Отдел кадров", "Отдел маркетинга", "Отдел продаж",
+    public static int CURRENT_YEAR = 2022;
+    public static int DEFAULT_YEARS_SINCE_FOUNDATION = 50;
+    public static String LINE = "---------------------------------------";
+    public static String[] DEPARTMENTS = {"Отдел управления", "Отдел кадров", "Отдел маркетинга", "Отдел продаж",
             "Отдел продукта", "Отдел контроля качества", "Отдел финансов"};
-    public static String[] names = {"Даниил", "Максим", "Владислав", "Никита", "Артем", "Иван", "Кирилл", "Егор",
+    public static String[] NAMES = {"Даниил", "Максим", "Владислав", "Никита", "Артем", "Иван", "Кирилл", "Егор",
             "Илья", "Андрей"};
-    public static String[] surnames = {"Иванов", "Смирнов", "Кузнецов", "Попов", "Васильев", "Петров", "Соколов",
+    public static String[] SURNAMES = {"Иванов", "Смирнов", "Кузнецов", "Попов", "Васильев", "Петров", "Соколов",
             "Лазарев", "Медведев", "Ершов"};
 
     public static int inputIntFromConsole(int leftBorder, int rightBorder) {
