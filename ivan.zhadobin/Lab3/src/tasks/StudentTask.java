@@ -4,6 +4,7 @@ import enums.Subject;
 import models.Questionnaire;
 import models.QuestionnaireItem;
 
+import java.util.HashSet;
 import java.util.List;
 
 import static service.Helper.userInput;
@@ -42,7 +43,7 @@ public class StudentTask {
     public static String findMaxMarksSubjects(List<Questionnaire> forms) { // 2 задача
         double tmp;
         double maxMarks = 0;
-        StringBuilder subjects = new StringBuilder();
+        HashSet<String> subjects = new HashSet<>();
         for (Subject s : Subject.values()) {
             tmp = 0;
             for (Questionnaire form : forms) {
@@ -53,12 +54,11 @@ public class StudentTask {
                 }
             }
             if (tmp > maxMarks) {
-                subjects.append(s);
+                subjects.add(s.toString());
                 maxMarks = tmp;
             } else if (tmp == maxMarks) {
-                subjects.append(s);
+                subjects.add(s.toString());
             }
-            //стринг обход
         }
         return subjects.toString();
     }

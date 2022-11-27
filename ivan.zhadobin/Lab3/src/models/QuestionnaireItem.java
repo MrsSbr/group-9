@@ -3,8 +3,8 @@ package models;
 import enums.Subject;
 
 public class QuestionnaireItem {
-    protected Subject object;
-    protected int marks;
+    private Subject object;
+    private int marks;
 
     public QuestionnaireItem(Subject object, int marks) {
         this.object = object;

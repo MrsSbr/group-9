@@ -3,7 +3,7 @@ package models;
 import java.util.List;
 
 public class Questionnaire {
-    List<QuestionnaireItem> listofobject;
+    private List<QuestionnaireItem> listofobject;
 
     public Questionnaire(List<QuestionnaireItem> listofobject) {
         this.listofobject = listofobject;
