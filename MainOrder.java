@@ -14,7 +14,17 @@ public class MainOrder {
             new Cake("Red Velvet"),
             new Cake("Carrot Cake"),
             new Cake("Pound Cake"),
+            new Cake("Sponge Cake"),
+            new Cake("Coffee Cake"),
+            new Cake("Upside-Down Cake"),
+            new Cake("Hummingbird Cake"),
+            new Cake("Chocolate Cake"),
             new Cake("CheeseCake"),
+            new Cake("Funfetti Cake"),
+            new Cake("Black Forest Cake"),
+            new Cake("Cupcake"),
+            new Cake("Devil’s Food Cake"),
+            new Cake("Angel Food  Cake"),
             new Cake("Pumpkin Spice Cake")
     );
 
@@ -43,7 +53,7 @@ public class MainOrder {
             List<Order> curOrdersList = generateTheListOfOrders();
 
             switch (choice) {
-                case 1 -> {
+                case 1 -> { // Доход от выполненных заказов за последний месяц
                     double profitForLastMonth = 0;
                     for (Order i : curOrdersList) {
                         if ((i.orderDate.isAfter(todayDateLastMonth)) &&
@@ -59,16 +69,17 @@ public class MainOrder {
 
                 }
 
-                case 2 -> {
+                case 2 -> { // Количество уникальных тортов по наименованию
                     Set<String> TheMonthBeforeUniqueNames = new HashSet<>();
                     Set<String> TheCurMonthUniqueNames = new HashSet<>();
                     LocalDate startOfTheLastMonth = todayDateLastMonth.minusMonths(1);
                     for (Order i : curOrdersList) {
                         String curCakeName = i.cake.getName();
                         LocalDate curDate = i.orderDate;
-                        if (curDate.isAfter(startOfTheLastMonth)) {
+                        if (curDate.isAfter(startOfTheLastMonth) && curDate.isBefore(todayDate)) {
                             if (curDate.isAfter(todayDateLastMonth)) { // заказ сделан в текущем месяце
                                 TheCurMonthUniqueNames.add(curCakeName);
+                                TheMonthBeforeUniqueNames.remove(curCakeName);
                             } else { //  заказ сделан в прошлом месяце
                                 // проверка был ли заказан торт в текущем месяце
                                 if (!TheCurMonthUniqueNames.contains(curCakeName)) { // если названия нет в заказах за текущий месяц
@@ -91,8 +102,8 @@ public class MainOrder {
     }
 
     public static List<Order> generateTheListOfOrders() {
-        long minDay = LocalDate.of(2020, 1, 1).toEpochDay();
-        long maxDay = LocalDate.of(2022, 12, 31).toEpochDay();
+        long minDay = LocalDate.of(2022, 4, 1).toEpochDay();
+        long maxDay = LocalDate.of(2022, 8, 31).toEpochDay();
 
         List<Order> orders = new ArrayList<>();
         for (int i = 0; i < ORDERS_COUNT; i++) {
