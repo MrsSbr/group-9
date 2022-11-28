@@ -8,15 +8,12 @@ public class MainOrder {
 
     public static void main(String[] args) {
         boolean isEnd = false;
-        System.out.println("Введите \"текущую\" дату:");
         LocalDate todayDate;
-        todayDate = Helper.getDate();
         // нужно посчитать какая дата была месяц назад
         LocalDate todayDateLastMonth;
         //The minusMonths() method of LocalDate class in Java is
         // used to subtract the number of specified months from
         // this LocalDate and return a copy of LocalDate.
-        todayDateLastMonth = todayDate.minusMonths(1);
 
         while (!isEnd) {
             System.out.println("\nЗапустить программу в режиме:");
@@ -33,6 +30,10 @@ public class MainOrder {
 
             switch (choice) {
                 case 1 -> { // Доход от выполненных заказов за последний месяц
+                    System.out.println("Введите \"текущую\" дату:");
+                    todayDate = Helper.getDate();
+                    todayDateLastMonth = todayDate.minusMonths(1);
+
                     double profitForLastMonth = orders.getProfitForAMonth(todayDateLastMonth, todayDate);
                     System.out.println("Прибыль: ");
                     System.out.println(
@@ -41,6 +42,10 @@ public class MainOrder {
                             : String.format("%.2f", profitForLastMonth / 1000) + " тысяч рублей");
                 }
                 case 2 -> { // Количество уникальных тортов по наименованию
+                    System.out.println("Введите \"текущую\" дату:");
+                    todayDate = Helper.getDate();
+                    todayDateLastMonth = todayDate.minusMonths(1);
+
                     int uniqueNamesAmount = orders.getAmountOfUniqueCakes(todayDate, todayDateLastMonth);
                     System.out.println(uniqueNamesAmount);
                 }
@@ -81,7 +86,7 @@ public class MainOrder {
         for (Long aLong : everyTestTime) {
             sumTime += aLong;
         }
-        System.out.println("\nСреднее время выполнения:    " + (double) (sumTime / everyTestTime.size()) + '\n');
+        System.out.println("\nСреднее время выполнения:    " + (sumTime / everyTestTime.size()) + '\n');
     }
 
 }
