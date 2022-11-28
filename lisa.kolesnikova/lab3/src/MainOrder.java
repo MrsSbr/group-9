@@ -1,11 +1,12 @@
 import Models.WorkWithListOfOrders;
+
 import java.time.LocalDate;
 import java.util.*;
 
 // 2022-06-11
 public class MainOrder {
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         boolean isEnd = false;
         System.out.println("Введите \"текущую\" дату:");
         LocalDate todayDate;
@@ -28,18 +29,17 @@ public class MainOrder {
 
             int choice = Helper.getTheInterval(0, 4);
 
-            WorkWithListOfOrders orders = new WorkWithListOfOrders();
+            WorkWithListOfOrders orders = new WorkWithListOfOrders(false);
 
             switch (choice) {
                 case 1 -> { // Доход от выполненных заказов за последний месяц
-
                     double profitForLastMonth = orders.getProfitForAMonth(todayDateLastMonth, todayDate);
                     System.out.println("Прибыль: ");
-                    System.out.println(profitForLastMonth > 1000000
+                    System.out.println(
+                            profitForLastMonth > 1000000
                             ? String.format("%.2f", profitForLastMonth / 1000000) + " миллионов рублей"
                             : String.format("%.2f", profitForLastMonth / 1000) + " тысяч рублей");
                 }
-
                 case 2 -> { // Количество уникальных тортов по наименованию
                     int uniqueNamesAmount = orders.getAmountOfUniqueCakes(todayDate, todayDateLastMonth);
                     System.out.println(uniqueNamesAmount);
@@ -48,40 +48,40 @@ public class MainOrder {
                     double res = orders.getTheMostExpensiveCake();
                     System.out.println("Самый дорогой торт, цена за 1г:    " + String.format("%.2f", res));
                 }
-                case 4 -> {
-                    System.out.println("\nСвязный список:");
-                    task(new LinkedList<>(), false);
-                    System.out.println("\nМассив:");
-                    task(new ArrayList<>(), false);
-                }
+                case 4 -> performanceComparison();
                 case 0 -> isEnd = true;
                 default -> System.out.println("Произошла ошибка. Повторите ввод");
             }
         }
     }
 
-
-    public static void task(List<Double> list, boolean showInfo) {
+    public static void performanceComparison() {
         List<Long> everyTestTime = new ArrayList<>(); // засекаем время выполнения
-        int repeatCount = showInfo ? 1 : 10;
+        int RepeatCount = 10;
+        long startTimeAvg;
+        long startTime;
+        for (int testNum = 0; testNum < RepeatCount; testNum++) {
+            startTimeAvg = System.currentTimeMillis();
 
-        for (int testNum = 0; testNum < repeatCount; testNum++) {
-            WorkWithListOfOrders orders = new WorkWithListOfOrders();
+            startTime = System.currentTimeMillis();
+            WorkWithListOfOrders ordersArrayList = new WorkWithListOfOrders(true);
+            ordersArrayList.getTheMostExpensiveCake();
+            System.out.println("\nВремя выполнения для ArrayList: " + (System.currentTimeMillis() - startTime));
 
-            long startTime = System.currentTimeMillis();
 
-            // list.add(orders.ordersList.)
+            startTime = System.currentTimeMillis();
+            WorkWithListOfOrders ordersLinkedList = new WorkWithListOfOrders(false);
+            ordersLinkedList.getTheMostExpensiveCake();
+            System.out.println("Время выполнения для LinkedList: " + (System.currentTimeMillis() - startTime));
 
-            everyTestTime.add(System.currentTimeMillis() - startTime);
+            everyTestTime.add(System.currentTimeMillis() - startTimeAvg);
         }
 
-        if (!showInfo) {
-            long sumTime = 0;
-            for (Long aLong : everyTestTime) {
-                sumTime += aLong;
-            }
-            System.out.println("Среднее время выполнения:    " + (double) (sumTime / everyTestTime.size()) + '\n');
+        long sumTime = 0;
+        for (Long aLong : everyTestTime) {
+            sumTime += aLong;
         }
-
+        System.out.println("\nСреднее время выполнения:    " + (double) (sumTime / everyTestTime.size()) + '\n');
     }
+
 }

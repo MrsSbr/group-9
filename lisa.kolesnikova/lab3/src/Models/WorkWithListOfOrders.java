@@ -1,17 +1,17 @@
 package Models;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class WorkWithListOfOrders {
     public List<Order> ordersList;
+    boolean isArray;
 
-    public WorkWithListOfOrders() {
-        GeneratedListOfOrders gen_l = new GeneratedListOfOrders();
+    public WorkWithListOfOrders(boolean isArray) {
+
+        GeneratedListOfOrders gen_l = new GeneratedListOfOrders(isArray);
         this.ordersList = gen_l.ordersList;
+        this.isArray = isArray;
     }
 
     public double getProfitForAMonth(LocalDate start, LocalDate end) {
@@ -47,7 +47,13 @@ public class WorkWithListOfOrders {
         return TheMonthBeforeUniqueNames.size();
     }
     public double getTheMostExpensiveCake(){
-        List<Double> calculationOnG = new ArrayList<>();
+        List<Double> calculationOnG;
+        if (this.isArray){
+            calculationOnG = new ArrayList<>();
+        } else
+        {
+            calculationOnG = new LinkedList<>();
+        }
 
         for (Order i : this.ordersList
         ) {
@@ -60,4 +66,5 @@ public class WorkWithListOfOrders {
         }
         return res;
     }
+
 }

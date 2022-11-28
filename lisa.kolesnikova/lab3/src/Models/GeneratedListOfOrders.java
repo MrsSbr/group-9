@@ -2,6 +2,7 @@ package Models;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -24,13 +25,18 @@ public class GeneratedListOfOrders {
             new Cake("Angel Food  Models.Cake"),
             new Cake("Pumpkin Spice Models.Cake")
     );
-    public List<Order> ordersList;
+    final List<Order> ordersList;
 
-    public GeneratedListOfOrders() {
+    public GeneratedListOfOrders(boolean isArray) {
         long minDay = LocalDate.of(2022, 4, 1).toEpochDay();
         long maxDay = LocalDate.of(2022, 8, 31).toEpochDay();
 
-        this.ordersList = new ArrayList<>();
+        if (isArray){
+            this.ordersList = new ArrayList<>();
+        }
+        else
+            this.ordersList = new LinkedList<>();
+
         for (int i = 0; i < ORDERS_COUNT; i++) {
             this.ordersList.add(
                     new Order(
