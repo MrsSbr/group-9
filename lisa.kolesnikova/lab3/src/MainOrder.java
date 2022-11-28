@@ -1,16 +1,11 @@
-import Models.Cake;
-import Models.GeneratedListOfOrders;
-import Models.Order;
 import Models.WorkWithListOfOrders;
-
 import java.time.LocalDate;
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 // 2022-06-11
 public class MainOrder {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args)  {
         boolean isEnd = false;
         System.out.println("Введите \"текущую\" дату:");
         LocalDate todayDate;
@@ -28,12 +23,12 @@ public class MainOrder {
             System.out.println("[2] Количество уникальных тортов по наименованию, " +
                     "которые были заказаны в прошлом месяце, но не заказаны в текущем.");
             System.out.println("[3] Самый дорогой торт в расчёте на грамм за всё время");
+            System.out.println("[4] Сравнение производительности.");
             System.out.println("[0] Exit");
 
-            int choice = Helper.getTheInterval(0, 3);
+            int choice = Helper.getTheInterval(0, 4);
 
-            GeneratedListOfOrders curOrdersList = new GeneratedListOfOrders();
-            WorkWithListOfOrders orders = new WorkWithListOfOrders(curOrdersList.ordersList);
+            WorkWithListOfOrders orders = new WorkWithListOfOrders();
 
             switch (choice) {
                 case 1 -> { // Доход от выполненных заказов за последний месяц
@@ -50,58 +45,32 @@ public class MainOrder {
                     System.out.println(uniqueNamesAmount);
                 }
                 case 3 -> { // Самый дорогой торт в расчёте на грамм за всё время
-                    workingWithTheColl(curOrdersList.ordersList);
+                    double res = orders.getTheMostExpensiveCake();
+                    System.out.println("Самый дорогой торт, цена за 1г:    " + String.format("%.2f", res));
                 }
-                case 0 -> {
-                    isEnd = true;
+                case 4 -> {
+                    System.out.println("\nСвязный список:");
+                    task(new LinkedList<>(), false);
+                    System.out.println("\nМассив:");
+                    task(new ArrayList<>(), false);
                 }
+                case 0 -> isEnd = true;
                 default -> System.out.println("Произошла ошибка. Повторите ввод");
             }
         }
     }
 
-    public static void workingWithTheColl(List<Order> curOrdersList) {
-        System.out.println("Запустить программу в режиме:");
-        System.out.println("[1] Сравнение производительности.");
-        System.out.println("[2] Вывести самый дорогой торт в расчете цены за грамм за всю историю заказов.");
-        int choice = Helper.getTheInterval(1, 2);
 
-        switch (choice) {
-            case 1 -> {
-                System.out.println("Связный список:");
-                task(new LinkedList<>(), false);
-                System.out.println("\nМассив:");
-                task(new ArrayList<>(), false);
-            }
-            case 2 -> task(new ArrayList<>(), true);
-            default -> System.out.println("Неверный ввод. Повторите");
-        }
-    }
-
-    public static void task(List<Double> calculationOnG, boolean showInfo) {
+    public static void task(List<Double> list, boolean showInfo) {
         List<Long> everyTestTime = new ArrayList<>(); // засекаем время выполнения
         int repeatCount = showInfo ? 1 : 10;
 
         for (int testNum = 0; testNum < repeatCount; testNum++) {
-
-            GeneratedListOfOrders curOrdersList = new GeneratedListOfOrders();
+            WorkWithListOfOrders orders = new WorkWithListOfOrders();
 
             long startTime = System.currentTimeMillis();
 
-
-
-            for (Order i : curOrdersList.ordersList
-            ) {
-                calculationOnG.add(i.getTheCalculationOnG());
-            }
-            double res = calculationOnG.get(0);
-            for (double i : calculationOnG
-            ) {
-                res = Math.max(i, res);
-            }
-
-            System.out.println("Самый дорогой торт, цена за 1г:    " + String.format("%.2f", res));
-
+            // list.add(orders.ordersList.)
 
             everyTestTime.add(System.currentTimeMillis() - startTime);
         }

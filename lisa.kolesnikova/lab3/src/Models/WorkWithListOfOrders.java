@@ -1,6 +1,7 @@
 package Models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,8 +9,9 @@ import java.util.Set;
 public class WorkWithListOfOrders {
     public List<Order> ordersList;
 
-    public WorkWithListOfOrders(List<Order> ordersList) {
-        this.ordersList = ordersList;
+    public WorkWithListOfOrders() {
+        GeneratedListOfOrders gen_l = new GeneratedListOfOrders();
+        this.ordersList = gen_l.ordersList;
     }
 
     public double getProfitForAMonth(LocalDate start, LocalDate end) {
@@ -43,5 +45,19 @@ public class WorkWithListOfOrders {
             }
         }
         return TheMonthBeforeUniqueNames.size();
+    }
+    public double getTheMostExpensiveCake(){
+        List<Double> calculationOnG = new ArrayList<>();
+
+        for (Order i : this.ordersList
+        ) {
+            calculationOnG.add(i.getTheCalculationOnG());
+        }
+        double res = calculationOnG.get(0);
+        for (double i : calculationOnG
+        ) {
+            res = Math.max(i, res);
+        }
+        return res;
     }
 }
