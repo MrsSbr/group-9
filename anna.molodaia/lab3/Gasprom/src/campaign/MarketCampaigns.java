@@ -1,0 +1,80 @@
+package campaign;
+
+import java.math.BigDecimal;
+
+import java.math.RoundingMode;
+import java.time.LocalDate;
+
+import java.time.temporal.ChronoUnit;
+
+
+import static settings.Random.*;
+
+public class MarketCampaigns {
+
+    private LocalDate start;
+    private LocalDate finish;
+    private TypeCampaign type;
+    private long coverage;
+    private BigDecimal budget;
+    MarketCampaigns() {}
+    void setStart(int day, int month, int year) {
+        this.start = LocalDate.of(year, month, day);
+    }
+
+    void setFinish(int day, int month, int year) {
+        this.finish = LocalDate.of(year, month, day);
+    }
+
+    MarketCampaigns(String start, String finish, TypeCampaign type, long coverage, String budget) {
+        this.start = LocalDate.parse(start);
+        this.finish = LocalDate.parse(finish);
+        this.type = type;
+        this.coverage = coverage;
+        this.budget = new BigDecimal(budget);
+    }
+
+    void setRandom() {
+        this.start = createRandomDate(MIN_YEAR, MAX_YEAR);
+        this.finish = start.plusDays(createRandomDuration());
+        //while (finish.isBefore(start)) {finish = createRandomDate(MIN_YEAR,MAX_YEAR);}
+        this.type = TypeCampaign.randomTypeCampaign();
+        this.coverage = createRandomIntBetween(1, MAX_COVERAGE);
+        this.budget = random();
+    }
+
+    int getDurationDays() {
+        return (int) ChronoUnit.DAYS.between(start, finish);
+    }
+
+    BigDecimal getCorrelation() {
+        return budget.divide(BigDecimal.valueOf(coverage), RoundingMode.HALF_UP);
+    }
+
+    public LocalDate getFinish() {
+        return finish;
+    }
+
+    public LocalDate getStart() {
+        return start;
+    }
+
+    public TypeCampaign getType() {
+        return type;
+    }
+
+    public BigDecimal getBudget() {
+        return budget;
+    }
+
+    @Override
+    public String toString() {
+        return "Маркетинговая кампания { " +
+                "Дата начала = " + start +
+                ", Дата окончания = " + finish +
+                ", Тип = " + type +
+                ", Охват = " + coverage +
+                ", Бюджет = " + budget +
+                '}';
+    }
+}
