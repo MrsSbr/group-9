@@ -3,14 +3,14 @@ package models;
 import java.util.List;
 
 public class Questionnaire {
-    private List<QuestionnaireItem> listofobject;
+    private List<QuestionnaireItem> listOfObject;
 
-    public Questionnaire(List<QuestionnaireItem> listofobject) {
-        this.listofobject = listofobject;
+    public Questionnaire(List<QuestionnaireItem> listOfObject) {
+        this.listOfObject = listOfObject;
     }
 
     public List<QuestionnaireItem> getListOfObject() {
-        return listofobject;
+        return listOfObject;
     }
 }
 
