@@ -1,8 +1,8 @@
 package Models;
 
-import java.util.*;
+import Supportive.Supportive;
 
-import Supportive.*;
+import java.util.*;
 
 public class Company {
 
@@ -16,7 +16,7 @@ public class Company {
     private int yearsSinceFoundation;
 
 
-    public Company(boolean makeArrayList, int yearsSinceFoundation){
+    public Company(boolean makeArrayList, int yearsSinceFoundation) {
 
         this.yearsSinceFoundation = yearsSinceFoundation;
 
@@ -55,7 +55,7 @@ public class Company {
         for (int i = 0; i < yearsSinceFoundation; i++) {
 
             Premium p = new Premium(Supportive.CURRENT_YEAR - i,
-                    employees.get((int)(Math.random() * AMOUNT_OF_EMPLOYEES)));
+                    employees.get((int) (Math.random() * AMOUNT_OF_EMPLOYEES)));
             premiums.add(p);
 
         }
@@ -72,9 +72,9 @@ public class Company {
             int cnt = 0;
             String curDep = Supportive.DEPARTMENTS[i];
 
-            for (Premium p: premiums) {
+            for (Premium p : premiums) {
 
-                if (p.getDepartment() == curDep) {
+                if (p.getDepartment().equals(curDep)) {
                     cnt++;
                 }
 
@@ -102,7 +102,7 @@ public class Company {
 
         HashSet<Employee> result = new HashSet<>();
 
-        for (Premium p: premiums) {
+        for (Premium p : premiums) {
 
             Employee curEmp = p.getEmployee();
 
@@ -118,12 +118,12 @@ public class Company {
 
         int resultCnt = 0;
 
-        for (Premium curP: premiums) {
+        for (Premium curP : premiums) {
 
             Employee curEmp = curP.getEmployee();
             int cnt = 0;
 
-            for (Premium p: premiums) {
+            for (Premium p : premiums) {
 
                 if (curEmp.equals(p.getEmployee())) {
 
