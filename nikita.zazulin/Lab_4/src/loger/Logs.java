@@ -144,8 +144,11 @@ public class Logs {
         }
 
         List<Map.Entry<String, AllSuccess>> codeList = new ArrayList<>(resourses.entrySet());
-        codeList.sort((o1, o2) -> (Double.compare(o2.getValue().getSuccesful() / o2.getValue().getAll(),
-                o1.getValue().getSuccesful() / o1.getValue().getAll())));
+        codeList.sort((o1, o2) ->
+                (Double.compare(o2.getValue().getSuccesful() /
+                                o2.getValue().getAll(),
+                        o1.getValue().getSuccesful() /
+                                o1.getValue().getAll())));
 
         return codeList.get(0).getKey();
 
