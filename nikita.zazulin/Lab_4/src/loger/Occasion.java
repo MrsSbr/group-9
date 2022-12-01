@@ -10,6 +10,31 @@ public class Occasion {
 
     private final int code;
 
+    public Occasion(String date, String resource, int code) {
+
+        this.date = LocalDate.parse(date);
+        this.resource = resource;
+        this.code = code;
+
+    }
+
+    public int getCode() {
+
+        return code;
+
+    }
+
+    public String getResource() {
+
+        return resource;
+    }
+
+    public LocalDate getDate() {
+
+        return date;
+
+    }
+
     @Override
     public boolean equals(Object o) {
 
@@ -35,31 +60,6 @@ public class Occasion {
     public int hashCode() {
 
         return Objects.hash(date, resource, code);
-
-    }
-
-    public Occasion(String date, String resource, int code) {
-
-        this.date = LocalDate.parse(date);
-        this.resource = resource;
-        this.code = code;
-
-    }
-
-    public int getCode() {
-
-        return code;
-
-    }
-
-    public String getResource() {
-
-        return resource;
-    }
-
-    public LocalDate getDate() {
-
-        return date;
 
     }
 

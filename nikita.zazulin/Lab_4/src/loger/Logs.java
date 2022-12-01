@@ -12,7 +12,7 @@ public class Logs {
 
     }
 
-    public String codeStatictic() {
+    public List<Map.Entry<Integer, String>> codeStatictic() {
 
         Map<Integer, String> codes = new HashMap<>();
 
@@ -38,7 +38,7 @@ public class Logs {
         List<Map.Entry<Integer, String>> codeList = new ArrayList<>(codes.entrySet());
         codeList.sort((o1, o2) -> o2.getKey().compareTo(o1.getKey()));
 
-        return codeList.toString();
+        return codeList;
 
     }
 
@@ -161,15 +161,13 @@ public class Logs {
 
     public void add(String date, String resource, int ip, int code) {
 
-        if (logs.containsKey(ip)) {
+        if (!logs.containsKey(ip)) {
 
-            logs.get(ip).add(new Occasion(date, resource, code));
-
-        } else {
-
-            logs.put(ip, new ArrayList<>(Collections.singletonList(new Occasion(date, resource, code))));
+            logs.put(ip, new ArrayList<>());
 
         }
+
+        logs.get(ip).add(new Occasion(date, resource, code));
 
     }
 

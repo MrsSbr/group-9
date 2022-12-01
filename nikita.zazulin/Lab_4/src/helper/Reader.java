@@ -11,10 +11,10 @@ import java.util.logging.Logger;
 
 public class Reader {
 
+    private static final File file = new File("src/loger/Logs.txt");
     private static final Logger logger = Logger.getLogger(Reader.class.getName());
-    public static void readFile(Logs logs) {
 
-        File file = new File("C:\\Users\\Nikita\\Desktop\\Java_Labs\\group-9\\nikita.zazulin\\Lab_4\\src\\loger\\Logs.txt");
+    public static void readFile(Logs logs) {
 
         try (FileReader fr = new FileReader(file); BufferedReader reader = new BufferedReader(fr)) {
 

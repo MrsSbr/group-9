@@ -14,26 +14,26 @@ public class AllSuccess {
 
     }
 
-    public void incAll(){
+    public void incAll() {
 
         all++;
 
     }
 
-    public void incSuccesful(){
+    public void incSuccesful() {
 
         incAll();
         succesful++;
 
     }
 
-    public double getAll(){
+    public double getAll() {
 
         return all;
 
     }
 
-    public  double getSuccesful(){
+    public double getSuccesful() {
 
         return succesful;
 
@@ -42,7 +42,7 @@ public class AllSuccess {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o){
+        if (this == o) {
 
             return true;
 
