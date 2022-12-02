@@ -4,8 +4,8 @@ import interfaces.GroupFactory;
 import java.util.Scanner;
 
 public class GroupOfStudent implements GroupFactory {
-    @Override
-    public Group createGroup() {
+
+    public static Student createGroup() {
         Scanner input = new Scanner(System.in);
         //name
         System.out.println("Введите название группы: ");

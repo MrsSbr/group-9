@@ -13,5 +13,5 @@ public interface GroupFactory {
             default -> throw new ClassNotFoundException("Класс переданного типа не существует.");
         };
     }
-    Group createGroup();
+
 }

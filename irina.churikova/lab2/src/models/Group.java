@@ -1,8 +1,8 @@
 package models;
-import interfaces.IGroupUniversity;
+import interfaces.IUniversity;
 import java.util.Objects;
 
-public abstract class Group implements IGroupUniversity {
+public abstract class Group implements IUniversity {
     protected String direction;
     protected String name;
 

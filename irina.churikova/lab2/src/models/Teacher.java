@@ -1,10 +1,11 @@
 package models;
 
-import interfaces.IGroupUniversity;
+import interfaces.IUniversity;
+import interfaces.IUniversity;
 
 import java.util.Objects;
 
-public class Teacher extends Group implements IGroupUniversity {
+public class Teacher extends Group implements IUniversity {
     private int count;
 
     public Teacher(String name, String direction, int count) {

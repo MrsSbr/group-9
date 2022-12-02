@@ -106,7 +106,12 @@ public class Main {
             case 2 -> GroupFactory.createGroupFactoryType(GroupTypes.TEACHERS);
             default -> throw new ClassNotFoundException();
         };
-        return groupFactory.createGroup();
+        if (type ==1) {
+            return GroupOfStudent.createGroup();
+        }
+        else{
+            return Department.createGroup();
+        }
     }
 }
 

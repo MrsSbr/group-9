@@ -1,10 +1,10 @@
 package models;
 
-import interfaces.IGroupUniversity;
+import interfaces.IUniversity;
 
 import java.util.Objects;
 
-public class Student extends Group implements IGroupUniversity {
+public class Student extends Group implements IUniversity {
     private int Capacity;
 
     public Student(String name, String direction, int Capacity) {
@@ -39,5 +39,9 @@ public class Student extends Group implements IGroupUniversity {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), Capacity);
+    }
+
+    static Student createGroup() {
+        return null;
     }
 }
