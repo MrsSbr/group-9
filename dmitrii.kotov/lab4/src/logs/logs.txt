@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-12-07T01:04:02.150868600Z</date>
+  <millis>1670375042150</millis>
+  <nanos>868600</nanos>
+  <sequence>0</sequence>
+  <logger>java.io.FileReader</logger>
+  <level>INFO</level>
+  <class>Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Начало работы</message>
+</record>
+<record>
+  <date>2022-12-07T01:04:02.196885400Z</date>
+  <millis>1670375042196</millis>
+  <nanos>885400</nanos>
+  <sequence>1</sequence>
+  <logger>java.io.FileReader</logger>
+  <level>INFO</level>
+  <class>MyFileReader</class>
+  <method>getFightsListFromFile</method>
+  <thread>1</thread>
+  <message>Информация из файла успешно считана</message>
+</record>
+<record>
+  <date>2022-12-07T01:04:02.198886Z</date>
+  <millis>1670375042198</millis>
+  <nanos>886000</nanos>
+  <sequence>2</sequence>
+  <logger>java.io.FileReader</logger>
+  <level>INFO</level>
+  <class>Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Информация из файла успешно передана и конвертирована</message>
+</record>
+<record>
+  <date>2022-12-07T01:04:02.200886900Z</date>
+  <millis>1670375042200</millis>
+  <nanos>886900</nanos>
+  <sequence>3</sequence>
+  <logger>java.io.FileReader</logger>
+  <level>INFO</level>
+  <class>Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Задача успешно выполнена. Завершение работы</message>
+</record>
+</log>

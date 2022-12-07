@@ -11,8 +11,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MyFileReader {
-    private static final String filePath = "src/fights.txt";
-    private static final String logPath = "src/logs.txt";
+    private static final String filePath = "dmitrii.kotov/lab4/src/resources/fights.txt";
+    private static final String logPath = "dmitrii.kotov/lab4/logs/logs.txt";
     private static final Logger logger = Logger.getLogger(FileReader.class.getName());
 
     public static List<Fight> getFightsListFromFile() {

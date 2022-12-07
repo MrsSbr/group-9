@@ -20,27 +20,24 @@ public class Fight {
     public LocalDate getDate() {
         return date;
     }
-    public String getEnemyAnimal() {
-        return enemyAnimal;
-    }
-
-    public int getResult() {
-        return result;
-    }
-
     public String getGladiatorName() {
         return gladiatorName;
     }
-
     public String getLudus() {
         return ludus;
+    }
+    public String getEnemyAnimal() {
+        return enemyAnimal;
+    }
+    public int getResult() {
+        return result;
     }
 
     @Override
     public String toString() {
         return "Дата проведения: "
                 + date + "\nИмя гладиатора: "
-                + gladiatorName + "\n Лудус"
+                + gladiatorName + "\n Лудус: "
                 + ludus + "\n Животное: "
                 + enemyAnimal + "\nРезультат: "
                 + result;

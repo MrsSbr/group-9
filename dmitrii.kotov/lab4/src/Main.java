@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import java.util.List;
 
 public class Main {
-    private static final String logPath = "src/logs.txt";
+    private static final String logPath = "dmitrii.kotov/lab4/logs/logs.txt";
     private static final Logger logger = Logger.getLogger(FileReader.class.getName());
 
     public static void main(String[] args) {
