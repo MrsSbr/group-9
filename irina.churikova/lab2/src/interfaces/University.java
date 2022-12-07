@@ -1,6 +1,6 @@
 package interfaces;
 
-public interface IUniversity {
+public interface University {
      String getName();
      String getDirection();
 }
