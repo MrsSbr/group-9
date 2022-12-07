@@ -2,6 +2,7 @@ package ru.vsu.logic;
 
 import org.junit.jupiter.api.Test;
 import ru.vsu.entity.Student;
+import ru.vsu.logic.interfaces.StudentService;
 import ru.vsu.utils.TestReflectionUtils;
 
 import java.util.List;

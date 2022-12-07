@@ -3,6 +3,7 @@ package ru.vsu.logic;
 import org.junit.jupiter.api.Test;
 import ru.vsu.entity.Student;
 import ru.vsu.entity.Subject;
+import ru.vsu.logic.interfaces.TeacherService;
 import ru.vsu.utils.TestReflectionUtils;
 
 import java.math.BigDecimal;

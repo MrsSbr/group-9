@@ -1,4 +1,4 @@
-package ru.vsu.logic;
+package ru.vsu.logic.interfaces;
 
 import ru.vsu.entity.Student;
 
