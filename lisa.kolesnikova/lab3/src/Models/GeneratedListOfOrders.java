@@ -25,16 +25,15 @@ public class GeneratedListOfOrders {
             new Cake("Angel Food  Models.Cake"),
             new Cake("Pumpkin Spice Models.Cake")
     );
-    final List<Order> ordersList;
+    public List<Order> ordersList;
 
     public GeneratedListOfOrders(boolean isArray) {
         long minDay = LocalDate.of(2022, 4, 1).toEpochDay();
         long maxDay = LocalDate.of(2022, 8, 31).toEpochDay();
 
-        if (isArray){
+        if (isArray) {
             this.ordersList = new ArrayList<>();
-        }
-        else
+        } else
             this.ordersList = new LinkedList<>();
 
         for (int i = 0; i < ORDERS_COUNT; i++) {

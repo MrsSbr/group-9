@@ -5,9 +5,10 @@ import Models.Cake;
 import java.time.LocalDate;
 
 public class Order {
-    public LocalDate orderDate;
-    public Cake cake;
-    public double price;
+
+    protected LocalDate orderDate;
+    private Cake cake;
+    private double price;
 
     public Order(LocalDate orderDate, Cake cake, double weight, double price) {
         this.orderDate = orderDate;
@@ -17,7 +18,31 @@ public class Order {
         this.price = price;
     }
 
-    public double getTheCalculationOnG(){
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public LocalDate getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(LocalDate orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public Cake getCake() {
+        return cake;
+    }
+
+    public void setCake(Cake cake) {
+        this.cake = cake;
+    }
+
+    public double getTheCalculationOnG() {
         return price / cake.getWeightG();
     }
 }

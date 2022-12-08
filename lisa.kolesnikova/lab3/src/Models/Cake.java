@@ -33,8 +33,12 @@ public class Cake {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Cake cake = (Cake) o;
         return Double.compare(cake.weightG, weightG) == 0 && Objects.equals(name, cake.name);
     }

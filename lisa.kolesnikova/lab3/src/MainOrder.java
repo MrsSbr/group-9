@@ -6,7 +6,7 @@ import java.util.*;
 // 2022-06-11
 public class MainOrder {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws RuntimeException {
         boolean isEnd = false;
         LocalDate todayDate;
         // нужно посчитать какая дата была месяц назад
@@ -38,8 +38,8 @@ public class MainOrder {
                     System.out.println("Прибыль: ");
                     System.out.println(
                             profitForLastMonth > 1000000
-                            ? String.format("%.2f", profitForLastMonth / 1000000) + " миллионов рублей"
-                            : String.format("%.2f", profitForLastMonth / 1000) + " тысяч рублей");
+                                    ? String.format("%.2f", profitForLastMonth / 1000000) + " миллионов рублей"
+                                    : String.format("%.2f", profitForLastMonth / 1000) + " тысяч рублей");
                 }
                 case 2 -> { // Количество уникальных тортов по наименованию
                     System.out.println("Введите \"текущую\" дату:");

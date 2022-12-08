@@ -5,7 +5,7 @@ import java.util.*;
 
 public class WorkWithListOfOrders {
     public List<Order> ordersList;
-    boolean isArray;
+    private final boolean isArray;
 
     public WorkWithListOfOrders(boolean isArray) {
 
@@ -19,7 +19,7 @@ public class WorkWithListOfOrders {
         for (Order i : this.ordersList) {
             if ((i.orderDate.isAfter(start)) &&
                     (i.orderDate.isBefore(end))) {
-                profitForLastMonth += i.price;
+                profitForLastMonth += i.getPrice();
             }
         }
         return profitForLastMonth;
@@ -30,7 +30,7 @@ public class WorkWithListOfOrders {
         Set<Cake> TheCurMonthUniqueNames = new HashSet<>();
         LocalDate startOfTheLastMonth = thisDayLastMonth.minusMonths(1);
         for (Order i : this.ordersList) {
-            Cake curCake = i.cake;
+            Cake curCake = i.getCake();
             LocalDate curDate = i.orderDate;
             if (curDate.isAfter(startOfTheLastMonth) && curDate.isBefore(todayDate)) {
                 if (curDate.isAfter(thisDayLastMonth)) { // заказ сделан в текущем месяце
@@ -46,22 +46,20 @@ public class WorkWithListOfOrders {
         }
         return TheMonthBeforeUniqueNames.size();
     }
-    public double getTheMostExpensiveCake(){
+
+    public double getTheMostExpensiveCake() {
         List<Double> calculationOnG;
-        if (this.isArray){
+        if (this.isArray) {
             calculationOnG = new ArrayList<>();
-        } else
-        {
+        } else {
             calculationOnG = new LinkedList<>();
         }
 
-        for (Order i : this.ordersList
-        ) {
+        for (Order i : this.ordersList) {
             calculationOnG.add(i.getTheCalculationOnG());
         }
         double res = calculationOnG.get(0);
-        for (double i : calculationOnG
-        ) {
+        for (double i : calculationOnG) {
             res = Math.max(i, res);
         }
         return res;
