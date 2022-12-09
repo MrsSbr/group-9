@@ -12,60 +12,54 @@ public class Logs {
 
     }
 
-    public List<Map.Entry<Integer, String>> codeStatictic() {
+    public List<Map.Entry<Integer, List<Code>>> codeStatictic() {
 
-        Map<Integer, String> codes = new HashMap<>();
+        Map<Integer, List<Code>> codes = new HashMap<>();
 
         for (Map.Entry<Integer, List<Occasion>> log : logs.entrySet()) {
 
             for (Occasion occasion : log.getValue()) {
 
-                if (codes.containsKey(occasion.getCode())) {
+                if (!codes.containsKey(occasion.getCode())) {
 
-                    codes.put(occasion.getCode(), codes.get(occasion.getCode()) +
-                            "ip: " + log.getKey() + " resourse: " + occasion.getResource() + " date: " + occasion.getDate() + "\n\r");
-
-                } else {
-
-                    codes.put(occasion.getCode(),
-                            "ip: " + log.getKey() + " resourse: " + occasion.getResource() + " date: " + occasion.getDate() + "\n\r");
+                    codes.put(occasion.getCode(), new ArrayList<>());
 
                 }
+
+                codes.get(occasion.getCode()).add(new Code(log.getKey(),occasion.getDate(),occasion.getResource()));
+
             }
 
         }
 
-        List<Map.Entry<Integer, String>> codeList = new ArrayList<>(codes.entrySet());
+        List<Map.Entry<Integer, List<Code>>> codeList = new ArrayList<>(codes.entrySet());
         codeList.sort((o1, o2) -> o2.getKey().compareTo(o1.getKey()));
 
         return codeList;
 
     }
 
-    public List<Map.Entry<String, String>> resourceStatictic() {
+    public List<Map.Entry<String, List<Resourse>>> resourceStatictic() {
 
-        Map<String, String> resourses = new HashMap<>();
+        Map<String, List<Resourse>> resourses = new HashMap<>();
 
         for (Map.Entry<Integer, List<Occasion>> log : logs.entrySet()) {
 
             for (Occasion occasion : log.getValue()) {
 
-                if (resourses.containsKey(occasion.getResource())) {
+                if (!resourses.containsKey(occasion.getResource())) {
 
-                    resourses.put(occasion.getResource(), resourses.get(occasion.getResource()) +
-                            "ip: " + log.getKey() + " code: " + occasion.getCode() + "date: " + occasion.getDate() + "\n\r");
-
-                } else {
-
-                    resourses.put(occasion.getResource(),
-                            "ip: " + log.getKey() + " code: " + occasion.getCode() + "date: " + occasion.getDate() + "\n\r");
+                    resourses.put(occasion.getResource(), new ArrayList<>());
 
                 }
+
+                resourses.get(occasion.getResource()).add(new Resourse(log.getKey(),occasion.getDate(),occasion.getCode()));
+
             }
 
         }
 
-        List<Map.Entry<String, String>> codeList = new ArrayList<>(resourses.entrySet());
+        List<Map.Entry<String, List<Resourse>>> codeList = new ArrayList<>(resourses.entrySet());
         codeList.sort((o1, o2) -> o2.getKey().compareTo(o1.getKey()));
 
         return codeList;
@@ -144,11 +138,7 @@ public class Logs {
         }
 
         List<Map.Entry<String, AllSuccess>> codeList = new ArrayList<>(resourses.entrySet());
-        codeList.sort((o1, o2) ->
-                (Double.compare(o2.getValue().getSuccesful() /
-                                o2.getValue().getAll(),
-                        o1.getValue().getSuccesful() /
-                                o1.getValue().getAll())));
+        codeList.sort((o1, o2) -> (Double.compare(o2.getValue().howSuccessful(), o1.getValue().howSuccessful())));
 
         return codeList.get(0).getKey();
 

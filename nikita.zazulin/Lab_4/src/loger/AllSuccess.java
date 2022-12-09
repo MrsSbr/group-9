@@ -14,6 +14,12 @@ public class AllSuccess {
 
     }
 
+    public double howSuccessful(){
+
+        return (double)succesful/all;
+
+    }
+
     public void incAll() {
 
         all++;
