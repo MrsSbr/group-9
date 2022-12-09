@@ -13,55 +13,48 @@ public class Logs {
 
     }
 
-    public List<Map.Entry<Integer, String>> codeStatictic() {
+    public List<Map.Entry<Integer, List<Code>>> codeStatictic() {
 
-        Map<Integer, String> codes = new HashMap<>();
+        Map<Integer, List<Code>> codes = new HashMap<>();
 
         logs.forEach((key, value) -> value.forEach(occasion -> {
 
-            if (codes.containsKey(occasion.getCode())) {
+            if (!codes.containsKey(occasion.getCode())) {
 
-                codes.put(occasion.getCode(), codes.get(occasion.getCode()) +
-                        "ip: " + key + " resourse: " + occasion.getResource() + " date: " + occasion.getDate() + "\n\r");
-
-            } else {
-
-                codes.put(occasion.getCode(),
-                        "ip: " + key + " resourse: " + occasion.getResource() + " date: " + occasion.getDate() + "\n\r");
+                codes.put(occasion.getCode(), new ArrayList<>());
 
             }
+
+            codes.get(occasion.getCode()).add(new Code(key,occasion.getDate(),occasion.getResource()));
+
         }));
 
         return codes.entrySet()
                 .stream()
-                .sorted(Entry.comparingByValue())
+                .sorted(Entry.comparingByKey())
                 .toList();
 
     }
 
-    public List<Map.Entry<String, String>> resourceStatictic() {
+    public List<Map.Entry<String, List<Resourse>>> resourceStatictic() {
 
-        Map<String, String> resourses = new HashMap<>();
+        Map<String, List<Resourse>> resourses = new HashMap<>();
 
         logs.forEach((key, value) -> value.forEach(occasion -> {
 
-            if (resourses.containsKey(occasion.getResource())) {
+            if (!resourses.containsKey(occasion.getResource())) {
 
-                resourses.put(occasion.getResource(), resourses.get(occasion.getResource()) +
-                        "ip: " + key + " code: " + occasion.getCode() + "date: " + occasion.getDate() + "\n\r");
-
-            } else {
-
-                resourses.put(occasion.getResource(),
-                        "ip: " + key + " code: " + occasion.getCode() + "date: " + occasion.getDate() + "\n\r");
+                resourses.put(occasion.getResource(), new ArrayList<>());
 
             }
+
+            resourses.get(occasion.getResource()).add(new Resourse(key,occasion.getDate(),occasion.getCode()));
 
         }));
 
         return resourses.entrySet()
                 .stream()
-                .sorted(Entry.comparingByValue())
+                .sorted(Entry.comparingByKey())
                 .toList();
 
     }
@@ -130,8 +123,7 @@ public class Logs {
 
         return resourses.entrySet()
                 .stream()
-                .min((o1, o2) -> (Double.compare(o2.getValue().getSuccesful() / o2.getValue().getAll(),
-                        o1.getValue().getSuccesful() / o1.getValue().getAll())))
+                .min((o1, o2) -> (Double.compare(o2.getValue().howSuccessful(), o1.getValue().howSuccessful())))
                 .orElseThrow(IllegalArgumentException::new)
                 .getKey();
 
