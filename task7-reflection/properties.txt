@@ -1,0 +1,27 @@
+Нужно реализовать механизм ассоциации проперти с методом интерфейса и получения значений из файла .properties
+
+Создать аннотацию для интерфейса @Config c параметром: имя файла.
+
+Создать аннотацию для поля @Property с параметром: ключ.
+
+Пример:
+
+@Config(path = "config/db.properties")
+public interface DatabaseConfig {
+    @Property("db.jdbcUrl")
+    String getJdbcUrl();
+
+    @Property("db.user")
+    String getUser();
+
+    @Property("db.password")
+    String getPassword();
+
+    @Property("db.ssl")
+    boolean getSsl();
+}
+
+main() {
+    DatabaseConfig config = ConfigService.load(DatabaseConfig.class);
+    String jdbcUrl = config.getJdbcUrl();
+}
