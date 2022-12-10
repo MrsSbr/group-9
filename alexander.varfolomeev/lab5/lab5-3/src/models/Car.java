@@ -2,12 +2,19 @@ package models;
 
 public class Car {
 
-    public String name;
-    public double minFuelConsumption;
-    public double maxFuelConsumption;
-    public Car(String name, double minFuelConsumption, double maxFuelConsumption) {
-        this.name = name;
+    private final double minFuelConsumption;
+    private final double maxFuelConsumption;
+
+    public Car(double minFuelConsumption, double maxFuelConsumption) {
         this.minFuelConsumption = minFuelConsumption;
         this.maxFuelConsumption = maxFuelConsumption;
+    }
+
+    public double getMinFuelConsumption() {
+        return minFuelConsumption;
+    }
+
+    public double getMaxFuelConsumption() {
+        return maxFuelConsumption;
     }
 }

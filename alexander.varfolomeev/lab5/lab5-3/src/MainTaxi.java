@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class MainTaxi {
 
     private static final int TAXI_DRIVER_COUNT = 20;
-    private static final List<Car> CARS = List.of(new Car("toyota", 2, 4), new Car("ferarri", 5, 10), new Car("BMW", 3, 6), new Car("volga", 2, 5), new Car("mersedes", 4, 8));
+    private static final List<Car> CARS = List.of(new Car(2, 4), new Car(5, 10), new Car(3, 6), new Car(2, 5), new Car(4, 8));
 
     public static void main(String[] args) {
         boolean isEnd = false;
@@ -119,7 +119,7 @@ public class MainTaxi {
         }
 
         if (showConsumption) {
-            drivers.stream().map(x -> x.name + " потратил топлива: " + x.getTotalConsumption()).forEach(System.out::println);
+            drivers.stream().map(x -> x.getName() + " потратил топлива: " + x.getTotalConsumption()).forEach(System.out::println);
         }
         dailyConsumptionForEachDriver.clear();
         return System.currentTimeMillis() - startTestTime;
