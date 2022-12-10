@@ -45,11 +45,11 @@ public class RecordsHandler {
         return mapOfTempleAndDonors;
     }
 
-    public String getGodWhoHaveLargestNumberDonors() {
+    public String getGodWhoHaveLargestNumberDonors(Comparator<Integer> comparator) {
         Map<String, Integer> mapOfGodAndCountDonors = createMapOfGodAndCountDonors();
         Map.Entry<String, Integer> maxEntryCountOfDonors = mapOfGodAndCountDonors.entrySet().iterator().next();
         for (Map.Entry<String, Integer> entry : mapOfGodAndCountDonors.entrySet()) {
-            if (entry.getValue() > maxEntryCountOfDonors.getValue()) {
+            if (comparator.compare(entry.getValue(), maxEntryCountOfDonors.getValue()) < 0) {
                 maxEntryCountOfDonors = entry;
             }
         }
@@ -79,11 +79,11 @@ public class RecordsHandler {
         return mapOfGodAndDonors;
     }
 
-    public String getTempleWithMinimumSumOfDonation() {
+    public String getTempleWithMinimumSumOfDonation(Comparator<Integer> comparator) {
         Map<String, Integer> mapOfTempleAndSumDonation = createMapOfTempleAndSumDonation();
         Map.Entry<String, Integer> minimumEntrySumOfDonation = mapOfTempleAndSumDonation.entrySet().iterator().next();
         for (Map.Entry<String, Integer> entry : mapOfTempleAndSumDonation.entrySet()) {
-            if (entry.getValue() < minimumEntrySumOfDonation.getValue()) {
+            if (comparator.compare(entry.getValue(), minimumEntrySumOfDonation.getValue()) < 0) {
                 minimumEntrySumOfDonation = entry;
             }
         }
