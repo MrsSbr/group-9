@@ -12,17 +12,18 @@ import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.io.FileReader;
 
-public class FileReader {
-    private static final String path = "anatoliy.zagorovskiy/lab4/src/main/resources/res.txt";
-    private static final Logger logger = Logger.getLogger(FileReader.class.getName());
+public class FileOfRecordsReader {
+    private static final Logger logger = Logger.getLogger(FileOfRecordsReader.class.getName());
+    private static final String PATH = "anatoliy.zagorovskiy/lab4/src/main/resources/res.txt";
 
     public static RecordsOfLootedShips readFile() {
         HelpFunctions.fileHandlerInit(logger);
 
         RecordsOfLootedShips recordsOfLootedShips = new RecordsOfLootedShips();
-        try (java.io.FileReader fileReader = new java.io.FileReader(path)) {
-            Scanner fileScanner = new Scanner(fileReader);
+        try (FileReader fileOfRecordsReader = new FileReader(PATH)) { // TODO добавить нормальный импорт
+            Scanner fileScanner = new Scanner(fileOfRecordsReader);
             while (fileScanner.hasNext()) {
                 String line = fileScanner.nextLine();
                 String[] info = line.split(";");

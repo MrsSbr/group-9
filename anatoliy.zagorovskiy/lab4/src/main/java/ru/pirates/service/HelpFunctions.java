@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class HelpFunctions {
-    private static final Logger logger = Logger.getLogger(FileReader.class.getName());
+    private static final Logger logger = Logger.getLogger(FileOfRecordsReader.class.getName());
 
     public static int getInt() {
         fileHandlerInit(logger);
@@ -27,9 +27,8 @@ public class HelpFunctions {
     }
 
     public static void fileHandlerInit(Logger _logger) {
-        FileHandler fileHandler = null;
         try {
-            fileHandler = new FileHandler("anatoliy.zagorovskiy/lab4/src/logs/logs.txt");
+            FileHandler fileHandler = new FileHandler("anatoliy.zagorovskiy/lab4/src/logs/logs.txt");
             _logger.addHandler(fileHandler);
         } catch (IOException e) {
             _logger.log(Level.SEVERE, "ошибка при вводе-выводе данных: " + e.getMessage());
@@ -40,24 +39,19 @@ public class HelpFunctions {
         int result = 0;
         boolean exitFlag = false;
 
-        while (true) {
-            while (!exitFlag) {
-                result = getInt();
-                if (result >= left && result <= right) {
-                    exitFlag = true;
-                } else {
-                    System.out.println("Число должно быть в диапазоне [" + left + ";" + right + "]");
-                }
+        while (!exitFlag) {
+            result = getInt();
+            if (result >= left && result <= right) {
+                exitFlag = true;
+            } else {
+                System.out.println("Число должно быть в диапазоне [" + left + ";" + right + "]");
             }
-            return result;
         }
+        return result;
     }
 
     public static <K, V> Map.Entry<K, V> min(Map<K, V> map, Comparator<V> comp) {
         Iterator<Map.Entry<K, V>> entries = map.entrySet().iterator();
-        if (!entries.hasNext()) {
-            return null;
-        }
         Map.Entry<K, V> min;
         for (min = entries.next(); entries.hasNext(); ) {
             Map.Entry<K, V> value = entries.next();
