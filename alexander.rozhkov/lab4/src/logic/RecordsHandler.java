@@ -16,40 +16,45 @@ public class RecordsHandler {
     }
 
     public Set<String> getListOfPeoplesWhoDonateInAllTemples() {
-        Map<String, Set<String>> mapTemplePeople = createMapOfTempleAndDonors();
-        Set<String> listOfPeopleWhoDonateInStartTemple
-                = new HashSet<>(mapTemplePeople.entrySet().iterator().next().getValue());
-        Set<String> listOfPeoplesWhoDonateInAllTemples = new HashSet<>(listOfPeopleWhoDonateInStartTemple);
-
-        for (Map.Entry<String, Set<String>> entry : mapTemplePeople.entrySet()) {
-            for (String people : listOfPeopleWhoDonateInStartTemple) {
-                if (!entry.getValue().contains(people)) {
-                    listOfPeoplesWhoDonateInAllTemples.remove(people);
-                }
+        Set<String> setOfAllTemples = createSetOfAllTemple();
+        Map<String, Set<String>> mapPeopleWithDonateTemples = createMapOfPeopleAndTemples();
+        Set<String> setOfPeoplesWhoDonateInAllTemples = new HashSet<>();
+        for (Map.Entry<String, Set<String>> entry : mapPeopleWithDonateTemples.entrySet()) {
+            if (entry.getValue().equals(setOfAllTemples)) {
+                setOfPeoplesWhoDonateInAllTemples.add(entry.getKey());
             }
         }
-        return listOfPeoplesWhoDonateInAllTemples;
+        return setOfPeoplesWhoDonateInAllTemples;
     }
 
-    private Map<String, Set<String>> createMapOfTempleAndDonors() {
-        Map<String, Set<String>> mapOfTempleAndDonors = new HashMap<>();
+    private Map<String, Set<String>> createMapOfPeopleAndTemples() {
+        Map<String, Set<String>> mapOfPeopleAndTemples = new HashMap<>();
         for (TempleData templeData : listOfTemplesData) {
-            if (mapOfTempleAndDonors.containsKey(templeData.getTemple())) {
-                mapOfTempleAndDonors.get(templeData.getTemple())
-                        .add(templeData.getPeopleName());
+            if (mapOfPeopleAndTemples.containsKey(templeData.getPeopleName())) {
+                mapOfPeopleAndTemples.get(templeData.getPeopleName())
+                        .add(templeData.getTemple());
             } else {
-                mapOfTempleAndDonors.put(templeData.getTemple(),
-                        new HashSet<>(Collections.singleton(templeData.getPeopleName())));
+                Set<String> setOfTemples = new HashSet<>();
+                setOfTemples.add(templeData.getTemple());
+                mapOfPeopleAndTemples.put(templeData.getPeopleName(), setOfTemples);
             }
         }
-        return mapOfTempleAndDonors;
+        return mapOfPeopleAndTemples;
     }
 
-    public String getGodWhoHaveLargestNumberDonors(Comparator<Integer> comparator) {
+    private Set<String> createSetOfAllTemple() {
+        Set<String> setOfAllTemple = new HashSet<>();
+        for (TempleData templeData : listOfTemplesData) {
+            setOfAllTemple.add(templeData.getTemple());
+        }
+        return setOfAllTemple;
+    }
+
+    public String getGodWhoHaveLargestNumberDonors() {
         Map<String, Integer> mapOfGodAndCountDonors = createMapOfGodAndCountDonors();
-        Map.Entry<String, Integer> maxEntryCountOfDonors = mapOfGodAndCountDonors.entrySet().iterator().next();
+        Map.Entry<String, Integer> maxEntryCountOfDonors = new AbstractMap.SimpleEntry<>("",0);
         for (Map.Entry<String, Integer> entry : mapOfGodAndCountDonors.entrySet()) {
-            if (comparator.compare(entry.getValue(), maxEntryCountOfDonors.getValue()) > 0) {
+            if (entry.getValue() > maxEntryCountOfDonors.getValue()) {
                 maxEntryCountOfDonors = entry;
             }
         }
@@ -72,18 +77,19 @@ public class RecordsHandler {
                 mapOfGodAndDonors.get(templeData.getGod())
                         .add(templeData.getPeopleName());
             } else {
-                mapOfGodAndDonors.put(templeData.getGod(),
-                        new HashSet<>(Collections.singleton(templeData.getPeopleName())));
+                Set<String> setOfDonors = new HashSet<>();
+                setOfDonors.add(templeData.getPeopleName());
+                mapOfGodAndDonors.put(templeData.getGod(), setOfDonors);
             }
         }
         return mapOfGodAndDonors;
     }
 
-    public String getTempleWithMinimumSumOfDonation(Comparator<Integer> comparator) {
+    public String getTempleWithMinimumSumOfDonation() {
         Map<String, Integer> mapOfTempleAndSumDonation = createMapOfTempleAndSumDonation();
-        Map.Entry<String, Integer> minimumEntrySumOfDonation = mapOfTempleAndSumDonation.entrySet().iterator().next();
+        Map.Entry<String, Integer> minimumEntrySumOfDonation = new AbstractMap.SimpleEntry<>("",Integer.MAX_VALUE);
         for (Map.Entry<String, Integer> entry : mapOfTempleAndSumDonation.entrySet()) {
-            if (comparator.compare(entry.getValue(), minimumEntrySumOfDonation.getValue()) < 0) {
+            if (entry.getValue() < minimumEntrySumOfDonation.getValue()) {
                 minimumEntrySumOfDonation = entry;
             }
         }

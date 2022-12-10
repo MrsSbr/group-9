@@ -21,8 +21,8 @@ public class Main {
             int choose = Helper.inputIntBetween(0, 3);
             switch (choose) {
                 case 1 -> System.out.println(recordsHandler.getListOfPeoplesWhoDonateInAllTemples());
-                case 2 -> System.out.println(recordsHandler.getGodWhoHaveLargestNumberDonors(Integer::compareTo));
-                case 3 -> System.out.println(recordsHandler.getTempleWithMinimumSumOfDonation(Integer::compareTo));
+                case 2 -> System.out.println(recordsHandler.getGodWhoHaveLargestNumberDonors());
+                case 3 -> System.out.println(recordsHandler.getTempleWithMinimumSumOfDonation());
                 case 0 -> {
                     return;
                 }
