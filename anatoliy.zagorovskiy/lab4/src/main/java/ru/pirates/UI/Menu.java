@@ -25,7 +25,7 @@ public class Menu {
                     if (result.isEmpty()) {
                         System.out.println("Результат пуст.");
                     } else {
-                        for (Map.Entry entry : result.entrySet()) {
+                        for (Map.Entry<Citizenship, List<LootedShip>> entry : result.entrySet()) {
                             System.out.println(entry);
                         }
                     }

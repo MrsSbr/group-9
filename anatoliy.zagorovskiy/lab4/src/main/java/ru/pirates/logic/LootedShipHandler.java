@@ -24,9 +24,11 @@ public class LootedShipHandler {
 
         for (LootedShip record : recordsOfLootedShips.getLootedShipList()) {
             if (record.isWasBoarded()) {
-                List<LootedShip> lootedShips = new ArrayList<>();
+                List<LootedShip> lootedShips;
                 if (citizenshipLootedShipMap.get(record.getCitizenship()) != null) {
                     lootedShips = citizenshipLootedShipMap.get(record.getCitizenship());
+                } else {
+                    lootedShips = new ArrayList<>();
                 }
                 lootedShips.add(record);
 
@@ -50,7 +52,7 @@ public class LootedShipHandler {
 
             goldByMonth.put(record.getDate().getMonth(), sum);
         }
-        return HelpFunctions.min(goldByMonth, BigDecimal::compareTo).getKey();
+        return HelpFunctions.min(goldByMonth, BigDecimal::compareTo).getKey();// TODO: 10.12.2022 добавить проверку на налл
     }
 
     public List<LootedShip> shipsCarryingTheLargestStocksOfRumForLast3Years() {

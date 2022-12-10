@@ -21,6 +21,26 @@ public class LootedShip {
         this.wasBoarded = wasBoarded;
     }
 
+    public Citizenship getCitizenship() {
+        return citizenship;
+    }
+
+    public boolean isWasBoarded() {
+        return wasBoarded;
+    }
+
+    public BigDecimal getGoldReceived() {
+        return goldReceived;
+    }
+
+    public int getBarrelsOfRumReceived() {
+        return barrelsOfRumReceived;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -53,25 +73,5 @@ public class LootedShip {
                 ",\n\t\tБочек с ромом -- " + barrelsOfRumReceived +
                 ",\n\t\tБыл ли взят на абордаж -- " + wasBoarded +
                 '}';
-    }
-
-    public Citizenship getCitizenship() {
-        return citizenship;
-    }
-
-    public boolean isWasBoarded() {
-        return wasBoarded;
-    }
-
-    public BigDecimal getGoldReceived() {
-        return goldReceived;
-    }
-
-    public int getBarrelsOfRumReceived() {
-        return barrelsOfRumReceived;
-    }
-
-    public LocalDate getDate() {
-        return date;
     }
 }

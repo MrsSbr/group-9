@@ -14,14 +14,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FileReader {
-    private static final String PATH = "anatoliy.zagorovskiy/lab4/src/main/resources/res.txt";
     private static final Logger logger = Logger.getLogger(FileReader.class.getName());
+    private static final String PATH = "anatoliy.zagorovskiy/lab4/src/main/resources/res.txt";
 
     public static RecordsOfLootedShips readFile() {
         HelpFunctions.fileHandlerInit(logger);
 
         RecordsOfLootedShips recordsOfLootedShips = new RecordsOfLootedShips();
-        try (java.io.FileReader fileReader = new java.io.FileReader(PATH)) {
+        try (java.io.FileReader fileReader = new java.io.FileReader(PATH)) {//TODO добавить нормальный импорт
             Scanner fileScanner = new Scanner(fileReader);
             while (fileScanner.hasNext()) {
                 String line = fileScanner.nextLine();
