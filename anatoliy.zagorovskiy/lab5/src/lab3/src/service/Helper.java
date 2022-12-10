@@ -22,17 +22,16 @@ public abstract class Helper {
         int result = 0;
         boolean exitFlag = false;
 
-        while (true) {
-            while (!exitFlag) {
-                result = getInt();
-                if (result >= left && result <= right) {
-                    exitFlag = true;
-                } else {
-                    System.out.println("Число должно быть в диапазоне [" + left + ";" + right + "]");
-                }
+        while (!exitFlag) {
+            result = getInt();
+            if (result >= left && result <= right) {
+                exitFlag = true;
+            } else {
+                System.out.println("Число должно быть в диапазоне [" + left + ";" + right + "]");
             }
-            return result;
         }
+        return result;
+
     }
 
     public static int getRandomIndexInRange(int left, int right) {

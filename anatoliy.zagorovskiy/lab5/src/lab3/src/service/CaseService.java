@@ -19,7 +19,6 @@ public class CaseService {
 
     public List<CourtCase> randomGenerateCase(boolean isArray) {
         List<CourtCase> courtCases;
-        courtCases = isArray ? new ArrayList<>() : new LinkedList<>();
 
         courtCases = Stream
                 .generate(() -> CourtCase.randomGenerateCase(PEOPLE_NAMES, ARTICLE_TITLE, RESULT_LIST))
