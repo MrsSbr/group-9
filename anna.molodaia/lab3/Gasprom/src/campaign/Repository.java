@@ -32,7 +32,7 @@ public class Repository {
         int year = YearMonth.now().getYear();
         for (var item : campaigns) {
             if (item.getFinish().getYear() == year && item.getStart().getYear() == year) {
-                System.out.println(item);
+                System.out.println(item);// TODO: 10.12.2022 разделить логику и вывод
                 isExist = true;
             }
         }

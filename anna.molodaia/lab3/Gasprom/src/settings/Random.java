@@ -1,6 +1,7 @@
 package settings;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 
 
@@ -31,10 +32,10 @@ public class Random {
 
     public static BigDecimal random() {
         BigDecimal max = MAX_BUDGET;
-        BigDecimal randFromDouble = new BigDecimal(Math.random() / createRandomIntBetween(1, MAX_COVERAGE));
+        BigDecimal randFromDouble = BigDecimal.valueOf(Math.random() / createRandomIntBetween(1, MAX_COVERAGE));
         BigDecimal actualRandomDec = randFromDouble.multiply(max);
         actualRandomDec = actualRandomDec
-                .setScale(2, BigDecimal.ROUND_HALF_UP);
+                .setScale(2, RoundingMode.HALF_UP);
         return actualRandomDec;
     }
 }
