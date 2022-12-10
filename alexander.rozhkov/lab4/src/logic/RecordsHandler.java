@@ -49,7 +49,7 @@ public class RecordsHandler {
         Map<String, Integer> mapOfGodAndCountDonors = createMapOfGodAndCountDonors();
         Map.Entry<String, Integer> maxEntryCountOfDonors = mapOfGodAndCountDonors.entrySet().iterator().next();
         for (Map.Entry<String, Integer> entry : mapOfGodAndCountDonors.entrySet()) {
-            if (comparator.compare(entry.getValue(), maxEntryCountOfDonors.getValue()) < 0) {
+            if (comparator.compare(entry.getValue(), maxEntryCountOfDonors.getValue()) > 0) {
                 maxEntryCountOfDonors = entry;
             }
         }
