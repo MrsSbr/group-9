@@ -11,7 +11,10 @@ public interface StudentService {
     /**
      * Возвращает упорядоченные фамилии совершеннолетних студентов
      */
-    List<String> getAdultStudentsLastNameSorted(Collection<Student> students);
+    List<String> getAdultStudentsLastNameSorted(Collection<Student> students)
+    {
+        List<String> result = new List<>();
+    }
 
     /**
      * Возвращает студентов-отличников
