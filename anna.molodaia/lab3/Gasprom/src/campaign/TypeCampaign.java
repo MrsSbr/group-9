@@ -10,4 +10,5 @@ public enum TypeCampaign {
     public static TypeCampaign randomTypeCampaign() {
         return types[PRNG.nextInt(types.length)];
     }
+
 }

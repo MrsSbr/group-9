@@ -27,32 +27,37 @@ public class Repository {
     }
 
     //какие типы кампаний были проведены за последний год;
-    public void printCampaignsInLastYear() {
-        boolean isExist = false;
+
+    public Set<TypeCampaign> getTypesCampaignsInLastYear()
+    {
+        Set<TypeCampaign> typesCampaignsInLastYer = new HashSet<>();
         int year = YearMonth.now().getYear();
-        for (var item : campaigns) {
-            if (item.getFinish().getYear() == year && item.getStart().getYear() == year) {
-                System.out.println(item);// TODO: 10.12.2022 разделить логику и вывод
-                isExist = true;
+        for (var campaign : campaigns) {
+            if (campaign.getFinish().getYear() == year && campaign.getStart().getYear() == year) {
+                typesCampaignsInLastYer.add(campaign.getType());
+                //System.out.println(campaign);// TODO: 10.12.2022 разделить логику и вывод
+                //isExist = true;
             }
         }
-        if (!isExist) {
-            System.out.format("В %s году не было кампаний\n", year);
-        }
-
+        return typesCampaignsInLastYer;
     }
 
-    //- найти лучшую кампанию по соотношеню бюджет/охват;
-    public MarketCampaigns getBestCampaign() {
+    // найти лучшую кампанию по соотношеню бюджет/охват;
+    public Set<MarketCampaigns> getBestCampaign() {
+        Set<MarketCampaigns> bestCampaigns = new HashSet<>();
         MarketCampaigns best = campaigns.get(0);
-        BigDecimal minimal = campaigns.get(0).getCorrelation();
+        BigDecimal minimal = best.getCorrelation();
         for (var campaign : campaigns) {
-            if (campaign.getCorrelation().compareTo(minimal) == -1) {
+            if (campaign.getCorrelation().compareTo(minimal) < 0) {
                 minimal = campaign.getCorrelation();
                 best = campaign;
             }
         }
-        return best;
+        for (var campaign : campaigns) {
+            if (campaign.getCorrelation().compareTo(best.getCorrelation()) == 0)
+                bestCampaigns.add(campaign);
+        }
+        return bestCampaigns;
     }
 
     public void setCampaignsRandom(int count) {
@@ -63,11 +68,7 @@ public class Repository {
         }
     }
 
-    void print() {
-        for (var campaign : campaigns) {
-            System.out.println(campaign.toString() + "\n");
-        }
-    }
+
 
     public boolean isEmpty() {
         return campaigns.size() == 0;

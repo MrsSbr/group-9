@@ -1,9 +1,11 @@
 import campaign.Repository;
 import campaign.MarketCampaigns;
+import campaign.TypeCampaign;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import java.util.Set;
 import java.util.Vector;
 
 
@@ -18,22 +20,15 @@ public class GasProm {
         while (!isEnd) {
             System.out.println("Запустить программу в режиме:");
             System.out.println("Меню:");
-            System.out.println("[1] Сравнение производительности ArrayList и LinkedList.");
+            System.out.println("[1] Сравнение производительности ArrayList, Vector и  LinkedList.");
             System.out.println("[2] Отображение информации о маркетинговых кампаниях.");
             System.out.println("[0] Выход.");
             int choice = getIntInDiapason(0, 2);
             switch (choice) {
-                case 0:
-                    isEnd = true;
-                    break;
-                case 1:
-                    showInfo(true);
-                    break;
-                case 2:
-                    showInfo(false);
-                    break;
-                default:
-                    System.out.println("Неверный ввод. Повторите");
+                case 0 -> isEnd = true;
+                case 1 -> showInfo(true);
+                case 2 -> showInfo(false);
+                default -> System.out.println("Неверный ввод. Повторите");
             }
         }
     }
@@ -47,39 +42,52 @@ public class GasProm {
         else {
             System.out.println("Число маркетинговых кампаний " + campaigns.size());
             System.out.println("Средняя длительность кампаний (в днях) " + campaigns.avgCampaignDurationDays());
-            System.out.println("Кампании, которые были проведены за последний год ");
-            campaigns.printCampaignsInLastYear();
-            System.out.println("Лучшая кампания по соотношеню бюджет/охват");
-            MarketCampaigns best = campaigns.getBestCampaign();
-            System.out.println(best);
+            Set<TypeCampaign> types = campaigns.getTypesCampaignsInLastYear();
+            if(types.isEmpty()) {
+                System.out.println("За последний год не было проведено ни одной кампании");
+            }
+            else{
+                System.out.println("Типы кампаний, которые были проведены за последний год:");
+                    for ( var type : types)
+                    {
+                        System.out.println("Тип кампании " + type);
+                    }
+                }
+            }
+
+            System.out.println("Лучшие кампании по соотношеню бюджет/охват");
+            Set<MarketCampaigns> bests = campaigns.getBestCampaign();
+            for (var best:bests)
+            {
+                System.out.println(best.toString());
         }
     }
 
     public static void showInfo(boolean isComparison) {
         if (!isComparison) {
-            var campaigns = new Repository(new ArrayList<MarketCampaigns>());
+            var campaigns = new Repository(new ArrayList<>());
             campaigns.setCampaignsRandom(COUNT_CAMPAIGNS);
             getInfo(campaigns);
         } else {
-            Long[] writeTestTime = new Long [] {0l,0l,0l};
-            Long[] readTestTime = new Long [] {0l,0l,0l};
+            Long[] writeTestTime = new Long [] {0L,0L,0L};
+            Long[] readTestTime = new Long [] {0L,0L,0L};
             for (int i = 0; i < COUNT_TESTS; i++) {
 
                 long startTime = System.currentTimeMillis();
-                var campaignsArray = new Repository(new ArrayList<MarketCampaigns>());
+                var campaignsArray = new Repository(new ArrayList<>());
                 campaignsArray.setCampaignsRandom(COUNT_CAMPAIGNS);
 
                 writeTestTime[0] += System.currentTimeMillis() - startTime;
 
                 startTime = System.currentTimeMillis();
-                var campaignsVector = new Repository(new Vector<MarketCampaigns>());
+                var campaignsVector = new Repository(new Vector<>());
                 campaignsVector.setCampaignsRandom(COUNT_CAMPAIGNS);
 
                 writeTestTime[1] += System.currentTimeMillis() - startTime;
 
 
                 startTime = System.currentTimeMillis();
-                var campaignsList = new Repository(new LinkedList<MarketCampaigns>());
+                var campaignsList = new Repository(new LinkedList<>());
                 campaignsList.setCampaignsRandom(COUNT_CAMPAIGNS);
                 writeTestTime[2] += System.currentTimeMillis() - startTime;
 

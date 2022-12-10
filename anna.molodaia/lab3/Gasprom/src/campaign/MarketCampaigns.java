@@ -6,6 +6,7 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 
 import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 
 
 import static settings.Random.*;
@@ -17,6 +18,8 @@ public class MarketCampaigns {
     private TypeCampaign type;
     private long coverage;
     private BigDecimal budget;
+
+
     MarketCampaigns() {}
     void setStart(int day, int month, int year) {
         this.start = LocalDate.of(year, month, day);
@@ -76,5 +79,27 @@ public class MarketCampaigns {
                 ", Охват = " + coverage +
                 ", Бюджет = " + budget +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MarketCampaigns that = (MarketCampaigns) o;
+        if (type != that.type) return false;
+        if (!Objects.equals(start, that.start)) return false;
+        if (!Objects.equals(finish, that.finish)) return false;
+        if (coverage != that.coverage) return false;
+        return Objects.equals(budget, that.budget);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = start != null ? start.hashCode() : 0;
+        result = 31 * result + (finish != null ? finish.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (int) (coverage ^ (coverage >>> 32));
+        result = 31 * result + (budget != null ? budget.hashCode() : 0);
+        return result;
     }
 }
