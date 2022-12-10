@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 
 @SuppressWarnings("resource")
 public class FileReader {
-    private static final Path path = Paths.get("anatoliy.zagorovskiy/lab4/src/main/resources/res.txt");
+    private static final Path PATH = Paths.get("anatoliy.zagorovskiy/lab4/src/main/resources/res.txt");
     private static final Logger logger = Logger.getLogger(FileReader.class.getName());
 
     public static RecordsOfLootedShips readFile() {
@@ -28,7 +28,7 @@ public class FileReader {
         Stream<String> stringStream = null;
 
         try {
-            stringStream = Files.lines(path);
+            stringStream = Files.lines(PATH);
         } catch (FileNotFoundException e) {
             logger.log(Level.SEVERE, "File not found");
         } catch (IOException e) {

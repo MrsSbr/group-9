@@ -20,7 +20,9 @@ public class CaseService {
     public List<CourtCase> randomGenerateCase(boolean isArray) {
         List<CourtCase> courtCases;
         courtCases = isArray ? new ArrayList<>() : new LinkedList<>();
-        courtCases = Stream.generate(() -> CourtCase.randomGenerateCase(PEOPLE_NAMES, ARTICLE_TITLE, RESULT_LIST))
+
+        courtCases = Stream
+                .generate(() -> CourtCase.randomGenerateCase(PEOPLE_NAMES, ARTICLE_TITLE, RESULT_LIST))
                 .limit(RECORDS_COUNT)
                 .toList();
         return courtCases;
@@ -33,7 +35,8 @@ public class CaseService {
         Set<String> peoplesList = generatePeopleSet(courtCases);
 
         peoplesList.forEach(people -> {
-            boolean convicted = courtCases.stream()   // осуждён
+            boolean convicted = courtCases
+                    .stream()   // осуждён
                     .anyMatch(courtCase ->
                             (courtCase.getRespondent().equals(people) || courtCase.getPlaintiff().equals(people))
                                     && courtCase.getResult() == Result.CONDEMNED
@@ -52,7 +55,8 @@ public class CaseService {
         Set<String> peoplesList = generatePeopleSet(courtCases);
 
         peoplesList.forEach(people -> {
-                    int cnt = (int) courtCases.stream()
+                    int cnt = (int) courtCases
+                            .stream()
                             .filter(courtCase -> (courtCase.getRespondent().equals(people) || courtCase.getPlaintiff().equals(people))
                                     && courtCase.getDate().isAfter(LocalDate.now().minusYears(10)))
                             .limit(2)
@@ -72,7 +76,8 @@ public class CaseService {
         Set<String> peoplesList = generatePeopleSet(courtCases);
 
         peoplesList.forEach(people -> {
-            int cnt = (int) courtCases.stream()
+            int cnt = (int) courtCases
+                    .stream()
                     .filter(courtCase -> courtCase.getPlaintiff().equals(people)
                             && courtCase.getDate().isAfter(LocalDate.now().minusYears(3)))
                     .limit(2)

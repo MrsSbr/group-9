@@ -24,7 +24,8 @@ public class LootedShipHandler {
 
         Map<Citizenship, List<LootedShip>> citizenshipLootedShipMap = new HashMap<>();
 
-        recordsOfLootedShips.getLootedShipList().stream()
+        recordsOfLootedShips.getLootedShipList()
+                .stream()
                 .filter(LootedShip::isWasBoarded)
                 .forEach(record -> {
                     List<LootedShip> lootedShips = new ArrayList<>();
@@ -58,12 +59,14 @@ public class LootedShipHandler {
     public List<LootedShip> shipsCarryingTheLargestStocksOfRumForLast3Years() {
         // корабли, на которых возят самые большие запасы рома (за последние 3 года)
 
-        Optional<LootedShip> max = Optional.ofNullable(recordsOfLootedShips.getLootedShipList().stream()
+        Optional<LootedShip> max = Optional.ofNullable(recordsOfLootedShips.getLootedShipList()
+                .stream()
                 .filter(record -> record.getDate().isAfter(LocalDate.now().minusYears(3)))
                 .max(Comparator.comparing(LootedShip::getBarrelsOfRumReceived))
                 .orElseThrow(NoSuchElementException::new));
 
-        return recordsOfLootedShips.getLootedShipList().stream()
+        return recordsOfLootedShips.getLootedShipList()
+                .stream()
                 .filter(record -> record.getDate().isAfter(LocalDate.now().minusYears(3))
                         && record.getBarrelsOfRumReceived() == max.get().getBarrelsOfRumReceived())
                 .collect(Collectors.toList());

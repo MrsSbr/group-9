@@ -1,7 +1,5 @@
 package lab4.src.main.java.ru.pirates.service;
 
-import lab4.src.main.java.ru.pirates.entity.LootedShip;
-
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -29,9 +27,8 @@ public class HelpFunctions {
     }
 
     public static void fileHandlerInit(Logger _logger) {
-        FileHandler fileHandler = null;
         try {
-            fileHandler = new FileHandler("anatoliy.zagorovskiy/lab5/src/lab4/src/main/resources/res.txt");
+            FileHandler fileHandler = new FileHandler("anatoliy.zagorovskiy/lab5/src/lab4/src/main/resources/res.txt");
             _logger.addHandler(fileHandler);
         } catch (IOException e) {
             _logger.log(Level.SEVERE, "ошибка при вводе-выводе данных: " + e.getMessage());
@@ -42,24 +39,19 @@ public class HelpFunctions {
         int result = 0;
         boolean exitFlag = false;
 
-        while (true) {
-            while (!exitFlag) {
-                result = getInt();
-                if (result >= left && result <= right) {
-                    exitFlag = true;
-                } else {
-                    System.out.println("Число должно быть в диапазоне [" + left + ";" + right + "]");
-                }
+        while (!exitFlag) {
+            result = getInt();
+            if (result >= left && result <= right) {
+                exitFlag = true;
+            } else {
+                System.out.println("Число должно быть в диапазоне [" + left + ";" + right + "]");
             }
-            return result;
         }
+        return result;
     }
 
     public static <K, V> Map.Entry<K, V> min(Map<K, V> map, Comparator<V> comp) {
         Iterator<Map.Entry<K, V>> entries = map.entrySet().iterator();
-        if (!entries.hasNext()) {
-            return null;
-        }
         Map.Entry<K, V> min;
         for (min = entries.next(); entries.hasNext(); ) {
             Map.Entry<K, V> value = entries.next();
