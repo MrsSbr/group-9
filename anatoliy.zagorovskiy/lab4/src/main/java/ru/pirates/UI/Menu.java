@@ -4,7 +4,7 @@ import ru.pirates.entity.Citizenship;
 import ru.pirates.entity.LootedShip;
 import ru.pirates.entity.RecordsOfLootedShips;
 import ru.pirates.logic.LootedShipHandler;
-import ru.pirates.service.FileReader;
+import ru.pirates.service.FileOfRecordsReader;
 import ru.pirates.service.HelpFunctions;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.Map;
 public class Menu {
 
     public static void menuWork() {
-        RecordsOfLootedShips recordsOfLootedShips = FileReader.readFile();
+        RecordsOfLootedShips recordsOfLootedShips = FileOfRecordsReader.readFile();
         LootedShipHandler shipHandler = new LootedShipHandler(recordsOfLootedShips);
         int choice;
         do {

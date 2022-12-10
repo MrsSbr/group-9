@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class HelpFunctions {
-    private static final Logger logger = Logger.getLogger(FileReader.class.getName());
+    private static final Logger logger = Logger.getLogger(FileOfRecordsReader.class.getName());
 
     public static int getInt() {
         fileHandlerInit(logger);
@@ -52,9 +52,6 @@ public class HelpFunctions {
 
     public static <K, V> Map.Entry<K, V> min(Map<K, V> map, Comparator<V> comp) {
         Iterator<Map.Entry<K, V>> entries = map.entrySet().iterator();
-        if (!entries.hasNext()) {
-            return null;
-        }
         Map.Entry<K, V> min;
         for (min = entries.next(); entries.hasNext(); ) {
             Map.Entry<K, V> value = entries.next();

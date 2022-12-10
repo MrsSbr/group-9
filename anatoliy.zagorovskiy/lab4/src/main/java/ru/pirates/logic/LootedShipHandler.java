@@ -52,7 +52,7 @@ public class LootedShipHandler {
 
             goldByMonth.put(record.getDate().getMonth(), sum);
         }
-        return HelpFunctions.min(goldByMonth, BigDecimal::compareTo).getKey();// TODO: 10.12.2022 добавить проверку на налл
+        return HelpFunctions.min(goldByMonth, BigDecimal::compareTo).getKey(); // TODO: 10.12.2022 добавить проверку на налл
     }
 
     public List<LootedShip> shipsCarryingTheLargestStocksOfRumForLast3Years() {
