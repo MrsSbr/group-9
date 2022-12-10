@@ -15,10 +15,10 @@ public class WorkWithParts {
 
     private List<Integer> getCountOfPartsOfDifferentTypes() {
 
-        Integer countOfBolts = 0;
-        Integer countOfPipes = 0;
-        Integer countOfBearings = 0;
-        Integer countOfSprings = 0;
+        int countOfBolts = 0;
+        int countOfPipes = 0;
+        int countOfBearings = 0;
+        int countOfSprings = 0;
 
         for (Part part : listOfParts) {
 
