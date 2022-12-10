@@ -1,6 +1,7 @@
 package models;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Fight {
     private final LocalDate date;
@@ -41,5 +42,24 @@ public class Fight {
                 + ludus + "\n Животное: "
                 + enemyAnimal + "\nРезультат: "
                 + result;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Fight fight = (Fight) o;
+        return date.equals(fight.date)
+                && Objects.equals(gladiatorName, fight.gladiatorName)
+                && Objects.equals(ludus, fight.ludus)
+                && Objects.equals(enemyAnimal, fight.enemyAnimal)
+                && result == fight.result;
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(date, gladiatorName, ludus, enemyAnimal, result);
     }
 }
