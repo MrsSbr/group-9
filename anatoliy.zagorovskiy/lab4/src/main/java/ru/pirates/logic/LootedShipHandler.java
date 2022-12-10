@@ -8,10 +8,7 @@ import ru.pirates.service.HelpFunctions;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class LootedShipHandler {
     private final RecordsOfLootedShips recordsOfLootedShips;
@@ -59,7 +56,7 @@ public class LootedShipHandler {
     public List<LootedShip> shipsCarryingTheLargestStocksOfRumForLast3Years() {
         // корабли, на которых возят самые большие запасы рома (за последние 3 года)
 
-        List<LootedShip> result = new ArrayList<>();
+        List<LootedShip> result = new LinkedList<>();
         int maxBarrelsOfRum = 0;
         for (LootedShip record : recordsOfLootedShips.getLootedShipList()) {
             if (record.getDate().isAfter(LocalDate.now().minusYears(3))
