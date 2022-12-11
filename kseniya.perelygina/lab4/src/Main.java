@@ -12,13 +12,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 public class Main {
 
-    private static final Logger logger = Logger.getLogger(Main.class.getName());
-    private static final File file = new File("src/Resources/Orders.txt");
+    private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+    private static final File FILE = new File("src/Resources/Orders.txt");
     public static String LINE = "---------------------------------------";
 
     public static void readFile(FlowerShop records) {
 
-        try (FileReader fr = new FileReader(file); BufferedReader reader = new BufferedReader(fr)) {
+        try (FileReader fr = new FileReader(FILE); BufferedReader reader = new BufferedReader(fr)) {
 
             String line = reader.readLine();
 
@@ -31,14 +31,14 @@ public class Main {
 
         } catch (IOException e) {
 
-            logger.log(Level.SEVERE, "Ошибка работы с файлом ", e);
+            LOGGER.log(Level.SEVERE, "Ошибка работы с файлом ", e);
 
         }
     }
 
     public static void main(String[] args) {
 
-        logger.log(Level.INFO, "Начало работы");
+        LOGGER.log(Level.INFO, "Начало работы");
         Scanner scan = new Scanner(System.in);
         String input = "";
         FlowerShop records = new FlowerShop();
@@ -60,7 +60,7 @@ public class Main {
                 choice = Integer.parseInt(input);
             } catch (NumberFormatException e) {
                 System.out.println("Ошибка ввода");
-                logger.log(Level.WARNING, "Ошибка ввода " + Arrays.toString(e.getStackTrace()));
+                LOGGER.log(Level.WARNING, "Ошибка ввода" + Arrays.toString(e.getStackTrace()));
             }
             System.out.println(LINE);
 
@@ -69,7 +69,7 @@ public class Main {
                 case 0 -> {
 
                     System.out.println("Работа программы завершена");
-                    logger.log(Level.OFF, "Работа программы завершена");
+                    LOGGER.log(Level.OFF, "Работа программы завершена");
 
                     yield 0;
                 }
