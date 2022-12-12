@@ -5,6 +5,7 @@ import models.Part;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Set;
 
 public class WorkWithParts {
@@ -62,16 +63,29 @@ public class WorkWithParts {
 
         }
 
-        long startTime = System.nanoTime();
+        double averageTime = 0.0;
+        long startTime;
 
-        List<Integer> listOfCounters = getCountOfPartsOfDifferentTypes();
-        Set<Part> uniqueParts = getUniqueParts();
+        List<Integer> listOfCounters = new ArrayList<>();
+        Set<Part> uniqueParts = new HashSet<>();
 
-        startTime = System.nanoTime() - startTime;
+        for (int i = 0; i < 20; i++) {
+
+            startTime = System.nanoTime();
+
+            listOfCounters = getCountOfPartsOfDifferentTypes();
+            uniqueParts = getUniqueParts();
+
+            startTime = System.nanoTime() - startTime;
+            averageTime += startTime;
+
+        }
+
+        averageTime /= 20;
 
         if (timeCheck) {
 
-            System.out.printf("Time of work:%,9.4f мс\n", startTime / 1000000.0);
+            System.out.printf("Time of work:%,9.4f мс\n", averageTime / 1000000.0);
 
         } else {
 
