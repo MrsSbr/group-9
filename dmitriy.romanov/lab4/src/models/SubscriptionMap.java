@@ -49,7 +49,12 @@ public class SubscriptionMap {
                 if(name.equals(nameOfJournal) && month>=start.getMonthValue() && month<=stop.getMonthValue())
                     count++;
             }
-            regions.put(sub.getValue().getRegion(),count);
+            if(regions.containsKey(sub.getValue().getRegion())){
+                regions.put(sub.getValue().getRegion(),regions.get(sub.getValue().getRegion())+count);
+            }else{
+                regions.put(sub.getValue().getRegion(),count);
+            }
+
         }
         Map<String, Integer> sortedMap = regions.entrySet().stream()
                 .sorted(Comparator.comparingInt(e -> -e.getValue()))
