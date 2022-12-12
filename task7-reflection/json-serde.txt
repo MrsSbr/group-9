@@ -1,0 +1,20 @@
+Реализовать библиотеку, которая позволяет сериализовать и десериализовать POJO в формат JSON.
+Пример:
+
+class Cat {
+    String name;
+    int age;
+    Gender gender;
+    String breed;
+    boolean defertilized;
+}
+
+Должно конвертироваться в:
+
+ {
+   "name": "Матроскин",
+   "age": "10",
+   "gender": "MALE",
+   "breed": null,
+   "defertilized": false
+ }

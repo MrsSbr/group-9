@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-11-28T15:25:38.383412Z</date>
+  <millis>1669649138383</millis>
+  <nanos>412000</nanos>
+  <sequence>0</sequence>
+  <logger>ru.pirates.service.FileReader</logger>
+  <level>INFO</level>
+  <class>ru.pirates.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Начало работы программы</message>
+</record>
+</log>
