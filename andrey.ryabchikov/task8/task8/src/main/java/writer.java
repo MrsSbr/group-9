@@ -13,11 +13,9 @@ public class writer extends Thread {
     }
 
     public void run() {
-        Iterator var1 = this.poem.iterator();
 
-        while(var1.hasNext()) {
-            String let = (String)var1.next();
-            synchronized(this.napkin) {
+        for (String let : this.poem) {
+            synchronized (this.napkin) {
 
                 this.napkin.append(let);
 
@@ -25,7 +23,7 @@ public class writer extends Thread {
 
             try {
 
-                sleep((long)(Math.random() * 91.0) + 10L);
+                sleep((long) (Math.random() * 91.0) + 10L);
 
             } catch (InterruptedException var5) {
 
