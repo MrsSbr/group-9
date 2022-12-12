@@ -1,0 +1,8 @@
+<root>
+    <item name='java.util.stream.IntStream int sum()'>
+        <annotation name='org.jetbrains.annotations.Range'>
+            <val name="from" val="1"/>
+            <val name="to" val="15"/>
+        </annotation>
+    </item>
+</root>
