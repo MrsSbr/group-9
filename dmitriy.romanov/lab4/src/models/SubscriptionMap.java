@@ -1,15 +1,12 @@
 package models;
 
-import java.lang.reflect.Field;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class SubscriptionMap {
-    private final Map<String[], Subscription> subscriptions;
+    private final Map<KeyWrapper, Subscription> subscriptions;
 
     public SubscriptionMap() {
         subscriptions = new HashMap<>();
@@ -17,7 +14,7 @@ public class SubscriptionMap {
 
     public int countDelivery(int month, String name){
         int count = 0;
-        for (Map.Entry<String[], Subscription> sub : subscriptions.entrySet()) {
+        for (Map.Entry<KeyWrapper, Subscription> sub : subscriptions.entrySet()) {
                List<Journal> journals = sub.getValue().getList_of_journals();
                for (int i=0;i<journals.size();i++){
                    LocalDate start = journals.get(i).getStartTime();
@@ -29,15 +26,20 @@ public class SubscriptionMap {
         }
         return count;
     }
-    public void printJournalOfUser(String FIO){
-        Subscription sub = subscriptions.get(FIO);
+    public void printMap(){
+        for (Map.Entry<KeyWrapper, Subscription> entry : subscriptions.entrySet()) {
+            System.out.println(entry.getKey().toString()+entry.getValue().toString());
+        }
+    }
+    public void printJournalOfUser(String FIO,String adres){
+        Subscription sub = subscriptions.get(new KeyWrapper(FIO,adres));
         sub.getList_of_journals().forEach(System.out::println);
     }
     public String topDeliveringRegion(String name, int month){
         String topRegion;
         HashMap<String, Integer> regions = new HashMap<>();
         int count=0;
-        for (Map.Entry<String[], Subscription> sub : subscriptions.entrySet()) {
+        for (Map.Entry<KeyWrapper, Subscription> sub : subscriptions.entrySet()) {
             List<Journal> journals = sub.getValue().getList_of_journals();
             count = 0;
             for (int i=0;i<journals.size();i++){
@@ -88,21 +90,11 @@ public class SubscriptionMap {
     }
 
     public void add(String FIO, String region, String adress, int amount, List<Journal> journalList) {
-        /*Subscription tempList = null;
-        if (subscriptions.containsKey(FIO)) {
-            tempList = subscriptions.get(FIO);
-            if(tempList == null)
-                tempList = new Subscription();
-            tempList = new Subscription(region,adress,amount,journalList);
-        } else {
-            tempList = new Subscription(region,adress,amount,journalList);
+        if (!subscriptions.containsKey(new KeyWrapper(FIO,adress))) {
+            subscriptions.put(new KeyWrapper(FIO,adress),new Subscription(region,amount,journalList));
         }
-        subscriptions.put(FIO,tempList);*/
-        String[] key = new String[]{FIO,adress};
-        if (subscriptions.containsKey(FIO)) {
-            subscriptions.put(key,new Subscription(FIO,region,adress,amount,journalList));
-        } else {
-            subscriptions.put(key,new Subscription(FIO,region,adress,amount,journalList));
+        else {
+            subscriptions.replace(new KeyWrapper(FIO,adress),new Subscription(region,amount,journalList));
         }
     }
 }

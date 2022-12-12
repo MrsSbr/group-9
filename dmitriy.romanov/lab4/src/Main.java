@@ -20,6 +20,7 @@ public class Main {
         int choice = -1;
         SubscriptionMap subs = new SubscriptionMap();
         readFile(subs);
+        //subs.printMap();
         while (choice!=0) {
             System.out.println("Выберите пункт меню: ");
             System.out.println("1 - По заданному месяцу и названию найти количество экземпляров, подлежащих доставке");
@@ -42,7 +43,9 @@ public class Main {
                 case 2:
                     System.out.println("Введите ФИО: ");
                     String fio = sc.nextLine();
-                    subs.printJournalOfUser(fio);
+                    System.out.println("Введите адрес: ");
+                    String adres = sc.nextLine();
+                    subs.printJournalOfUser(fio,adres);
                     break;
                 case 3:
                     System.out.println("Введите месяц: ");

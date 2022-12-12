@@ -27,11 +27,6 @@ public class Journal {
 
     @Override
     public String toString() {
-        return "Journal{" +
-                "name='" + name + '\'' +
-                ", type=" + type +
-                ", startTime=" + startTime +
-                ", stopTime=" + stopTime +
-                '}';
+        return name + ';' + ';' + type + ';' + startTime + ';' + stopTime + ';';
     }
 }

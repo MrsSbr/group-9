@@ -7,16 +7,12 @@ import java.util.Objects;
 
 
 public class Subscription {
-    private String FIO;
     private String region;
-    private String adress;
     private int amount;
     private List<Journal> list_of_journals;
 
-    Subscription(String FIO,String region, String adress, int amount, List<Journal> list_of_journals){
-        this.FIO = FIO;
+    Subscription(String region, int amount, List<Journal> list_of_journals){
         this.region = region;
-        this.adress = adress;
         this.amount = amount;
         this.list_of_journals = list_of_journals;
     }
@@ -31,19 +27,22 @@ public class Subscription {
     }
 
     @Override
+    public String toString() {
+        return region + ';' + amount +';'+ list_of_journals.toString();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Subscription that = (Subscription) o;
-        return amount == that.amount &&
-                Objects.equals(FIO, that.FIO) &&
+        return amount == that.amount  &&
                 Objects.equals(region, that.region) &&
-                Objects.equals(adress, that.adress) &&
                 Objects.equals(list_of_journals, that.list_of_journals);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(FIO, region, adress, amount, list_of_journals);
+        return Objects.hash(region, amount, list_of_journals);
     }
 }
