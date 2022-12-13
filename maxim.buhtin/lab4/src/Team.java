@@ -29,14 +29,8 @@ public class Team {
         return numberOfGoalsScored;
     }
 
-    public int win(){
-        return (points=points+3);
-    }
-    public int lose(){
-        return points;
-    }
-    public int draw(){
-        return points+=1;
+    public void setPoints(int points){
+        this.points=points;
     }
 
     @Override
