@@ -52,10 +52,10 @@ public class Сhampionship {
         return points;
     }
 
-    public List<Integer> scoringAllTeam(){
-        List<Integer> scoring=new LinkedList<Integer>();
+    public HashMap<String,Integer> scoringAllTeam(){
+        HashMap<String,Integer> scoring=new HashMap<>();
         for (Map.Entry<String, List<Game>> entry : match.entrySet()){
-            scoring.add(this.scoring(entry.getKey()));
+            scoring.put(entry.getKey(),this.scoring(entry.getKey()));
         }
         return scoring;
     }
