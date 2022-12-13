@@ -2,11 +2,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Main {
+    private static final Logger logger = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
+        logger.log(Level.INFO, "Начало работы программы...");
         FoxInterview recordsHandler = new FoxInterview();
         Helper.readFile(recordsHandler);
         workWithRecords(recordsHandler);
+        logger.log(Level.INFO, "Конец работы программы...");
     }
 
     public static void workWithRecords(FoxInterview recordsHandler) {
