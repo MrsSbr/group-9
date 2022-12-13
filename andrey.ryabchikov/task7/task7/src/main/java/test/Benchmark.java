@@ -6,6 +6,11 @@ import java.lang.reflect.Proxy;
 public class Benchmark {
 
 public static Service track(Service service){
+    if(service == null){
+
+        return null;
+
+    }
 
     ClassLoader serviceClassLoader = service.getClass().getClassLoader();
 
@@ -15,6 +20,11 @@ public static Service track(Service service){
 }
 public static Stat getStat(Service service){
 
+    if(service == null){
+
+        return null;
+
+    }
     Stat stat = new Stat();
     Class<?> c = Service.class;
     Method[] m = c.getMethods();

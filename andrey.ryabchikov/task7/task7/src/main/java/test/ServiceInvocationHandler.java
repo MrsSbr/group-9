@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 public class ServiceInvocationHandler implements InvocationHandler {
 
 
-    private Service service;
+    private final Service service;
 
     public ServiceInvocationHandler(Service service) {
         this.service = service;
