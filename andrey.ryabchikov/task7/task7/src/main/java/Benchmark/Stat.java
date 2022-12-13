@@ -1,4 +1,4 @@
-package test;
+package Benchmark;
 
 import java.io.PrintStream;
 import java.util.ArrayList;

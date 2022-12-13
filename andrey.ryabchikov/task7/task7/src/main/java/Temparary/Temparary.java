@@ -1,6 +1,6 @@
-package test;
+package Temparary;
 
-public class test implements Service {
+public class Temparary implements Service {
 
 
     public void counter() {

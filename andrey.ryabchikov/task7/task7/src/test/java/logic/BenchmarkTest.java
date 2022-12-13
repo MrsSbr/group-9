@@ -1,9 +1,14 @@
 package logic;
 
+import Benchmark.Benchmark;
+import Benchmark.Stat;
+import Temparary.Service;
+import Temparary.Temparary;
+import Temparary.badTemparary;
 import org.junit.jupiter.api.Test;
-import test.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class BenchmarkTest {
 
@@ -12,7 +17,7 @@ class BenchmarkTest {
     public void notNullStat() {
 
         // when
-        Stat actualStat = Benchmark.getStat(new test());
+        Stat actualStat = Benchmark.getStat(new Temparary());
 
         // then
         assertNotNull(actualStat);
@@ -20,7 +25,7 @@ class BenchmarkTest {
     @Test
     public void notNullTrack() {
         //given
-        Service service = new test();
+        Service service = new Temparary();
         // when
         Service actualService = Benchmark.track(service);
 
@@ -46,7 +51,7 @@ class BenchmarkTest {
         Exception actual = null;
         // when
         try{
-            Stat actualStat = Benchmark.getStat(new badTest());
+            Stat actualStat = Benchmark.getStat(new badTemparary());
         }catch (RuntimeException e) {
             actual = e;
         }
