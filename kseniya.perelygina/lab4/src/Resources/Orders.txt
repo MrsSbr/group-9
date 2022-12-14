@@ -1,0 +1,4 @@
+2022-01-01;pomander;rose,lavender;50.2;d
+2022-02-01;pomander;rose,lavender,dandelion;150.3;s
+2022-01-01;cascade;rose;25.1;d
+2020-01-01;nosegay;rose,lavender;50.2;d
