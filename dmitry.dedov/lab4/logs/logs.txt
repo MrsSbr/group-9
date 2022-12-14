@@ -6,9 +6,9 @@
   <millis>1670993952251</millis>
   <nanos>982200</nanos>
   <sequence>0</sequence>
-  <logger>Main</logger>
+  <logger>MainGamer</logger>
   <level>INFO</level>
-  <class>Main</class>
+  <class>MainGamer</class>
   <method>main</method>
   <thread>1</thread>
   <message>Start program</message>
@@ -18,9 +18,9 @@
   <millis>1670993952398</millis>
   <nanos>215500</nanos>
   <sequence>3</sequence>
-  <logger>Main</logger>
+  <logger>MainGamer</logger>
   <level>OFF</level>
-  <class>Main</class>
+  <class>MainGamer</class>
   <method>main</method>
   <thread>1</thread>
   <message>End program</message>

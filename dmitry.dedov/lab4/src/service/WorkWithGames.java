@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 public class WorkWithGames {
 
-    private List<Game> games = new ArrayList<>();
+    private final List<Game> games = new ArrayList<>();
 
     private static final Logger logger = Logger.getLogger(WorkWithGames.class.getName());
 
@@ -70,8 +70,7 @@ public class WorkWithGames {
 
                 scoresOfAllGenres.get(genreOfGame).add(game.getScore());
 
-            }
-            else {
+            } else {
 
                 List<Integer> scores = new ArrayList<>();
                 scores.add(game.getScore());
@@ -95,7 +94,7 @@ public class WorkWithGames {
 
             double sumOfScores = 0.0;
 
-            for (int score: scoresOfGenre.getValue()) {
+            for (int score : scoresOfGenre.getValue()) {
 
                 sumOfScores += score;
 
@@ -109,8 +108,7 @@ public class WorkWithGames {
                 genresWithBestAverageScore.clear();
                 genresWithBestAverageScore.add(scoresOfGenre.getKey());
 
-            }
-            else if (averageScoreOfGenre == maxAverageScore) {
+            } else if (averageScoreOfGenre == maxAverageScore) {
 
                 genresWithBestAverageScore.add(scoresOfGenre.getKey());
 
@@ -135,8 +133,7 @@ public class WorkWithGames {
                 monthsWithTimeSpentOnGames.put(month, monthsWithTimeSpentOnGames.get(month)
                         + game.getTimeToCompleteInHours());
 
-            }
-            else {
+            } else {
 
                 monthsWithTimeSpentOnGames.put(month, game.getTimeToCompleteInHours());
 
@@ -162,8 +159,7 @@ public class WorkWithGames {
                 monthsWithMaxTimeSpentOnGames.clear();
                 monthsWithMaxTimeSpentOnGames.add(monthWithTimeSpentOnGames.getKey());
 
-            }
-            else if (monthWithTimeSpentOnGames.getValue() == maxTimeSpentOnGames) {
+            } else if (monthWithTimeSpentOnGames.getValue() == maxTimeSpentOnGames) {
 
                 monthsWithMaxTimeSpentOnGames.add(monthWithTimeSpentOnGames.getKey());
 
