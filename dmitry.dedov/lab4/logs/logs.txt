@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-12-14T04:59:12.251982200Z</date>
+  <millis>1670993952251</millis>
+  <nanos>982200</nanos>
+  <sequence>0</sequence>
+  <logger>MainGamer</logger>
+  <level>INFO</level>
+  <class>MainGamer</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Start program</message>
+</record>
+<record>
+  <date>2022-12-14T04:59:12.398215500Z</date>
+  <millis>1670993952398</millis>
+  <nanos>215500</nanos>
+  <sequence>3</sequence>
+  <logger>MainGamer</logger>
+  <level>OFF</level>
+  <class>MainGamer</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>End program</message>
+</record>
+</log>
