@@ -1,3 +1,5 @@
+package Models;
+
 import java.util.*;
 
 public class Team {
@@ -42,7 +44,7 @@ public class Team {
 
     @Override
     public String toString() {
-        return "Team{" +
+        return "Models.Team{" +
                 "name='" + name + '\'' +
                 ", points=" + points +
                 '}';

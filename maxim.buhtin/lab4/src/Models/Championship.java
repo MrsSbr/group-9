@@ -1,10 +1,12 @@
+package Models;
+
 import java.util.*;
 
 public class Championship {
 
     private final Map<String, List<Game>> match = new HashMap<>();
 
-    Championship() {
+    public Championship() {
 
     }
 

@@ -1,3 +1,5 @@
+package Models;
+
 import java.util.Objects;
 
 public class Game {
@@ -48,7 +50,7 @@ public class Game {
 
     @Override
     public String toString() {
-        return "Game{" +
+        return "Models.Game{" +
                 "home='" + home + '\'' +
                 ", visit='" + visit + '\'' +
                 ", countGoolHome=" + countGoolHome +

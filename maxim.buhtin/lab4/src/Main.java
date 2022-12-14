@@ -1,3 +1,7 @@
+import Models.Championship;
+import Models.Team;
+import Reader.ReaderFile;
+
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.logging.Level;

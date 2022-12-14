@@ -1,3 +1,7 @@
+package Reader;
+
+import Models.Championship;
+
 import java.io.*;
 import java.util.logging.Logger;
 import java.util.logging.Level;
