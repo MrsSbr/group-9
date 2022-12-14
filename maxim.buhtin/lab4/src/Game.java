@@ -31,8 +31,12 @@ public class Game {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Game game = (Game) o;
         return countGoolHome == game.countGoolHome && countGoolVisit == game.countGoolVisit && home.equals(game.home) && visit.equals(game.visit);
     }

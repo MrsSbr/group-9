@@ -3,34 +3,28 @@ import java.util.*;
 public class Team {
     private String name;
     private int points;
-    private int numberOfGoalsScored;
 
-    Team(String name,int points,int numberOfGoalsScored){
-        this.name=name;
-        this.points=points;
-        this.numberOfGoalsScored=numberOfGoalsScored;
-    }
-    Team(String name){
-        this.name=name;
-        points=0;
-        numberOfGoalsScored=0;
+
+    Team(String name, int points) {
+        this.name = name;
+        this.points = points;
     }
 
-    public void setNumberOfGoalsScored(int numberOfGoalsScored){
-        this.numberOfGoalsScored=numberOfGoalsScored;
+    Team(String name) {
+        this.name = name;
+        points = 0;
     }
-    public String getName(){
-        return name;
-    }
-    public int getPoints(){
+
+    public int getPoints() {
         return points;
     }
-    public int getNumberOfGoalsScored(){
-        return numberOfGoalsScored;
+
+    public String getName() {
+        return name;
     }
 
-    public void setPoints(int points){
-        this.points=points;
+    public int compareTo(Team team) {
+        return (team.points - this.points);
     }
 
     @Override
@@ -38,12 +32,12 @@ public class Team {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Team team = (Team) o;
-        return points == team.points && numberOfGoalsScored == team.numberOfGoalsScored && Objects.equals(name, team.name);
+        return points == team.points && Objects.equals(name, team.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, points, numberOfGoalsScored);
+        return Objects.hash(name, points);
     }
 
     @Override
@@ -51,7 +45,6 @@ public class Team {
         return "Team{" +
                 "name='" + name + '\'' +
                 ", points=" + points +
-                ", numberOfGoalsScored=" + numberOfGoalsScored +
                 '}';
     }
 }
