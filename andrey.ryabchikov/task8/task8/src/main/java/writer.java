@@ -14,10 +14,11 @@ public class writer extends Thread {
 
     public void run() {
 
-        for (String let : this.poem) {
-            synchronized (this.napkin) {
+        for (String let : poem) {
+            synchronized (napkin) {
 
-                this.napkin.append(let);
+                napkin.append(let);
+                napkin.append("\n");
 
             }
 
