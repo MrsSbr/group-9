@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-12-14T06:04:20.119254900Z</date>
+  <millis>1670997860119</millis>
+  <nanos>254900</nanos>
+  <sequence>0</sequence>
+  <logger>java.io.FileReader</logger>
+  <level>INFO</level>
+  <class>Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Начало работы программы</message>
+</record>
+</log>

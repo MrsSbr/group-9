@@ -1,4 +1,4 @@
-import models.Questionnaire;
+import entity.Questionnaire;
 import service.RandomGenerate;
 
 import java.util.*;

@@ -1,4 +1,4 @@
-package models;
+package entity;
 
 import helper.InputValidations;
 import interfaces.Eatable;

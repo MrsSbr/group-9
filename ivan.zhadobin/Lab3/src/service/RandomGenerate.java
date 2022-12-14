@@ -1,8 +1,8 @@
 package service;
 
 import enums.Subject;
-import models.QuestionnaireItem;
-import models.Questionnaire;
+import entity.QuestionnaireItem;
+import entity.Questionnaire;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

@@ -1,6 +1,5 @@
-package models;
+package entity;
 
-import interfaces.Eatable;
 import helper.InputValidations;
 
 import java.util.Objects;

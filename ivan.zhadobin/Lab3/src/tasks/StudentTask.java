@@ -1,8 +1,8 @@
 package tasks;
 
 import enums.Subject;
-import models.Questionnaire;
-import models.QuestionnaireItem;
+import entity.Questionnaire;
+import entity.QuestionnaireItem;
 
 import java.util.List;
 
