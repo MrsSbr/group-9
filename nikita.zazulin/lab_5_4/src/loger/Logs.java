@@ -23,9 +23,11 @@ public class Logs {
 
                 codes.put(occasion.getCode(), new ArrayList<>());
 
-            }
+            } else {
 
-            codes.get(occasion.getCode()).add(new Code(key,occasion.getDate(),occasion.getResource()));
+                codes.get(occasion.getCode()).add(new Code(key, occasion.getDate(), occasion.getResource()));
+
+            }
 
         }));
 
@@ -46,9 +48,11 @@ public class Logs {
 
                 resourses.put(occasion.getResource(), new ArrayList<>());
 
-            }
+            } else {
 
-            resourses.get(occasion.getResource()).add(new Resourse(key,occasion.getDate(),occasion.getCode()));
+                resourses.get(occasion.getResource()).add(new Resourse(key, occasion.getDate(), occasion.getCode()));
+
+            }
 
         }));
 
