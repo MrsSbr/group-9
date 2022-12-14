@@ -24,14 +24,15 @@ public class FlowerShop {
     }
 
     private void put(LocalDate date, String type, String composition, double cost, char receive) {
+        FlowerOrder flowerOrder = new FlowerOrder(type, composition, cost, receive);
+        if (!orders.containsKey(date)) {
+            List<FlowerOrder> flowerOrders = new ArrayList<>();
+            flowerOrders.add(flowerOrder);
+            orders.put(date, flowerOrders);
 
-        if(!orders.containsKey(date)) {
-
-            orders.put(date, new ArrayList<>());
-
+        } else {
+            orders.get(date).add(flowerOrder);
         }
-
-        orders.get(date).add(new FlowerOrder(type, composition, cost, receive));
 
     }
 
@@ -45,7 +46,7 @@ public class FlowerShop {
         int firstMonth = 1;
         int lastMonth = 12;
 
-        for(int i = firstMonth; i <= lastMonth; i++) {
+        for (int i = firstMonth; i <= lastMonth; i++) {
 
             months.put(i, new FlowersBouquetsAmount());
 
@@ -55,13 +56,13 @@ public class FlowerShop {
         for (Map.Entry<LocalDate, List<FlowerOrder>> order : orders.entrySet()) {
 
             // Запоминаем месяц, в который был сделан заказ (для читабельности)
-            int curmonth = order.getKey().getMonthValue();
+            int curMonth = order.getKey().getMonthValue();
 
             // Смотрим все заказы для текущей даты
             for (FlowerOrder fo : order.getValue()) {
 
                 // Заносим запись о каждом букете для текущего месяца
-                months.get(curmonth).addBouquet(fo.getCompositionSize());
+                months.get(curMonth).addBouquet(fo.getCompositionSize());
 
             }
 
@@ -84,7 +85,6 @@ public class FlowerShop {
     }
 
 
-
     // Сколько заработал флорист по каждому типу букетов за последний год
     //      мапа - <тип, общая сумма стоимостей>
     public Map<String, Double> getTypeTotalSales() {
@@ -104,7 +104,7 @@ public class FlowerShop {
 
                     if (!types.containsKey(fo.getType())) {
 
-                        types.put(fo.getType(), (double)0);
+                        types.put(fo.getType(), (double) 0);
 
                     }
 
