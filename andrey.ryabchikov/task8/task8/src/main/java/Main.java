@@ -1,4 +1,7 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,22 +13,21 @@ public class Main {
     private static final File Cvetaeva = new File("src/Data/Cvetaeva.txt");
 
     public static void main(String[] args) throws InterruptedException {
-        StringBuffer napkin = new StringBuffer();
-        List<List<String>> poems = new ArrayList<>();
-
-        poems.add(readFile(Pushkin));
-        poems.add(readFile(Esenin));
-        poems.add(readFile(Shnur));
-        poems.add(readFile(Cvetaeva));
-
+        StringBuilder napkin = new StringBuilder();
 
         List<writer> writers = new ArrayList<>();
-        for (int i = 0; i < 4; i++){
 
-            writers.add(new writer(poems.get(i),napkin));
+        writers.add(new writer(readFile(Pushkin), napkin));
+        writers.add(new writer(readFile(Esenin), napkin));
+        writers.add(new writer(readFile(Shnur), napkin));
+        writers.add(new writer(readFile(Cvetaeva), napkin));
+
+        for (int i = 0; i < 4; i++) {
+
             writers.get(i).start();
+
         }
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < 4; i++) {
 
             writers.get(i).join();
         }

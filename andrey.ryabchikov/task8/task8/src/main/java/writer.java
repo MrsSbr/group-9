@@ -1,11 +1,10 @@
-import java.util.Iterator;
 import java.util.List;
 
 public class writer extends Thread {
     private final List<String> poem;
-    private final StringBuffer napkin;
+    private final StringBuilder napkin;
 
-    public writer(List<String> poem, StringBuffer napkin) {
+    public writer(List<String> poem, StringBuilder napkin) {
 
         this.poem = poem;
         this.napkin = napkin;
