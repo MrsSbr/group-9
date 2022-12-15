@@ -20,13 +20,17 @@ public class Logs {
 
             for (Occasion occasion : log.getValue()) {
 
+                Code code = new Code(log.getKey(), occasion.getDate(), occasion.getResource());
+
                 if (!codes.containsKey(occasion.getCode())) {
 
-                    codes.put(occasion.getCode(), new ArrayList<>());
+                    var array = new ArrayList<Code>();
+                    array.add(code);
+                    codes.put(occasion.getCode(), array);
 
                 } else {
 
-                    codes.get(occasion.getCode()).add(new Code(log.getKey(), occasion.getDate(), occasion.getResource()));
+                    codes.get(occasion.getCode()).add(code);
 
                 }
 
@@ -49,13 +53,17 @@ public class Logs {
 
             for (Occasion occasion : log.getValue()) {
 
+                Resourse resourse = new Resourse(log.getKey(), occasion.getDate(), occasion.getCode());
+
                 if (!resourses.containsKey(occasion.getResource())) {
 
-                    resourses.put(occasion.getResource(), new ArrayList<>());
+                    var array = new ArrayList<Resourse>();
+                    array.add(resourse);
+                    resourses.put(occasion.getResource(), array);
 
                 } else {
 
-                    resourses.get(occasion.getResource()).add(new Resourse(log.getKey(), occasion.getDate(), occasion.getCode()));
+                    resourses.get(occasion.getResource()).add(resourse);
 
                 }
 
