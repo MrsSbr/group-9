@@ -1,8 +1,10 @@
 package Temparary;
 
-public class badTemparary implements Service{
+public class BadTemparary implements Service {
     @Override
     public void counter() {
-        int a = 1/0;
+
+        int a = 1 / 0;
+
     }
 }

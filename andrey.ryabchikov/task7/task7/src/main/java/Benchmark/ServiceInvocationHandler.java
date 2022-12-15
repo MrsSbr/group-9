@@ -11,7 +11,9 @@ public class ServiceInvocationHandler implements InvocationHandler {
     private final Service service;
 
     public ServiceInvocationHandler(Service service) {
+
         this.service = service;
+
     }
 
     @Override

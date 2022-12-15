@@ -11,40 +11,41 @@ public class Benchmark {
     public static Service track(Service service) {
         if (service == null) {
 
-        return null;
+            return null;
 
+        }
+
+        ClassLoader serviceClassLoader = service.getClass().getClassLoader();
+
+        Class[] interfaces = service.getClass().getInterfaces();
+
+        return (Service) Proxy.newProxyInstance(serviceClassLoader, interfaces, new ServiceInvocationHandler(service));
     }
 
-    ClassLoader serviceClassLoader = service.getClass().getClassLoader();
+    public static Stat getStat(Service service) {
 
-    Class[] interfaces = service.getClass().getInterfaces();
+        if (service == null) {
 
-    return (Service) Proxy.newProxyInstance(serviceClassLoader, interfaces, new ServiceInvocationHandler(service));
-}
-public static Stat getStat(Service service){
+            return null;
 
-    if(service == null){
+        }
+        Stat stat = new Stat();
+        Class<?> c = Service.class;
+        Method[] m = c.getMethods();
+        for (Method method : m) {
+            if (method.isAnnotationPresent(Benchmarked.class)) {
 
-        return null;
+                try {
+                    long startTime = System.currentTimeMillis();
+                    method.invoke(service);
+                    stat.add("время выполнения: " + (System.currentTimeMillis() - startTime));
 
-    }
-    Stat stat = new Stat();
-    Class<?> c = Service.class;
-    Method[] m = c.getMethods();
-    for (Method method : m) {
-        if (method.isAnnotationPresent(Benchmarked.class)) {
+                } catch (IllegalAccessException | InvocationTargetException e) {
+                    throw new RuntimeException(e);
 
-            try {
-                long startTime = System.currentTimeMillis();
-                method.invoke(service);
-                stat.add("время выполнения: " + (System.currentTimeMillis() - startTime));
-
-            } catch (IllegalAccessException | InvocationTargetException e) {
-                throw new RuntimeException(e);
-
+                }
             }
         }
+        return stat;
     }
-    return stat;
-}
 }
