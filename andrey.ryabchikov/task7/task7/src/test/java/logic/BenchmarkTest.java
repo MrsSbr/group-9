@@ -2,13 +2,12 @@ package logic;
 
 import Benchmark.Benchmark;
 import Benchmark.Stat;
+import Temparary.BadTemparary;
 import Temparary.Service;
 import Temparary.Temparary;
-import Temparary.badTemparary;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BenchmarkTest {
 
@@ -48,14 +47,12 @@ class BenchmarkTest {
     }
     @Test
     public void exeptionReactionStat() {
-        Exception actual = null;
-        // when
-        try{
-            Stat actualStat = Benchmark.getStat(new badTemparary());
-        }catch (RuntimeException e) {
-            actual = e;
-        }
-        assertNotNull(actual);
+
+        assertThrows(RuntimeException.class, () -> {
+
+            Stat actualStat = Benchmark.getStat(new BadTemparary());
+
+        });
     }
 
 
