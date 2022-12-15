@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 public class Input {
     private static final Logger logger = Logger.getLogger(Input.class.getName());
+
     public static int userInput(int l, int r) {
         Scanner sc = new Scanner(System.in);
         boolean run = true;
@@ -21,7 +22,7 @@ public class Input {
                     System.out.println("Число не в диапазоне 0-3");
                 }
             } catch (NumberFormatException e) {
-                logger.log(Level.INFO, "error:"+e.getLocalizedMessage());
+                logger.log(Level.INFO, "error:" + e.getLocalizedMessage());
                 System.out.println("Ошибка: " + e.getLocalizedMessage());
             }
         }

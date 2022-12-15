@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 public class Main {
 
     private static final Logger logger = Logger.getLogger(Main.class.getName());
+    private static final String FILE_PATH = "dmitriy.romanov\\lab4\\src\\res\\test.txt";
 
     public static void main(String[] args) {
         logger.log(Level.INFO, "start");
@@ -68,7 +69,7 @@ public class Main {
 
 
     public static void readFile(SubscriptionMap subscription) {
-        String path = new File("dmitriy.romanov\\lab4\\src\\res\\test.txt").getAbsolutePath();
+        String path = new File(FILE_PATH).getAbsolutePath();
         File file = new File(path);
         try (FileReader fr = new FileReader(file); BufferedReader reader = new BufferedReader(fr)){
             String line = reader.readLine();
