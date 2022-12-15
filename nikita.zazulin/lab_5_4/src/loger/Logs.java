@@ -19,13 +19,17 @@ public class Logs {
 
         logs.forEach((key, value) -> value.forEach(occasion -> {
 
+            Code code = new Code(key, occasion.getDate(), occasion.getResource());
+
             if (!codes.containsKey(occasion.getCode())) {
 
-                codes.put(occasion.getCode(), new ArrayList<>());
+                var array = new ArrayList<Code>();
+                array.add(code);
+                codes.put(occasion.getCode(), array);
 
             } else {
 
-                codes.get(occasion.getCode()).add(new Code(key, occasion.getDate(), occasion.getResource()));
+                codes.get(occasion.getCode()).add(code);
 
             }
 
@@ -44,13 +48,17 @@ public class Logs {
 
         logs.forEach((key, value) -> value.forEach(occasion -> {
 
+            Resourse resourse = new Resourse(key, occasion.getDate(), occasion.getCode());
+
             if (!resourses.containsKey(occasion.getResource())) {
 
-                resourses.put(occasion.getResource(), new ArrayList<>());
+                var array = new ArrayList<Resourse>();
+                array.add(resourse);
+                resourses.put(occasion.getResource(), array);
 
             } else {
 
-                resourses.get(occasion.getResource()).add(new Resourse(key, occasion.getDate(), occasion.getCode()));
+                resourses.get(occasion.getResource()).add(resourse);
 
             }
 
