@@ -17,8 +17,7 @@ public class writer extends Thread {
         for (String let : poem) {
             synchronized (napkin) {
 
-                napkin.append(let);
-                napkin.append("\n");
+                napkin.append(let).append("\n");
 
             }
 
