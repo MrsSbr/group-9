@@ -1,5 +1,4 @@
 package models;
-import javafx.util.Pair;
 import java.util.*;
 
     public class WorkingWithOrders {
@@ -13,10 +12,10 @@ import java.util.*;
         }
     }
 
-    private static Set<String> createUniqueIngredientsSet(List<Order> orders) {
-        Set<String> pizzaList = new HashSet<>();
+    private static List<String> createUniqueIngredientsSet(List<Order> orders) {
+        List<String> pizzaList = new ArrayList<>();
         orders.forEach(order -> {
-            List<String> ingredients = order.getIngredients();
+            List <String> ingredients = order.getIngredients();
             ingredients.forEach(ingredient->{
                 if(!pizzaList.contains(ingredient)) {
                     pizzaList.add(ingredient);
@@ -30,7 +29,7 @@ import java.util.*;
         for (int i = 0; i < RECORDS_COUNT; i++) {
             orders.add(OrderGenerator.randCase());
         }
-        Set<String>task = createUniqueIngredientsSet(orders);
+        List<String>task = createUniqueIngredientsSet(orders);
         System.out.println(task);
     }
     private double getSumByOrders(List<Order> orders){
@@ -40,39 +39,43 @@ import java.util.*;
         });
         return sum[0];
     }
-    public  void task2(){
-
-        orders= new ArrayList<>();
+    public void init(){
+        orders = new ArrayList<>();
         for (int i = 0; i < RECORDS_COUNT; i++) {
             orders.add(OrderGenerator.randCase());
         }
-        double sum = getSumByOrders(orders);
+    }
+    public  void task2(){
+        init();
+         Double sum = 0.0;
+         for(Order order:orders){
+             sum += order.getPrice();
+         }
         System.out.println("Сумма всех заказов пиццериии равна "+ sum+"\n");
     }
-    private  List<Pair<String,Double>> getcheapPizza(List<Order>orders){
-        List<Pair<String,Double>>res = new ArrayList<>();
-        orders.forEach(order->{
-            Pair<String,Double> onePizza = new Pair<>(order.getNameOfPizza(),order.getPrice());
-            if(res.size()==0){
-               res.add(onePizza);
-            }
-            else if(res.get(0).getValue()>onePizza.getValue()){
-                res.clear();
-                res.add(onePizza);
-            }
-            else if(res.get(0).getValue().equals(onePizza.getValue())&&(!(res.get(0).getKey().equals(onePizza.getKey()))))
-            {
-                res.add(onePizza);
-            }
-        });
-        return res;
-    }
+        private List<Order> getCheapPizza(List<Order>orders){
+            List<Order>res = new ArrayList<>();
+            orders.forEach(order->{
+                if(res.size()==0){
+                    res.add(order);
+                }
+                else if(res.get(0).getPrice()>order.getPrice()){
+                    res.clear();
+                    res.add(order);
+                }
+                else if(res.get(0).getPrice().equals(order.getPrice())&&(!(res.get(0).getNameOfPizza().equals(order.getNameOfPizza()))))
+                {
+                    res.add(order);
+                }
+            });
+            return res;
+        }
     public void task3(){
         orders= new ArrayList<>();
         for (int i = 0; i < RECORDS_COUNT; i++) {
             orders.add(OrderGenerator.randCase());
         }
-        List<Pair<String,Double>>cheapestPizzies=getcheapPizza(orders);
+        List<Order>cheapestPizzies= getCheapPizza(orders);
         System.out.println("Самый бюждетный вариант "+cheapestPizzies);
     }
     }
