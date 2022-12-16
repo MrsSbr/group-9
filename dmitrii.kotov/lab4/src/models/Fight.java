@@ -8,14 +8,13 @@ public class Fight {
     private final String gladiatorName;
     private final String ludus;
     private final String enemyAnimal;
-    private final int result; // 0 - победа, 1 - проигрыш и помилование, 2 - проигрыш без помилования
-
-    public Fight(String date, String gladiatorName, String ludus, String enemyAnimal, String result) {
+    private Result result;
+    public Fight(String date, String gladiatorName, String ludus, String enemyAnimal, Result result) {
         this.date = LocalDate.parse(date);
         this.gladiatorName = gladiatorName;
         this.ludus = ludus;
         this.enemyAnimal = enemyAnimal;
-        this.result = Integer.parseInt(result);
+        this.result = result;
     }
 
     public LocalDate getDate() {
@@ -30,7 +29,7 @@ public class Fight {
     public String getEnemyAnimal() {
         return enemyAnimal;
     }
-    public int getResult() {
+    public Result getResult() {
         return result;
     }
 

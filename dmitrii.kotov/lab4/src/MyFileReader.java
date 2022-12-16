@@ -1,4 +1,5 @@
 import models.Fight;
+import models.Result;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -26,7 +27,8 @@ public class MyFileReader {
             String fileLine = reader.readLine();
             while (fileLine != null) {
                 String[] info = fileLine.split(";");
-                Fight fight = new Fight(info[0], info[1], info[2], info[3], info[4]);
+                Fight fight = new Fight(info[0], info[1], info[2].equals("") ? null : info[2],
+                        info[3], Result.valueOf(info[4]));
                 fights.add(fight);
                 fileLine = reader.readLine();
             }

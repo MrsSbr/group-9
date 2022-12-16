@@ -18,11 +18,10 @@ public class Main {
             FileHandler fh = new FileHandler(LOG_PATH);
             logger.addHandler(fh);
             logger.log(Level.INFO, "Начало работы");
-
-            WorkingWithFights worker = new WorkingWithFights();
             List<Fight> fights = MyFileReader.getFightsListFromFile();
             logger.log(Level.INFO, "Информация из файла успешно передана и конвертирована");
-            worker.makeWorkWithFights(fights);
+            WorkingWithFights worker = new WorkingWithFights(fights);
+            worker.makeWorkWithFights();
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Ошибка при обработке последовательности данных", e);
         }
