@@ -4,6 +4,7 @@ import entity.Chronicle;
 import entity.Khanate;
 import entity.PlaceBattle;
 import entity.RecordsOfChronicle;
+import service.Helper;
 
 import java.util.*;
 
@@ -16,7 +17,7 @@ public class ChronicleTask {
     }
 
     public Integer task1() { // ханство, которое потеряло больше всего воинов в зимний период
-        HashMap<Khanate, Integer> chronicleTask1Map = new HashMap<>();
+        Map<Khanate, Integer> chronicleTask1Map = new HashMap<>();
         int max = 0;
         int numberOfBrokenBasurmant;
         for (Chronicle i : recordsOfChronicle.getChronicleList()) {
@@ -31,8 +32,8 @@ public class ChronicleTask {
         return max;
     }
 
-    public List<PlaceBattle> task2() { //места в которых бились реже всего
-        List<PlaceBattle> placeBattle = new ArrayList<>();
+    public PlaceBattle task2() { //места в которых бились реже всего
+        Map<PlaceBattle, Integer> placeBattleIntegerMap = new HashMap<>();
         int min = 200;
         for (PlaceBattle pb : PlaceBattle.values()) {
             int count = 0;
@@ -41,18 +42,13 @@ public class ChronicleTask {
                     count++;
                 }
             }
-            if (count < min) {
-                placeBattle.clear();
-                placeBattle.add(pb);
-                min = count;
-            } else if (count == min) {
-                placeBattle.add(pb);
-            }
+            placeBattleIntegerMap.put(pb,count);
         }
-        return placeBattle;
+
+        return Helper.min(placeBattleIntegerMap, Integer::compareTo).getKey();
     }
 
-    public static Map<Khanate, Set<PlaceBattle>> task3() {
+    public static Map<Khanate, Set<PlaceBattle>> task3() { //для каждого врага вывести поля сражений
         Map<Khanate, Set<PlaceBattle>> khanatePlaceBattleMap = new HashMap<>();
         for (Chronicle i : recordsOfChronicle.getChronicleList()) {
             if (khanatePlaceBattleMap.containsKey(i.getKhanate())) {

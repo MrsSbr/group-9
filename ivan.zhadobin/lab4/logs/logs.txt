@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2022-12-14T06:04:20.119254900Z</date>
-  <millis>1670997860119</millis>
-  <nanos>254900</nanos>
+  <date>2022-12-17T16:11:49.982380Z</date>
+  <millis>1671293509982</millis>
+  <nanos>380000</nanos>
   <sequence>0</sequence>
   <logger>java.io.FileReader</logger>
   <level>INFO</level>

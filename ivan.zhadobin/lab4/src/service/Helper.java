@@ -2,6 +2,9 @@ package service;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -33,10 +36,22 @@ public class Helper {
     public static void fileHandlerInit(Logger _logger) {
         FileHandler fileHandler = null;
         try {
-            fileHandler = new FileHandler("C:\\Users\\zhado\\IdeaProjects\\groupe-9\\ivan.zhadobin\\lab4\\logs\\logs.txt");
+            fileHandler = new FileHandler("ivan.zhadobin\\lab4\\logs\\logs.txt");
             _logger.addHandler(fileHandler);
         } catch (IOException e) {
             _logger.log(Level.SEVERE, "ошибка при вводе-выводе данных: " + e.getMessage());
         }
+    }
+
+    public static <K, V> Map.Entry<K, V> min(Map<K, V> map, Comparator<V> comp) {
+        Iterator<Map.Entry<K, V>> entries = map.entrySet().iterator();
+        Map.Entry<K, V> min;
+        for (min = entries.next(); entries.hasNext(); ) {
+            Map.Entry<K, V> value = entries.next();
+            if (comp.compare(value.getValue(), min.getValue()) < 0) {
+                min = value;
+            }
+        }
+        return min;
     }
 }
