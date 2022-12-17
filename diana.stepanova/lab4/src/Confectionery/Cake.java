@@ -5,14 +5,14 @@ import java.util.Objects;
 public class Cake {
 
     private final String name;
-    private final double mass;
+    private final double weight;
     private final double price;
 
 
-    public Cake(String name, double mass, double price) {
+    public Cake(String name, double weight, double price) {
 
         this.name = name;
-        this.mass = mass;
+        this.weight = weight;
         this.price = price;
 
     }
@@ -26,7 +26,7 @@ public class Cake {
 
     public double getMass() {
 
-        return mass;
+        return weight;
 
     }
 
@@ -34,7 +34,7 @@ public class Cake {
     public String toString() {
         return "cake{" +
                 "name='" + name + '\'' +
-                ", mass=" + mass +
+                ", mass=" + weight +
                 ", price=" + price +
                 '}';
     }
@@ -53,13 +53,13 @@ public class Cake {
         }
         Cake cake = (Cake) o;
 
-        return Double.compare(cake.mass, mass) == 0 && Double.compare(cake.price, price) == 0 && Objects.equals(name, cake.name);
+        return Double.compare(cake.weight, weight) == 0 && Double.compare(cake.price, price) == 0 && Objects.equals(name, cake.name);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(name, mass, price);
+        return Objects.hash(name, weight, price);
 
     }
 }

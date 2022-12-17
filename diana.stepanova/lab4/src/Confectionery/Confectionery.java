@@ -110,7 +110,7 @@ public class Confectionery {
 
     }
 
-    public void add(String date, String name, String mass, String price) {
+    public void add(String date, String name, String weight, String price) {
 
         LocalDate tmpDate = LocalDate.parse(date);
 
@@ -120,7 +120,7 @@ public class Confectionery {
 
         }
 
-        confectionery.get(tmpDate).add(new Cake(name, Double.parseDouble(mass), Double.parseDouble(price)));
+        confectionery.get(tmpDate).add(new Cake(name, Double.parseDouble(weight), Double.parseDouble(price)));
 
 
     }
