@@ -53,6 +53,14 @@ import java.util.*;
          }
         System.out.println("Сумма всех заказов пиццериии равна "+ sum+"\n");
     }
+    private boolean contains(List<Order> currRes, Order order){
+        for(Order or:currRes){
+            if(or.equals(order)) //res.get(0).getPrice().equals(order.getPrice())&&(!(res.get(0).getNameOfPizza().equals(order.getNameOfPizza())))
+                return true;
+
+        }
+        return false;
+    }
         private List<Order> getCheapPizza(List<Order>orders){
             List<Order>res = new ArrayList<>();
             orders.forEach(order->{
@@ -63,7 +71,7 @@ import java.util.*;
                     res.clear();
                     res.add(order);
                 }
-                else if(res.get(0).getPrice().equals(order.getPrice())&&(!(res.get(0).getNameOfPizza().equals(order.getNameOfPizza()))))
+                else if(!contains(res,order)&& res.get(0).getPrice().equals(order.getPrice()))
                 {
                     res.add(order);
                 }
