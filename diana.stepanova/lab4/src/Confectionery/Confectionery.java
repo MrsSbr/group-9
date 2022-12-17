@@ -92,6 +92,7 @@ public class Confectionery {
                     Months.put(tmpMonth, new ArrayList<Cake>());
 
                 }
+
                 Months.get(tmpMonth).add(cake);
 
             }

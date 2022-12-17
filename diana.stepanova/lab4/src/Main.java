@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 public class Main {
 
     private static final Logger logger = Logger.getLogger(Main.class.getName());
+    private static final File f=new File("src/Confectionery/orders.txt");
 
     public static void main(String[] args) {
 
@@ -64,9 +65,8 @@ public class Main {
 
     public static void readFile(Confectionery confectionery) {
 
-        File file = new File("C:\\Users\\Диана\\IdeaProjects\\group-9\\diana.stepanova\\lab4\\src\\Confectionery\\orders.txt");
 
-        try (FileReader fr = new FileReader(file); BufferedReader reader = new BufferedReader(fr)) {
+        try (FileReader fr = new FileReader(f); BufferedReader reader = new BufferedReader(fr)) {
 
             String line = reader.readLine();
 
