@@ -29,4 +29,13 @@ public class Order {
         return "Пицца:\nНазвание пиццы: " + nameOfPizza + "\t|\tЦена: " + price + "\t|\tИнгредиенты: " + ingredients
                 + "\t";
     }
+
+    //@Override
+    public boolean equals(Order order) {
+        if(getIngredients().equals(order.getIngredients()) &&
+                getPrice().equals(order.getPrice())
+                && getNameOfPizza().equals(order.getNameOfPizza()))
+            return true;
+        return false;
+    }
 }
