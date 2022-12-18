@@ -1,13 +1,16 @@
+import enums.BreedType;
+import enums.GenderType;
 import models.BreedStatistic;
 import models.Cat;
 import service.CatService;
 import service.Helper;
-import service.Pair;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import static java.lang.System.currentTimeMillis;
+import static service.CatService.COUNT_WINNER_CATS;
 
 public class Main {
     private static final int COUNT_COMPARE_ITERATION = 100000;
@@ -38,19 +41,19 @@ public class Main {
     }
 
     private static void ratioMaleAndFemale(List<Cat> listOfCatsWinners) {
-        Pair<Double, Double> ratioMaleAndFemale = CatService.ratioMaleAndFemale(listOfCatsWinners);
+        Map<GenderType, Integer> countMaleAndFemale = CatService.countMaleAndFemale(listOfCatsWinners);
         System.out.println("Процент котов, победивших в выставке: "
-                + String.format("%.2f", ratioMaleAndFemale.getFirst() * 100) + "%");
+                + String.format("%.2f", countMaleAndFemale.get(GenderType.MALE) * 100.0 / COUNT_WINNER_CATS) + "%");
         System.out.println("Процент кошек, победивших в выставке: "
-                + String.format("%.2f", ratioMaleAndFemale.getSecond() * 100) + "%");
+                + String.format("%.2f", countMaleAndFemale.get(GenderType.FEMALE) * 100.0 / COUNT_WINNER_CATS) + "%");
     }
 
     private static void statisticOnBreeds(List<Cat> listOfCatsWinners) {
-        List<BreedStatistic> breedStatistics = CatService.getAllCatsBreedWinStatistic(listOfCatsWinners);
+        Map<BreedType, Integer> breedStatistics = CatService.getAllCatsBreedWinStatistic(listOfCatsWinners);
         breedStatistics
-                .forEach(item ->
-                        System.out.println("Процент побед кошек породы " + item.getBreed() + " "
-                                + String.format("%.2f", item.getStatistic() * 100) + "%")
+                .forEach((key, value) ->
+                        System.out.println("Процент побед кошек породы " + key + " "
+                                + String.format("%.2f", value * 100.0 / COUNT_WINNER_CATS) + "%")
                 );
     }
 
@@ -89,7 +92,7 @@ public class Main {
 
     private static void executeTasksManyIteration(List<Cat> listOfCat) {
         for (int i = 0; i < COUNT_COMPARE_ITERATION; i++) {
-            CatService.ratioMaleAndFemale(listOfCat);
+            CatService.countMaleAndFemale(listOfCat);
             CatService.getAllCatsBreedWinStatistic(listOfCat);
             CatService.getSetOfCatsWinAtLeastOnce(listOfCat);
         }
