@@ -1,4 +1,4 @@
-package org.example;
+package main.java.org.example;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,13 +8,9 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-/**
- * Hello world!
- */
 public class App {
     private static final Logger logger = Logger.getLogger(Math.class.getName());
-
+    private static final String PATH="sezim.mamadrazakova/lab4/src/main/java/org/example/Tour.txt";
     public static void main(String[] args) {
         logger.log(Level.INFO, "Начало работы");
         int choice = -1;
@@ -63,7 +59,7 @@ public class App {
     }
 
     public static void readFile(Task map) {
-        String path = new File("sezim.mamadrazakova/lab4/src/main/java/org/example/Tour.txt").getAbsolutePath();
+        String path = new File(PATH).getAbsolutePath();
 
         File file = new File(path);
         try (FileReader read = new FileReader(file); BufferedReader reader = new BufferedReader(read)) {
