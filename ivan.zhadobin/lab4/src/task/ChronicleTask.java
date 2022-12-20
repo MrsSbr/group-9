@@ -60,3 +60,6 @@ public class ChronicleTask {
         return khanatePlaceBattleMap;
     }
 }
+
+
+
