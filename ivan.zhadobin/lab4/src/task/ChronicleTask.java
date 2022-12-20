@@ -16,7 +16,7 @@ public class ChronicleTask {
         this.recordsOfChronicle = recordsOfChronicle;
     }
 
-    public Integer task1() { // ханство, которое потеряло больше всего воинов в зимний период
+    public Khanate task1() { // ханство, которое потеряло больше всего воинов в зимний период
         Map<Khanate, Integer> chronicleTask1Map = new HashMap<>();
         int max = 0;
         int numberOfBrokenBasurmant;
@@ -29,12 +29,11 @@ public class ChronicleTask {
                 max = chronicleTask1Map.get(i.getKhanate());
             }
         }
-        return max;
+        return Helper.getKey(chronicleTask1Map, max);
     }
 
     public PlaceBattle task2() { //места в которых бились реже всего
         Map<PlaceBattle, Integer> placeBattleIntegerMap = new HashMap<>();
-        int min = 200;
         for (PlaceBattle pb : PlaceBattle.values()) {
             int count = 0;
             for (Chronicle i : recordsOfChronicle.getChronicleList()) {
@@ -42,7 +41,7 @@ public class ChronicleTask {
                     count++;
                 }
             }
-            placeBattleIntegerMap.put(pb,count);
+            placeBattleIntegerMap.put(pb, count);
         }
 
         return Helper.min(placeBattleIntegerMap, Integer::compareTo).getKey();

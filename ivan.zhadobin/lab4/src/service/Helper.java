@@ -11,7 +11,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Helper {
-    private static final Logger logger = Logger.getLogger(FileReader.class.getName());
 
     public static int userInput(int l, int r) {
         Scanner sc = new Scanner(System.in);
@@ -53,5 +52,14 @@ public class Helper {
             }
         }
         return min;
+    }
+
+    public static <K, V> K getKey(Map<K, V> map, V value) {
+        for (Map.Entry<K, V> entry : map.entrySet()) {
+            if (value.equals(entry.getValue())) {
+                return entry.getKey();
+            }
+        }
+        return null;
     }
 }
