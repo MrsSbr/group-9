@@ -61,12 +61,12 @@ public class EmployeeList {
     private void fillDataEmployee(int minAge, int maxAge) {
         employees
                 .stream()
-                .filter(x -> x.getAge() > minAge && x.getAge() < maxAge)
-                .forEach(x -> {
+                .filter(employee -> employee.getAge() > minAge && employee.getAge() < maxAge)
+                .forEach(employee -> {
                     Arrays.stream(MarkAuto.values())
-                            .filter(z -> z.toString().equals(x.getMark()))
+                            .filter(markAuto -> markAuto.toString().equals(employee.getMark()))
                             .findFirst()
-                            .ifPresent(z -> z.incrementCount());
+                            .ifPresent(markAuto -> markAuto.incrementCount());
                 });
     }
 
@@ -74,11 +74,11 @@ public class EmployeeList {
         HashSet<MarkAuto> markAutos = new HashSet<>();
         employees
                 .stream()
-                .forEach(x -> {
+                .forEach(employee -> {
                     Arrays.stream(MarkAuto.values())
-                            .filter(z -> z.toString().equals(x.getMark()))
+                            .filter(markAuto -> markAuto.toString().equals(employee.getMark()))
                             .findFirst()
-                            .ifPresent(z -> markAutos.add(z));
+                            .ifPresent(markAuto -> markAutos.add(markAuto));
                 });
         System.out.println(markAutos);
     }
