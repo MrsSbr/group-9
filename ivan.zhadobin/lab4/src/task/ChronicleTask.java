@@ -22,11 +22,9 @@ public class ChronicleTask {
         int numberOfBrokenBasurmant;
         for (Chronicle i : recordsOfChronicle.getChronicleList()) {
             if (i.getDate().getMonthValue() > 11 || i.getDate().getMonthValue() < 3) {
-                numberOfBrokenBasurmant = i.getNumberOfBrokenBasurmant();
-                chronicleTask1Map.put(i.getKhanate(), numberOfBrokenBasurmant);
-            }
-            if (chronicleTask1Map.get(i.getKhanate()) > max) {
-                max = chronicleTask1Map.get(i.getKhanate());
+                chronicleTask1Map.put(i.getKhanate(), i.getNumberOfBrokenBasurmant());
+                if (i.getNumberOfBrokenBasurmant() > max)
+                    max = i.getNumberOfBrokenBasurmant();
             }
         }
         return Helper.getKey(chronicleTask1Map, max);
