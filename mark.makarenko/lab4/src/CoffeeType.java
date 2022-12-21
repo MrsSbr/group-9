@@ -7,7 +7,7 @@ public class CoffeeType {
 
     public CoffeeType(String type, String country, String farm, String processing, int growthHight) {
         this.type = type;
-        this.country = country;
+         this.country = country;
         this.farm = farm;
         this.processing = processing;
         this.growthHight = growthHight;

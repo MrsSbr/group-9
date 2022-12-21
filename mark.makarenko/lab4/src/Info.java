@@ -1,13 +1,11 @@
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Info {
     private final static int overall = 3;
-    private final List<CoffeeType> list;
+    private final List<CoffeeType> listOfRecords;
 
     public Info(List<CoffeeType> value) {
-        list = value;
+        listOfRecords = value;
     }
 
     static int getOverall() {
@@ -16,58 +14,47 @@ public class Info {
 
     void printList() {
         for (int i = 0; i < overall; i++) {
-            System.out.print(list.get(i).getType() + ' ' + list.get(i).getCountry() + ' '
-                    + list.get(i).getFarm() + ' ' + list.get(i).getProcessing() + ' ' + list.get(i).getGrowthHight());
+            System.out.print(listOfRecords.get(i).getType() + ' ' + listOfRecords.get(i).getCountry() + ' '
+                    + listOfRecords.get(i).getFarm() + ' ' + listOfRecords.get(i).getProcessing() + ' ' + listOfRecords.get(i).getGrowthHight());
             System.out.println();
         }
     }
 
-    void everyTypeForProcessing() {
-        for (int i = 0; i < overall - 1; i++) {
-            String tmpProcessing;
-            tmpProcessing = list.get(i).getProcessing();
-            for (int j = i; j < overall; j++) {
-                if (list.get(j).getProcessing() == tmpProcessing) {
-                    System.out.println(list.get(j).getType());
-                }
+    HashMap<String, Set<String>> everyTypeForProcessing() {
+        HashMap<String, Set<String>> typeForProcessing = new HashMap<>();
+
+        for (CoffeeType coffeeType : listOfRecords) {
+            if (typeForProcessing.containsKey(coffeeType.getProcessing())) {
+                typeForProcessing.get(coffeeType.getProcessing())
+                        .add(coffeeType.getType());
+            } else {
+                Set<String> Types = new HashSet<>();
+                Types.add(coffeeType.getType());
+                typeForProcessing.put(coffeeType.getProcessing(), Types);
             }
         }
+        return typeForProcessing;
     }
 
-    void countriesWithGrowthHight() {
-
-        for (int i = 0; i < overall; i++) {
-
-            if (list.get(i).getGrowthHight() > 1500) {
-
-                System.out.println(list.get(i).getCountry());
+    Set <String> countriesWithGrowthHight() {
+        Set <String> growthHight = new HashSet<>();
+        for (CoffeeType coffeeType :
+                listOfRecords) {
+            if (coffeeType.getGrowthHight() > 1500) {
+                growthHight.add(coffeeType.getCountry());
             }
         }
+        return growthHight;
     }
 
-    void farmTypeCount() {
-        for (int i = 0; i < overall; i++) {
-            List<String> tmpList = new LinkedList<>();
-            int typeCount = 0;
-            String tmpFarm = list.get(i).getFarm();
-            for (int j = 0; j < overall; j++) {
-                boolean flag = true;
-                if (Objects.equals(list.get(j).getFarm(), tmpFarm)) {
-                    for (String s : tmpList) {
-                        if (Objects.equals(list.get(j).getFarm(), s)) {
-                            flag = false;
-                            break;
-                        }
-                    }
-                    if (flag) {
-                        typeCount++;
-                        tmpList.add(list.get(j).getFarm());
-                    }
-                }
-            }
-            System.out.print(list.get(i).getFarm() + ' ' + typeCount);
-            System.out.println();
+    Map<String, Integer> farmTypeCount() {
+        Map<String, Integer> farmTypeCount = new HashMap<>();
+        for (CoffeeType coffeeType : listOfRecords) {
+            String value;
+            value = coffeeType.getFarm();
+            farmTypeCount.merge(value, 1, Integer::sum);
         }
+        return farmTypeCount;
     }
 }
 
