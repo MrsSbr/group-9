@@ -2,11 +2,9 @@ package service;
 
 import enums.BreedType;
 import enums.GenderType;
-import models.BreedStatistic;
 import models.Cat;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toMap;
 
@@ -47,15 +45,13 @@ public class CatService {
     }
 
     public static Map<GenderType, Integer> countMaleAndFemale(List<Cat> listOfCatsWinners) {
-        Map<GenderType, Integer> countGender = listOfCatsWinners.stream()
+        return listOfCatsWinners.stream()
                 .collect(toMap(Cat::getGender, x -> 1, Integer::sum, HashMap::new));
-        return countGender;
     }
 
     public static Map<BreedType, Integer> getAllCatsBreedWinStatistic(List<Cat> listOfCatsWinners) {
-        Map<BreedType, Integer> catOnBreedCounter = listOfCatsWinners.stream()
+        return listOfCatsWinners.stream()
                 .collect(toMap(Cat::getBreed, x -> 1, Integer::sum, HashMap::new));
-        return catOnBreedCounter;
     }
 
     public static Set<Cat> getSetOfCatsWinAtLeastOnce(List<Cat> listOfCatsWinners) {
