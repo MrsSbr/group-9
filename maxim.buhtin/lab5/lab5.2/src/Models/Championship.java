@@ -32,13 +32,13 @@ public class Championship {
     public int scoring(String nameTeam) {
         List<Game> res = this.match.get(nameTeam);
         int pointsWin = res.stream()
-                .filter(game -> game.getHome().equals(nameTeam) &&
-                        game.getCountGoolHome() > game.getCountGoolVisit() ||
-                        game.getVisit().equals(nameTeam) && game.getCountGoolVisit() > game.getCountGoolHome()
+                .filter(game -> game.getHome().equals(nameTeam)
+                        && game.getCountGoolHome() > game.getCountGoolVisit()
+                        || game.getVisit().equals(nameTeam) && game.getCountGoolVisit() > game.getCountGoolHome()
                 ).mapToInt(game -> 3).sum();
         int pointsDraw = res.stream()
-                .filter(game -> game.getVisit().equals(nameTeam) && game.getCountGoolVisit() == game.getCountGoolHome()
-                ).mapToInt(game -> 1).sum();
+                .filter(game -> game.getVisit().equals(nameTeam) && game.getCountGoolVisit() == game.getCountGoolHome())
+                .mapToInt(game -> 1).sum();
 
         return (pointsWin + pointsDraw);
     }

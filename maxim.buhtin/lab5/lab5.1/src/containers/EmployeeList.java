@@ -66,19 +66,17 @@ public class EmployeeList {
                     Arrays.stream(MarkAuto.values())
                             .filter(markAuto -> markAuto.toString().equals(employee.getMark()))
                             .findFirst()
-                            .ifPresent(markAuto -> markAuto.incrementCount());
+                            .ifPresent(MarkAuto::incrementCount);
                 });
     }
 
     public void getListUniqueMark() {
         HashSet<MarkAuto> markAutos = new HashSet<>();
-        employees
-                .stream()
-                .forEach(employee -> {
+        employees.forEach(employee -> {
                     Arrays.stream(MarkAuto.values())
                             .filter(markAuto -> markAuto.toString().equals(employee.getMark()))
                             .findFirst()
-                            .ifPresent(markAuto -> markAutos.add(markAuto));
+                            .ifPresent(markAutos::add);
                 });
         System.out.println(markAutos);
     }
