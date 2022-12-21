@@ -48,7 +48,7 @@ public class Confectionery {
 
     public Map<Month, Double> mustMassMonth() {
 
-        Map<Month, Double> Months = new HashMap<>();
+        Map<Month, Double> months = new HashMap<>();
 
         for (Map.Entry<LocalDate, List<Cake>> confectionery : confectionery.entrySet()) {
 
@@ -58,13 +58,13 @@ public class Confectionery {
 
                     Month tmpMonth = confectionery.getKey().getMonth();
 
-                    if (!Months.containsKey(tmpMonth)) {
+                    if (!months.containsKey(tmpMonth)) {
 
-                        Months.put(tmpMonth, cake.getMass());
+                        months.put(tmpMonth, cake.getMass());
 
-                    } else if (Months.get(tmpMonth) < cake.getMass()) {
+                    } else if (months.get(tmpMonth) < cake.getMass()) {
 
-                        Months.put(tmpMonth, cake.getMass());
+                        months.put(tmpMonth, cake.getMass());
 
                     }
 
@@ -74,12 +74,12 @@ public class Confectionery {
 
         }
 
-        return Months;
+        return months;
     }
 
     public List<Map.Entry<Month, List<Cake>>> ordersToMonth() {
 
-        Map<Month, List<Cake>> Months = new HashMap<>();
+        Map<Month, List<Cake>> months = new HashMap<>();
 
         for (Map.Entry<LocalDate, List<Cake>> confectionery : confectionery.entrySet()) {
 
@@ -87,18 +87,18 @@ public class Confectionery {
 
                 Month tmpMonth = confectionery.getKey().getMonth();
 
-                if (!Months.containsKey(tmpMonth)) {
+                if (!months.containsKey(tmpMonth)) {
 
-                    Months.put(tmpMonth, new ArrayList<Cake>());
+                    months.put(tmpMonth, new ArrayList<Cake>());
 
                 }
 
-                Months.get(tmpMonth).add(cake);
+                months.get(tmpMonth).add(cake);
 
             }
 
         }
-        List<Map.Entry<Month, List<Cake>>> valuesList = new ArrayList<>(Months.entrySet());
+        List<Map.Entry<Month, List<Cake>>> valuesList = new ArrayList<>(months.entrySet());
         valuesList.sort(Map.Entry.comparingByKey());
         return valuesList;
     }
