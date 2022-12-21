@@ -9,7 +9,7 @@ public class Sacrifice {
         this.date = date;
         this.type = type;
         this.daysTillRain = daysTillRain;
-    }
+     }
     public Sacrifice() {
         this.date = null;
         this.type = null;

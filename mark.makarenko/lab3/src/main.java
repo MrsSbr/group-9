@@ -5,7 +5,7 @@ public class main {
         task();
     }
 
-    public static void task(){
+     public static void task(){
         long startTime = System.currentTimeMillis();
         List<Sacrifice> sacrificesArr;
         sacrificesArr = Table.generate(1);

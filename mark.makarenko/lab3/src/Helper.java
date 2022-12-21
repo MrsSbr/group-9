@@ -18,7 +18,7 @@ public class Helper {
     }
 
     public static int getRandomIndexInRange(int left, int right) {
-        return ThreadLocalRandom
+         return ThreadLocalRandom
                 .current()
                 .nextInt(left, right);
     }

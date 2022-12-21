@@ -65,7 +65,7 @@ public class Table {
         else{
             System.out.println("ничья");
         }
-    }
+     }
 
 
     public static String humanOrAnimal (int choice) {
