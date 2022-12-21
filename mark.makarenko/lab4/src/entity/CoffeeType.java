@@ -1,3 +1,5 @@
+package entity;
+
 public class CoffeeType {
     private final String type;
     private final String country;

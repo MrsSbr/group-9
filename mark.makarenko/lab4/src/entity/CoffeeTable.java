@@ -1,10 +1,12 @@
+package entity;
+
 import java.util.*;
 
-public class Info {
+public class CoffeeTable {
     private final static int overall = 3;
     private final List<CoffeeType> listOfRecords;
 
-    public Info(List<CoffeeType> value) {
+    public CoffeeTable(List<CoffeeType> value) {
         listOfRecords = value;
     }
 
@@ -12,7 +14,7 @@ public class Info {
         return overall;
     }
 
-    void printList() {
+    public void printList() {
         for (int i = 0; i < overall; i++) {
             System.out.print(listOfRecords.get(i).getType() + ' ' + listOfRecords.get(i).getCountry() + ' '
                     + listOfRecords.get(i).getFarm() + ' ' + listOfRecords.get(i).getProcessing() + ' ' + listOfRecords.get(i).getGrowthHight());
@@ -20,7 +22,8 @@ public class Info {
         }
     }
 
-    HashMap<String, Set<String>> everyTypeForProcessing() {
+
+    public HashMap<String, Set<String>> everyTypeForProcessing() {
         HashMap<String, Set<String>> typeForProcessing = new HashMap<>();
 
         for (CoffeeType coffeeType : listOfRecords) {
@@ -36,7 +39,7 @@ public class Info {
         return typeForProcessing;
     }
 
-    Set <String> countriesWithGrowthHight() {
+    public Set <String> countriesWithGrowthHight() {
         Set <String> growthHight = new HashSet<>();
         for (CoffeeType coffeeType :
                 listOfRecords) {
@@ -47,7 +50,7 @@ public class Info {
         return growthHight;
     }
 
-    Map<String, Integer> farmTypeCount() {
+    public Map<String, Integer> farmTypeCount() {
         Map<String, Integer> farmTypeCount = new HashMap<>();
         for (CoffeeType coffeeType : listOfRecords) {
             String value;

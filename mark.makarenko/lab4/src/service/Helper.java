@@ -1,11 +1,15 @@
+package service;
+
+import entity.CoffeeType;
+
 import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Helper {
 
-    static List<CoffeeType> readFromFile() throws FileNotFoundException {
-        File PATH = new File("/Users/mac/IdeaProjects/group-9/mark.makarenko/lab4/src/file1.txt");
+    public static List<CoffeeType> readFromFile() throws FileNotFoundException {
+        File PATH = new File("mark.makarenko/lab4/src/txt/file1.txt");
         List<CoffeeType> result = new LinkedList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(PATH))) {
             String line;
