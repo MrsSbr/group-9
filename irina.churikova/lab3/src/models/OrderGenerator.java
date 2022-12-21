@@ -28,7 +28,7 @@ public class OrderGenerator {
             "Кабачки", "Каперсы", "Мука","Дрожжи"));
     private static final List<String>ingredientOfVegetarians = new ArrayList<>(Arrays.asList("Лук", "Томаты", "Сыр",
             "Грибы", "Специи","Перец"));
-    private static final List<List<String>> ingredients = new ArrayList(Arrays.asList(ingredientOfMargarita,ingredientOfPepperoni,ingredientOfItalia,ingredientOfEuropa,ingredientOfFourCheese,
+    private static final List<List<String>> ingredients = new ArrayList<>(Arrays.asList(ingredientOfMargarita,ingredientOfPepperoni,ingredientOfItalia,ingredientOfEuropa,ingredientOfFourCheese,
             ingredientOfSea,ingredientOfCarbonara, ingredientOfCaesar,ingredientOfClosedPizza,ingredientOfVegetarians ) );
     private static final List<Double> prices = new ArrayList<>(Arrays.asList(300.0,50.0,150.5,50.0,830.0,750.0,100.7,550.9,230.0,800.0));
     private static String randName( int nameIndex) {
