@@ -52,9 +52,9 @@ public class ChronicleTask {
                 khanatePlaceBattleMap.get(i.getKhanate())
                         .add(i.getPlaceOfBattle());
             } else {
-                Set<PlaceBattle> setOfTemples = new HashSet<>();
-                setOfTemples.add(i.getPlaceOfBattle());
-                khanatePlaceBattleMap.put(i.getKhanate(), setOfTemples);
+                Set<PlaceBattle> setOfPlaceBattle = new HashSet<>();
+                setOfPlaceBattle.add(i.getPlaceOfBattle());
+                khanatePlaceBattleMap.put(i.getKhanate(), setOfPlaceBattle);
             }
         }
         return khanatePlaceBattleMap;
