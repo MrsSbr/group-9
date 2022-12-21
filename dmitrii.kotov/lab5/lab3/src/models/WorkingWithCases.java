@@ -32,20 +32,9 @@ public class WorkingWithCases {
 
     private int getYearWithHighestAcquittalsPercentage() { // 2. Год с самым высоким процентом оправдательных приговоров
         List<Integer> years = IntStream.range(MIN_YEAR, MAX_YEAR).boxed().toList();
-        int resultYear = years.stream().max((y1, y2) -> {
-            if (acquittalsPercentage(y1) > acquittalsPercentage(y2)) {
-                return 1;
-            }
-            else {
-                if (acquittalsPercentage(y1) < acquittalsPercentage(y2)) {
-                    return -1;
-                }
-                else {
-                    return 0;
-                }
-            }
-        }).get();
-        return resultYear;
+        return years.stream()
+                .max((y1, y2) -> Double.compare(acquittalsPercentage(y1), acquittalsPercentage(y2)))
+                .orElseThrow();
     }
 
     private Set<String> convictedMoreThanOnceLastThreeYears() { // 1. Люди, осужденные более чем один раз за последние три года

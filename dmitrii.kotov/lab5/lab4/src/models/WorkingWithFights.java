@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class WorkingWithFights {
-    private List<Fight> fights;
+    private final List<Fight> fights;
 
     public WorkingWithFights(List<Fight> fights) {
         this.fights = fights;
@@ -29,14 +29,12 @@ public class WorkingWithFights {
         System.out.println(countAnimalWins);
         int maxCountWins = Collections.max(countAnimalWins.values());
 
-        Set<String> deadliestAnimals = countAnimalWins.entrySet()
+
+        return countAnimalWins.entrySet()
                 .stream()
                 .filter(entry -> entry.getValue() == maxCountWins)
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toSet());
-
-
-        return deadliestAnimals;
     }
 
     private Set<String> bestFighters() { // лучшие бойцы(с лудусом)
@@ -56,13 +54,12 @@ public class WorkingWithFights {
                 });
 
         int maxCountWins = Collections.max(countFighterWins.values());
-        Set<String> bestGladiators = countFighterWins.entrySet()
+
+        return countFighterWins.entrySet()
                 .stream()
                 .filter(entry -> entry.getValue() == maxCountWins)
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toSet());
-
-        return bestGladiators;
     }
 
 
@@ -93,14 +90,12 @@ public class WorkingWithFights {
                 });
 
 
-        Set<String> deadGladiatorsWithFourFight = gladiatorsResults.entrySet()
+        return gladiatorsResults.entrySet()
                 .stream()
                 .filter(result -> result.getValue().size() > 3
                         && result.getValue().contains(Result.LOSE_WITHOUT_MERCY))
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toSet());
-
-        return deadGladiatorsWithFourFight;
     }
 
 
