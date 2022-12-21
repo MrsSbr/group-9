@@ -19,14 +19,12 @@ public class ChronicleTask {
     public Integer task1() { // ханство, которое потеряло больше всего воинов в зимний период
         Map<Khanate, Integer> chronicleTask1Map = new HashMap<>();
         int max = 0;
-        int numberOfBrokenBasurmant;
         for (Chronicle i : recordsOfChronicle.getChronicleList()) {
             if (i.getDate().getMonthValue() > 11 || i.getDate().getMonthValue() < 3) {
-                numberOfBrokenBasurmant = i.getNumberOfBrokenBasurmant();
-                chronicleTask1Map.put(i.getKhanate(), numberOfBrokenBasurmant);
+                chronicleTask1Map.put(i.getKhanate(), i.getNumberOfBrokenBasurmant());
             }
-            if (chronicleTask1Map.get(i.getKhanate()) > max) {
-                max = chronicleTask1Map.get(i.getKhanate());
+            if (i.getNumberOfBrokenBasurmant() > max) {
+                max = i.getNumberOfBrokenBasurmant();
             }
         }
         return max;
@@ -34,7 +32,7 @@ public class ChronicleTask {
 
     public PlaceBattle task2() { //места в которых бились реже всего
         Map<PlaceBattle, Integer> placeBattleIntegerMap = new HashMap<>();
-        int min = 200;
+
         for (PlaceBattle pb : PlaceBattle.values()) {
             int count = 0;
             for (Chronicle i : recordsOfChronicle.getChronicleList()) {
