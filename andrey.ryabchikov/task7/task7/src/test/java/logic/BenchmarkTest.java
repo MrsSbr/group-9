@@ -21,6 +21,17 @@ class BenchmarkTest {
         // then
         assertNotNull(actualStat);
     }
+
+    @Test
+    public void testStatContainsValue() {
+
+        // when
+        Stat actualStat = Benchmark.getStat(new Temparary());
+
+        // then
+        assertEquals(actualStat.getStats().size(), 1);
+    }
+
     @Test
     public void notNullTrack() {
         //given

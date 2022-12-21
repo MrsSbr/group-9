@@ -14,6 +14,10 @@ public class Stat {
 
     }
 
+    public List<String> getStats() {
+        return stats;
+    }
+
     public void add(String text){
 
         stats.add(text);

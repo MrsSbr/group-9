@@ -1,10 +1,10 @@
 import java.util.List;
 
-public class writer extends Thread {
+public class Writer extends Thread {
     private final List<String> poem;
     private final StringBuilder napkin;
 
-    public writer(List<String> poem, StringBuilder napkin) {
+    public Writer(List<String> poem, StringBuilder napkin) {
 
         this.poem = poem;
         this.napkin = napkin;
@@ -24,9 +24,9 @@ public class writer extends Thread {
 
                 sleep((long) (Math.random() * 91.0) + 10L);
 
-            } catch (InterruptedException var5) {
+            } catch (InterruptedException e) {
 
-                throw new RuntimeException(var5);
+                throw new RuntimeException(e);
 
             }
         }

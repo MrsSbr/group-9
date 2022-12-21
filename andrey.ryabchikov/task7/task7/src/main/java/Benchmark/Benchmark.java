@@ -17,7 +17,7 @@ public class Benchmark {
 
         ClassLoader serviceClassLoader = service.getClass().getClassLoader();
 
-        Class[] interfaces = service.getClass().getInterfaces();
+        Class<?>[] interfaces = service.getClass().getInterfaces();
 
         return (Service) Proxy.newProxyInstance(serviceClassLoader, interfaces, new ServiceInvocationHandler(service));
     }
@@ -25,10 +25,9 @@ public class Benchmark {
     public static Stat getStat(Service service) {
 
         if (service == null) {
-
             return null;
-
         }
+
         Stat stat = new Stat();
         Class<?> c = Service.class;
         Method[] m = c.getMethods();

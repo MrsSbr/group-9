@@ -15,12 +15,12 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         StringBuilder napkin = new StringBuilder();
 
-        List<writer> writers = new ArrayList<>();
+        List<Writer> writers = new ArrayList<>();
 
-        writers.add(new writer(readFile(Pushkin), napkin));
-        writers.add(new writer(readFile(Esenin), napkin));
-        writers.add(new writer(readFile(Shnur), napkin));
-        writers.add(new writer(readFile(Cvetaeva), napkin));
+        writers.add(new Writer(readFile(Pushkin), napkin));
+        writers.add(new Writer(readFile(Esenin), napkin));
+        writers.add(new Writer(readFile(Shnur), napkin));
+        writers.add(new Writer(readFile(Cvetaeva), napkin));
 
         for (int i = 0; i < 4; i++) {
 
@@ -40,7 +40,8 @@ public class Main {
 
         List<String> result = new ArrayList<>();
 
-        try (FileReader fr = new FileReader(FILE); BufferedReader reader = new BufferedReader(fr)) {
+        try (FileReader fr = new FileReader(FILE);
+             BufferedReader reader = new BufferedReader(fr)) {
 
             String line = reader.readLine();
 
