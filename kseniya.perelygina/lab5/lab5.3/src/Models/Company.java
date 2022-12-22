@@ -15,7 +15,7 @@ public class Company {
 
     // По условию задачи всегда должно быть 50,
     // но провести тест при таком малом кол-ве записей и сделать верный вывод затруднительно
-    private int yearsSinceFoundation;
+    private final int yearsSinceFoundation;
 
 
     public Company(boolean makeArrayList, int yearsSinceFoundation){
@@ -67,7 +67,7 @@ public class Company {
 
             String curDep = Supportive.DEPARTMENTS[i];
             int cnt = (int) premiums.stream()
-                    .filter(p -> p.getDepartment() == curDep)
+                    .filter(p -> p.getDepartment().equals(curDep))
                     .count();
 
             if (cnt > maxRewards) {
@@ -90,25 +90,21 @@ public class Company {
 
     public Set<Employee> getRewardedEmployees() {
 
-        HashSet<Employee> result = premiums.stream()
+        return premiums.stream()
                 .map(Premium::getEmployee)
                 .collect(Collectors.toCollection(HashSet::new));
-
-        return result;
     }
 
 
     public int countOnceRewardedEmployees() {
 
-        int resultCnt = (int) premiums.stream()
+        return (int) premiums.stream()
                 .map(Premium::getEmployee)
                 .mapToInt(curEmp -> (int) premiums
                         .stream()
                         .filter(p -> curEmp.equals(p.getEmployee()))
                         .count())
                 .filter(cnt -> cnt == 1).count();
-
-        return resultCnt;
 
     }
 

@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class Premium {
 
-    private Employee employee;
-    private int year;
+    private final Employee employee;
+    private final int year;
 
     public Employee getEmployee() {
         return employee;

@@ -14,21 +14,22 @@ public class Main {
 
         System.out.println(Supportive.LINE);
 
+        Company c;
         if (choice == 1) {
 
-            Company c = new Company(true, Supportive.DEFAULT_YEARS_SINCE_FOUNDATION);
-            Tasks.performTasks(c, true);
+            c = new Company(true, Supportive.DEFAULT_YEARS_SINCE_FOUNDATION);
 
         } else {
 
-            Company c = new Company(false, Supportive.DEFAULT_YEARS_SINCE_FOUNDATION);
-            Tasks.performTasks(c, true);
+            c = new Company(false, Supportive.DEFAULT_YEARS_SINCE_FOUNDATION);
+
         }
+        Tasks.performTasks(c, true);
 
     }
 
     public static void main(String[] args) {
-        int choice = -1;
+        int choice;
 
         do {
 

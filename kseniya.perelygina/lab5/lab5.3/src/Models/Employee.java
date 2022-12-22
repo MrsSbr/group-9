@@ -5,8 +5,8 @@ import Supportive.*;
 
 public class Employee {
 
-    private String name;
-    private String department;
+    private final String name;
+    private final String department;
 
     public Employee() {
 

@@ -3,7 +3,6 @@ import Models.Employee;
 import Supportive.Supportive;
 
 import java.util.Set;
-import java.util.stream.IntStream;
 
 public class Tasks {
 
@@ -16,10 +15,10 @@ public class Tasks {
         if (display) {
 
             System.out.println("\nОтделы, выигрывавшие чаще всего:");
-            deps.stream().forEach(System.out::println);
+            deps.forEach(System.out::println);
 
             System.out.println("\nРаботники, выигрывавшие премию:");
-            emps.stream().forEach(System.out::println);
+            emps.forEach(System.out::println);
 
             System.out.println("\nКол-во работников, которые становились лучшими только раз: " + cnt);
 
