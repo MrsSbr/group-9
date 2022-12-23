@@ -12,8 +12,7 @@ import java.util.stream.Collectors;
  * суммарный вес для каждого типа подарка
  */
 public class TeodorAnalysis {
-     private final List<Gift> gifts;
-
+    private final List<Gift> gifts;
     public TeodorAnalysis(List<Gift> gifts) {
         this.gifts = gifts;
     }
@@ -29,9 +28,7 @@ public class TeodorAnalysis {
                 .filter(e -> e.getValue().size() == count)
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toSet());
-
     }
-
 
     //    максимальный вес для подарка каждого цвета
     public Map<ColorGift, Double> getMaxWeightForEachColor() {
@@ -42,7 +39,6 @@ public class TeodorAnalysis {
                 .flatMap(Optional::stream)
                 .collect(Collectors.toMap(Gift::color, Gift::weight));
     }
-
 
     //    суммарный вес для каждого типа подарка
     public Map<TypeGift, Double> getSumWeightForEachType() {

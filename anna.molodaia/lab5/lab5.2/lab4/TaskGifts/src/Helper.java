@@ -43,7 +43,6 @@ public class Helper {
 
         while (!exit) {
             result = getInt();
-
             if (result >= start && result <= end) {
                 exit = true;
             } else {
@@ -64,7 +63,7 @@ public class Helper {
              var reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
             reader.readLine(); //пропуск заголовка
 
-            String line = reader.readLine();
+            var line = reader.readLine();
             int index = 1;
 
             while (line != null) {
@@ -76,17 +75,15 @@ public class Helper {
                         throw new NoSuchFieldException("Нет такого размера подарка");
                     }
                     double weight = Double.parseDouble(f[2]);
-                    TypeGift type;
-                    type = TypeGift.getType(f[3].trim());
+                    TypeGift type = TypeGift.getType(f[3].trim());
                     if (type == TypeGift.NOT_DEFINE) {
                         throw new NoSuchFieldException("Нет такого типа подарка");
                     }
-                    ColorGift color;
-                    color = ColorGift.getColor(f[4].trim());
+                    ColorGift color = ColorGift.getColor(f[4].trim());
                     if (color == ColorGift.NOT_DEFINE) {
                         throw new NoSuchFieldException("Нет такого цвета упаковочной бумаги");
                     }
-                    Gift gift = new Gift(year, size, weight, type, color);
+                    var gift = new Gift(year, size, weight, type, color);
                     gifts.add(gift);
                     line = reader.readLine();
                     index++;

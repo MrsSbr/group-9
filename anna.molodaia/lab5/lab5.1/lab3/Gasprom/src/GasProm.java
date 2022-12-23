@@ -28,39 +28,32 @@ public class GasProm {
                 case 0 -> isEnd = true;
                 case 1 -> showInfo(true);
                 case 2 -> showInfo(false);
-                default -> System.out.println("Неверный ввод. Повторите");
+                default -> System.err.println("Неверный ввод. Повторите");
             }
         }
     }
 
 
     public static void getInfo(Repository campaigns) {
-        if(campaigns.isEmpty())
-        { System.out.println("Данных о камапаниях нет!");
-        }
-        else {
+        if (campaigns.isEmpty()) {
+            System.out.println("Данных о камапаниях нет!");
+        } else {
             System.out.println("Число маркетинговых кампаний " + campaigns.size());
             System.out.println("Средняя длительность кампаний (в днях) " + campaigns.avgCampaignDurationDays());
             Set<TypeCampaign> types = campaigns.getTypesCampaignsInLastYear();
-            if(types.isEmpty()) {
+            if (types.isEmpty()) {
                 System.out.println("За последний год не было проведено ни одной кампании");
-            }
-            else{
+            } else {
                 System.out.println("Типы кампаний, которые были проведены за последний год:");
-                    for ( var type : types)
-                    {
-                        System.out.println("Тип кампании " + type);
-                    }
-                }
+                types.forEach(type -> System.out.println("Тип кампании " + type));
             }
-
-            System.out.println("Лучшие кампании по соотношеню бюджет/охват");
-            Set<MarketCampaigns> bests = campaigns.getBestCampaign();
-            for (var best:bests)
-            {
-                System.out.println(best.toString());
         }
+
+        System.out.println("Лучшие кампании по соотношеню бюджет/охват");
+        Set<MarketCampaigns> bests = campaigns.getBestCampaign();
+        bests.forEach(System.out::println);
     }
+
     public static void showInfo(boolean isComparison) {
         if (!isComparison) {
             var campaigns = new Repository(new ArrayList<>());
@@ -68,8 +61,8 @@ public class GasProm {
             getInfo(campaigns);
 
         } else {
-            Long[] writeTestTime = new Long [] {0L,0L,0L};
-            Long[] readTestTime = new Long [] {0L,0L,0L};
+            Long[] writeTestTime = {0L, 0L, 0L};
+            Long[] readTestTime = {0L, 0L, 0L};
             for (int i = 0; i < COUNT_TESTS; i++) {
 
                 long startTime = System.currentTimeMillis();
@@ -84,12 +77,10 @@ public class GasProm {
 
                 writeTestTime[1] += System.currentTimeMillis() - startTime;
 
-
                 startTime = System.currentTimeMillis();
                 var campaignsList = new Repository(new LinkedList<>());
                 campaignsList.setCampaignsRandom(COUNT_CAMPAIGNS);
                 writeTestTime[2] += System.currentTimeMillis() - startTime;
-
 
                 startTime = System.currentTimeMillis();
                 getInfo(campaignsArray);
@@ -104,15 +95,15 @@ public class GasProm {
                 readTestTime[2] += System.currentTimeMillis() - startTime;
             }
 
-                System.out.println("Среднее время ЗАПИСИ в ArrayList "+writeTestTime[0]/COUNT_TESTS);
-                System.out.println("Среднее время ЗАПИСИ в Vector "+writeTestTime[1]/COUNT_TESTS);
-                System.out.println("Среднее время ЗАПИСИ в LinkedList "+writeTestTime[2]/COUNT_TESTS);
-                System.out.println("----------------------------------");
+            System.out.println("Среднее время ЗАПИСИ в ArrayList " + writeTestTime[0] / COUNT_TESTS);
+            System.out.println("Среднее время ЗАПИСИ в Vector " + writeTestTime[1] / COUNT_TESTS);
+            System.out.println("Среднее время ЗАПИСИ в LinkedList " + writeTestTime[2] / COUNT_TESTS);
+            System.out.println("----------------------------------");
 
-                System.out.println("Среднее время РАБОТЫ с ArrayList "+ readTestTime[0]/COUNT_TESTS);
-                System.out.println("Среднее время РАБОТЫ с Vector "+ readTestTime[1]/COUNT_TESTS);
-                System.out.println("Среднее время РАБОТЫ с LinkedList "+ readTestTime[2]/COUNT_TESTS);
+            System.out.println("Среднее время РАБОТЫ с ArrayList " + readTestTime[0] / COUNT_TESTS);
+            System.out.println("Среднее время РАБОТЫ с Vector " + readTestTime[1] / COUNT_TESTS);
+            System.out.println("Среднее время РАБОТЫ с LinkedList " + readTestTime[2] / COUNT_TESTS);
 
-            }
         }
+    }
 }

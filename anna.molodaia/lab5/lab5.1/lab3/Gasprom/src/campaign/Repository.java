@@ -6,7 +6,6 @@ import java.time.YearMonth;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class Repository {
     private final List<MarketCampaigns> campaigns;
@@ -27,8 +26,8 @@ public class Repository {
         return 0;
     }
 
-    //какие типы кампаний были проведены за последний год;
 
+//какие типы кампаний были проведены за последний год;
     public Set<TypeCampaign> getTypesCampaignsInLastYear() {
         int year = YearMonth.now().getYear();
         return campaigns.stream()
@@ -37,18 +36,19 @@ public class Repository {
                 .collect(Collectors.toSet());
     }
 
-    // найти лучшую кампанию по соотношеню бюджет/охват;
-    public Set<MarketCampaigns> getBestCampaign() {
-
-        var minimal = campaigns.stream()
+    public BigDecimal getBestCorrelation() {
+        return campaigns.stream()
                 .map(MarketCampaigns::getCorrelation)
                 .min(BigDecimal::compareTo)
                 .orElse(BigDecimal.ZERO);
+    }
 
+    //найти лучшую кампанию по соотношеню бюджет/охват;
+    public Set<MarketCampaigns> getBestCampaign() {
+        var minimal = getBestCorrelation();
         return campaigns.stream()
                 .filter(e -> e.getCorrelation().compareTo(minimal) == 0)
                 .collect(Collectors.toSet());
-
     }
 
     public void setCampaignsRandom(int count) {
@@ -58,14 +58,7 @@ public class Repository {
                     campaigns.add(campaign);
                 }
         );
-
-/*        for (int i = 0; i < count; i++) {
-            MarketCampaigns campaign = new MarketCampaigns();
-            campaign.setRandom();
-            campaigns.add(campaign);
-        }*/
     }
-
 
     public boolean isEmpty() {
         return campaigns.size() == 0;

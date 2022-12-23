@@ -1,33 +1,21 @@
 package campaign;
 
 import java.math.BigDecimal;
-
 import java.math.RoundingMode;
 import java.time.LocalDate;
-
 import java.time.temporal.ChronoUnit;
-
 import java.util.Objects;
-
 
 import static settings.Random.*;
 
 public class MarketCampaigns {
-
     private LocalDate start;
     private LocalDate finish;
     private TypeCampaign type;
     private long coverage;
     private BigDecimal budget;
 
-
-    MarketCampaigns() {}
-    void setStart(int day, int month, int year) {
-        this.start = LocalDate.of(year, month, day);
-    }
-
-    void setFinish(int day, int month, int year) {
-        this.finish = LocalDate.of(year, month, day);
+    MarketCampaigns() {
     }
 
     MarketCampaigns(String start, String finish, TypeCampaign type, long coverage, String budget) {
