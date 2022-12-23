@@ -76,13 +76,11 @@ public class Helper {
                         throw new NoSuchFieldException("Нет такого размера подарка");
                     }
                     double weight = Double.parseDouble(f[2]);
-                    TypeGift type;
-                    type = TypeGift.getType(f[3].trim());
+                    TypeGift type = TypeGift.getType(f[3].trim());
                     if (type == TypeGift.NOT_DEFINE) {
                         throw new NoSuchFieldException("Нет такого типа подарка");
                     }
-                    ColorGift color;
-                    color = ColorGift.getColor(f[4].trim());
+                    ColorGift color = ColorGift.getColor(f[4].trim());
                     if (color == ColorGift.NOT_DEFINE) {
                         throw new NoSuchFieldException("Нет такого цвета упаковочной бумаги");
                     }

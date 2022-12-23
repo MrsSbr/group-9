@@ -6,7 +6,6 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 /**
  * вывести
  * года, в которые были подарки всех используемых размеров
@@ -45,14 +44,8 @@ public class TeodorAnalysis {
                 yearsWithAllSizeGift.add(k);
             }
         });
-//        for (Map.Entry<Integer, Set<SizeGift>> entry : yearsWithListSize.entrySet()) {
-//            if (entry.getValue().size() == count) {
-//                yearsWithAllSizeGift.add(entry.getKey());
-//            }
-//        }
         logger.log(Level.INFO, "Конец метод getYearsWithAllSizeGift");
         return yearsWithAllSizeGift;
-
     }
 
 
@@ -60,15 +53,17 @@ public class TeodorAnalysis {
     public Map<ColorGift, Double> getMaxWeightForEachColor() {
         logger.log(Level.INFO, "Старт метода getMaxWeightForEachColor");
        var maxWeightForEachColor = new HashMap<ColorGift, Double>();
-        double maxWeight = 0;
+        double currWeight = 0;
         for (var gift : gifts) {
-            if (maxWeightForEachColor.containsKey(gift.color())) {
+            maxWeightForEachColor.putIfAbsent(gift.color(), gift.weight());
+            maxWeightForEachColor.computeIfPresent(gift.color(), (k,v) -> (v < gift.weight()) ? gift.weight(): v);
+/*            if (maxWeightForEachColor.containsKey(gift.color())) {
                 maxWeight = maxWeightForEachColor.get(gift.color());
                 if (maxWeight < gift.weight())
                     maxWeightForEachColor.replace(gift.color(), gift.weight());
             } else {
                 maxWeightForEachColor.put(gift.color(), gift.weight());
-            }
+            }*/
         }
         logger.log(Level.INFO, "Конец метод getMaxWeightForEachColor");
         return maxWeightForEachColor;

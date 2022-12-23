@@ -27,7 +27,6 @@ public class Repository {
     }
 
     //какие типы кампаний были проведены за последний год;
-
     public Set<TypeCampaign> getTypesCampaignsInLastYear()
     {
         Set<TypeCampaign> typesCampaignsInLastYer = new HashSet<>();
@@ -35,13 +34,10 @@ public class Repository {
         for (var campaign : campaigns) {
             if (campaign.getFinish().getYear() == year && campaign.getStart().getYear() == year) {
                 typesCampaignsInLastYer.add(campaign.getType());
-                //System.out.println(campaign);// TODO: 10.12.2022 разделить логику и вывод
-                //isExist = true;
             }
         }
         return typesCampaignsInLastYer;
     }
-
     // найти лучшую кампанию по соотношеню бюджет/охват;
     public Set<MarketCampaigns> getBestCampaign() {
         Set<MarketCampaigns> bestCampaigns = new HashSet<>();
@@ -59,7 +55,6 @@ public class Repository {
         }
         return bestCampaigns;
     }
-
     public void setCampaignsRandom(int count) {
         for (int i = 0; i < count; i++) {
             MarketCampaigns campaign = new MarketCampaigns();
