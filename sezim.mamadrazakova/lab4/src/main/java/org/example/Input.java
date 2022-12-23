@@ -1,24 +1,21 @@
 package org.example;
-
-//import jdk.internal.util.xml.impl.Input;
-
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class HelpFunction {
+public class Input {
     private static final Logger logger = Logger.getLogger(Input.class.getName());
 
-    public static int input(int l, int r) {
+    public static int userInput(int l, int r) {
         Scanner sc = new Scanner(System.in);
-        boolean start = true;
+        boolean run = true;
         Integer i = null;
-        while (start) {
+        while (run) {
             String inputText = sc.nextLine();
             try {
                 i = Integer.parseInt(inputText);
                 if (i >= l && i <= r) {
-                    start = false;
+                    run = false;
                 } else {
                     logger.log(Level.WARNING, "input error");
                     System.out.println("Число не в диапазоне 0-3");

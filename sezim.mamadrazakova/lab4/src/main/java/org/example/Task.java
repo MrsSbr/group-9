@@ -1,7 +1,6 @@
-package main.java.org.example;
+package org.example;
 
-
-import javafx.util.Pair;
+import  org.apache.commons.lang3.tuple.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -18,7 +17,7 @@ public class Task {
     public Map<String, Integer> countOfPeopleInEachCountry() {
         Map<String, Integer> countryCount = new HashMap<>();
         for (Map.Entry<Pair<String, LocalDate>, TravelAgency> travel : travelAgencyMap.entrySet()) {
-            String s = travel.getKey().getKey();
+            String s = travel.getKey().getLeft();
             int n = travel.getValue().getCountOfPeople();
             sumOfPeople(s, n, countryCount);
 
@@ -64,19 +63,19 @@ public class Task {
         for (Map.Entry<Pair<String, LocalDate>, TravelAgency> travel : travelAgencyMap.entrySet()) {
             if (travel.getValue().getDate().getMonthValue() == 1 | travel.getValue().getDate().getMonthValue() == 2 |
                     travel.getValue().getDate().getMonthValue() == 12) {
-                sumOfPeople(travel.getKey().getKey(), travel.getValue().getCountOfPeople(), winter);
+                sumOfPeople(travel.getKey().getLeft(), travel.getValue().getCountOfPeople(), winter);
             }
             if (travel.getValue().getDate().getMonthValue() == 3 | travel.getValue().getDate().getMonthValue() == 4 |
                     travel.getValue().getDate().getMonthValue() == 5) {
-                sumOfPeople(travel.getKey().getKey(), travel.getValue().getCountOfPeople(), spring);
+                sumOfPeople(travel.getKey().getLeft(), travel.getValue().getCountOfPeople(), spring);
             }
             if (travel.getValue().getDate().getMonthValue() == 6 | travel.getValue().getDate().getMonthValue() == 7 |
                     travel.getValue().getDate().getMonthValue() == 8) {
-                sumOfPeople(travel.getKey().getKey(), travel.getValue().getCountOfPeople(), summer);
+                sumOfPeople(travel.getKey().getLeft(), travel.getValue().getCountOfPeople(), summer);
             }
             if (travel.getValue().getDate().getMonthValue() == 9 | travel.getValue().getDate().getMonthValue() == 10 |
                     travel.getValue().getDate().getMonthValue() == 11) {
-                sumOfPeople(travel.getKey().getKey(), travel.getValue().getCountOfPeople(), autumn);
+                sumOfPeople(travel.getKey().getLeft(), travel.getValue().getCountOfPeople(), autumn);
             }
         }
         String w = Collections.max(winter.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
@@ -99,7 +98,7 @@ public class Task {
     }
 
     public void add(String country, LocalDate date, int duration, int countOfPeople, int price) {
-        Pair<String, LocalDate> d = new Pair<>(country, date);
+        ImmutablePair<String, LocalDate> d = new ImmutablePair<>(country, date);
         travelAgencyMap.put(d, new TravelAgency(date, duration, countOfPeople, price));
     }
 
