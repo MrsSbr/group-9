@@ -18,6 +18,9 @@ public class Order {
         this.price = price;
     }
 
+    public int compareTo(Order sub){
+        return Double.compare(this.getTheCalculationOnG(), sub.getTheCalculationOnG());
+    }
     public double getPrice() {
         return price;
     }

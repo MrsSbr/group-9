@@ -2,7 +2,6 @@ package Models;
 
 import java.time.LocalDate;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
 
@@ -24,9 +23,7 @@ public class WorkWithListOfOrders {
     }
 
     public int getAmountOfUniqueCakes(LocalDate todayDate, LocalDate thisDayLastMonth) {
-
         LocalDate startOfTheLastMonth = thisDayLastMonth.minusMonths(1);
-
         Set<Cake> theMonthBeforeUniqueNames;
         Set<Cake> theCurMonthUniqueNames;
         theCurMonthUniqueNames = ordersList.stream()
@@ -44,27 +41,7 @@ public class WorkWithListOfOrders {
     }
 
     public double getTheMostExpensiveCake() {
-        List<Double> calculationOnG;
-        if (this.isArray) {
-            calculationOnG = new ArrayList<>();
-        } else {
-            calculationOnG = new LinkedList<>();
-        }
-
-        for (Order i : this.ordersList) {
-            calculationOnG.add(i.getTheCalculationOnG());
-        }
-        double res = calculationOnG.get(0);
-        for (double i : calculationOnG) {
-            res = Math.max(i, res);
-        }
-//        calculationOnG = ordersList.stream()
-//                .mapToDouble(u -> {return u.getTheCalculationOnG();})
-//                .sorted()
-//                .collect(toList());
-//
-//        return calculationOnG.get(0);
-        return res;
+        return ordersList.stream().max(Order::compareTo).orElseThrow().getTheCalculationOnG();
     }
 
 }
