@@ -19,15 +19,7 @@ public class MarketCampaigns {
     private long coverage;
     private BigDecimal budget;
 
-
     MarketCampaigns() {}
-    void setStart(int day, int month, int year) {
-        this.start = LocalDate.of(year, month, day);
-    }
-
-    void setFinish(int day, int month, int year) {
-        this.finish = LocalDate.of(year, month, day);
-    }
 
     MarketCampaigns(String start, String finish, TypeCampaign type, long coverage, String budget) {
         this.start = LocalDate.parse(start);
@@ -36,7 +28,6 @@ public class MarketCampaigns {
         this.coverage = coverage;
         this.budget = new BigDecimal(budget);
     }
-
     void setRandom() {
         this.start = createRandomDate(MIN_YEAR, MAX_YEAR);
         this.finish = start.plusDays(createRandomDuration());
@@ -64,10 +55,6 @@ public class MarketCampaigns {
 
     public TypeCampaign getType() {
         return type;
-    }
-
-    public BigDecimal getBudget() {
-        return budget;
     }
 
     @Override
