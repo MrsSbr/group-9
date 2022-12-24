@@ -5,32 +5,32 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 
 public class Main {
 
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
-    private static final File FILE = new File("src/Resources/Orders.txt");
     //private static final File FILE = new File("C:\\Users\\perel\\Desktop\\Orders.txt");
     public static String LINE = "---------------------------------------";
 
     public static void readFile(FlowerShop records) {
 
-        try (FileReader fr = new FileReader(FILE); BufferedReader reader = new BufferedReader(fr)) {
+        Path file = Paths.get("src/Resources/Orders.txt");
 
-            String line = reader.readLine();
+        try (Stream<String> lineStr = Files.newBufferedReader(file).lines()) {
 
-            while (line != null) {
-
-                records.putLine(line);
-                line = reader.readLine();
-
-            }
+            List<String> lines = lineStr.toList();
+            lines.forEach(records::putLine);
 
         } catch (IOException e) {
 
