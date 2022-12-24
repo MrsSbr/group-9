@@ -10,13 +10,12 @@ public class Main {
     public static void main(String[] args) {
         logger.log(Level.INFO, "Старт анализа Теодора");
         boolean isEnd = false;
-        List<Gift> gifts = Helper.readFileInListGift(PATH);
-        if (gifts.isEmpty()) {
+        TeodorAnalysis analysis = Helper.readFileInListGift(PATH);
+        if (analysis.isEmpty()) {
             logger.log(Level.OFF, "Не удалось считать подарки из файла.");
             return;
         }
 
-        TeodorAnalysis analysis = new TeodorAnalysis(gifts);
         while (!isEnd) {
 
             System.out.println("Меню:");

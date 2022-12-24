@@ -16,6 +16,13 @@ public class TeodorAnalysis {
     public TeodorAnalysis(List<Gift> gifts) {
         this.gifts = gifts;
     }
+    public boolean isEmpty(){return gifts.isEmpty();}
+    public  void add (String gift){
+        String[] f = gift.split(";");
+        gifts.add(new Gift(Integer.parseInt(f[0]), SizeGift.getSize(f[1].trim()),
+                Double.parseDouble(f[2]), TypeGift.getType(f[3].trim()),
+                ColorGift.getColor(f[4].trim())));
+    }
 
     //    года, в которые были подарки всех используемых размеров
     public Set<Integer> getYearsWithAllSizeGift() {
