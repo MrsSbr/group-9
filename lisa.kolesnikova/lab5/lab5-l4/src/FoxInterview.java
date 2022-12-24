@@ -98,8 +98,8 @@ public class FoxInterview {
         final String[] res = {"Нет ответа"};
         // город + кол-во разнообразных ответов
         Map<String, Integer> howManyDiffSoundsTownHas = new HashMap<>();
-        listOfFoxSoundsInterview.stream()
-                .forEach(fox -> howManyDiffSoundsTownHas.put(fox.getTown(), howManyDiffSoundsTownHas.getOrDefault(fox.getTown(), -1) + 1));
+        listOfFoxSoundsInterview.forEach(fox -> howManyDiffSoundsTownHas.put(fox.getTown(),
+                howManyDiffSoundsTownHas.getOrDefault(fox.getTown(), -1) + 1));
         return Collections.max(howManyDiffSoundsTownHas.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
     }
 
@@ -109,7 +109,8 @@ public class FoxInterview {
         final String[] mostPopularAnsMsc = {""};
         final int[] maxRespondsMsc = {0};
         // ищем самый популярный ответ в москве
-        listOfFoxSoundsInterview.stream().filter(fox -> fox.getTown().equals("москва") && maxRespondsMsc[0] < fox.getAmountRespondents())
+        listOfFoxSoundsInterview.stream()
+                .filter(fox -> fox.getTown().equals("москва") && maxRespondsMsc[0] < fox.getAmountRespondents())
                 .forEach(fox -> {
                     maxRespondsMsc[0] = fox.getAmountRespondents();
                     mostPopularAnsMsc[0] = fox.getSound();

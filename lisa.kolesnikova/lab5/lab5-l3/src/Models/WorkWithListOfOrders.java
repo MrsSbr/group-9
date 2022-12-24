@@ -18,47 +18,29 @@ public class WorkWithListOfOrders {
     }
 
     public double getProfitForAMonth(LocalDate start, LocalDate end) {
-        double profitForLastMonth = ordersList.stream().filter((u)->
-            ((u.orderDate.isAfter(start)) && (u.orderDate.isBefore(end)))
-        ).mapToDouble(u -> {return u.getPrice();}).sum();
-        return profitForLastMonth;
+        return ordersList.stream().filter((u) ->
+                ((u.orderDate.isAfter(start)) && (u.orderDate.isBefore(end)))
+        ).mapToDouble(Order::getPrice).sum();
     }
 
     public int getAmountOfUniqueCakes(LocalDate todayDate, LocalDate thisDayLastMonth) {
-        Set<Cake> TheMonthBeforeUniqueNames1 = new HashSet<>();
-        Set<Cake> TheCurMonthUniqueNames1 = new HashSet<>();
+
         LocalDate startOfTheLastMonth = thisDayLastMonth.minusMonths(1);
-        for (Order i : ordersList) {
-            Cake curCake = i.getCake();
-            LocalDate curDate = i.orderDate;
-            if (curDate.isAfter(startOfTheLastMonth) && curDate.isBefore(todayDate)) {
-                if (curDate.isAfter(thisDayLastMonth)) { // заказ сделан в текущем месяце
-                    TheCurMonthUniqueNames1.add(curCake);
-                    TheMonthBeforeUniqueNames1.remove(curCake);
-                } else { //  заказ сделан в прошлом месяце
-                    // проверка был ли заказан торт в текущем месяце
-                    if (!TheCurMonthUniqueNames1.contains(curCake)) { // если названия нет в заказах за текущий месяц
-                        TheMonthBeforeUniqueNames1.add(curCake); // добавляем в словарь прошлого месяца
-                    }
-                }
-            }
-        }
-        Set<Cake> TheMonthBeforeUniqueNames = new HashSet<>();
-        Set<Cake> TheCurMonthUniqueNames = new HashSet<>();
-        TheCurMonthUniqueNames = ordersList.stream()
+
+        Set<Cake> theMonthBeforeUniqueNames;
+        Set<Cake> theCurMonthUniqueNames;
+        theCurMonthUniqueNames = ordersList.stream()
                 .filter(u -> u.orderDate.isBefore(todayDate) && u.orderDate.isAfter(thisDayLastMonth))
-                .map(u -> {return u.getCake();})
-                .distinct()
+                .map(Order::getCake)
                 .collect(toSet());
-        Set<Cake> finalTheCurMonthUniqueNames = TheCurMonthUniqueNames;
-        TheMonthBeforeUniqueNames  = ordersList.stream()
+        Set<Cake> finalTheCurMonthUniqueNames = theCurMonthUniqueNames;
+        theMonthBeforeUniqueNames = ordersList.stream()
                 .filter(u -> u.orderDate.isBefore(thisDayLastMonth) && u.orderDate.isAfter(startOfTheLastMonth))
-                .filter(u -> !finalTheCurMonthUniqueNames.contains(u.getCake()))
-                .map(u -> {return u.getCake();})
-                .distinct()
+                .map(Order::getCake)
+                .filter(cake -> !finalTheCurMonthUniqueNames.contains(cake))
                 .collect(toSet());
 
-        return TheMonthBeforeUniqueNames.size();
+        return theMonthBeforeUniqueNames.size();
     }
 
     public double getTheMostExpensiveCake() {
