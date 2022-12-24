@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 
 public class HelpFunction {
     private static final Logger logger = Logger.getLogger(Input.class.getName());
-
     public static int input(int l, int r) {
         Scanner sc = new Scanner(System.in);
         boolean start = true;

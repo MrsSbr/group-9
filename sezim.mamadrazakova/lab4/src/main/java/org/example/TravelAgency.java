@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class TravelAgency {
-
     private final LocalDate date;
     private final int duration;
     private final int countOfPeople;

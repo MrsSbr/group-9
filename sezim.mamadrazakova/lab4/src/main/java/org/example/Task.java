@@ -1,6 +1,6 @@
 package org.example;
 
-import  org.apache.commons.lang3.tuple.*;
+import org.apache.commons.lang3.tuple.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -19,7 +19,12 @@ public class Task {
         for (Map.Entry<Pair<String, LocalDate>, TravelAgency> travel : travelAgencyMap.entrySet()) {
             String s = travel.getKey().getLeft();
             int n = travel.getValue().getCountOfPeople();
-            sumOfPeople(s, n, countryCount);
+            if (!countryCount.containsKey(s)) {
+                countryCount.put(s, n);
+            } else {
+                countryCount.computeIfPresent(s, (k, v) -> v + n);
+
+            }
 
         }
         return countryCount;
@@ -43,19 +48,8 @@ public class Task {
 
     }
 
-    public void sumOfPeople(String s, int n, Map<String, Integer> countryCount) {
 
-        if (!countryCount.containsKey(s)) {
-            countryCount.put(s, n);
-        } else {
-            countryCount.computeIfPresent(s, (k, v) -> v + n);
-
-        }
-
-
-    }
-
-    public void popularCountry() {
+    public Map<String, String> popularCountry() {
         Map<String, Integer> winter = new HashMap<>();
         Map<String, Integer> spring = new HashMap<>();
         Map<String, Integer> summer = new HashMap<>();
@@ -63,32 +57,57 @@ public class Task {
         for (Map.Entry<Pair<String, LocalDate>, TravelAgency> travel : travelAgencyMap.entrySet()) {
             if (travel.getValue().getDate().getMonthValue() == 1 | travel.getValue().getDate().getMonthValue() == 2 |
                     travel.getValue().getDate().getMonthValue() == 12) {
-                sumOfPeople(travel.getKey().getLeft(), travel.getValue().getCountOfPeople(), winter);
+                if (!winter.containsKey(travel.getKey().getLeft())) {
+                    winter.put(travel.getKey().getLeft(), travel.getValue().getCountOfPeople());
+                } else {
+                    winter.computeIfPresent(travel.getKey().getLeft(), (k, v) -> v +
+                            travel.getValue().getCountOfPeople());
+
+                }
             }
             if (travel.getValue().getDate().getMonthValue() == 3 | travel.getValue().getDate().getMonthValue() == 4 |
                     travel.getValue().getDate().getMonthValue() == 5) {
-                sumOfPeople(travel.getKey().getLeft(), travel.getValue().getCountOfPeople(), spring);
+                if (!spring.containsKey(travel.getKey().getLeft())) {
+                    spring.put(travel.getKey().getLeft(), travel.getValue().getCountOfPeople());
+                } else {
+                    spring.computeIfPresent(travel.getKey().getLeft(), (k, v) -> v +
+                            travel.getValue().getCountOfPeople());
+
+                }
             }
             if (travel.getValue().getDate().getMonthValue() == 6 | travel.getValue().getDate().getMonthValue() == 7 |
                     travel.getValue().getDate().getMonthValue() == 8) {
-                sumOfPeople(travel.getKey().getLeft(), travel.getValue().getCountOfPeople(), summer);
+                if (!summer.containsKey(travel.getKey().getLeft())) {
+                    summer.put(travel.getKey().getLeft(), travel.getValue().getCountOfPeople());
+                } else {
+                    summer.computeIfPresent(travel.getKey().getLeft(), (k, v) -> v +
+                            travel.getValue().getCountOfPeople());
+
+                }
             }
             if (travel.getValue().getDate().getMonthValue() == 9 | travel.getValue().getDate().getMonthValue() == 10 |
                     travel.getValue().getDate().getMonthValue() == 11) {
-                sumOfPeople(travel.getKey().getLeft(), travel.getValue().getCountOfPeople(), autumn);
+                if (!autumn.containsKey(travel.getKey().getLeft())) {
+                    autumn.put(travel.getKey().getLeft(), travel.getValue().getCountOfPeople());
+                } else {
+                    autumn.computeIfPresent(travel.getKey().getLeft(), (k, v) -> v +
+                            travel.getValue().getCountOfPeople());
+
+                }
             }
         }
         String w = Collections.max(winter.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
         String sp = Collections.max(spring.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
         String sm = Collections.max(summer.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
         String aut = Collections.max(autumn.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
-        System.out.println("winter: " + w);
-        System.out.println("spring: " + sp);
-        System.out.println("summer: " + sm);
-        System.out.println("autumn: " + aut);
+        Map<String, String> result = new HashMap<>();
+        result.put("winter", w);
+        result.put("spring", sp);
+        result.put("summer", sm);
+        result.put("autumn", aut);
+        return result;
 
     }
-
 
     public void add(String st) {
         String[] el = st.split(";");

@@ -10,7 +10,8 @@ import java.util.logging.Logger;
 
 public class App {
     private static final Logger logger = Logger.getLogger(Math.class.getName());
-    private static final String PATH="sezim.mamadrazakova/lab4/src/main/java/org/example/Tour.txt";
+    private static final String PATH = "sezim.mamadrazakova/lab4/src/main/java/org/example/Tour.txt";
+
     public static void main(String[] args) {
         logger.log(Level.INFO, "Начало работы");
         int choice = -1;
@@ -40,7 +41,10 @@ public class App {
 
                 case 3:
                     System.out.println("Самые популярные направления отдыха ");
-                    map.popularCountry();
+                    Map<String, String> result = map.popularCountry();
+                    for (Map.Entry<String, String> res : result.entrySet()) {
+                        System.out.println(res.getKey() + ": " + res.getValue());
+                    }
                     break;
 
                 case 0:
@@ -54,7 +58,6 @@ public class App {
             }
 
         }
-
 
     }
 
@@ -73,7 +76,6 @@ public class App {
         } catch (IOException e) {
             logger.log(Level.WARNING, e.getLocalizedMessage());
         }
-
 
     }
 }
