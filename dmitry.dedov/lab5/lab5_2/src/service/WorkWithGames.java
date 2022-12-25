@@ -3,16 +3,16 @@ package service;
 import enums.GenreOfGame;
 import models.Game;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.Month;
 import java.util.*;
-import java.io.File;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class WorkWithGames {
 
@@ -23,11 +23,10 @@ public class WorkWithGames {
     public void fillFromFile(String filePathForInput) {
 
         logger.log(Level.INFO, "Start read file");
-        File file = new File(filePathForInput);
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
 
-            String line = bufferedReader.readLine();
-            while (line != null) {
+        try (Stream<String> stringsStream = Files.newBufferedReader(Paths.get(filePathForInput)).lines()) {
+
+            stringsStream.forEach(line -> {
 
                 Game game = Game.parseToGame(line);
                 if (game == null) {
@@ -40,9 +39,7 @@ public class WorkWithGames {
 
                 }
 
-                line = bufferedReader.readLine();
-
-            }
+            });
 
         } catch (FileNotFoundException e) {
 
