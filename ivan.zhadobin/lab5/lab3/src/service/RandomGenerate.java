@@ -2,7 +2,7 @@ package service;
 
 import entity.Questionnaire;
 import entity.QuestionnaireItem;
-import enums.Subject;
+import entity.Subject;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -33,6 +33,7 @@ public class RandomGenerate {
         }
         return new Questionnaire(objects);
     }
+
     public static Questionnaire randomGenerateFormOnStack() {
         Stack<QuestionnaireItem> objects = new Stack<>();
         for (int i = 0; i < COUNT_SUBJECTS; i++) {

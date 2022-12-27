@@ -1,15 +1,22 @@
 package task;
 
 import entity.Questionnaire;
-import entity.QuestionnaireItem;
-import enums.Subject;
+import entity.Subject;
 
-import java.util.HashSet;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-import static service.Helper.userInput;
+import static entity.Helper.userInput;
 
 public class StudentTask {
+    private static final int countOfSubject = 7;
+    private static Questionnaire recordsOfQuestionnaire;
+
+    public StudentTask(Questionnaire recordsOfQuestionnaire) {
+        this.recordsOfQuestionnaire = recordsOfQuestionnaire;
+    }
+
+
     public static void task(List<Questionnaire> forms, boolean operatingMode) {// admin task
         long startTime = System.nanoTime();
         int countUsefulSubject = findCountUsefulSubject(forms, Subject.MathAn);
@@ -30,52 +37,58 @@ public class StudentTask {
         }
     }
 
-    public static int findCountUsefulSubject(List<Questionnaire> forms, Subject nameSubject) { // 1 задача
-        int count = 0;
-        for (Questionnaire o : forms) {
-            for (QuestionnaireItem objects : o.getListOfObject())
-                if (nameSubject.equals(objects.getObject()) && objects.getMarks() >= 4) count++;//добавить икволс
-        }
-        return count;
+    public static int findCountUsefulSubject(List<Questionnaire> forms, Subject nameSubject) { // Сколько студентов назвали полезным предмет
+        AtomicInteger count = new AtomicInteger();
+        forms.forEach(object -> {
+            object.getListOfObject().forEach(i -> {
+                if (nameSubject.equals(i.getObject()) && i.getMarks() >= 4)
+                    count.getAndIncrement();
+            });
+        });
+        return count.get();
     }
 
-    public static String findMaxMarksSubjects(List<Questionnaire> forms) { // 2 задача
-        double tmp;
-        double maxMarks = 0;
-        HashSet<String> subjects = new HashSet<>();
-        for (Subject s : Subject.values()) {
-            tmp = 0;
-            for (Questionnaire form : forms) {
-                for (QuestionnaireItem obj : form.getListOfObject()) {
-                    if (s.equals(obj.getObject())) {
-                        tmp += obj.getMarks();
+    public static String findMaxMarksSubjects(List<Questionnaire> forms) { // Предмет(-ы) с наибольшей оценкой
+        AtomicInteger max = new AtomicInteger();
+        StringBuilder subjects = new StringBuilder();
+        Subject.stream().forEach(subject -> {
+            AtomicInteger tmp = new AtomicInteger();
+            forms.forEach(object -> {
+                object.getListOfObject().forEach(i -> {
+                    if (subject.equals(i.getObject())) {
+                        tmp.addAndGet(i.getMarks());
                     }
-                }
+                });
+            });
+            if (tmp.get() > max.get()) {
+                max.set(tmp.get());
+                subjects.replace(0, subjects.length(), String.valueOf(subject));
+            } else if (tmp.get() == max.get()) {
+                subjects.append(subject);
             }
-            if (tmp > maxMarks) {
-                subjects.add(s.toString());
-                maxMarks = tmp;
-            } else if (tmp == maxMarks) {
-                subjects.add(s.toString());
-            }
-        }
+
+
+        });
+
         return subjects.toString();
     }
 
-    public static int countStudentsLowMarksSubjects(List<Questionnaire> form) { // 3 задача
-        int count = 0;
-        boolean flagMarks;
-        for (Questionnaire f : form) {
-            flagMarks = true;
-            for (QuestionnaireItem object : f.getListOfObject()) {
-                if (object.getMarks() >= 3) {
-                    flagMarks = false;
-                    break;
+    public static int countStudentsLowMarksSubjects(List<Questionnaire> form) { // Кол-во студентов не оценивших положительно ни один предмет
+
+        AtomicInteger countFinal = new AtomicInteger();
+
+        form.forEach(object -> {
+            AtomicInteger count = new AtomicInteger();
+            object.getListOfObject().forEach(i -> {
+                if (i.getMarks() < 3) {
+                    count.getAndIncrement();
                 }
+            });
+            if (count.get() == countOfSubject) {
+                countFinal.getAndIncrement();
             }
-            if (flagMarks) count++;
-        }
-        return count;
+        });
+        return countFinal.get();
     }
 
     public static Subject menuForTheFirstTask() {

@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FileReader {
-    private static final String path = "ivan.zhadobin\\lab4\\src\\text.txt";
+    private static final String path = "ivan.zhadobin\\lab5\\Lab4\\text.txt";
     private static final Logger logger = Logger.getLogger(FileReader.class.getName());
 
     public static RecordsOfChronicle readFile() {

@@ -1,12 +1,17 @@
 import entity.Questionnaire;
 import service.RandomGenerate;
+import task.StudentTask;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Stack;
 
-import static service.Helper.userInput;
-import static tasks.StudentTask.task;
+import static entity.Helper.userInput;
+import static task.StudentTask.task;
 
-public class Main {
+
+public class main5 {
     public static final int COUNT_STUDENTS = 550;
 
     public static void main(String[] args) {
@@ -51,6 +56,7 @@ public class Main {
         switch (choice) {
             case 1:
                 forms = generateListOfFormOnLinkedList();
+
                 task(forms, false);
                 break;
             case 2:
@@ -83,7 +89,7 @@ public class Main {
     public static List<Questionnaire> generateListOfFormOnStack() { //заполнение стэка
         Stack<Questionnaire> forms = new Stack<>();
         for (int i = 0; i < COUNT_STUDENTS; i++) {
-            forms.add(RandomGenerate.randomGenerateForm());
+            forms.add(RandomGenerate.randomGenerateFormOnStack());
         }
         return forms;
     }

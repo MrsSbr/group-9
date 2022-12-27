@@ -1,7 +1,5 @@
 package entity;
 
-import enums.Subject;
-
 public class QuestionnaireItem {
     protected Subject object;
     protected int marks;

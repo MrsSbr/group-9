@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Main {
+public class main {
     private static final Logger logger = Logger.getLogger(FileReader.class.getName());
 
     public static void main(String[] args) {

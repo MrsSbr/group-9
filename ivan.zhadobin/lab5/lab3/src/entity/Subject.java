@@ -1,4 +1,6 @@
-package enums;
+package entity;
+
+import java.util.stream.Stream;
 
 public enum Subject {
     MathAn("Математический анализ "),
@@ -10,8 +12,13 @@ public enum Subject {
     FunkAn("Функциональный анализ ");
     private final String str;
 
+
     Subject(String str) {
         this.str = str;
+    }
+
+    public static Stream<Subject> stream() {
+        return Stream.of(Subject.values());
     }
 
     @Override
