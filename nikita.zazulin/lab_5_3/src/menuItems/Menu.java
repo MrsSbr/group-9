@@ -1,8 +1,7 @@
 package menuItems;
 
 import checkValidatons.InputValidations;
-import studentClass.StudentArrayList;
-import studentClass.StudentLinkedList;
+import studentClass.StudentList;
 
 public class Menu {
 
@@ -54,7 +53,7 @@ public class Menu {
 
     public static void studentArrayListMenu() {
 
-        StudentArrayList sal = new StudentArrayList();
+        StudentList sal = new StudentList(true);
 
         int choice = -1;
         while (choice != 0) {
@@ -116,7 +115,7 @@ public class Menu {
 
     public static void studentLinkedListMenu() {
 
-        StudentLinkedList sll = new StudentLinkedList();
+        StudentList sll = new StudentList(false);
 
         int choice = -1;
         while (choice != 0) {

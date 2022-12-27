@@ -2,21 +2,32 @@ package studentClass;
 
 import classHelper.Months;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class StudentLinkedList {
+public class StudentList {
 
     private static final int SIZE = 1200;
 
     private final List<Student> students;
 
+    public StudentList() {
 
-    public StudentLinkedList() {
+        this.students = new ArrayList<>();
 
-        this.students = new LinkedList<>();
+    }
+
+    public StudentList(boolean isArray) {
+
+        if (isArray) {
+            this.students = new ArrayList<>();
+        } else {
+            this.students = new LinkedList<>();
+        }
+
 
     }
 
@@ -99,3 +110,5 @@ public class StudentLinkedList {
     }
 
 }
+
+
