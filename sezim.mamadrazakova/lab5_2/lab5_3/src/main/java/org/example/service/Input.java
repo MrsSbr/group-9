@@ -21,6 +21,5 @@ public class Input {
             }
         }
         return i;
-
     }
 }
