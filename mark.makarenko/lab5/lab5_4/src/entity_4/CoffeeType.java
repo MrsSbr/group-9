@@ -23,7 +23,7 @@ public class CoffeeType {
         return country;
     }
 
-    public String getFarm() {
+     public String getFarm() {
         return farm;
     }
 

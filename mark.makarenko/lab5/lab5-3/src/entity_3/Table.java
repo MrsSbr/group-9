@@ -1,6 +1,6 @@
-package entity;
+package entity_3;
 
-import service.Helper;
+import service_3.Helper;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,21 +14,21 @@ public class Table {
     final static int overall = 20;
 
 
-    public static List<entity.Sacrifice> generate(int choice) {
+     public static List<Sacrifice> generate(int choice) {
         LocalDate begin = LocalDate.of(2020,1,10);
         LocalDate end = LocalDate.of(2025,12,10);
-        List<entity.Sacrifice> sacrifices;
+        List<Sacrifice> sacrifices;
         if (choice == 1) {
             sacrifices = new ArrayList<>();
             for (int i = 0; i < overall; i++) {
-                sacrifices.add(new entity.Sacrifice((Helper.between(begin,end)),
+                sacrifices.add(new Sacrifice((Helper.between(begin,end)),
                         humanOrAnimal(Helper.getRandomIndexInRange(1,3)),
                         Helper.getRandomIndexInRange(1,7)));
             }
         } else {
             sacrifices = new LinkedList<>();
             for (int i = 0; i < overall; i++) {
-                sacrifices.add(new entity.Sacrifice((Helper.between(begin,end)),
+                sacrifices.add(new Sacrifice((Helper.between(begin,end)),
                         humanOrAnimal(Helper.getRandomIndexInRange(1,3)),
                         Helper.getRandomIndexInRange(1,7)));
             }
@@ -36,12 +36,12 @@ public class Table {
         return sacrifices;
     }
 
-    public static void outputAll(List<entity.Sacrifice> sacrifices){
-        for (entity.Sacrifice one : sacrifices)
+    public static void outputAll(List<Sacrifice> sacrifices){
+        for (Sacrifice one : sacrifices)
             System.out.println(one.getDate() + " " + one.getType() + " " + one.getDaysTillRain());
     }
 
-    public static AtomicInteger rainNextDay(List<entity.Sacrifice> sacrifices){
+    public static AtomicInteger rainNextDay(List<Sacrifice> sacrifices){
         AtomicInteger count = new AtomicInteger();
         sacrifices.stream().filter(elem -> elem.getDaysTillRain() == 1).
                 forEach( elem ->{
@@ -50,7 +50,7 @@ public class Table {
         return count;
     }
 
-    public static boolean results(List<entity.Sacrifice> sacrifices){
+    public static boolean results(List<Sacrifice> sacrifices){
         AtomicInteger humanCount = new AtomicInteger();
         AtomicInteger animalCount = new AtomicInteger();
         sacrifices.forEach(elem -> { if (Objects.equals(elem.getType(), "human")) {
@@ -75,7 +75,7 @@ public class Table {
 
     }
 
-    public static void lastDate(List<entity.Sacrifice> sacrifices){
+    public static void lastDate(List<Sacrifice> sacrifices){
         AtomicInteger maxLastMonth = new AtomicInteger();
         AtomicInteger maxLastYear = new AtomicInteger();
         AtomicInteger indexChange = new AtomicInteger();

@@ -48,7 +48,7 @@ public class CoffeeTable {
 
     public Map<String, Integer> farmTypeCount() {
         Map<String, Integer> farmTypeCount = new HashMap<>();
-        listOfRecords.forEach(elem ->{
+         listOfRecords.forEach(elem ->{
             String value;
             value = elem.getFarm();
             farmTypeCount.merge(value, 1, Integer::sum);
