@@ -54,7 +54,7 @@ public class StudentList {
 
     }
 
-    public void Clear() {
+    public void clear() {
 
         this.students.clear();
 

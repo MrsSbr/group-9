@@ -70,14 +70,14 @@ public class Menu {
 
                 case 1 -> {
 
-                    sal.Clear();
+                    sal.clear();
                     sal.fillFromConsole();
                     yield 1;
 
                 }
                 case 2 -> {
 
-                    sal.Clear();
+                    sal.clear();
                     sal.fillRandom();
                     yield 2;
 
@@ -133,14 +133,14 @@ public class Menu {
 
                 case 1 -> {
 
-                    sll.Clear();
+                    sll.clear();
                     sll.fillFromConsole();
                     yield 1;
 
                 }
                 case 2 -> {
 
-                    sll.Clear();
+                    sll.clear();
                     sll.fillRandom();
                     yield 2;
 
