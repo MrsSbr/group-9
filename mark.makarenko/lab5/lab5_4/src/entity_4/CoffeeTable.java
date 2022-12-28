@@ -15,14 +15,14 @@ public class CoffeeTable {
     }
 
     public void printList() {
-        listOfRecords.stream().forEach(elem ->System.out.println(elem));
+        listOfRecords.forEach(System.out::println);
     }
 
 
     public HashMap<String, Set<String>> everyTypeForProcessing() {
         HashMap<String, Set<String>> typeForProcessing = new HashMap<>();
 
-        listOfRecords.stream().forEach(elem -> {
+        listOfRecords.forEach(elem -> {
             if (typeForProcessing.containsKey(elem.getProcessing())) {
                 typeForProcessing.get(elem.getProcessing())
                         .add(elem.getType());
@@ -38,7 +38,7 @@ public class CoffeeTable {
 
     public Set <String> countriesWithGrowthHight() {
         Set <String> growthHight = new HashSet<>();
-        listOfRecords.stream().forEach(elem ->{
+        listOfRecords.forEach(elem ->{
             if (elem.getGrowthHight() > 1500) {
                 growthHight.add(elem.getCountry());
             }
@@ -48,7 +48,7 @@ public class CoffeeTable {
 
     public Map<String, Integer> farmTypeCount() {
         Map<String, Integer> farmTypeCount = new HashMap<>();
-        listOfRecords.stream().forEach( elem ->{
+        listOfRecords.forEach(elem ->{
             String value;
             value = elem.getFarm();
             farmTypeCount.merge(value, 1, Integer::sum);

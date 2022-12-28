@@ -14,21 +14,21 @@ public class Table {
     final static int overall = 20;
 
 
-    public static List<Sacrifice> generate(int choice) {
+    public static List<entity.Sacrifice> generate(int choice) {
         LocalDate begin = LocalDate.of(2020,1,10);
         LocalDate end = LocalDate.of(2025,12,10);
-        List<Sacrifice> sacrifices;
+        List<entity.Sacrifice> sacrifices;
         if (choice == 1) {
             sacrifices = new ArrayList<>();
             for (int i = 0; i < overall; i++) {
-                sacrifices.add(new Sacrifice((Helper.between(begin,end)),
+                sacrifices.add(new entity.Sacrifice((Helper.between(begin,end)),
                         humanOrAnimal(Helper.getRandomIndexInRange(1,3)),
                         Helper.getRandomIndexInRange(1,7)));
             }
         } else {
             sacrifices = new LinkedList<>();
             for (int i = 0; i < overall; i++) {
-                sacrifices.add(new Sacrifice((Helper.between(begin,end)),
+                sacrifices.add(new entity.Sacrifice((Helper.between(begin,end)),
                         humanOrAnimal(Helper.getRandomIndexInRange(1,3)),
                         Helper.getRandomIndexInRange(1,7)));
             }
@@ -36,12 +36,12 @@ public class Table {
         return sacrifices;
     }
 
-    public static void outputAll(List<Sacrifice> sacrifices){
-        for (Sacrifice one : sacrifices)
+    public static void outputAll(List<entity.Sacrifice> sacrifices){
+        for (entity.Sacrifice one : sacrifices)
             System.out.println(one.getDate() + " " + one.getType() + " " + one.getDaysTillRain());
     }
 
-    public static AtomicInteger rainNextDay(List<Sacrifice> sacrifices){
+    public static AtomicInteger rainNextDay(List<entity.Sacrifice> sacrifices){
         AtomicInteger count = new AtomicInteger();
         sacrifices.stream().filter(elem -> elem.getDaysTillRain() == 1).
                 forEach( elem ->{
@@ -50,10 +50,10 @@ public class Table {
         return count;
     }
 
-    public static Boolean results(List<Sacrifice> sacrifices){
+    public static boolean results(List<entity.Sacrifice> sacrifices){
         AtomicInteger humanCount = new AtomicInteger();
         AtomicInteger animalCount = new AtomicInteger();
-        sacrifices.stream().forEach( elem -> { if (Objects.equals(elem.getType(), "human")) {
+        sacrifices.forEach(elem -> { if (Objects.equals(elem.getType(), "human")) {
         humanCount.addAndGet(elem.getDaysTillRain());
         } else {
             animalCount.addAndGet(elem.getDaysTillRain());
@@ -63,11 +63,7 @@ public class Table {
         System.out.println(humanCount.get());
         System.out.print("животные : ");
         System.out.println(animalCount.get());
-        if (animalCount.get() < humanCount.get()) {
-            return true;
-        } else {
-            return false;
-        }
+        return animalCount.get() < humanCount.get();
         }
 
 
@@ -79,12 +75,12 @@ public class Table {
 
     }
 
-    public static void lastDate(List<Sacrifice> sacrifices){
+    public static void lastDate(List<entity.Sacrifice> sacrifices){
         AtomicInteger maxLastMonth = new AtomicInteger();
         AtomicInteger maxLastYear = new AtomicInteger();
         AtomicInteger indexChange = new AtomicInteger();
         AtomicInteger indexMax = new AtomicInteger();
-        sacrifices.stream().forEach(elem -> { indexChange.getAndIncrement();
+        sacrifices.forEach(elem -> { indexChange.getAndIncrement();
             if (elem.getDate().getMonthValue() > maxLastMonth.get() &&
                     elem.getDate().getYear() >= maxLastYear.get()){
                 maxLastMonth.set(elem.getDate().getMonthValue());
