@@ -17,41 +17,34 @@ public class SubscriptionMap {
     public int countDelivery(int month, String name) {
         AtomicInteger count = new AtomicInteger();
         subscriptions.forEach((key, value) -> {
-            List<Journal> journals = value.getList_of_journals();
-            count.addAndGet((int) journals.stream().filter(journal -> {
-                LocalDate start = journal.getStartTime();
-                LocalDate stop = journal.getStopTime();
-                String nameOfJournal = journal.getName();
-                return name.equals(nameOfJournal) && month >= start.getMonthValue() && month <= stop.getMonthValue();
-            }).count());
+            List<Journal> journals = value.getListOfJournals();
+            int countOfJournals = (int) journals.stream()
+                    .filter(journal -> {
+                        LocalDate start = journal.getStartTime();
+                        LocalDate stop = journal.getStopTime();
+                        String nameOfJournal = journal.getName();
+                        return name.equals(nameOfJournal)
+                                && month >= start.getMonthValue()
+                                && month <= stop.getMonthValue();
+                    }).count();
+            count.addAndGet(countOfJournals);
         });
         return count.get();
     }
 
-    public void printMap() {
-//        for (Map.Entry<KeyWrapper, Subscription> entry : subscriptions.entrySet()) {
-//            System.out.println(entry.getKey().toString()+entry.getValue().toString());
-//        }
-        subscriptions.forEach(((key, value) -> {
-            System.out.println(key.toString() + value.toString());
-        }));
-    }
 
     public void printJournalOfUser(String FIO, String adres) {
         Subscription sub = subscriptions.get(new KeyWrapper(FIO, adres));
-        sub.getList_of_journals().forEach(journal -> System.out.println(journal.toString()));
+        sub.getListOfJournals().forEach(journal -> System.out.println(journal.toString()));
     }
 
     public String topDeliveringRegion(String name, int month) {
         String topRegion;
         HashMap<String, Integer> regions = new HashMap<>();
-        var ref = new Object() {
-            int count = 0;
-        };
-        subscriptions.forEach((key, value) -> {
-            List<Journal> journals = value.getList_of_journals();
-            ref.count = 0;
-            ref.count = (int) journals.stream().filter(journal -> {
+        int count = 0;
+        for (Map.Entry<KeyWrapper, Subscription> subscription : subscriptions.entrySet()) {
+            List<Journal> journals = subscription.getValue().getListOfJournals();
+            count = (int) journals.stream().filter(journal -> {
                 LocalDate start = journal.getStartTime();
                 LocalDate stop = journal.getStopTime();
                 String nameOfJournal = journal.getName();
@@ -64,12 +57,12 @@ public class SubscriptionMap {
 //                if(name.equals(nameOfJournal) && month>=start.getMonthValue() && month<=stop.getMonthValue())
 //                    ref.count++;
 //            }
-            if (regions.containsKey(value.getRegion())) {
-                regions.put(value.getRegion(), regions.get(value.getRegion()) + ref.count);
+            if (regions.containsKey(subscription.getValue().getRegion())) {
+                regions.put(subscription.getValue().getRegion(), regions.get(subscription.getValue().getRegion()) + count);
             } else {
-                regions.put(value.getRegion(), ref.count);
+                regions.put(subscription.getValue().getRegion(), count);
             }
-        });
+        }
 
 
         Map<String, Integer> sortedMap = regions.entrySet().stream()

@@ -1,7 +1,5 @@
 package models;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,7 +22,7 @@ public class Subscription {
         return region;
     }
 
-    public List<Journal> getList_of_journals() {
+    public List<Journal> getListOfJournals() {
         return list_of_journals;
     }
 

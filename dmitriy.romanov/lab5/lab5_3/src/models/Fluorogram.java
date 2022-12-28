@@ -27,9 +27,12 @@ public class Fluorogram {
         return date;
     }
 
-    private static final List<String> names = new ArrayList<>(Arrays.asList("Даниил", "Евгений", "Максим", "Владислав", "Николай", "Никита", "Артем", "Иван", "Кирилл", "Егор", "Илья", "Андрей"));
-    private static final List<String> patronymic = new ArrayList<>(Arrays.asList("Николаевич", "Владимирович", "Александрович", "Иванович", "Васильевич", "Сергеевич", "Викторович", "Михайлович", "Артемович", "Андреевич"));
-    private static final List<String> surname = new ArrayList<>(Arrays.asList("Иванов", "Романов", "Протасов", "Смирнов", "Кузнецов", "Попов", "Васильев", "Петров", "Соколов", "Лазарев", "Медведев", "Ершов"));
+    private static final List<String> names = new ArrayList<>(Arrays.asList("Даниил",
+            "Евгений", "Максим", "Владислав", "Николай", "Никита", "Артем", "Иван", "Кирилл", "Егор", "Илья", "Андрей"));
+    private static final List<String> patronymic = new ArrayList<>(Arrays.asList("Николаевич", "Владимирович",
+            "Александрович", "Иванович", "Васильевич", "Сергеевич", "Викторович", "Михайлович", "Артемович", "Андреевич"));
+    private static final List<String> surname = new ArrayList<>(Arrays.asList("Иванов", "Романов", "Протасов", "Смирнов",
+            "Кузнецов", "Попов", "Васильев", "Петров", "Соколов", "Лазарев", "Медведев", "Ершов"));
 
     public String randFullName() {
         StringBuilder stringBuilder = new StringBuilder();

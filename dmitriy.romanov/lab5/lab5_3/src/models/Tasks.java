@@ -9,26 +9,21 @@ public class Tasks {
 
 
     public int countPatientsWithPathology(List<Fluorogram> list) {
-        return (int) list.stream().filter(
-                Fluorogram::getPathology
-        ).count();
+        return (int) list.stream()
+                .filter(Fluorogram::getPathology)
+                .count();
     }
 
     public List<Fluorogram> countPatientsForLastThreeYears(List<Fluorogram> list) {
-        List<Fluorogram> lastThreeYears = new ArrayList<>();
-        list.stream().filter(
-                fluorogram -> fluorogram.getDate().plusYears(3).isAfter(LocalDate.now())
-        ).forEach(lastThreeYears::add);
-        return lastThreeYears;
+        return list.stream().filter(
+                        fluorogram -> fluorogram.getDate().plusYears(3).isAfter(LocalDate.now()))
+                .toList();
     }
 
     public List<Fluorogram> countPatientsForLastFiveYearsNotTwoLast(List<Fluorogram> list) {
-        List<Fluorogram> lastFiveYears = new ArrayList<>();
-        list.stream().filter(
-                fluorogram -> (fluorogram.getDate().plusYears(5).isAfter(LocalDate.now()) &&
-                        fluorogram.getDate().plusYears(2).isBefore(LocalDate.now()))
-        ).forEach(lastFiveYears::add);
-        return lastFiveYears;
+        return list.stream().filter(fluorogram -> (fluorogram.getDate().plusYears(5).isAfter(LocalDate.now())
+                                    && fluorogram.getDate().plusYears(2).isBefore(LocalDate.now())))
+                .toList();
     }
 
     public void task(List<Fluorogram> fluorograms, boolean checkTime) {
