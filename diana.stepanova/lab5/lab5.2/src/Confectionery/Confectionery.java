@@ -22,25 +22,24 @@ public class Confectionery {
     public String worstMonth() {
 
         Map<Month, Double> months = new HashMap<>();
-        confectionery.entrySet().stream()
-                .forEach(confectionery -> confectionery.getValue()
-                        .forEach(cake -> {
-                            Month tmpMonth = confectionery.getKey().getMonth();
-                            if (!months.containsKey(tmpMonth)) {
+        confectionery.forEach((key, value) -> value
+                .forEach(cake -> {
+                    Month tmpMonth = key.getMonth();
+                    if (!months.containsKey(tmpMonth)) {
 
-                                months.put(tmpMonth, cake.getPrice());
+                        months.put(tmpMonth, cake.getPrice());
 
-                            } else {
+                    } else {
 
-                                months.put(tmpMonth, months.get(tmpMonth) + cake.getPrice());
+                        months.put(tmpMonth, months.get(tmpMonth) + cake.getPrice());
 
-                            }
-                        }));
+                    }
+                }));
 
 
         return months.entrySet()
                 .stream().sorted(Map.Entry.comparingByValue())
-                .collect(Collectors.toList())
+                .toList()
                 .get(0)
                 .getKey().toString();
 
@@ -73,15 +72,14 @@ public class Confectionery {
     public List<Map.Entry<Month, List<Cake>>> ordersToMonth() {
 
         Map<Month, List<Cake>> months = new HashMap<>();
-        confectionery.entrySet().stream()
-                .forEach(confectionery -> confectionery.getValue()
-                        .forEach(cake -> {
-                            Month tmpMonth = confectionery.getKey().getMonth();
-                            if (!months.containsKey(tmpMonth)) {
-                                months.put(tmpMonth, new ArrayList<Cake>());
-                            }
-                            months.get(tmpMonth).add(cake);
-                        }));
+        confectionery.forEach((key, value) -> value
+                .forEach(cake -> {
+                    Month tmpMonth = key.getMonth();
+                    if (!months.containsKey(tmpMonth)) {
+                        months.put(tmpMonth, new ArrayList<Cake>());
+                    }
+                    months.get(tmpMonth).add(cake);
+                }));
         return months.entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByKey())
@@ -100,7 +98,7 @@ public class Confectionery {
 
         LocalDate tmpDate = LocalDate.parse(date);
 
-        if (!confectionery.containsKey(date)) {
+        if (!confectionery.containsKey(tmpDate)) {
 
             confectionery.put(tmpDate, new ArrayList<Cake>());
 

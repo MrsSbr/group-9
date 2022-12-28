@@ -39,10 +39,10 @@ public class Task {
     }
 
     public void countATC(Set<User> users) {
-        Integer countTele2 = (int) users.stream().filter(user -> Integer.parseInt(user.getNumber()) / 100000 == ATC.Tele2.getNumVal()).count();
-        Integer countBeeline = (int) users.stream().filter(user -> Integer.parseInt(user.getNumber()) / 100000 == ATC.Beeline.getNumVal()).count();
-        Integer countMegafon = (int) users.stream().filter(user -> Integer.parseInt(user.getNumber()) / 100000 == ATC.Megafon.getNumVal()).count();
-        Integer countMTC = (int) users.stream().filter(user -> Integer.parseInt(user.getNumber()) / 100000 == ATC.MTC.getNumVal()).count();
+        int countBeeline = (int) users.stream().filter(user -> Integer.parseInt(user.getNumber()) / 100000 == ATC.Beeline.getNumVal()).count();
+        int countTele2 = (int) users.stream().filter(user -> Integer.parseInt(user.getNumber()) / 100000 == ATC.Tele2.getNumVal()).count();
+        int countMegafon = (int) users.stream().filter(user -> Integer.parseInt(user.getNumber()) / 100000 == ATC.Megafon.getNumVal()).count();
+        int countMTC = (int) users.stream().filter(user -> Integer.parseInt(user.getNumber()) / 100000 == ATC.MTC.getNumVal()).count();
 
         System.out.println("Количество пользователей для каждой АТС: ");
         System.out.println("Tele2: " + countTele2 + "\n" + "Megafon: " + countMegafon + "\n" + "Beeline: " + countBeeline + "\n" + "MTC: " + countMTC);
@@ -55,7 +55,7 @@ public class Task {
         String tmp = String.valueOf(t);
         StringBuilder number = new StringBuilder(tmp);
         IntStream.range(0, 5).forEach(i -> {
-            number.append(String.valueOf(ran.nextInt(9)));
+            number.append(ran.nextInt(9));
         });
 
 
